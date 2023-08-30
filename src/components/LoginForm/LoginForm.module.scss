@@ -1,0 +1,72 @@
+.loginDiv{
+    width: 25vmin;
+    height: 25vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title{
+        justify-self: center;
+        font-family: 'Orbitron', sans-serif;
+        position: fixed;
+        top:20vh;
+        font-size: 2.5vmin;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+            margin-top: 0;
+            font-size: 1vmin;
+        }
+    }
+    .loginForm{
+        height: 20vmin;
+        width: 25vmin;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .text{
+            font-size: 1.5vmin;
+            font-family: 'Gruppo', sans-serif;
+            
+        }
+        .inputText{
+            font-family: 'Gruppo', sans-serif;
+            color:white;
+            height: 1.5vmin;
+            background-color: black;
+            border-color: white;
+            border-width: 0.2vmin;
+            border-radius: 10px;
+        }
+        .submit{
+            font-size: 1.5vmin;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 12.5vmin;
+            font-family: 'Gruppo', sans-serif;
+            background-color: black;
+            border-width: 0.2vmin;
+            border-radius: 10px;
+            border-color: white;
+            height: 1.5vmin;
+            color:white;
+            margin-top: 1vmin;
+            padding-bottom: 0.8vmin;
+            padding-top: 0.8vmin;
+            
+        }
+        .submit:hover{
+            background-color:rgb(170,218,250); ;
+        }
+    }
+}
+
+
+//loginDiv
+//loginForm
+//text(lables)
+//inputText (inputareas)
+//submit (button)

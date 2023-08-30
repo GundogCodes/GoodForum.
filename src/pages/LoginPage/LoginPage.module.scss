@@ -1,0 +1,19 @@
+.LoginPage{
+    font-family: 'Orbitron', sans-serif;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    background-image: url(https://miro.medium.com/v2/resize:fit:1400/1*IhV2ehy9HCyL7DJB8ZmwKg.gif);
+    background-size: cover;
+    height: 100vh;
+    
+    h1:hover{
+        color:rgb(170,218,250);
+    }
+
+}
+
+
