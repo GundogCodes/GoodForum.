@@ -30,6 +30,7 @@ export default function LoginForm({setUser}){
             ProDesics
             <p>Bend Perspectivies</p>
             </div>
+            
             <form className={styles.loginForm} /*onSubmit={handleSubmit}*/>
     
               <p className={styles.text}>Email </p><input type='text' name="email" value={credentials.email} className={styles.inputText}  onChange={handleChange} required/>

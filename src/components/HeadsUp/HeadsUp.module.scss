@@ -1,0 +1,18 @@
+.HeadsUp{
+    background-color: rgb(32,36,46);
+    width: 85vw;
+    height: 15vh;
+    border-radius:1000px ;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .userImage{
+        background-color: white;
+        width: 12vw;
+        height: 12vh;
+    border-radius: 1000px;
+    margin-left: 3vmin;
+    }
+}
