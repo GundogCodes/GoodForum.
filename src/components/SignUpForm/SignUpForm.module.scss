@@ -1,4 +1,4 @@
-.loginDiv{
+.signUpFormDiv{
     width: 25vmin;
     height: 25vmin;
     display: flex;
@@ -27,7 +27,7 @@
             flex-direction: row;
         }
     }
-    .loginForm{
+    .signUpForm{
         height: 20vmin;
         width: 25vmin;
         display: flex;
@@ -83,10 +83,3 @@
         color:rgb(170,218,250); ;
     }
 }
-
-
-//loginDiv
-//loginForm
-//text(lables)
-//inputText (inputareas)
-//submit (button)

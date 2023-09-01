@@ -1,7 +1,8 @@
+import SignUpForm from '../SignupForm/SignUpForm'
 import styles from './LoginForm.module.scss'
 import {useState} from 'react'
-
 export default function LoginForm({setUser}){
+    const [signupClicked, setSignupClicked]= useState(false)
     const [credentials,setCredentials] = useState({
         email:'',
         password:''
@@ -23,22 +24,28 @@ export default function LoginForm({setUser}){
             setError('Log In Failed - Try Again')
         }
     }*/
+    function handleSignupClick(){
+        setSignupClicked(!signupClicked)
+    }
     return (
         <div className={styles.loginDiv}>
-            
             <div className={styles.title}>
             ProDesics
             <p>Bend Perspectivies</p>
             </div>
-            
+            {signupClicked?
+            <SignUpForm />
+            :
             <form className={styles.loginForm} /*onSubmit={handleSubmit}*/>
     
               <p className={styles.text}>Email </p><input type='text' name="email" value={credentials.email} className={styles.inputText}  onChange={handleChange} required/>
               <p className={styles.text}>Password </p><input type='password' name="password" value={credentials.password} onChange={handleChange} className={styles.inputText} required />
-            
+              
               <button type='submit'className={styles.submit} >LOG IN</button>
             </form>
+        }
             <p className='error-message'>&nbsp;{error}</p>
+            <h3 className={styles.signupButton} onClick={handleSignupClick}>{signupClicked?'Sign Up Here':'Login'}</h3>
           </div>
         
       )

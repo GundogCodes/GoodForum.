@@ -11,8 +11,8 @@ import UserPage from './pages/UserPage/UserPage'
 import ChatsPage from './pages/ChatsPage/ChatsPage'
 
 function App() {
-  const [user, setUser] = useState(true)
-  
+  const [user, setUser] = useState(false)
+
   
 
 

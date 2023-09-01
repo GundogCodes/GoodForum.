@@ -17,7 +17,7 @@ export default function LoginPage({setUser}){
             
             {clicked?<LoginForm setUser={setUser}/>
             :
-        <h1 onClick={handleLoginClick}>Login Here</h1>
+        <h1 onClick={handleLoginClick}>ENTER</h1>
     }
         
     <Footer/>
