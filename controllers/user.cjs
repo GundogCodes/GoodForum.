@@ -91,26 +91,24 @@ const dataController ={
 },
 
 //D
-async deleteUser (req,res,next){
+async deleteUser(req, res, next) {
     try {
-        console.log('---- req.locals.data.token --- ', req.locals.data.user)
-        const findUser = await User.findOne({_id:req.params.id})
-        console.log('---- findUser.id ---- ', findUser.id)
-        if(findUser.id !== req.locals.data.user._id){
-            res.json('You are not Authorized to delete this account')
-        } else if(findUser.id=== req.locals.data.user._id){
-            await User.deleteOne({_id:req.params.id})
-            req.user = null
-            req.locals.data.user = null
-            req.locals.data.token = null
-            res.json('User Deleted')
-            next()
-        }
+      const findUser = await User.findOne({ _id: req.params.id });
+      console.log(findUser);
+      console.log('findUser.email', findUser.email);
+      console.log('req.body', req.body.email);
+      const match = await bcrypt.compare(req.body.password, findUser.password);
+      console.log(match);
+      if (findUser.email !== req.body.email || !match) {
+        res.json('Password is incorrect or not Authorized');
+      } else if (findUser.email === req.body.email && match) {
+        await User.deleteOne(findUser);
+        res.json('userDeleted');
+      }
     } catch (error) {
-        res.status(400).json('Bad Credentials')
-        
+      res.status(400).json('Bad Credentials');
     }
-}
+  }
 }
 
 
