@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import styles from './App.module.scss'
 import NavBar from './components/NavBar/NavBar'
 import routes from './router/routes'
 import {Routes,Route} from 'react-router-dom'
@@ -11,13 +11,13 @@ import UserPage from './pages/UserPage/UserPage'
 import ChatsPage from './pages/ChatsPage/ChatsPage'
 
 function App() {
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(true)
 
   
 
 
   return (
-    <div >
+    <div className={styles.app}>
       {user?
       <>
       <NavBar routes={routes}/>

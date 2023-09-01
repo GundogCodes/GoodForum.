@@ -45,7 +45,7 @@ export default function LoginForm({setUser}){
             </form>
         }
             <p className='error-message'>&nbsp;{error}</p>
-            <h3 className={styles.signupButton} onClick={handleSignupClick}>{signupClicked?'Sign Up Here':'Login'}</h3>
+            <h3 className={styles.signupButton} onClick={handleSignupClick}>{signupClicked?'Login':'Sign Up Here'}</h3>
           </div>
         
       )

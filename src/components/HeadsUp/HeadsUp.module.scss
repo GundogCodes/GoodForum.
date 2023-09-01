@@ -1,15 +1,53 @@
 .HeadsUp{
     background-color: rgb(32,36,46);
-    width: 85vw;
+    width: 98vw;
     height: 15vh;
     border-radius:1000px ;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
+    background-color: rgba(34,41,53);
 
+        .username{
+            background-color: rgba(24,31,43) ;
+            flex-direction: row;
+            justify-content: center;
+            display: flex;
+            border-radius: 1000px;
+            padding:1vmin;
+            padding-left: 4vmin;
+            padding-right: 4vmin;
+        }
+        .username:hover{
+                background-color:rgba(20,20,20);
+        }
+        .friends{
+            background-color:rgba(24,31,43) ;
+            flex-direction: row;
+            justify-content: center;
+            display: flex;
+            border-radius: 1000px;
+            padding:1vmin;
+            padding-left: 4vmin;
+            padding-right: 4vmin;
+        }
+        .friends:hover{
+            background-color: rgba(20,20,20);
+        }
+    
+    .settings{
+        background-color:rgba(24,31,43);
+        border-radius: 1000px;
+        padding:1vmin;
+        padding-left: 4vmin;
+        padding-right: 4vmin;
+    }
+    .settings:hover{
+        background-color: rgba(20,20,20);
+    }
     .userImage{
-        background-color: white;
+        background-color: rgb(169, 163, 156);
         width: 12vw;
         height: 12vh;
     border-radius: 1000px;

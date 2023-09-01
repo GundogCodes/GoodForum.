@@ -3,20 +3,24 @@
     justify-content: space-around;
     top: 0;
     height: 4vh;
-    min-height: 4vh;
     background-color: rgba(34,41,53);
     border-radius: 5px;
     width: 100vw;
     color:white;
     position: fixed;
         .titles{
-            
             padding-left: 5rem;
             padding-right: 5rem;
             border-color: white;
             border-width: 1vmin;
-            
             font-size: 2rem;
             align-self: center;
+        }
+        .titles:hover{
+            background-color:rgb(170,218,250);;
+            flex-direction: row;
+            justify-content: center;
+            display: flex;
+            border-radius: 1000px;
         }
     }
