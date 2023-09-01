@@ -4,7 +4,7 @@ export default function UserPage(){
     return(
 
         <div className={styles.UserPage}>
-        User Profile Here
+            <h1></h1>
         <HeadsUp />
         </div>
 )
