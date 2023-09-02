@@ -1,0 +1,21 @@
+.RecentPosts{
+    display: flex;
+    position: fixed;
+    width: 98vw;
+    height: 95vh;
+    top:20vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .postsList{
+        display: flex;
+        flex-direction: column;
+        width: 98vw;
+        background-color: rgba(32,36,46);
+        border-radius: 5rem;
+        align-items: center;
+        .post{
+            color:red;
+        }
+    }
+}
