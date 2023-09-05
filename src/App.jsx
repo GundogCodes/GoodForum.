@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage/HomePage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import UserPage from './pages/UserPage/UserPage'
 import ChatsPage from './pages/ChatsPage/ChatsPage'
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [user, setUser] = useState(true)
@@ -26,6 +27,7 @@ function App() {
        <Route path="/user/:id" element={<UserPage />}/>
        <Route path="/chats" element={<ChatsPage />}/>
       </Routes>
+      <Footer/>
       </>
       :
       <>

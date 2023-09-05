@@ -1,13 +1,14 @@
 .UserPage{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    top:4vh;
+    top:60px;
     align-items: center;
     width: 100vw;
     position: fixed;
     height: 100vh;
-    background-image:url(https://i.gifer.com/1pX9.gif);
+    background-color: yellow;
     background-size: cover;
 
 }
