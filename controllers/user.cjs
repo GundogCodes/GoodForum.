@@ -39,7 +39,6 @@ const dataController ={
         console.log('----res.locals.data.user-----',res.locals.data.user)
         console.log('----res.locals.data.token-----',res.locals.data.token)
         res.json(token)
-        next()
     } catch (error) {
         res.status(400).json({error:error.message})
         console.log('Ya gatta database prablem son')
@@ -51,7 +50,7 @@ const dataController ={
     try {
         const foundUser =  await User.findOne({_id:req.params.id})
         res.json(foundUser)
-        next()
+
     } catch (error) {
         req.status(400).json({error:error.message})
         
@@ -66,10 +65,11 @@ const dataController ={
         const match = await bcrypt.compare(req.body.password, user.password)
         if(!match) throw new Error()
         res.locals.data.user = user
-        res.locals.data.token = createJWT(user)
+        const token  = createJWT(user)
+        res.locals.data.token = token
         console.log('----res.locals.data.user-----',res.locals.data.user)
         console.log('----res.locals.data.token-----',res.locals.data.token)
-        next()
+        res.json(token)
     } catch (error) {
         res.status(400).json('Bad Credentials')
     }

@@ -9,11 +9,11 @@ import HomePage from './pages/HomePage/HomePage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import UserPage from './pages/UserPage/UserPage'
 import ChatsPage from './pages/ChatsPage/ChatsPage'
-import Footer from './components/Footer/Footer'
-
+import ForumPage from './pages/ForumPage/ForumPage'
+import {getUser} from '../utilities/users-service.cjs'
 function App() {
-  const [user, setUser] = useState(true)
-
+  const [user, setUser] = useState(getUser())
+  console.log('user: ',user)
   
 
 
@@ -23,15 +23,16 @@ function App() {
       <>
       <NavBar routes={routes}/>
       <Routes>
-      <Route path="/" element={<HomePage />}/>
-       <Route path="/user/:id" element={<UserPage />}/>
-       <Route path="/chats" element={<ChatsPage />}/>
+      <Route path="/" element={<HomePage user={user} setUser={setUser} />}/>
+       <Route path="/user/:id" element={<UserPage user={user} setUser={setUser}  />}/>
+       <Route path="/chats" element={<ChatsPage user={user} setUser={setUser}  />}/>
+       <Route path="/forum/:id" element={<ForumPage user={user} setUser={setUser}  />}/>
+
       </Routes>
-      <Footer/>
       </>
       :
       <>
-      <LoginPage setUser={setUser} />
+      <LoginPage user={user} setUser={setUser} />
       </>
       }
      

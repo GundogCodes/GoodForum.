@@ -20,7 +20,6 @@ export default function LoginPage({setUser}){
         <h1 onClick={handleLoginClick}>ENTER</h1>
     }
         
-    <Footer/>
         </div>
 )
 }
