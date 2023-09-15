@@ -12,7 +12,7 @@ import ChatsPage from './pages/ChatsPage/ChatsPage'
 import ForumPage from './pages/ForumPage/ForumPage'
 import {getUser} from '../utilities/users-service.cjs'
 function App() {
-  const [user, setUser] = useState(getUser())
+  const [user, setUser] = useState(false)
   console.log('user: ',user)
   
 

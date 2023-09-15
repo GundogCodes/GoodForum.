@@ -2,16 +2,15 @@
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 60px;
     justify-content: center;
     position: fixed;
     bottom: 0;
+    padding-bottom: 1vmin;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color:rgba(32,36,46) ;
 
 }
 .name {
     font-size: 100px;
-    color: white;
+    color: black;
     font-size: smaller;
 }
