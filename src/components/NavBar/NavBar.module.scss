@@ -1,26 +1,27 @@
 .NavBarDiv{
     display: flex;
+    align-items: center;
     justify-content: space-around;
     top: 0;
     height: 60px;
     background-color: rgba(34,41,53);
-    border-radius: 5px;
     width: 100vw;
     color:white;
     position: fixed;
         .titles{
-            padding-left: 5rem;
-            padding-right: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 33vw;
             border-color: white;
-            border-width: 1vmin;
-            font-size: 2rem;
-            align-self: center;
+            font-size: 25px;
+            height: 60px;
         }
         .titles:hover{
             background-color:rgb(170,218,250);;
             flex-direction: row;
             justify-content: center;
             display: flex;
-            border-radius: 1000px;
+
         }
     }

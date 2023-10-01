@@ -1,13 +1,13 @@
 .ChatsAside{
     position: absolute;
     margin-top: 60px;
-    left: 60px;
+    left: 5vw;
     width: 20vw;
     height: 80vh;
     display: flex;
     flex-direction: column;
     background-color: orangered;
-    border-radius: 15px;
+
     justify-content: center;
     align-items: center;
 }

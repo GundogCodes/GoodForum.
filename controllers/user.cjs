@@ -52,7 +52,7 @@ const dataController ={
         res.json(foundUser)
 
     } catch (error) {
-        req.status(400).json({error:error.message})
+        res.status(400).json({error:error.message})
         
     }
 },
@@ -64,6 +64,7 @@ const dataController ={
         if(!user) throw Error()
         const match = await bcrypt.compare(req.body.password, user.password)
         if(!match) throw new Error()
+        req.user = user
         res.locals.data.user = user
         const token  = createJWT(user)
         res.locals.data.token = token
