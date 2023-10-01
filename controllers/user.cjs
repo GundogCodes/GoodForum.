@@ -21,7 +21,6 @@ function checkToken(req, res) {
 //authencationn function which returns the local token
 const apiController ={
     auth (req,res){
-
         res.json(res.locals.data.token)
     }
 }

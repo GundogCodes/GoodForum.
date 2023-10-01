@@ -6,7 +6,7 @@ import ChatsPage from '../pages/ChatsPage/ChatsPage'
 const routes = [	
 	{
 		Component: UserPage,
-		key: 'User',
+		key: 'You',
 		path: '/user/:id'
 	},
 	{

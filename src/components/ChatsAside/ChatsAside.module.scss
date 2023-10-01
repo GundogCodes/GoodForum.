@@ -1,8 +1,8 @@
 .ChatsAside{
     position: absolute;
-    margin-top: 6vmin;
+    margin-top: 5vmin;
     left: 5vw;
-    width: 20vw;
+    width: 19vw;
     height: 85vh;
     display: flex;
     flex-direction: column;
@@ -10,18 +10,21 @@
     align-items: center;
     overflow-y: scroll;
     border: solid 1px white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
     animation: fadeIn 0.5s;
     color: black;
+    border-radius: 7px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
 }
 
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
-  }
+}
 
 @media (max-width:900px) {
     .ChatsAside{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
         position: absolute;
     margin-top: 10vmin;
     left: 5vw;
