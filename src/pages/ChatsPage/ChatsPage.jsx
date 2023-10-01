@@ -7,6 +7,7 @@ export default function ChatsPage({user,setUser}){
 
         <div className={styles.ChatsPage}>
         <ChatsAside/>
+        <h3>Your Messages</h3>
         <ChatsFlow/>
         <Footer />
         </div>

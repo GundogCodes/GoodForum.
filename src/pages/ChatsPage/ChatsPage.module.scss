@@ -7,9 +7,15 @@
     background-size: cover;
     width: 100vw;
     position: fixed;
-    height: 98vh;
-    background-color: black;
-    margin-top: 0vmin
+    height: 100vh;
+    background-color: white;
+    margin-top: 0vmin;
+    h3{
+        width: 100vw;
+        display: flex;
+        margin: 5px;
+        padding-left: 20vw;
+    }
 }
 
 

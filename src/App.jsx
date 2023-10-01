@@ -21,6 +21,7 @@ function App() {
     <div className={styles.app}>
       {user?
       <>
+
       <NavBar routes={routes}/>
       <Routes>
       <Route path="/" element={<HomePage user={user} setUser={setUser} />}/>

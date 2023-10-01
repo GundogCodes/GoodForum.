@@ -1,7 +1,7 @@
 .UserPosts{
-    background-color: blue;
+
     position: absolute;
-    margin-top: 5vmin;
+    margin-top: 10vmin;
     right: 5vw;
     width: 70vw;
     height: 90vh;
@@ -10,15 +10,21 @@
     align-items: center;
     justify-content: center;
     border: solid 1px white;
-
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    margin: 5px;
+    animation: fadeIn 0.5s;
+    border-radius: 7px;
 }
-
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 @media (max-width:900px) {
     .UserPosts{
-        background-color: blue;
+
         position: absolute;
-        margin-top: 15vmin;
+        margin-top: 40vh;
         width: 90vw;
         height: 90vh;
         display: flex;

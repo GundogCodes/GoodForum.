@@ -3,7 +3,7 @@
     top:6.5svh;
     width: 100vw;
     height: 90vh;
-    margin-top: 2vmin;
+    margin-top: 5vmin;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -11,6 +11,8 @@
    .homeView{
     width: 90vw;
     height: 90vh;
+    border-radius: 7px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
     overflow-y: scroll;
     display: flex;
@@ -24,24 +26,31 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        animation: fadeIn 0.5s;
+
         li{
-            margin-right: 10px;
+
             background-color: white;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            width: 95vw;
+            align-items: center;
+            width: 85vw;
             height: 75vh;
-
-            margin: 0.5vmin;
-            margin-left: 5vmin;
+            margin: 5px;
             color: black;
             border: solid white 1px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         }
     }
    }
-    
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
 @media (max-width:900px){
     .homeView{
         width: 90vw;
