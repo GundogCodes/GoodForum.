@@ -1,13 +1,75 @@
 .HomePosts{
     position: absolute;
-    top: 120px;
-    justify-self: center;
-    position: absolute;
+    top:6.5svh;
     width: 100vw;
-    height: 80vh;
-    background-color: yellow;
+    height: 90vh;
+    margin-top: 2vmin;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   .homeView{
+    width: 90vw;
+    height: 90vh;
 
     overflow-y: scroll;
-   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    ul{
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        li{
+            margin-right: 10px;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 95vw;
+            height: 75vh;
+
+            margin: 0.5vmin;
+            margin-left: 5vmin;
+            color: black;
+            border: solid white 1px;
+        }
+    }
+   }
     
+}
+@media (max-width:900px){
+    .homeView{
+        width: 90vw;
+
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-right: 5vmin;
+        ul{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            list-style-type: none;
+    
+            li{
+                padding: 1vmin;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+               width: 95vw;
+
+                height: 100vh;
+                margin: 0.5vmin;
+    
+                border: solid black 1vmin;
+            }
+        }
+       }
 }

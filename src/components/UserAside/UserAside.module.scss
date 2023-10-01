@@ -1,14 +1,32 @@
 .UserAside{
     position: absolute;
-    margin-top: 60px;
+    margin-top: 5vmin;
     left: 5vw;
     width: 20vw;
-    height: 80vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     background-color: red;
     color: white;
     justify-content: center;
     align-items: center;
+    border: solid 1px white;
 
+
+}
+
+@media (max-width:900px) {
+    .UserAside{
+        position: absolute;
+    margin-top: 5vmin;
+    left: 5vw;
+    width: 90vw;
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    }
 }

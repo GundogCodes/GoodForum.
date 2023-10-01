@@ -1,13 +1,31 @@
 .ChatsFlow{
     background-color: purple;
     position: absolute;
-    margin-top: 60px;
+    margin-top: 5vmin;
     right: 5vw;
     width: 70vw;
-    height: 80vh;
-
+    height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-y: scroll;
+    border: solid 1px white;
+
+}
+
+
+@media (max-width:900px) {
+    .ChatsFlow{
+        background-color: blue;
+        position: absolute;
+        margin-top: 25vmin;
+        width: 90vw;
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
 }

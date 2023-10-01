@@ -6,6 +6,7 @@ import Footer from '../../components/Footer/Footer'
 export default function UserPage(){
     return(
         <div className={styles.UserPage}>
+
             <UserAside/>
             <UserPosts/>
             <Footer />           
