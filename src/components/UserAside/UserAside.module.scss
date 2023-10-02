@@ -2,18 +2,67 @@
     position: absolute;
     margin-top: 10vmin;
     left: 5vw;
-    width: 20vw;
+    width: 18vw;
     height: 90vh;
     display: flex;
     flex-direction: column;
     color: black;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border: solid 1px white;
     animation: fadeIn 0.5s;
     margin:5px;
+    background-color: rgb(230,229,234);
+    border-radius: 7px;
+    h1{
+        position: relative;
+        color: black;
+    }
+    .userPic{
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        width: 15vw;
+        height: 15vw;
+        border-radius: 7px;
+    }
 
+    .controlPanel{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        display: flex;
+        justify-content: space-around;
+        width: 15vw;
+        border-radius: 50px;
 
+        
+        p{
+            border: solid 2px white;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            
+            width: 2vw;
+            height: 2vw;
+        }
+        .setting{
+            background-color: rgb(236,106,94);
+        }
+        .friends{
+            background-color: rgb(244,191,79);
+        }
+        .edit{
+            background-color: rgb(99,200,85);
+            
+        }
+        .setting:hover, .friends:hover, .edit:hover{
+            transition: 0.5s;
+            padding: 1px;
+        }
+    }
 }
 
 @keyframes fadeIn {
@@ -24,14 +73,54 @@
 @media (max-width:900px) {
     .UserAside{
     position: absolute;
-    margin-top: 5vmin;
-    left: 5vw;
+    margin-top: 3vmin;
     width: 90vw;
     height: 30vh;
     display: flex;
-    flex-direction: column;
-    color: black;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
+    background-color: rgb(230,229,234);
+    border-radius: 7px;
+    h1{
+        font-size: 3vmin;
+        width: 15vw;
+        display: flex;
+    }
+    .userPic{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        width: 150px;
+
+        height: 150px;
+        border-radius: 7px;
+    }
+
+    .controlPanel{
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        border-radius: 50px;
+        width: 20vw;
+        background-color: white;
+        p{
+            width: 20px;
+            height: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        }
+        .setting{
+            background-color: red;
+        }
+        .friends{
+            background-color: yellow;
+        }
+        .edit{
+            background-color: green;
+
+        }
+    }
     }
 }
