@@ -3,4 +3,56 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    h2,h3,h4{
+        margin: 0;
+        align-self: flex-start;
+        padding-left: 1vw;
+    }
+    p{
+        width: 60vw;
+        height: 35vh;
+        border-radius: 7px;
+        background-color: rgb(230,229,234);
+        display: flex;
+
+    }
+    .interactions{
+        display: flex;
+        width: 60vw;
+
+        h8{
+            padding-left: 1vw;
+        }
+        
+    }
+}
+
+@media (max-width:900px){
+    .Post{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        h2,h3,h4{
+            margin: 0;
+            align-self: flex-start;
+            padding-left: 1vw;
+        }
+        p{
+            width: 75vw;
+            background-color: rgb(230,229,234);
+            height: 35vh;
+        }
+        .interactions{
+            display: flex;
+            width: 80vw;
+            justify-content: space-evenly;
+            h8{
+
+            }
+            
+        }
+    }
 }
