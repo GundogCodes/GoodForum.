@@ -34,10 +34,6 @@ export default function LoginForm({setUser}){
     }
     return (
         <div className={styles.loginDiv}>
-            <div className={styles.title}>
-            ProDesics
-            <p>Bend Perspectivies</p>
-            </div>
             {signupClicked?
             <SignUpForm />
             :

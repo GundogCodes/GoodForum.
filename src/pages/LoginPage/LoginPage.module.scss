@@ -1,15 +1,57 @@
 .LoginPage{
     font-family: 'Orbitron', sans-serif;
-    
+    background-image: url('../../assets/waves.png');
     display: flex;
     flex-direction: column;
+
+    left: 0;
+    width: 100vw;
+    color:black;
+
     justify-content: center;
-    align-items: center;
-    color:white;
-    background-image: url(https://miro.medium.com/v2/resize:fit:1400/1*IhV2ehy9HCyL7DJB8ZmwKg.gif);
     background-size: cover;
     height: 100vh;
-    
+
+    .title{
+
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+        font-size: 50px;
+        animation: fadeIn1 5s;
+        font-weight:100;
+    }
+    h1{
+        display: flex;
+        width: 50vw;
+        justify-content: space-evenly;
+        p{
+            font-size:20px;
+            font-weight:100;
+            width: 33vw;
+            display: flex;
+            justify-content: center;
+
+            color: black;
+        }
+        .make{
+            padding-left: 10vw;
+            animation: fadeIn1 1s;
+            
+        }
+        .your{
+            
+            
+            animation: fadeIn1 2s;
+            
+        }
+        .mark{
+
+            animation: fadeIn1 3s;
+
+        }
+    }
     h1:hover{
         color:rgb(170,218,250);
     }
@@ -17,3 +59,31 @@
 }
 
 
+@keyframes fadeIn1 {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+@keyframes fadeIn3 {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+@keyframes fadeIn3 {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @media(max-width:900px){
+    .LoginPage{
+        display: flex;
+        flex-direction: column;
+        .title{
+            display: flex;
+            flex-direction: column;
+
+        }
+        h1{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+  }
