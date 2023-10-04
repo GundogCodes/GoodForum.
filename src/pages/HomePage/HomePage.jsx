@@ -12,10 +12,30 @@ export default function HomePage({user,setUser}){
       <section className={styles.userInfo}>
         <div className={styles.userPic}>Userpic</div>
         <div className={styles.username}>Username</div>
-        <div className={styles.userForums}>UserFollowedForms</div>
       </section>
             <HomePosts/>
+
+            <div className={styles.buttonDiv}>
+
+                    <ul>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                        <li>forum</li>
+                    </ul>
+
             <button>+</button>
+            </div>
+
             <Footer/>
         </div>
 )
