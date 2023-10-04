@@ -1,12 +1,12 @@
 .LoginPage{
     font-family: 'Orbitron', sans-serif;
-    background-image: url('../../assets/waves.png');
+    background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
 
     display: flex;
     flex-direction: column;
     left: 0;
     width: 100vw;
-    color:black;
+    color:white;
 
     justify-content: center;
     background-size: cover;
@@ -30,7 +30,7 @@
 
     }
     h1{
-
+        
         display: flex;
         width: 50vw;
         justify-content: space-evenly;
@@ -40,8 +40,8 @@
             width: 50vw;
             display: flex;
             justify-content: center;
-
-            color: black;
+            
+            color:white;
         }
         
         .make{
