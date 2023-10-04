@@ -3,24 +3,32 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    top:5vmin;
+    top:5vh;
     align-items: center;
     width: 100vw;
     position: fixed;
     height: 100vh;
-    background-color: white;
+
     background-size: cover;
     overflow-y: scroll;
     header{
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         color: black;
-        padding: 10px;
-        padding-left: 5vw;
+
         width: 100vw;
-        h1{}
+        height: 41vh;
+        h1{
+            color: black;
+        }
         h2{}
         h3{}
         h4{}
         section{
+
             display: flex;
             justify-content: center;
 
@@ -87,6 +95,38 @@
     
             li{
     
+            }
+        }
+    }
+}
+
+@media (prefers-color-scheme:dark) {
+    .ForumPage{
+        background-color: black;
+        header{
+            //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+            color: #FF6410;
+            h1{
+                color: #FF6410;
+            }
+            h2,h3{
+            color: white;
+
+            }
+
+            section{
+            button{
+                background-color: #FF6410;
+                border-radius: 7px;
+                padding: 2px;
+            }
+
+            }
+            ul{
+                li{
+                    margin: 10px;
+                }
+                
             }
         }
     }

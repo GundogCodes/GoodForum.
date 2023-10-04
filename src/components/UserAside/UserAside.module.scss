@@ -123,3 +123,28 @@
     }
     }
 }
+
+@media (prefers-color-scheme:dark) {
+    .UserAside{
+        background-color: rgb(28,28,28);
+        h1{
+
+            color: #FF6410;
+        }
+        .controlPanel{
+
+            .setting{
+                background-color: #FF6410;
+            }
+            .friends{
+                background-color: #FF6410;
+            }
+            .edit{
+                background-color: #FF6410;
+                
+            }
+        }
+
+    }
+    
+}

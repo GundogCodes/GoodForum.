@@ -60,6 +60,8 @@
         }
     }
     #name{
+        margin-top:30px;
+
         display: flex;
         justify-content: flex-start;
         position: fixed;
@@ -122,7 +124,11 @@
             width: 20px;
         }
         #name{
-            padding-left: 20vw;
+            top:0px;
+            width: 100vw;
+            display: flex;
+
+            align-items: center;
         }
         display: flex;
         flex-direction: column;
@@ -205,3 +211,31 @@
     }
 }
 
+
+
+@media (prefers-color-scheme:dark) {
+    .HomePage{
+        #name{
+            margin-top:30px;
+            color: #FF6410;
+        }
+        background-color: black;
+        .buttonDiv{
+            background-color: rgb(28,28,28);
+            color: #FF6410;
+            button{
+
+            }
+            ul{
+                background-color: (10,10,10);
+            }
+        }
+        .userInfo{
+            color: #FF6410;
+            background-color: rgb(28,28,28);
+            .userPic{
+                border: solid 1px white;
+            }
+        }
+    }
+}

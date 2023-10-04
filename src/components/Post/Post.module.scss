@@ -63,3 +63,13 @@
         }
     }
 }
+
+@media (prefers-color-scheme:dark) {
+    .Post{
+        color:white;
+        background-color: rgb(28,28,28);
+        .interactions{
+            color: #FF6410;
+        }
+    }
+}

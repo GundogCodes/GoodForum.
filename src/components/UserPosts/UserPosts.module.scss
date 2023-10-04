@@ -81,3 +81,22 @@
         }
     }
 }
+
+@media (prefers-color-scheme:dark) {
+    .UserPosts{
+
+        ul{
+
+    
+
+            .yourPosts{
+                background-color: rgb(28,28,28);
+                color: #FF6410;
+            }
+            li{
+                background-color: black;
+            }
+        }
+    
+}
+}

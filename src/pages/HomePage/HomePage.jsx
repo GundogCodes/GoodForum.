@@ -10,7 +10,7 @@ export default function HomePage({user,setUser}){
         <div className={styles.HomePage}>
       <h1 className={styles.hidden} id={styles.name}>Etch</h1>
       <section className={styles.userInfo}>
-        <div className={styles.userPic}>Userpic</div>
+        <div className={styles.userPic}>UserPic</div>
         <div className={styles.username}>Username</div>
       </section>
             <HomePosts/>

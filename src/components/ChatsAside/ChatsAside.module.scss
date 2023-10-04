@@ -11,7 +11,6 @@
     overflow-y: scroll;
     border: solid 1px white;
     animation: fadeIn 0.5s;
-    color: black;
     border-radius: 7px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
@@ -35,5 +34,14 @@
     color: black;
     justify-content: center;
     align-items: center;
+    }
+}
+
+@media (prefers-color-scheme:dark) {
+    .ChatsAside{
+        background-color: rgb(28,28,28);
+        color: #FF6410;
+        box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    
     }
 }
