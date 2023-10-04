@@ -10,7 +10,7 @@ export default function UserAside(){
             <section className={styles.controlPanel}>
                 <p className={styles.setting}>S</p>           
                 <p className={styles.friends}>F</p>           
-                <p className={styles.edit}>E</p>           
+                <p className={styles.edit}>Fo</p> {/*Forums*/}
             </section>
             <Logout/>
         </div>

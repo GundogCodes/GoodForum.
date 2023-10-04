@@ -16,7 +16,7 @@ export default function HomePage({user,setUser}){
             <HomePosts/>
 
             <div className={styles.buttonDiv}>
-
+                <h4>Your Forums</h4>
                     <ul>
                         <li>forum</li>
                         <li>forum</li>
@@ -32,7 +32,7 @@ export default function HomePage({user,setUser}){
                         <li>forum</li>
                         <li>forum</li>
                     </ul>
-
+                    <h4>Create a Forum</h4>
             <button>+</button>
             </div>
 
