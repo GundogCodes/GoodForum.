@@ -1,14 +1,14 @@
 .HomePage{
 
     top:5vmin;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
-    // background-size: cover;
+    //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     background-color: white;
+    
     .buttonDiv{
         display: flex;
         flex-direction: column;
@@ -20,7 +20,7 @@
         width: 20vw;
         height: 80vh;
         h4{
-            color: black;
+            color: sblack;
         }
 
             ul{
@@ -204,3 +204,4 @@
         
     }
 }
+

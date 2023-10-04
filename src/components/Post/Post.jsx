@@ -6,11 +6,13 @@ export default function Post(){
             <h3>Title</h3>
             <h4>Poster</h4>
             <section>
+                <p>Post Body
+
                 {/* {img?
                 <div>img</div>
                 :
-                <></>} */}
-                <p>Text Description</p>
+            <></>} */}
+            </p>
             </section>
             <div className={styles.interactions}>
                 <h8>Like</h8>
