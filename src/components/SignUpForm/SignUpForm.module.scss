@@ -28,24 +28,27 @@
         }
     }
     .signUpForm{
-        height: 70vh;
-        width:100vw;
+        top: 0;
+        height: 50vh;
+        width:50vw;
         display: flex;
         flex-direction: column;
-        padding-left: 40vw;
         justify-content: center;
+        align-items: flex-start;
 
+        padding-left: 20vw;
         .text{
             font-size: 20px;
             font-family: 'Gruppo', sans-serif;
             
-
+            
         }
         .inputText{
+            background-color: green;
             font-family: 'Gruppo', sans-serif;
             color:white;
             height: 20px;
-            width: 60vw;
+            width: 25vw;
             background-color: white;
             border-width: 1px;
             border-color: black;
@@ -84,5 +87,25 @@
     }
     .signupButton:hover{
         color:rgb(170,218,250); ;
+    }
+}
+
+@media (max-width:900px){
+    .signUpFormDiv{
+
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        .signUpForm{
+
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            padding: none;
+            .inputText{
+
+                width: 70vw;
+            }
+        }
     }
 }
