@@ -19,11 +19,11 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
-    friends:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
-    chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}],
-    interactions:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
-    foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
-}, {
+  friends:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
+  chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}],
+  interactions:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
+  foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
+  }, {
   timestamps: true,
   toJSON: {
     transform: function (doc, ret) {

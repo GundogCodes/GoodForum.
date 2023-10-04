@@ -26,15 +26,14 @@
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         width: 15vw;
         height: 15vw;
-        border-radius: 7px;
+        border-radius: 90px;
     }
 
     .controlPanel{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         display: flex;
         justify-content: space-around;
         width: 15vw;
-        border-radius: 50px;
+        border-radius: 100%;
 
         
         p{
@@ -74,7 +73,7 @@
     .UserAside{
     position: absolute;
     margin-top: 3vmin;
-    width: 90vw;
+    width: 88vw;
     height: 30vh;
     display: flex;
     flex-direction: row;
@@ -92,14 +91,13 @@
         width: 150px;
 
         height: 150px;
-        border-radius: 7px;
+        border-radius: 100%;
     }
 
     .controlPanel{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         border-radius: 50px;
         width: 20vw;
-        background-color: white;
+
         p{
             width: 20px;
             height: 20px;

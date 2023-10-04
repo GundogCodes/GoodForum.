@@ -1,8 +1,23 @@
 .HomePage{
+
     top:5vmin;
     height: 100vh;
     width: 100vw;
- 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        position: absolute;
+        top:11vh;
+        right: 10vw;
+        height: 50px;
+        width: 50px;
+        border-radius: 100px;
+        background-color: white;
+        border-color: white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+    }
     #name{
         display: flex;
         justify-content: flex-start;
@@ -22,6 +37,36 @@
     .hidden{
         animation: fadeIn 1s ;
     }
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        left: 0;
+
+        position: absolute;
+        color: orange;
+        width: 20vw;
+        height: 50vh;
+        .userPic{
+            border-radius: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+
+        }
+        .username{
+            padding: 10px;
+        }
+        .userForums{
+            padding: 10px;
+
+        }
+    }
 
 }
 
@@ -31,20 +76,56 @@
   100% { opacity: 1; }
 }
 @media (max-width:900px) {
-    h1{
-
+    .HomePage{
+        #name{
+            padding-left: 20vw;
+        }
         display: flex;
         flex-direction: column;
+        align-self: center;
+        button{
+            right: 5vw;
+        }
+        h1{
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: fixed;
+            width: 100vw;
+            padding-left: 5vw;
+            color: white;
+            
+            z-index: 1;
+            top:0vh;
+            margin-top:0 ;
+        }
+         .userInfo{
+        display: flex;
+        align-items: center;
         justify-content: flex-start;
-        position: fixed;
+        top: 10vh;
+        position: absolute;
+        color: orange;
         width: 100vw;
-        padding-left: 5vw;
-        color: white;
+        height: 30vh;
+        .userPic{
+            border-radius: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
 
-        z-index: 1;
-        top:0vh;
-        margin-top:0 ;
+        }
+        .username{
+            padding: 10px;
+        }
+        .userForums{
+            padding: 10px;
 
-
+        }
+    }
+        
     }
 }

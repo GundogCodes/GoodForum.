@@ -14,7 +14,6 @@
     border-radius: 7px;
     overflow-y: scroll;
     ul{
-
         list-style-type: none;
         display: flex;
         flex-direction: column;
@@ -44,6 +43,7 @@
 
 @media (max-width:900px) {
     .UserPosts{
+
         position: absolute;
         top: 40vh;
         width: 90vw;
