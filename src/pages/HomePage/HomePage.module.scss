@@ -137,18 +137,18 @@
             position: absolute;
             left: 0;
             top:40vh;
-            width: 98vw;
-            height: 6vh;
+            width: 100vw;
+            height: 5vh;
 
             display: flex;
             flex-direction: row-reverse;
             align-items: center;
 
                 ul{
-                    height: 5vh;
+                    height: 3vh;
                     overflow-x: scroll;
                     flex-direction: row;
-                    width: 80vw;
+                    width: 100vw;
                     li{
                         display: flex;
                         justify-content: center;
@@ -202,10 +202,6 @@
         .username{
             padding: 10px;
         }
-        .userForums{
-            padding: 10px;
-
-        }
     }
         
     }
@@ -215,8 +211,9 @@
 
 @media (prefers-color-scheme:dark) {
     .HomePage{
+        background-color: black;
         #name{
-            margin-top:30px;
+            margin-top:40px;
             color: #FF6410;
         }
         background-color: black;

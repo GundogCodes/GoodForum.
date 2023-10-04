@@ -8,23 +8,20 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;;
-   .homeView{
-    width: 60vw;
 
-    border-radius: 7px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-    overflow-x:hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-
+    
     ul{
-        list-style-type: none;
+        width: 90vw;
+
+        border-radius: 7px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        overflow-x:hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
+        list-style-type: none;
+
         animation: fadeIn 0.5s;
 
         li{
@@ -44,7 +41,7 @@
             animation: fadeIn 2s;
         }
     }
-   }
+
 }
 
 @keyframes fadeIn {
@@ -55,36 +52,31 @@
 @media (max-width:900px){
     .HomePosts{
 
-        .homeView{
-            position: absolute;
-            top:40vh;
 
-            overflow-y: scroll;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-right: 5vmin;
-            width: 90vw;
+           
             ul{
+                position: absolute;
+                top:40vh;
+                overflow-y: scroll;
                 display: flex;
-                justify-content: center;
                 flex-direction: column;
                 align-items: center;
+                padding-right: 5vw;
+                width: 100vw;
                 list-style-type: none;
-                
+
                 li{
-                    padding: 1vmin;
+
                     display: flex;
                     flex-direction: column;
                 align-items: center;
-                width: 85vw;
+                width: 100vw;
                 
                 height: 60vh;
-                margin: 0.5vmin;
                 
             }
         }
-        }
+
        }
 }
 @media (prefers-color-scheme:dark) {

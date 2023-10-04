@@ -54,26 +54,29 @@
         align-items: center;
         justify-content: flex-start;
 
+
         ul{
-            padding-right: 7vmin;
+            width: 90vw;
+
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             list-style-type: none;
+
             .yourPosts{
                 justify-self: flex-start;
                 width: 80vw;
                 height: 5vh;
             }
             li{
-                padding: 1vmin;
+
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 width: 80vw;
                 height: 60vh;
-                margin: 0.5vmin;
+                margin-left: 5vw;
     
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
@@ -84,10 +87,7 @@
 
 @media (prefers-color-scheme:dark) {
     .UserPosts{
-
         ul{
-
-    
 
             .yourPosts{
                 background-color: rgb(28,28,28);
