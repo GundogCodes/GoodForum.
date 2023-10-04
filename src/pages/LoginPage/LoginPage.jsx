@@ -14,6 +14,7 @@ export default function LoginPage({setUser}){
 
     return(
         <div className={styles.LoginPage}>
+            <h4>?</h4>
             <div className={styles.title}>Etch</div>
             <h1><p className={styles.make}>Make </p><p className={styles.your}> Your </p><p className={styles.mark}>Mark</p></h1>
 

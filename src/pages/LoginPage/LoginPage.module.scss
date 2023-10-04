@@ -1,9 +1,9 @@
 .LoginPage{
     font-family: 'Orbitron', sans-serif;
     background-image: url('../../assets/waves.png');
+
     display: flex;
     flex-direction: column;
-
     left: 0;
     width: 100vw;
     color:black;
@@ -11,32 +11,41 @@
     justify-content: center;
     background-size: cover;
     height: 100vh;
+    h4{
+        position: absolute;
+        right: 2.5vmin;
+        top: -2vmin;
+    }
 
     .title{
 
         width: 50vw;
         display: flex;
         justify-content: center;
-        margin-left: 0px;
+        align-items: center;
+
         font-size: 50px;
         animation: fadeIn1 5s;
         font-weight:100;
+
     }
     h1{
+
         display: flex;
         width: 50vw;
         justify-content: space-evenly;
         p{
             font-size:20px;
             font-weight:100;
-            width: 33vw;
+            width: 50vw;
             display: flex;
             justify-content: center;
 
             color: black;
         }
+        
         .make{
-            padding-left: 10vw;
+
             animation: fadeIn1 1s;
             
         }
@@ -76,14 +85,23 @@
     .LoginPage{
         display: flex;
         flex-direction: column;
+        height: 30vh;
+        position: absolute;
+        top:0.5vh;
+        background-image: none;
+        background-color: white;
         .title{
             display: flex;
             flex-direction: column;
 
+            width: 100vw;
         }
         h1{
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+
+            width: 100vw;
+            margin-top: 0;
         }
     }
   }

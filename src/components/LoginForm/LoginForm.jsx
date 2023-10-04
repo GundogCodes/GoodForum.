@@ -45,7 +45,7 @@ export default function LoginForm({setUser}){
               <button  type='submit'className={styles.submit} >LOG IN</button>
             </form>
         }
-            <p className='error-message'>&nbsp;{error}</p>
+            <p className={styles.errorMessage}>&nbsp;{error}</p>
             <h3 className={styles.signupButton} onClick={handleSignupClick}>{signupClicked?'Login':'Sign Up Here'}</h3>
           </div>
         

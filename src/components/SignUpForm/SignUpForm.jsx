@@ -28,7 +28,7 @@ export default function SignUpForm({user,setUser}){
 
             <form className={styles.signUpForm} onSubmit={handleSubmit}>
 
-                <p className={styles.text}>Usernamr </p><input type='text' name="username" value={credentials.name} className={styles.inputText}  onChange={handleChange} required/>
+                <p className={styles.text}>Username </p><input type='text' name="username" value={credentials.name} className={styles.inputText}  onChange={handleChange} required/>
                 <p className={styles.text}>Email </p><input type='text' name="email" value={credentials.email} className={styles.inputText}  onChange={handleChange} required/>
                 <p className={styles.text}>Password </p><input type='password' name="password" value={credentials.password} onChange={handleChange} className={styles.inputText} required />
                 <button type='submit'className={styles.submit} >SIGN UP</button>

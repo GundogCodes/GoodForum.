@@ -16,9 +16,9 @@
         display: flex;
 
         align-items: center;
-        background-color: pink;
+
         p{
-            background-color: orange;
+
             margin-top: 0;
         }
         .buttonDiv{
@@ -86,9 +86,19 @@
     }
 }
 
+@media (max-width:900px) {
+    .loginDiv{
 
-//loginDiv
-//loginForm
-//text(lables)
-//inputText (inputareas)
-//submit (button)
+        top: 20vh;
+        width: 100vw;
+        height: 70vh;
+        .loginForm{
+
+            width: 70vw;
+        }
+        .signupButton, .errorMessage{
+            margin: 5px;
+            font-size: 20px;
+        }
+    }
+}
