@@ -10,6 +10,7 @@ const ensureLoggedIn = require('../config/ensureLoggedIn.cjs')
 //I
 //N
 //D
+router.get('/check-token', ensureLoggedIn, checkToken)
 router.delete('/:id', dataController.deleteUser) //works
 //U
 router.put('/:id', dataController.updateUser, apiController.auth) //works
@@ -20,7 +21,6 @@ router.post('/login', dataController.loginUser,apiController.auth) //works
 //S
 router.get('/:id', dataController.getUser) //works
 
-router.get('/check-token', ensureLoggedIn, checkToken)
 
 module.exports = router
 

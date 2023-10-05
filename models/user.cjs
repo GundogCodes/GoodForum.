@@ -4,7 +4,8 @@ const bcrypt = require('bcrypt')
 const SALT_ROUNDS = 6
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { type: String,
+  required: true },
   email: {
     type: String,
     unique: true,
@@ -18,11 +19,11 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     required: true
   },
-  posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
-  friends:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
-  chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}], //probably need to change this
-  foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}],
-  followedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
+  // posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
+  // friends:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
+  // chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}], //probably need to change this
+  // foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}],
+  // followedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
   }, {
   timestamps: true,
   toJSON: {

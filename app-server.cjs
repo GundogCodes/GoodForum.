@@ -1,3 +1,5 @@
+const checkToken = require('./config/checkToken.cjs')
+
 const express = require('express')
 
 //created a express app
@@ -19,6 +21,7 @@ app.use((req,res,next)=>{
 })
 
 
+app.use(checkToken)
 
 //use logger to log http requests
 app.use(logger('dev'))

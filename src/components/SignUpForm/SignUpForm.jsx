@@ -1,7 +1,9 @@
 import styles from './SignUpForm.module.scss'
 import {useState} from 'react'
 import * as usersService from '../../../utilities/users-service.cjs'
+import { useNavigate } from 'react-router-dom'
 export default function SignUpForm({user,setUser}){
+    const navigate = useNavigate()
     const [credentials,setCredentials] = useState({
         username:'',
         email:'',
@@ -16,9 +18,10 @@ export default function SignUpForm({user,setUser}){
     async function handleSubmit(evt){
         evt.preventDefault()
         try {
+            console.log('credentials: ',credentials)
             const user = await usersService.signUp(credentials)
             setUser(user)
-            console.log('user :' , user)
+            navigate('/')
            
         } catch (error) {
             setError('Log In Failed - Try Again')

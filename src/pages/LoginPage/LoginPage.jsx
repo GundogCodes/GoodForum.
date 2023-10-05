@@ -3,7 +3,7 @@ import {useState} from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import Footer from '../../components/Footer/Footer'
 
-export default function LoginPage({setUser}){
+export default function LoginPage({user,setUser}){
     const [clicked, setClicked] = useState(false)
     console.log('before click',clicked)
 
@@ -18,7 +18,7 @@ export default function LoginPage({setUser}){
             <div className={styles.title}>Etch</div>
             <h1><p className={styles.make}>Make </p><p className={styles.your}> Your </p><p className={styles.mark}>Mark</p></h1>
 
-            <LoginForm setUser={setUser}/>
+            <LoginForm user={user} setUser={setUser}/>
         </div>
 )
 }

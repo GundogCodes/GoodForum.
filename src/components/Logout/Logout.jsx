@@ -1,8 +1,17 @@
 import styles from './Logout.module.scss'
-export default function Logout(){
-    return(
-        <div className={styles.Logout}>
-            Logout
-        </div>
-    )
-}
+import {logOut} from '../../../utilities/users-service.cjs'
+import { useNavigate } from 'react-router-dom';
+export default function LogOut({user, setUser}){
+     
+    const navigate = useNavigate();
+    function handleLogOut(){
+    logOut()
+    setUser(null)
+    navigate('/');
+    }
+        return (
+            <div className={styles.LogOut}>
+                <button onClick={handleLogOut}> Logout</button>
+            </div>
+        )
+    }

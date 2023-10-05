@@ -14,7 +14,7 @@ function createJWT(user){
     
 //checkToken function which responds with the expiry of the the token
 function checkToken(req, res) {
-   //  console.log('req.user', req.user)
+     console.log('req.exp', req.exp)
     res.json(req.exp)
   }
 
