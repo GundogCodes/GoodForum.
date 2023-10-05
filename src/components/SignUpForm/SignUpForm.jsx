@@ -3,6 +3,7 @@ import {useState} from 'react'
 import * as usersService from '../../../utilities/users-service.cjs'
 export default function SignUpForm({user,setUser}){
     const [credentials,setCredentials] = useState({
+        username:'',
         email:'',
         password:''
     })

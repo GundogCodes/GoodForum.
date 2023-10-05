@@ -20,9 +20,9 @@ const userSchema = new mongoose.Schema({
   },
   posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   friends:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
-  chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}],
-  interactions:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
-  foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
+  chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}], //probably need to change this
+  foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}],
+  followedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
   }, {
   timestamps: true,
   toJSON: {

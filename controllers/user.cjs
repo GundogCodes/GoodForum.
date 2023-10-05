@@ -14,7 +14,7 @@ function createJWT(user){
     
 //checkToken function which responds with the expiry of the the token
 function checkToken(req, res) {
-    console.log('req.user', req.user)
+   //  console.log('req.user', req.user)
     res.json(req.exp)
   }
 
@@ -48,7 +48,13 @@ const dataController ={
     async getUser(req,res,next){
     try {
         const foundUser =  await User.findOne({_id:req.params.id})
-        res.json(foundUser)
+        if(!foundUser){
+         res.status(200).json('user does not exist')   
+        }else{
+
+            res.status(200).json(foundUser)
+        }
+
 
     } catch (error) {
         res.status(400).json({error:error.message})
@@ -69,7 +75,7 @@ const dataController ={
         res.locals.data.token = token
         console.log('----res.locals.data.user-----',res.locals.data.user)
         console.log('----res.locals.data.token-----',res.locals.data.token)
-        res.json(token)
+        res.status(200).json(token)
     } catch (error) {
         res.status(400).json('Bad Credentials')
     }
@@ -95,16 +101,18 @@ async deleteUser(req, res, next) {
     try {
       const findUser = await User.findOne({ _id: req.params.id });
       console.log(findUser);
-      console.log('findUser.email', findUser.email);
-      console.log('req.body', req.body.email);
-      const match = await bcrypt.compare(req.body.password, findUser.password);
-      console.log(match);
-      if (findUser.email !== req.body.email || !match) {
+       console.log('findUser.email', findUser.email);
+       console.log('req.body', req.body.email);
+       console.log('request password: ', req.body.password,' database userPass', findUser.password)
+    //   const match = await bcrypt.compare(req.body.password, findUser.password);
+    //   console.log(match);
+      if (findUser.email !== req.body.email || findUser.password !== req.body.password) {
         res.json('Password is incorrect or not Authorized');
-      } else if (findUser.email === req.body.email && match) {
+      } else if (findUser.email === req.body.email && findUser.password === req.body.password) {
         await User.deleteOne(findUser);
         res.json('userDeleted');
       }
+
     } catch (error) {
       res.status(400).json('Bad Credentials');
     }
