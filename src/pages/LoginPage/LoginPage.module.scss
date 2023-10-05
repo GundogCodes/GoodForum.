@@ -1,104 +1,129 @@
-.LoginPage{
+.LoginPage {
     font-family: 'Orbitron', sans-serif;
     //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
-    background-image: url('../../assets/waves.png');
+    background-image: url('../../assets/waves/waves.png');
 
-    color:black;
+    color: black;
     display: flex;
     flex-direction: column;
     left: 0;
     width: 100vw;
-    color:white;
+    color: white;
 
     justify-content: center;
     background-size: cover;
     height: 100vh;
-    h4{
+
+    h4 {
         position: absolute;
         right: 2.5vmin;
         top: -2vmin;
     }
 
-    .title{
+    .title {
 
         width: 50vw;
         display: flex;
         justify-content: center;
         align-items: center;
-        color:black;
+        color: black;
         font-size: 50px;
         animation: fadeIn1 5s;
-        font-weight:100;
+        font-weight: 100;
 
     }
-    h1{
-        
+
+    h1 {
+
         display: flex;
         width: 50vw;
         justify-content: space-evenly;
-        p{
-            font-size:20px;
-            font-weight:100;
+
+        p {
+            font-size: 20px;
+            font-weight: 100;
             width: 50vw;
             display: flex;
             justify-content: center;
-            
-            color:black;
+
+            color: black;
         }
-        
-        .make{
+
+        .make {
 
             animation: fadeIn1 1s;
-            
+
         }
-        .your{
-            
-            
+
+        .your {
+
+
             animation: fadeIn1 2s;
-            
+
         }
-        .mark{
+
+        .mark {
 
             animation: fadeIn1 3s;
 
         }
     }
-    h1:hover{
-        color:rgb(170,218,250);
+
+    h1:hover {
+        color: rgb(170, 218, 250);
     }
 
 }
 
 
 @keyframes fadeIn1 {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-@keyframes fadeIn3 {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-@keyframes fadeIn3 {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
 
-  @media(max-width:900px){
-    .LoginPage{
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn3 {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn3 {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media(max-width:900px) {
+    .LoginPage {
         display: flex;
         flex-direction: column;
         height: 30vh;
         position: absolute;
-        top:0.5vh;
+        top: 0.5vh;
         background-image: none;
         background-color: white;
-        .title{
+
+        .title {
             display: flex;
             flex-direction: column;
 
             width: 100vw;
         }
-        h1{
+
+        h1 {
             display: flex;
             flex-direction: row;
 
@@ -106,4 +131,25 @@
             margin-top: 0;
         }
     }
-  }
+}
+
+@media(prefers-color-scheme:dark) {
+    .LoginPage {
+        color: #FF6410;
+        background-color: rgb(28, 28, 28);
+        background-image: none;
+        background-size: cover;
+
+        .title {
+            color: white;
+
+        }
+
+        h1 {
+            p {
+                color: #FF6410;
+
+            }
+        }
+    }
+}

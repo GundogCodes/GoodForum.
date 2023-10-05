@@ -7,7 +7,7 @@ export default function LogOut({user, setUser}){
     function handleLogOut(){
     logOut()
     setUser(null)
-    navigate('/');
+    navigate('/login');
     }
         return (
             <div className={styles.LogOut}>

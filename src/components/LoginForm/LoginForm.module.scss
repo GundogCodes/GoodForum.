@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1vmin;
-
+    
     .title{
         justify-self: center;
         font-family: 'Orbitron', sans-serif;
@@ -88,10 +88,10 @@
 
 @media (max-width:900px) {
     .loginDiv{
-
         top: 20vh;
         width: 100vw;
-        height: 70vh;
+        height: 100vh;
+        background-color: white;
         .loginForm{
 
             width: 70vw;
@@ -101,4 +101,17 @@
             font-size: 20px;
         }
     }
+}
+
+@media(prefers-color-scheme:dark){
+ .loginDiv{
+    height: 80vh;
+    margin-top: 20px;
+    background-color: rgb(28,28,28);
+    .loginForm{
+        .inputText{
+            color:white;
+        }
+    }
+ }
 }

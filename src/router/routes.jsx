@@ -7,12 +7,12 @@ const routes = [
 	{
 		Component: UserPage,
 		key: 'You',
-		path: '/user/:id'
+		path: '/user'
 	},
 	{
 		Component: HomePage,
 		key: 'Home',
-		path: '/'
+		path: '/home'
 	},
 	{
 		Component: ChatsPage,

@@ -2,10 +2,11 @@ import SignUpForm from '../SignupForm/SignUpForm'
 import styles from './LoginForm.module.scss'
 import {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import * as usersService from '../../../utilities/users-service.cjs'
 export default function LoginForm({user, setUser}){
     const navigate = useNavigate()
     function handleClick() {
-        navigate('/');
+        navigate('/home');
     }
 
     const [signupClicked, setSignupClicked]= useState(false)
@@ -24,12 +25,13 @@ export default function LoginForm({user, setUser}){
     async function handleSubmit(e) {
         e.preventDefault();
         try {
+            console.log(credentials)
             const user = await usersService.login(credentials);
             setUser(user);
+            handleClick()
         } catch {
             setError('Login Failed');
         }
-        handleClick()
     }
 
     // Function to show the SignUpForm when the "Create your Amazon Account" button is clicked

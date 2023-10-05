@@ -4,6 +4,9 @@ import * as usersService from '../../../utilities/users-service.cjs'
 import { useNavigate } from 'react-router-dom'
 export default function SignUpForm({user,setUser}){
     const navigate = useNavigate()
+    function handleClick(){
+        navigate('/home')
+    }
     const [credentials,setCredentials] = useState({
         username:'',
         email:'',
@@ -15,14 +18,13 @@ export default function SignUpForm({user,setUser}){
         setCredentials({...credentials,[evt.target.name]:evt.target.value})
         setError('')
     }
-    async function handleSubmit(evt){
-        evt.preventDefault()
+    async function handleSubmit(e){
+        e.preventDefault()
         try {
             console.log('credentials: ',credentials)
             const user = await usersService.signUp(credentials)
-            setUser(user)
-            navigate('/')
-           
+            setUser(user)           
+            handleClick()
         } catch (error) {
             setError('Log In Failed - Try Again')
         }

@@ -15,7 +15,7 @@ export default function ForumPage({user,setUser}){
                 <button>Follow Forum</button>
             </section>
             </header>
-            <body>
+
                 
             <ul>
 
@@ -27,7 +27,7 @@ export default function ForumPage({user,setUser}){
                 <li><Post/></li>
             </ul>
             <Footer/>
-            </body>
+
         </div>
 )
     }
