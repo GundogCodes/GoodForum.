@@ -4,12 +4,12 @@ export default function Post(){
         <div className={styles.Post}>
         <header>
 
-            <h2>Forum</h2>
+            <h2>Quary</h2>
             <h3>Title</h3>
             <h4>Poster</h4>
         </header>
             <section>
-                <p>Post Body
+                <p>Slab Body
 
                 {/* {img?
                 <div>img</div>

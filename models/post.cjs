@@ -3,16 +3,26 @@ const bcrypt = require('bcrypt')
 
 const postSchema = new mongoose.Schema({
     
-    text:{type:String},
-
+    body:{type:String}, // string for now
+    forum:{type:mongoose.Schema.ObjectId, ref:'Forum', required:true},
     sender:{type: mongoose.Schema.Types.ObjectId, ref:'User', require:true},
-
-    comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}]
-
+    comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
+    likes:{types:Number},
+    dislikes:{types:Number}
+    
 }, {
     timestamps:true
 })
 
+postSchema.methods.incrementLikes = async function(postId){
+    this.likes = this.likes +1
+    return this.save()
+}
+
+postSchema.methods.incrementDislikes = async function(postId){
+    this.dislikes = this.dislikes +1
+    return this.save()
+}
 /*
 postSchema.pre('save', async function(next){
     this.text = await bcrypt.hash(this.text,8)

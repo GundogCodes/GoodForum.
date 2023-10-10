@@ -11,12 +11,12 @@ export default function HomePage({user,setUser}){
       <h1 className={styles.hidden} id={styles.name}>Etch</h1>
       <section className={styles.userInfo}>
         <div className={styles.userPic}>UserPic</div>
-        <div className={styles.username}>{user?`${user.username}`:'login!'}</div>
+        <div className={styles.username}>{user?`Welcome, ${user.username}`:'Login'}</div>
       </section>
             <HomePosts/>
 
             <div className={styles.buttonDiv}>
-                <h4>Your Forums</h4>
+                <h4>Explore Quarries</h4>
                     <ul>
                         <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
                         <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
@@ -35,7 +35,7 @@ export default function HomePage({user,setUser}){
                         <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
                       
                     </ul>
-                    <h4>Create a Forum</h4>
+                    <h4>Build a Quarry</h4>
             <button>+</button>
             </div>
 

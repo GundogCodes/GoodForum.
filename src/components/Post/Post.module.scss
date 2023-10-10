@@ -11,7 +11,7 @@
         height: 5vh;
         width: 100%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
     }
     
@@ -21,6 +21,9 @@
         border-radius: 7px;
         background-color: rgb(230,229,234);
         display: flex;
+        color:#FF6410;
+        justify-content: center;
+        align-items: center;
 
     }
     .interactions{

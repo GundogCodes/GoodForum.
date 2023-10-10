@@ -1,112 +1,130 @@
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const Forum = require('../models/forums.cjs')
 const User = require('../models/user.cjs')
+const Post = require('../models/post.cjs')
+const Comment = require('../models/comment.cjs')
 
-//create a token
-function createJWT(user){
-    return jwt.sign(
-        {user},
-        process.env.SECRET,
-        {expiresIn: '24h'}
-        )    
-}
-    
-function checkToken(req, res) {
-    console.log('req.user', req.user)
-    res.json(req.exp)
+exports.showAllForums = async (req,res) =>{
+    try {
+        const forumTitles = []
+        const forumList = await Forum.find({})
+        for(let form of forumList){
+            forumTitles.push(`${form.title}, ID: ${form.id}`)
+        }
+        res.json(forumTitles)
+    } catch (error) {
+        res.status(400).json({message:error.message})
+    }
 }
 
-//********************************************CRUD********************************************//
-const dataController ={
-    //C
-          async createUser (req,res,next){
-        try {
-            const user = await User.create(req.body)
-            const token = createJWT(user)
-            console.log(user)
-            req.user = user
-            res.locals.data.user = user
-            res.locals.data.token = token
-            console.log('----res.locals.data.user-----',res.locals.data.user)
-            console.log('----res.locals.data.token-----',res.locals.data.token)
-            res.json(token)
-            next()
-        } catch (error) {
-            console.log('Ya gatta database prablem son')
-            req.status(400).json({error:error.message})
-        }
-    },
-    
-    //R
-        async getUser(req,res,next){
-        try {
-            const foundUser =  await User.findOne({_id:req.params.id})
-            res.json(foundUser)
-            next()
-        } catch (error) {
-            req.status(400).json({error:error.message})
-            
-        }
-    },
-    
-    
-        async loginUser (req,res,next){
-        try {
-            const user = await User.findOne({email:req.body.email})
-            if(!user) throw Error()
-            const match = await bcrypt.compare(req.body.password, user.password)
-            if(!match) throw new Error()
-            res.locals.data.user = user
-            res.locals.data.token = createJWT(user)
-            console.log('----res.locals.data.user-----',res.locals.data.user)
-            console.log('----res.locals.data.token-----',res.locals.data.token)
-            next()
-        } catch (error) {
-            res.status(400).json('Bad Credentials')
-        }
-    },
-    
-    //U
-        async updateUser(req,res,next) {
-        try {
-            const updatedUser = await User.findOneAndUpdate({_id:req.params.id},req.body,{new:true})
-            updatedUser.save()
-            res.json(updatedUser)
-            res.locals.data.user = updatedUser
-            res.locals.data.user = req.user.token 
-            next()
-        } catch (error) {
-            res.status(400).json('Bad Credentials')
-            
-        }
-    },
-    
-    //D
-    async deleteUser (req,res,next){
-        try {
-            console.log('---- req.locals.data.token --- ', req.locals.data.user)
-            const findUser = await User.findOne({_id:req.params.id})
-            console.log('---- findUser.id ---- ', findUser.id)
-            if(findUser.id !== req.locals.data.user._id){
-                res.json('You are not Authorized to delete this account')
-            } else if(findUser.id=== req.locals.data.user._id){
-                await User.deleteOne({_id:req.params.id})
-                req.user = null
-                req.locals.data.user = null
-                req.locals.data.token = null
-                res.json('User Deleted')
-                next()
+exports.createNewForum = async (req,res) =>{
+    try {
+        const newForum = await Forum.create(req.body)
+        const findUser = await User.findOne({_id:req.user.id})
+        console.log(findUser)
+        newForum.founder = findUser
+        newForum.numOfMembers = 1
+        newForum.members.addToSet(findUser)
+        //findUser.foundedForums.addToSet(newForum)
+        
+        res.json(newForum)
+    } catch (error) {
+        res.status(400).json({message:error.message})
+    }
+}
+
+exports.updateNewForum = async (req,res) =>{
+    try {
+        const foundForum = await Forum.findOne({_id:req.params.id})
+
+        if(req.body.user=== foundForum.founder ){
+            const updatingForum = await Forum.findOneAndUpdate({'_id':req.params.id}, req.body, {new:true})
+            res.json(updatingForum)
+        }else{
+                res.json('You are not authorized to change this forum')
             }
-        } catch (error) {
-            res.status(400).json('Bad Credentials')
-            
+
+        
+    } catch (error) {
+        res.status(400).json({message:error.message})
+    }
+}
+
+exports.showAforum = async (req,res) =>{
+    try {
+        const forum = await Forum.findOne({'_id':req.params.id}).populate('posts')
+        res.json(forum)
+    } catch (error) {
+        res.status(400).json({message:error.message})
+    }
+}
+
+exports.deleteAForum = async (req,res) =>{
+    try {
+        const foundFourm = await Forum.findOne({_id:req.params.id})
+        if(foundFourm.founder === req.body.user){
+            await Forum.findOneAndDelete({'_id':req.params.id})
+            res.json('Forum Deleted')
+        } else{
+            res.json('You are not authorized to delete this forum')
         }
+    } catch (error) {
+        res.status(400).json({message:error.message})
     }
+}
+
+exports.makeAPost = async (req,res)=>{
+    try {
+        const postingUser = await User.findOne({'_id':req.user.id})
+        const newPost = await Post.create(req.body)
+        newPost.sender = postingUser
+        const forum = await Forum.findOne({_id:req.params.id})
+        forum.posts.addToSet(newPost)
+        console.log(newPost)
+        console.log(postingUser)
+        console.log(forum)
+        await newPost.save()
+        await forum.save()
+        res.json(forum)
+    } catch (error) {
+        res.status(400).json({error: error.message})
     }
-    
-    
-    module.exports = {
-        checkToken,
-        dataController,
-        apiController
+}
+
+exports.showAPost = async (req,res)=>{
+    try {
+        const foundPost = await Post.findOne({_id:req.params.id})
+        res.json(foundPost)
+    } catch (error) {
+        
+        res.status(400).json({error: error.message})
     }
+}
+
+exports.addAMember = async (req,res)=>{
+    try {
+
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}
+
+
+
+
+/*
+
+//post routes
+
+router.delete('/:id', userController.auth, forumController.deleteAPost) id of the post
+router.put('/:id', userController.auth, forumController.updateAPost)
+router.get('/:id', userController.auth, forumController.showAPost)
+
+//comment routes
+
+router.post('/:id', userController.auth, forumController.addComment)
+router.delete('/:id', userController.auth, forumController.deleteComment)
+router.put('/:id', userController.auth, forumController.editComment)
+router.get('/:id', userController.auth, forumController.showAComment)
+
+*/
