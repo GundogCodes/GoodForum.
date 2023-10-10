@@ -24,3 +24,24 @@ router.get('/:id', dataController.getUser) //works
 
 module.exports = router
 
+/*questions for daniil
+
+Im drawn to the front end i like the designing and customizing part but i also wanna get really good at backend
+My main goal with this meeting with you is to get your advice on how break into the tech field? like how can i
+set myself up to get a job
+
+I completed a bootcamp in which we learned to develop using the MERN stack.
+
+I want to start with web developemnt but also want to get into the mobile sides of things and im gonna learn
+dart/flutter for that.
+
+What are the most used libraries or frameworks, languages people are using?
+Any good projects ideas that would be good for my resume?
+technical interview advice ?
+
+
+
+review my linkedIn, portfolio, github
+
+
+*/

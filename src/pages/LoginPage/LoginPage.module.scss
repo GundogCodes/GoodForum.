@@ -72,9 +72,32 @@
     h1:hover {
         color: rgb(170, 218, 250);
     }
+    #change{
+        position: absolute;
+        top:0;
+        left:99vw;
+        }
 
 }
 
+.about{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 99vw;
+    height: 120vh;
+    top:100px;
+    h1,p,h2{
+        width: 90vh;
+    }
+    #change{
+        position: absolute;
+        margin-left:98vw;
+        top:-30px;
+    }
+}
 
 @keyframes fadeIn1 {
     0% {
