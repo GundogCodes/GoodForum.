@@ -3,81 +3,95 @@ const User = require('../models/user.cjs')
 const Post = require('../models/post.cjs')
 const Comment = require('../models/comment.cjs')
 
-exports.showAllForums = async (req,res) =>{
+exports.showAllForums = async (req, res) => {
     try {
-        const forumTitles = []
+
         const forumList = await Forum.find({})
-        for(let form of forumList){
-            forumTitles.push(`${form.title}, ID: ${form.id}`)
+
+        res.json(forumList)
+    } catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+}
+
+exports.createNewForum = async (req, res) => {
+    try {
+        //check if forum topic already exists: if it does no new forum else create forum
+        console.log('*****************REQUEST*****************', req.user._id)
+
+        const foundingUser = await User.findOne({ _id: req.user._id })
+        const forumCheck = await Forum.findOne({ topic: req.body.topic })
+        console.log('forum check: ',forumCheck)
+        if (!foundingUser) {
+            res.json('please login or create an account to create a Quarry')
         }
-        res.json(forumTitles)
+        else if (forumCheck) {
+            res.json({
+                message: 'Forum already exists!',
+                forum: forumCheck
+            })
+        }
+        else {
+            console.log(req.user)
+            const newForum = await Forum.create(req.body)
+            newForum.founder = foundingUser
+            newForum.members.addToSet(foundingUser)
+            newForum.numOfMembers++
+            await newForum.save()
+            await User.findOneAndUpdate({ _id: req.user._id }, { foundedForums: newForum, followedForums: newForum }, { new: true })
+            res.json({ newForum })
+        }
     } catch (error) {
-        res.status(400).json({message:error.message})
+        res.status(400).json({ message: error.message })
     }
 }
 
-exports.createNewForum = async (req,res) =>{
+exports.updateNewForum = async (req, res) => {
     try {
-        const newForum = await Forum.create(req.body)
-        const findUser = await User.findOne({_id:req.user.id})
-        console.log(findUser)
-        newForum.founder = findUser
-        newForum.numOfMembers = 1
-        newForum.members.addToSet(findUser)
-        //findUser.foundedForums.addToSet(newForum)
-        
-        res.json(newForum)
-    } catch (error) {
-        res.status(400).json({message:error.message})
-    }
-}
+        const foundForum = await Forum.findOne({ _id: req.params.id })
 
-exports.updateNewForum = async (req,res) =>{
-    try {
-        const foundForum = await Forum.findOne({_id:req.params.id})
-
-        if(req.body.user=== foundForum.founder ){
-            const updatingForum = await Forum.findOneAndUpdate({'_id':req.params.id}, req.body, {new:true})
+        if (req.body.user === foundForum.founder) {
+            const updatingForum = await Forum.findOneAndUpdate({ '_id': req.params.id }, req.body, { new: true })
             res.json(updatingForum)
-        }else{
-                res.json('You are not authorized to change this forum')
-            }
+        } else {
+            res.json('You are not authorized to change this forum')
+        }
 
-        
+
     } catch (error) {
-        res.status(400).json({message:error.message})
+        res.status(400).json({ message: error.message })
     }
 }
 
-exports.showAforum = async (req,res) =>{
+exports.showAforum = async (req, res) => {
     try {
-        const forum = await Forum.findOne({'_id':req.params.id}).populate('posts')
+        const forum = await Forum.findOne({ '_id': req.params.id }).populate('posts')
         res.json(forum)
     } catch (error) {
-        res.status(400).json({message:error.message})
+        res.status(400).json({ message: error.message })
     }
 }
 
-exports.deleteAForum = async (req,res) =>{
+exports.deleteAForum = async (req, res) => {
     try {
-        const foundFourm = await Forum.findOne({_id:req.params.id})
-        if(foundFourm.founder === req.body.user){
-            await Forum.findOneAndDelete({'_id':req.params.id})
+        const foundFourm = await Forum.findOne({ _id: req.params.id })
+        if (foundFourm.founder === req.body.user) {
+            await Forum.findOneAndDelete({ '_id': req.params.id })
             res.json('Forum Deleted')
-        } else{
+        } else {
             res.json('You are not authorized to delete this forum')
         }
     } catch (error) {
-        res.status(400).json({message:error.message})
+        res.status(400).json({ message: error.message })
     }
 }
 
-exports.makeAPost = async (req,res)=>{
+exports.makeAPost = async (req, res) => {
     try {
-        const postingUser = await User.findOne({'_id':req.user.id})
+        const postingUser = await User.findOne({ '_id': req.user.id })
         const newPost = await Post.create(req.body)
         newPost.sender = postingUser
-        const forum = await Forum.findOne({_id:req.params.id})
+        const forum = await Forum.findOne({ _id: req.params.id })
         forum.posts.addToSet(newPost)
         console.log(newPost)
         console.log(postingUser)
@@ -86,26 +100,26 @@ exports.makeAPost = async (req,res)=>{
         await forum.save()
         res.json(forum)
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({ error: error.message })
     }
 }
 
-exports.showAPost = async (req,res)=>{
+exports.showAPost = async (req, res) => {
     try {
-        const foundPost = await Post.findOne({_id:req.params.id})
+        const foundPost = await Post.findOne({ _id: req.params.id })
         res.json(foundPost)
     } catch (error) {
-        
-        res.status(400).json({error: error.message})
+
+        res.status(400).json({ error: error.message })
     }
 }
 
-exports.addAMember = async (req,res)=>{
+exports.addAMember = async (req, res) => {
     try {
 
     } catch (error) {
-        res.status(400).json({error: error.message})
-        
+        res.status(400).json({ error: error.message })
+
     }
 }
 
