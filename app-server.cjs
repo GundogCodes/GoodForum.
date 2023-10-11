@@ -32,6 +32,10 @@ const ensureLoggedIn  = require('./config/ensureLoggedIn.cjs')
 //defining routes(endpoints) of app(api) where req/res can be done 
 //and information can be exchanged and check if they need to be logged in
 app.use('/api/users',require('./routes/user.cjs'))
+app.use('/api/forum',require('./routes/forums.cjs'))
+app.use('/api/post',require('./routes/post.cjs'))
+app.use('/api/comment',require('./routes/comment.cjs'))
+
 
 // catch all for wrong routes
 app.get('*', (req, res) => {

@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const forumController = require('../controllers/forumController')
-const userController = require('../controllers/userController')
+const forumController = require('../controllers/forums.cjs')
+
 
 //INDUCES
 
 //forum routes
-router.get('/', userController.auth, forumController.showAllForums)
-router.post('/new', userController.auth, forumController.createNewForum)
-router.put('/:id', userController.auth, forumController.updateNewForum)
-router.get('/:id', userController.auth, forumController.showAforum)
-router.delete('/:id', userController.auth, forumController.deleteAForum)
+router.get('/',  forumController.showAllForums) //works
+router.post('/new',  forumController.createNewForum)
+router.put('/:id', forumController.updateNewForum)
+router.get('/:id', forumController.showAforum)
+router.delete('/:id',  forumController.deleteAForum)
 
 
 module.exports = router

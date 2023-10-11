@@ -34,3 +34,14 @@ exports.editComment = async (req,res)=>{
         res.status(400).json({error: error.message})
     }
 }
+
+
+exports.showAComment = async (req,res)=>{
+    try {
+        const comment = await Comment.findOne({_id:req.params.id})
+        res.json(comment)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}

@@ -4,10 +4,10 @@ const router = express.Router()
 
 //comment routes
 
-router.post('/post/:id', userController.auth, forumController.addComment)
-router.delete('/post/:id', userController.auth, forumController.deleteComment)
-router.put('/post/:id', userController.auth, forumController.editComment)
-router.get('/post/:id', userController.auth, forumController.showAComment)
+router.post('/post/:id', commentController.addComment)
+router.delete('/post/:id',  commentController.deleteComment)
+router.put('/post/:id', commentController.editComment)
+router.get('/post/:id', commentController.showAComment)
 
 
 module.exports = router

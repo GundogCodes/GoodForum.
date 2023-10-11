@@ -58,7 +58,10 @@
             background-color: rgb(99,200,85);
             
         }
-        .setting:hover, .friends:hover, .edit:hover{
+        .create{
+            background-color: rgb(74,119,236);
+        }
+        .setting:hover, .friends:hover, .edit:hover,  .create:hover{
             transition: 0.5s;
             padding: 1px;
         }
@@ -119,6 +122,9 @@
         .edit{
             background-color: green;
 
+        }
+        .create{
+            background-color: blue;
         }
     }
     }

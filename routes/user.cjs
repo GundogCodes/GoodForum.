@@ -20,6 +20,7 @@ router.post('/login', dataController.loginUser,apiController.auth) //works
 //E
 //S
 router.get('/:id', dataController.getUser) //works
+router.get('/', dataController.getAllUsers) //works
 
 
 module.exports = router
@@ -39,9 +40,6 @@ What are the most used libraries or frameworks, languages people are using?
 Any good projects ideas that would be good for my resume?
 technical interview advice ?
 
-
-
 review my linkedIn, portfolio, github
-
 
 */

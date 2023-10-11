@@ -35,7 +35,7 @@ export default function HomePage({user,setUser}){
                         <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
                       
                     </ul>
-                    <h4>Build a Quarry</h4>
+                    <h4>Create a Slab</h4>
             <button>+</button>
             </div>
 
