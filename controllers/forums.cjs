@@ -104,13 +104,14 @@ exports.addAMember = async (req, res) => {
         } else {
             const newMember = await User.findOne({_id:req.user._id})
             const newFollowedForum = await Forum.findOne({_id:req.params.id})
-            
+            console.log('newMember',newMember)
+            console.log('newFollowedForum',newFollowedForum)
+            await User.findOneAndUpdate({ _id: newMember._id}, {$push: { followedForums: newFollowedForum }}, {new:true})
             await Forum.updateOne({_id:req.params.id, 
                 $push:{members:newMember},
                 $inc:{numOfMembers:1}
             })
 
-            await User.updateOne({ _id: req.user._id, $push: { followedForums: newFollowedForum } })
           res.json(newFollowedForum)
         }
     } catch (error) {
