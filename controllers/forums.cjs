@@ -104,15 +104,20 @@ exports.addAMember = async (req, res) => {
         } else {
             const newMember = await User.findOne({_id:req.user._id})
             const newFollowedForum = await Forum.findOne({_id:req.params.id})
-            console.log('newMember',newMember)
-            console.log('newFollowedForum',newFollowedForum)
-            await User.findOneAndUpdate({ _id: newMember._id}, {$push: { followedForums: newFollowedForum }}, {new:true})
-            await Forum.updateOne({_id:req.params.id, 
-                $push:{members:newMember},
-                $inc:{numOfMembers:1}
-            })
+            const isMember = await Forum.exists({_id:req.params.id, members:req.user._id})
+            console.log('isMember?', isMember)
+            if(isMember){
+                res.json('Already a Member')
+            }else{
 
-          res.json(newFollowedForum)
+                await User.findOneAndUpdate({ _id: newMember._id}, {$addToSet: { followedForums: newFollowedForum }}, {new:true})
+                await Forum.updateOne({_id:req.params.id, 
+                    $addToSet:{members:newMember},
+                    $inc:{numOfMembers:1}
+                })
+                
+                res.json(newFollowedForum)
+            }
         }
     } catch (error) {
         res.status(400).json({ error: error.message })
