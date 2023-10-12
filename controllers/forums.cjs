@@ -21,7 +21,7 @@ exports.createNewForum = async (req, res) => {
 
         const foundingUser = await User.findOne({ _id: req.user._id })
         const forumCheck = await Forum.findOne({ topic: req.body.topic })
-        console.log('forum check: ',forumCheck)
+        console.log('forum check: ', forumCheck)
         if (!foundingUser) {
             res.json('please login or create an account to create a Quarry')
         }
@@ -40,8 +40,8 @@ exports.createNewForum = async (req, res) => {
             await newForum.save()
 
 
-           await User.updateOne({ _id: req.user._id, $push:{foundedForums:newForum} })
-           await User.updateOne({ _id: req.user._id, $push:{followedForums:newForum} })
+            await User.updateOne({ _id: req.user._id, $push: { foundedForums: newForum } })
+            await User.updateOne({ _id: req.user._id, $push: { followedForums: newForum } })
             res.json({ newForum })
         }
     } catch (error) {
@@ -52,13 +52,13 @@ exports.createNewForum = async (req, res) => {
 exports.updateForum = async (req, res) => {
     try {
         const foundForum = await Forum.findOne({ _id: req.params.id }).populate('founder')
-        const checkUser = await User.findOne({_id:req.user._id})
+        const checkUser = await User.findOne({ _id: req.user._id })
         console.log('checkUser', checkUser)
         console.log('foundForum founder', foundForum.founder)
-        if(checkUser.email===foundForum.founder.email){
-            const updatedForum = await Forum.findOneAndUpdate({_id:foundForum._id}, req.body, {new:true})
+        if (checkUser.email === foundForum.founder.email) {
+            const updatedForum = await Forum.findOneAndUpdate({ _id: foundForum._id }, req.body, { new: true })
             res.json(updatedForum)
-        } else{
+        } else {
             res.json('You Are Not Authorized to Edit this Quarry')
         }
 
@@ -80,11 +80,13 @@ exports.showAforum = async (req, res) => {
 exports.deleteAForum = async (req, res) => {
     try {
         const foundForum = await Forum.findOne({ _id: req.params.id }).populate('founder')
-        const checkUser = await User.findOne({_id:req.user._id})
-        if(checkUser.email===foundForum.founder.email){
-             await Forum.findOneAndDelete({_id:foundForum._id})
+        const checkUser = await User.findOne({ _id: req.user._id })
+        if (checkUser.email === foundForum.founder.email) {
+            await User.updateOne({ _id:req.user._id, $pull: { foundedForums: foundForum._id} })
+            await User.updateMany({ $pull: { followedForums: foundForum._id} })
+            await Forum.findOneAndDelete({ _id: foundForum._id })
             res.json('Quarry Destoryed')
-        } else{
+        } else {
             res.json('You Are Not Authorized to Destory this Quarry')
         }
 
@@ -98,18 +100,18 @@ exports.deleteAForum = async (req, res) => {
 
 exports.addAMember = async (req, res) => {
     try {
-        if(req.user){
+        if (req.user) {
 
-            const newMember = await User.findOne({_id:req.user._id})
-            const updatingForum = await Forum.findOne({_id:req.params.id})
+            const newMember = await User.findOne({ _id: req.user._id })
+            const updatingForum = await Forum.findOne({ _id: req.params.id })
             console.log('newMember', newMember)
             console.log('forum', updatingForum)
             updatingForum.members.addToSet(newMember)
             updatingForum.numOfMembers++
             await updatingForum.save()
-            await User.findByIdAndUpdate({_id:newMember._id}, {followedForums:updatingForum}, {new:true})
-            res.json({newMember,updatingForum})
-        } else{
+            await User.findByIdAndUpdate({ _id: newMember._id }, { followedForums: updatingForum }, { new: true })
+            res.json({ newMember, updatingForum })
+        } else {
             res.json('please login to continue')
         }
     } catch (error) {
