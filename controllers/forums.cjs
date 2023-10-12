@@ -17,11 +17,11 @@ exports.showAllForums = async (req, res) => {
 exports.createNewForum = async (req, res) => {
     try {
         //check if forum topic already exists: if it does no new forum else create forum
-       // console.log('*****************REQUEST*****************', req.user._id)
+        // console.log('*****************REQUEST*****************', req.user._id)
 
         const foundingUser = await User.findOne({ _id: req.user._id })
         const forumCheck = await Forum.findOne({ topic: req.body.topic })
-       // console.log('forum check: ', forumCheck)
+        // console.log('forum check: ', forumCheck)
         if (!foundingUser) {
             res.json('please login or create an account to create a Quarry')
         }
@@ -81,8 +81,8 @@ exports.deleteAForum = async (req, res) => {
         const foundForum = await Forum.findOne({ _id: req.params.id }).populate('founder')
         const checkUser = await User.findOne({ _id: req.user._id })
         if (checkUser.email === foundForum.founder.email) {
-            await User.updateOne({ _id:req.user._id, $pull: { foundedForums: foundForum._id} })
-            await User.updateMany({ $pull: { followedForums: foundForum._id} })
+            await User.updateOne({ _id: req.user._id, $pull: { foundedForums: foundForum._id } })
+            await User.updateMany({ $pull: { followedForums: foundForum._id } })
             await Forum.findOneAndDelete({ _id: foundForum._id })
             res.json('Quarry Destoryed')
         } else {
@@ -100,22 +100,21 @@ exports.deleteAForum = async (req, res) => {
 exports.addAMember = async (req, res) => {
     try {
         if (!req.user) {
-            res.json('please login to continue')   
+            res.json('please login to continue')
         } else {
-            const newMember = await User.findOne({_id:req.user._id})
-            const newFollowedForum = await Forum.findOne({_id:req.params.id})
-            const isMember = await Forum.exists({_id:req.params.id, members:req.user._id})
-            console.log('isMember?', isMember)
-            if(isMember){
+            const newMember = await User.findOne({ _id: req.user._id })
+            const newFollowedForum = await Forum.findOne({ _id: req.params.id })
+            const isMember = await Forum.exists({ _id: req.params.id, members: req.user._id })
+            if (isMember) {
                 res.json('Already a Member')
-            }else{
-
-                await User.findOneAndUpdate({ _id: newMember._id}, {$addToSet: { followedForums: newFollowedForum }}, {new:true})
-                await Forum.updateOne({_id:req.params.id, 
-                    $addToSet:{members:newMember},
-                    $inc:{numOfMembers:1}
+            } else {
+                await User.findOneAndUpdate({ _id: newMember._id }, { $addToSet: { followedForums: newFollowedForum } }, { new: true })
+                await Forum.updateOne({
+                    _id: req.params.id,
+                    $addToSet: { members: newMember },
+                    $inc: { numOfMembers: 1 }
                 })
-                
+
                 res.json(newFollowedForum)
             }
         }
@@ -126,29 +125,29 @@ exports.addAMember = async (req, res) => {
 }
 exports.removeAMember = async (req, res) => {
     try {
-
+        const forum = await Forum.findOne({_id:req.params.id})
+        const user = await User.findOne({_id:req.user._id})
+        if (!req.user) {
+            res.json('please login to continue')
+        } else {
+            const isMember = await Forum.exists({ _id: req.params.id, members: req.user._id })
+            if (isMember) {
+                await Forum.updateOne({_id:req.params.id, 
+                    $inc:{numOfMembers:-1},
+                    $pull:{members:req.user._id}}
+                    )
+                await User.findOneAndUpdate({_id:req.user._id},
+                    {$pull:{followedForums:req.params.id}},
+                    {new:true}
+                )
+                res.json(forum)
+            } else {
+                res.json('You are not a Member')
+                
+            }
+        }
     } catch (error) {
         res.status(400).json({ error: error.message })
 
     }
 }
-
-
-
-
-/*
-
-//post routes
-
-router.delete('/:id', userController.auth, forumController.deleteAPost) id of the post
-router.put('/:id', userController.auth, forumController.updateAPost)
-router.get('/:id', userController.auth, forumController.showAPost)
-
-//comment routes
-
-router.post('/:id', userController.auth, forumController.addComment)
-router.delete('/:id', userController.auth, forumController.deleteComment)
-router.put('/:id', userController.auth, forumController.editComment)
-router.get('/:id', userController.auth, forumController.showAComment)
-
-*/

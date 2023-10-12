@@ -9,7 +9,7 @@ const forumController = require('../controllers/forums.cjs')
 router.get('/',  forumController.showAllForums) //works
 router.post('/new',  forumController.createNewForum) //works
 router.put('/:id', forumController.updateForum) //works
-router.put('/add/:id', forumController.addAMember)
+router.put('/add/:id', forumController.addAMember) // works
 router.put('/remove/:id', forumController.removeAMember)
 router.get('/:id', forumController.showAforum) //works
 router.delete('/:id',  forumController.deleteAForum) //works
