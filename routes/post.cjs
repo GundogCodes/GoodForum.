@@ -5,7 +5,7 @@ const router = express.Router()
 //post routes
 router.post('/:id',  postController.createPost) 
 router.delete('/:id', postController.deletePost)
-//router.put('/:id',  postController.updateAPost)
+router.put('/:id',  postController.updatePost)
 router.get('/:id',  postController.getPost)
 
 
