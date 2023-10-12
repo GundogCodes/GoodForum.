@@ -1,6 +1,7 @@
 const Forum = require('../models/forums.cjs')
 const Post = require('../models/post.cjs')
 const User = require('../models/user.cjs')
+const Comment = require('../models/comment.cjs')
 //fully CRUDable right
 
 //Create a post
@@ -29,7 +30,7 @@ exports.createPost = async (req,res) =>{
 //Read a post
 exports.getPost = async function(req,res){
     try {
-        const returnedPost  = await Post.findOne({_id:req.params.id})
+        const returnedPost  = await Post.findOne({_id:req.params.id}).populate('comments')
         if(!returnedPost){
             res.json('Post does not exist')
         }else{
@@ -110,6 +111,24 @@ exports.deletePost = async (req,res) =>{
             } else{
                 res.json('You are not authorized to edit this post')
             }
+        }
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}
+exports.commentToPost = async (req,res) => {
+    try {
+        if(!req.user){
+            res.json('please login to continue')
+        } else{
+
+            const newComment = {}
+            newComment.sender = req.user
+            newComment.text = req.body.text
+            const createComment  = await Comment.create(newComment)
+            const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$push:{comments:createComment}}, {new:true})
+            res.json(updatedPost)
         }
     } catch (error) {
         res.status(400).json({error: error.message})
