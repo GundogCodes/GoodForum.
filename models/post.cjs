@@ -3,12 +3,13 @@ const bcrypt = require('bcrypt')
 
 const postSchema = new mongoose.Schema({
     
-    body:{type:String}, // string for now
+    body:{type:String, require:true}, // string for now
     forum:{type:mongoose.Schema.ObjectId, ref:'Forum', required:true},
     sender:{type: mongoose.Schema.Types.ObjectId, ref:'User', require:true},
     comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
     likes:{types:Number},
-    dislikes:{types:Number}
+    dislikes:{types:Number},
+    edited:{type:Boolean, default:false}
     
 }, {
     timestamps:true

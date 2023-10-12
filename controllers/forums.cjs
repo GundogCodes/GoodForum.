@@ -48,7 +48,7 @@ exports.createNewForum = async (req, res) => {
     }
 }
 
-exports.updateForum = async (req, res) => {
+exports.updateForumInfo = async (req, res) => {
     try {
         const foundForum = await Forum.findOne({ _id: req.params.id }).populate('founder')
         const checkUser = await User.findOne({ _id: req.user._id })
@@ -149,5 +149,26 @@ exports.removeAMember = async (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message })
 
+    }
+}
+
+exports.postToForum = async (req,res) =>{
+    try {
+        if(!req.user){
+            res.json('Please login to continue')
+        } else{
+
+            const forum = Forum.findOne({_id:req.params.id})
+            const newPost = Post.create(req.body)
+            newPost.sender = req.user
+            newPost.forum =  forum
+            await Forum.updateOne({_id:req.params.id,
+                $push:{posts:newPost}})
+                await User.findOneAndUpdate({_id:req.user.id}, {$inc:{numOfPosts:1}, $push:{posts:newPost}},{new:true})
+                res.json(newPost)
+            }
+    } catch (error) {
+        
+        res.status(400).json({error: error.message})
     }
 }
