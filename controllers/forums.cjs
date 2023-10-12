@@ -17,11 +17,11 @@ exports.showAllForums = async (req, res) => {
 exports.createNewForum = async (req, res) => {
     try {
         //check if forum topic already exists: if it does no new forum else create forum
-        console.log('*****************REQUEST*****************', req.user._id)
+       // console.log('*****************REQUEST*****************', req.user._id)
 
         const foundingUser = await User.findOne({ _id: req.user._id })
         const forumCheck = await Forum.findOne({ topic: req.body.topic })
-        console.log('forum check: ', forumCheck)
+       // console.log('forum check: ', forumCheck)
         if (!foundingUser) {
             res.json('please login or create an account to create a Quarry')
         }
@@ -32,13 +32,12 @@ exports.createNewForum = async (req, res) => {
             })
         }
         else {
-            console.log(req.user)
+            //console.log(req.user)
             const newForum = await Forum.create(req.body)
             newForum.founder = foundingUser
             newForum.members.addToSet(foundingUser)
             newForum.numOfMembers++
             await newForum.save()
-
 
             await User.updateOne({ _id: req.user._id, $push: { foundedForums: newForum } })
             await User.updateOne({ _id: req.user._id, $push: { followedForums: newForum } })
@@ -53,8 +52,8 @@ exports.updateForum = async (req, res) => {
     try {
         const foundForum = await Forum.findOne({ _id: req.params.id }).populate('founder')
         const checkUser = await User.findOne({ _id: req.user._id })
-        console.log('checkUser', checkUser)
-        console.log('foundForum founder', foundForum.founder)
+        //console.log('checkUser', checkUser)
+        //console.log('foundForum founder', foundForum.founder)
         if (checkUser.email === foundForum.founder.email) {
             const updatedForum = await Forum.findOneAndUpdate({ _id: foundForum._id }, req.body, { new: true })
             res.json(updatedForum)
@@ -100,19 +99,19 @@ exports.deleteAForum = async (req, res) => {
 
 exports.addAMember = async (req, res) => {
     try {
-        if (req.user) {
-
-            const newMember = await User.findOne({ _id: req.user._id })
-            const updatingForum = await Forum.findOne({ _id: req.params.id })
-            console.log('newMember', newMember)
-            console.log('forum', updatingForum)
-            updatingForum.members.addToSet(newMember)
-            updatingForum.numOfMembers++
-            await updatingForum.save()
-            await User.findByIdAndUpdate({ _id: newMember._id }, { followedForums: updatingForum }, { new: true })
-            res.json({ newMember, updatingForum })
+        if (!req.user) {
+            res.json('please login to continue')   
         } else {
-            res.json('please login to continue')
+            const newMember = await User.findOne({_id:req.user._id})
+            const newFollowedForum = await Forum.findOne({_id:req.params.id})
+            
+            await Forum.updateOne({_id:req.params.id, 
+                $push:{members:newMember},
+                $inc:{numOfMembers:1}
+            })
+
+            await User.updateOne({ _id: req.user._id, $push: { followedForums: newFollowedForum } })
+          res.json(newFollowedForum)
         }
     } catch (error) {
         res.status(400).json({ error: error.message })
