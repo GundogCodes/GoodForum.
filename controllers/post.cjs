@@ -65,7 +65,26 @@ exports.updatePost = async function(req,res){
         res.status(400).json({error: error.message})
     }
 }
-
+//incrementLikes
+exports.incrementLikes =  async function (req,res){
+    try {
+        const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{likes:1}}, {new:true})
+        res.json(updatedPost)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}
+//decrementLikes
+exports.incrementDislikes =  async function (req,res){
+    try {
+        const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{dislikes:1}}, {new:true})
+        res.json(updatedPost)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}
 //Delete a Post
 exports.deletePost = async (req,res) =>{
     try {
@@ -76,8 +95,16 @@ exports.deletePost = async (req,res) =>{
             console.log('checkPost.sender ',checkPost)
             console.log('req.user ',req.user.email)
             if(checkPost.sender.email === req.user.email){
-                await User.findOneAndUpdate({_id:req.user._id}, {$pull:{posts:req.params.id}, $inc:{numOfPosts:-1}}, {new:true})
-                await Forum.findOneAndUpdate({_id:checkPost.forum},{$pull:{posts:req.params.id}, $inc:{numOfPosts:-1}},{new:true})
+                await User.findOneAndUpdate({_id:req.user._id}, 
+                    {$pull:{posts:req.params.id},
+                     $inc:{numOfPosts:-1}},
+                      {new:true})
+
+                await Forum.findOneAndUpdate({_id:checkPost.forum},
+                    {$pull:{posts:req.params.id},
+                     $inc:{numOfPosts:-1}},
+                     {new:true})
+
                 await Post.findOneAndDelete({_id:req.params.id})
                 res.json('Post Deleted')
             } else{
