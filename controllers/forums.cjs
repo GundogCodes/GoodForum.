@@ -39,12 +39,12 @@ exports.createNewForum = async (req, res) => {
             newForum.numOfMembers++
             await newForum.save()
 
-            await User.updateOne({ _id: req.user._id, $push: { foundedForums: newForum } })
-            await User.updateOne({ _id: req.user._id, $push: { followedForums: newForum } })
+            await User.findOneAndUpdate({ _id: req.user._id},{ $addToSet: { foundedForums: newForum }}, {new:true})
+            await User.findOneAndUpdate({ _id: req.user._id},{ $addToSet: { followedForums: newForum }}, {new:true})
             res.json({ newForum })
         }
     } catch (error) {
-        res.status(400).json({ message: error.message })
+        res.status(400).json({ error: error.message })
     }
 }
 
@@ -79,9 +79,10 @@ exports.showAforum = async (req, res) => {
 exports.deleteAForum = async (req, res) => {
     try {
         const foundForum = await Forum.findOne({ _id: req.params.id }).populate('founder')
+        if(!foundForum){res.json('Quarry doesnt exist')}
         const checkUser = await User.findOne({ _id: req.user._id })
         if (checkUser.email === foundForum.founder.email) {
-            await User.updateOne({ _id: req.user._id, $pull: { foundedForums: foundForum._id } })
+            await User.findOneAndUpdate({ _id: req.user._id},{ $pull: { foundedForums: foundForum._id }}, {new:true} )
             await User.updateMany({ $pull: { followedForums: foundForum._id } })
             await Forum.findOneAndDelete({ _id: foundForum._id })
             res.json('Quarry Destoryed')
@@ -109,13 +110,14 @@ exports.addAMember = async (req, res) => {
                 res.json('Already a Member')
             } else {
                 await User.findOneAndUpdate({ _id: newMember._id }, { $addToSet: { followedForums: newFollowedForum } }, { new: true })
-                await Forum.updateOne({
-                    _id: req.params.id,
-                    $addToSet: { members: newMember },
-                    $inc: { numOfMembers: 1 }
-                })
+                const newForum = await Forum.findOneAndUpdate(
+                    {_id: req.params.id},
+                    {$addToSet: { members: newMember },
+                    $inc: { numOfMembers: 1 }},
+                    {new:true}
+                )
 
-                res.json(newFollowedForum)
+                res.json(newForum)
             }
         }
     } catch (error) {
@@ -132,15 +134,15 @@ exports.removeAMember = async (req, res) => {
         } else {
             const isMember = await Forum.exists({ _id: req.params.id, members: req.user._id })
             if (isMember) {
-                await Forum.updateOne({_id:req.params.id, 
-                    $inc:{numOfMembers:-1},
-                    $pull:{members:req.user._id}}
+                const newForum =await Forum.findOneAndUpdate({_id:req.params.id}, 
+                   { $inc:{numOfMembers:-1},
+                    $pull:{members:req.user._id}},{new:true}
                     )
                 await User.findOneAndUpdate({_id:req.user._id},
                     {$pull:{followedForums:req.params.id}},
                     {new:true}
                 )
-                res.json(forum)
+                res.json(newForum)
             } else {
                 res.json('You are not a Member')
                 
@@ -158,14 +160,15 @@ exports.postToForum = async (req,res) =>{
             res.json('Please login to continue')
         } else{
 
-            const forum = Forum.findOne({_id:req.params.id})
-            const newPost = Post.create(req.body)
+            const postingForum = await  Forum.findOne({_id:req.params.id})
+            const newPost =  {}
             newPost.sender = req.user
-            newPost.forum =  forum
-            await Forum.updateOne({_id:req.params.id,
-                $push:{posts:newPost}})
-                await User.findOneAndUpdate({_id:req.user.id}, {$inc:{numOfPosts:1}, $push:{posts:newPost}},{new:true})
-                res.json(newPost)
+            newPost.forum =  postingForum
+            newPost.content = req.body.content
+            const createdPost = await Post.create(newPost)
+             await Forum.findOneAndUpdate({_id:req.params.id},{$push:{posts:createdPost}},{new:true})
+             await User.findOneAndUpdate({_id:req.user._id}, {$inc:{numOfPosts:1}, $push:{posts:createdPost}},{new:true})
+                res.json(createdPost)
             }
     } catch (error) {
         

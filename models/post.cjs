@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 
 const postSchema = new mongoose.Schema({
-    
-    body:{type:String, require:true}, // string for now
+    title:{type:String, require:true},
+    content:{type:String, require:true}, // string for now
     forum:{type:mongoose.Schema.ObjectId, ref:'Forum', required:true},
     sender:{type: mongoose.Schema.Types.ObjectId, ref:'User', require:true},
     comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],

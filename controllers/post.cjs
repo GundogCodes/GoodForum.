@@ -10,14 +10,15 @@ exports.createPost = async (req,res) =>{
             res.json('Please login to continue')
         } else{
 
-            const forum = Forum.findOne({_id:req.body.id})
-            const newPost = Post.create(req.body)
+            const postingForum = await  Forum.findOne({_id:req.body.id})
+            const newPost =  {}
             newPost.sender = req.user
-            newPost.forum =  forum
-            await Forum.updateOne({_id:req.params.id,
-                $push:{posts:newPost}})
-                await User.findOneAndUpdate({_id:req.user.id}, {$inc:{numOfPosts:1}, $push:{posts:newPost}},{new:true})
-                res.json(newPost)
+            newPost.forum =  postingForum
+            newPost.content = req.body.content
+            const createdPost = await Post.create(newPost)
+             await Forum.findOneAndUpdate({_id:req.body.id},{$push:{posts:createdPost}},{new:true})
+             await User.findOneAndUpdate({_id:req.user._id}, {$inc:{numOfPosts:1}, $push:{posts:createdPost}},{new:true})
+                res.json(createdPost)
             }
     } catch (error) {
         
@@ -29,7 +30,12 @@ exports.createPost = async (req,res) =>{
 exports.getPost = async function(req,res){
     try {
         const returnedPost  = await Post.findOne({_id:req.params.id})
-        res.json(returnedPost)
+        if(!returnedPost){
+            res.json('Post does not exist')
+        }else{
+
+            res.json(returnedPost)
+        }
     } catch (error) {
         
         res.status(400).json({error: error.message})
@@ -42,10 +48,13 @@ exports.updatePost = async function(req,res){
         if(!req.user){
             res.json('Please login to continue')
         }else{
-            const checkPost = await Post.findOne({_id:req.params.id})
-            if(checkPost.sender === req.user){
-
+            const checkPost = await Post.findOne({_id:req.params.id}).populate('sender')
+            console.log('checkPost.sender ',checkPost)
+            console.log('req.user ',req.user.email)
+            if(checkPost.sender.email === req.user.email){
                 const updatedPost =  await Post.findOneAndUpdate({_id:req.params.id}, req.body, {new:true})
+                await Post.findOneAndUpdate({_id:req.params.id}, {$set:{edited:true}}, {new:true})
+                
                 res.json(updatedPost)
             } else{
                 res.json('You are not authorized to edit this post')
@@ -63,9 +72,12 @@ exports.deletePost = async (req,res) =>{
         if(!req.user){
             res.json('Please login to continue')
         }else{
-            const checkPost = await Post.findOne({_id:req.params.id})
-            if(checkPost.sender === req.user){
-
+            const checkPost = await Post.findOne({_id:req.params.id}).populate('sender')
+            console.log('checkPost.sender ',checkPost)
+            console.log('req.user ',req.user.email)
+            if(checkPost.sender.email === req.user.email){
+                await User.findOneAndUpdate({_id:req.user._id}, {$pull:{posts:req.params.id}, $inc:{numOfPosts:-1}}, {new:true})
+                await Forum.findOneAndUpdate({_id:checkPost.forum},{$pull:{posts:req.params.id}, $inc:{numOfPosts:-1}},{new:true})
                 await Post.findOneAndDelete({_id:req.params.id})
                 res.json('Post Deleted')
             } else{
