@@ -13,25 +13,25 @@
     overflow-y: scroll;
     // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     // background-size: cover;
-
-
-
+    
+    
+    
 }
 
 
 
 @media (max-width:900px){
     .UserPage{
-    top:0;
-
+        top:0;
+        
     }
 }
 
 
 @media (prefers-color-scheme:dark) {
     .UserPage{
-        background-color: black;
-        color: #FF6410;
+
+        background-color: rgb(33, 33, 33);
 
     }
 }

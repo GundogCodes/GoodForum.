@@ -14,6 +14,7 @@ export default function UserPage({user,setUser}){
             try {
                 const user = await usersService.getUser()
                 console.log('user: ',user)
+                setUser(user)
             } catch (error) {
                 console.log(error)
             }
@@ -26,7 +27,7 @@ export default function UserPage({user,setUser}){
             :
             <></>
             }
-            <UserAside user={user} setUser={setUser} showModal={showModal} setShowModal={setShowModal}/>
+            <UserAside user={user} setUser={setUser}/>
             <UserPosts user={user} setUser={setUser}/>
             <Footer />           
         </div>

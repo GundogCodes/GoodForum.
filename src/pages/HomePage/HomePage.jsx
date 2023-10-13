@@ -4,8 +4,22 @@ import Footer from '../../components/Footer/Footer'
 import UserAside from '../../components/UserAside/UserAside'
 import { Link } from 'react-router-dom'
 import FormModal from '../../components/ForumModal/ForumModal'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import * as forumService from '../../../utilities/forum-api.cjs'
+
 export default function HomePage({user,setUser}){
+    const [forums,setForums]= useState([])
+    useEffect(()=>{
+        (async ()=>{
+            try {
+                const forums = await forumService.getAll()
+                console.log('forums: ',forums)
+                setForums(forums)
+            } catch (error) {
+                console.log(error)
+            }
+        })()
+    },[])
     const [showModal,setShowModal] = useState(false)
 
     function handleCreateClick(){
@@ -34,21 +48,11 @@ export default function HomePage({user,setUser}){
             <div className={styles.buttonDiv}>
                 <h4>Explore Quarries</h4>
                     <ul>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
-                        <li><Link style={{color:'black'}} to='/forum'>forum</Link></li>
+                      {
+                        forums.map(forum=>{
+                            return <li>{forum.title}</li>
+                        })
+                      }
                       
                     </ul>
                     <h4 >Create a Quarry</h4>
