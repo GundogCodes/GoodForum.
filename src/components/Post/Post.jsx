@@ -18,9 +18,9 @@ export default function Post(){
             </p>
             </section>
             <div className={styles.interactions}>
-                <h6>Like</h6>
-                <h6>Dislike</h6>
-                <h6>Comments</h6>
+                <h6 className={styles.like}>Like</h6> 
+                <h6 className={styles.dislike}>Dislike</h6> 
+                <h6 className={styles.comment}>Comments</h6> 
             </div>
         </div>
     )

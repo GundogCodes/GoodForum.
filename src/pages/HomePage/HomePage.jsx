@@ -29,7 +29,7 @@ export default function HomePage({user,setUser}){
     return(
         <div className={styles.HomePage}>
             {showModal?
-            <FormModal title={'Create a Quarry'} 
+            <FormModal title={'Create a New Quarry'} 
             showModal={showModal} 
             setShowModal={setShowModal}
             headings={['Title', 'Topic', 'Brief Description']}

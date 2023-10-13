@@ -42,6 +42,7 @@
                 border-radius: 7px;
                 margin: 2px;
                 color:black;
+                height: 50px;
                 background-color: white;
 
             }
@@ -147,19 +148,21 @@
             align-items: center;
 
                 ul{
-                    height: 3vh;
+                    height: 5vh;
                     overflow-x: scroll;
                     flex-direction: row;
                     width: 100vw;
+                    overflow-y: hidden;
                     li{
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        width: 25vw;
+                        overflow-x: hidden;
+                        overflow-wrap: normal;
+                        height: 4vh;
                         border-radius: 7px;
-                        margin-left: 5vmin;
-                        padding-left: 5px;
-                        padding-right: 5px;
+                        font-size: 10px;
+                        padding: 2px;
                     }
                 }
             button{
