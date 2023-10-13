@@ -1,8 +1,9 @@
-import styles from './FormModal.module.scss'
+import styles from './ForumModal.module.scss'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import { useState } from 'react'
-export default function FormModal({ title, showModal, setShowModal }) {
-
+export default function FormModal({ title, showModal, setShowModal ,headings }) {
+    console.log('headings: ',headings)
+    const [isForum,setIsForum] = useState(false)
     const [newForumInfo, setNewForumInfo] = useState({
         title:'',
         topic:'',
@@ -23,6 +24,9 @@ export default function FormModal({ title, showModal, setShowModal }) {
         try {
             const newForum = await forumService.createForum(newForumInfo)
             console.log('newForum', newForum)
+            if(newForum){
+                setIsForum(true)
+            }
         } catch (error) {
             console.log('error: ',error)
         }
@@ -39,18 +43,29 @@ export default function FormModal({ title, showModal, setShowModal }) {
                 <h1>{title}</h1>
                 <div className={styles.inputField}>
 
-                    <h3>Title</h3>
+                    <h3>{headings[0]}</h3>
                     <input name='title' type='text' onChange={handleChange} />
-
-                    <h3>Topic</h3>
+                    {headings[2]?
+                    <>
+                    <h3>{headings[1]}</h3>
                     <input name='topic' type='text' onChange={handleChange} />
+                    </>
+                    :
+                    <></>
+                    }
 
-                    <h3 >Brief Description</h3>
+                    <h3 >{headings[2]}</h3>
                     <input name='description' id={styles.description} type='text' onChange={handleChange} />
 
                     <button type='submit' onClick={handleCreateForum} >Create</button>
                 </div>
-
+                {isForum?
+                <h2>
+                    Quarry Built!
+                </h2>    
+                :
+                <></>
+            }
             </section>
 
         </div>

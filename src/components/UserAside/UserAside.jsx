@@ -1,8 +1,9 @@
 import styles from './UserAside.module.scss'
 import Logout from '../Logout/Logout'
-export default function UserAside({user,setUser}){
+export default function UserAside({user,setUser, showModal, setShowModal}){
     return(
         <div  className={styles.UserAside}>
+            
             <header className={styles.userPic}>
                 UserPic
             </header>
@@ -11,7 +12,7 @@ export default function UserAside({user,setUser}){
                 <button className={styles.setting}>S</button>           
                 <button className={styles.friends}>Fr</button>           
                 <button className={styles.edit}>Fo</button> {/*Your Forums*/}
-                <button className={styles.create}>+</button> {/*Create a Forums*/}
+                <button onClick={setShowModal(true)} className={styles.create}>+</button> {/*Create a Forums*/}
             </section>
             <Logout user={user} setUser={setUser}/>
         </div>

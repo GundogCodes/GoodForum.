@@ -3,7 +3,7 @@ import HomePosts from '../../components/HomePosts/HomePosts'
 import Footer from '../../components/Footer/Footer'
 import UserAside from '../../components/UserAside/UserAside'
 import { Link } from 'react-router-dom'
-import FormModal from '../../components/FormModal/FormModal'
+import FormModal from '../../components/ForumModal/ForumModal'
 import { useState } from 'react'
 export default function HomePage({user,setUser}){
     const [showModal,setShowModal] = useState(false)
@@ -17,7 +17,9 @@ export default function HomePage({user,setUser}){
             {showModal?
             <FormModal title={'Create a Quarry'} 
             showModal={showModal} 
-            setShowModal={setShowModal}/>
+            setShowModal={setShowModal}
+            headings={['Title', 'Topic', 'Brief Description']}
+            />
             :
             <></>
             
