@@ -6,24 +6,24 @@ export function getAll(){
     return sendRequest(BASE_URL)
 }
 
-export function createForum(){
-    return
+export function createForum(newForumBasics){ //forum basics are title,topic,description
+    return sendRequest(`${BASE_URL}/new`, 'POST', newForumBasics)
 }
-export function updateForum(){
-    return
+export function updateForum(forumId,newForumInfo){
+    return sendRequest(`${BASE_URL}/${forumId}`, 'PUT', newForumInfo)
 }
-export function addMember(){
-    return
+export function addMember(forumId){
+    return sendRequest(`${BASE_URL}/add/${forumId}`, 'PUT')
 }
-export function removeMember(){
-    return
+export function removeMember(forumId){
+    return sendRequest(`${BASE_URL}/remove/${forumId}`, 'PUT')
 }
-export function postToForum(){
-    return
+export function postToForum(forumId, postData){
+    return sendRequest(`${BASE_URL}/post/${forumId}`, 'PUT', postData)
 }
 export function getForum(){
-    return
+    return sendRequest(BASE_URL)
 }
-export function deleteForum(){
-    return
+export function deleteAForum(forumId){
+    return sendRequest(`${BASE_URL}/${forumId}`, 'DELETE')
 }

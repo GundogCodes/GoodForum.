@@ -8,12 +8,13 @@ export default function UserAside({user,setUser}){
             </header>
             <h1>{user.username}</h1>
             <section className={styles.controlPanel}>
-                <p className={styles.setting}>S</p>           
-                <p className={styles.friends}>Fr</p>           
-                <p className={styles.edit}>Fo</p> {/*Your Forums*/}
-                <p className={styles.create}>+</p> {/*Create a Forums*/}
+                <button className={styles.setting}>S</button>           
+                <button className={styles.friends}>Fr</button>           
+                <button className={styles.edit}>Fo</button> {/*Your Forums*/}
+                <button className={styles.create}>+</button> {/*Create a Forums*/}
             </section>
             <Logout user={user} setUser={setUser}/>
         </div>
     )
 }
+

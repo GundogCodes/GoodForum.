@@ -11,7 +11,7 @@ export default function HomePage({user,setUser}){
       <h1 className={styles.hidden} id={styles.name}>Etch</h1>
       <section className={styles.userInfo}>
         <div className={styles.userPic}>UserPic</div>
-        <div className={styles.username}>{user?`Welcome, ${user.username}`:'Login'}</div>
+        <div className={styles.username}>{user?`Hey! ${user.username}`:'Login'}</div>
       </section>
             <HomePosts/>
 
