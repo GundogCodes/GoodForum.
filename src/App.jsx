@@ -30,7 +30,7 @@ function App() {
             <Route path="/home" element={<HomePage user={user} setUser={setUser} />} />
             <Route path="/user" element={<UserPage user={user} setUser={setUser} />} />
             <Route path="/chats" element={<ChatsPage user={user} setUser={setUser} />} />
-            <Route path="/forum" element={<ForumPage user={user} setUser={setUser} />} />
+            <Route path="/forum/:id" element={<ForumPage user={user} setUser={setUser} />} />
 
           </Routes>
         </>

@@ -1,4 +1,53 @@
 .PostModal{
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    section{
+        
+        animation: fadeIn 0.5s;
+        background-color: white;
+        border-radius: 7px;
+        width: 60vw;
+        height: 30vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        .form{
+            background-color: pink;
+            height: 30vh;
+            .heading{
+                display: flex;
+                justify-content: space-evenly;
+                p{
+                    color:red;
+                    font-size: 25px;
+                    align-self: flex-start;
+                }
+                h1{
+                    align-self: center;
+                }
+            }
+            aside{
+                
+                align-self: center;
+                h2{
+                    
+                    
+                }
+                input{
+                    align-self: center;
+                    width: 30vw;
+                }
+                #content{
+                    height:10vh;
+                }
+            }
+        }
+    }
 
 }
 
@@ -6,5 +55,64 @@
 
 }
 @media(prefers-color-scheme:dark){
+    .PostModal{
+        width: 100vw;
+        height: 100vh;
     
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        section{
+            
+            animation: fadeIn 0.5s;
+            background-color: rgb(28,28,28);
+            border-radius: 7px;
+            width: 60vw;
+            height: 30vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-self: center;
+            .form{
+                background-color: pink;
+                height: 30vh;
+                .heading{
+                    display: flex;
+                    justify-content: space-evenly;
+                    p{
+                        color:red;
+                        font-size: 25px;
+                        align-self: flex-start;
+                    }
+                    h1{
+                        align-self: center;
+                    }
+                }
+                aside{
+                    
+                    align-self: center;
+                    h2{
+                        
+                        
+                    }
+                    input{
+                        align-self: center;
+                        width: 30vw;
+                    }
+                    #content{
+                        height:10vh;
+                    }
+                }
+            }
+        }
+    
+    }
+
 }
+
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

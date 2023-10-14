@@ -1,8 +1,14 @@
 import styles from './ForumModal.module.scss'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 export default function FormModal({ title, showModal, setShowModal ,headings }) {
-    console.log('headings: ',headings)
+    const navigate = useNavigate()
+    function handleGoToQuarry(){
+        console.log('newForum is ', newForum)
+        navigate(`forum/${newForum.title}`)
+    }
+    const [newForum, setNewForum] = useState(null)
     const [isForum,setIsForum] = useState(false)
     const [newForumInfo, setNewForumInfo] = useState({
         title:'',
@@ -23,7 +29,7 @@ export default function FormModal({ title, showModal, setShowModal ,headings }) 
         e.preventDefault()
         try {
             const newForum = await forumService.createForum(newForumInfo)
-            console.log('newForum', newForum)
+            setNewForum(newForum)
             if(newForum){
                 setIsForum(true)
             }
@@ -60,8 +66,9 @@ export default function FormModal({ title, showModal, setShowModal ,headings }) 
                     <button type='submit' onClick={handleCreateForum} >Create</button>
                 </div>
                 {isForum?
-                <h2>
+                <h2 onClick={handleGoToQuarry}>
                     Quarry Built!
+                    Go to {newForum.title} Quarry
                 </h2>    
                 :
                 <></>

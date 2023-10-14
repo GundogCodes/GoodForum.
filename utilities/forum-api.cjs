@@ -21,8 +21,8 @@ export function removeMember(forumId){
 export function postToForum(forumId, postData){
     return sendRequest(`${BASE_URL}/post/${forumId}`, 'PUT', postData)
 }
-export function getForum(){
-    return sendRequest(BASE_URL)
+export function getForum(forumId){
+    return sendRequest(`${BASE_URL}/${forumId}`)
 }
 export function deleteAForum(forumId){
     return sendRequest(`${BASE_URL}/${forumId}`, 'DELETE')

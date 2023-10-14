@@ -6,8 +6,12 @@ import { Link } from 'react-router-dom'
 import FormModal from '../../components/ForumModal/ForumModal'
 import { useState, useEffect } from 'react'
 import * as forumService from '../../../utilities/forum-api.cjs'
-
+import { useNavigate } from 'react-router-dom'
 export default function HomePage({user,setUser}){
+    const navigate = useNavigate()
+    function handleLiClick(forumId){
+        navigate(`/forum/${forumId}`)
+    }
     const [forums,setForums]= useState([])
     useEffect(()=>{
         (async ()=>{
@@ -50,7 +54,7 @@ export default function HomePage({user,setUser}){
                     <ul>
                       {
                         forums.map(forum=>{
-                            return <li>{forum.title}</li>
+                            return <li onClick={handleLiClick(forum._id)}>{forum.title}</li>
                         })
                       }
                       
