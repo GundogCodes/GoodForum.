@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: flex-start;
     top: 0;
-    background-color: white;
     width: 100vw;
     height: 30px;
     position: fixed;
@@ -12,6 +11,7 @@
     //box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     // background-size: cover;
+
     h1{
         width: 100vw;
     }
@@ -20,6 +20,7 @@
         height: 30px;
         display: flex;
         align-items: center;
+
 
         p{
             
@@ -30,17 +31,24 @@
             width: 5vw;
             border-color: white;
             font-size: 15px;
-            border-radius: 6px;
-            
+            padding: 5px;
+            border-radius: 7px;
         }
         p:hover{
-            background-color:rgb(170,218,250);;
+            background-color:rgb(170,218,250);
             flex-direction: row;
             justify-content: center;
             display: flex;
             color: white;
             
         }
+    }
+    .clicked{
+        color: white;
+        background-color:rgb(170,218,250);
+    }
+    .unclicked{
+        background-color: white;
     }
     
 }
