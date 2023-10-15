@@ -1,37 +1,49 @@
 .NavBarDiv{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     top: 0;
     background-color: white;
     width: 100vw;
+    height: 30px;
     position: fixed;
+
+    z-index: 1;
     //box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     // background-size: cover;
-    .titles{
+    h1{
+        width: 100vw;
+    }
+    section{
+        width: 100vw;
+        height: 30px;
+        display: flex;
+        align-items: center;
 
+        p{
+            
             color: black;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 33vw;
+            width: 5vw;
             border-color: white;
-            font-size: 25px;
-            height: 5vmin;
+            font-size: 15px;
             border-radius: 6px;
-
+            
         }
-        .titles:hover{
+        p:hover{
             background-color:rgb(170,218,250);;
             flex-direction: row;
             justify-content: center;
             display: flex;
             color: white;
-
+            
         }
     }
-
+    
+}
 @media (max-width:900px) {
     .NavBarDiv{
         position: fixed;
@@ -49,11 +61,11 @@
 @media (prefers-color-scheme:dark) {
     .NavBarDiv{
         background-color: rgb(28,28,28);
-        .titles{
+        p{
             color:white;
 
         }
-        .titles:hover{
+        p:hover{
             background-color: #FF6410;
         }
     }

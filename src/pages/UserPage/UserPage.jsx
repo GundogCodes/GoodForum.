@@ -14,6 +14,7 @@ export default function UserPage({user,setUser}){
         (async ()=>{
             try {
                 const user = await usersService.getUser()
+                console.log(user)
                 console.log('user: ',user)
                 setUser(user)
             } catch (error) {

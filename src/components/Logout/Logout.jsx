@@ -12,7 +12,9 @@ export default function LogOut({user, setUser}){
     }
         return (
             <div className={styles.LogOut}>
-                <button onClick={handleLogOut}> Logout</button>
+                <div onClick={handleLogOut}> Logout</div>
+
+            
             </div>
         )
     }

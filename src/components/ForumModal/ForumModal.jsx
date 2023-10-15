@@ -1,7 +1,7 @@
 import styles from './ForumModal.module.scss'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate ,Link} from 'react-router-dom'
 export default function FormModal({ title, showModal, setShowModal ,headings }) {
     const navigate = useNavigate()
     function handleGoToQuarry(){
@@ -66,9 +66,9 @@ export default function FormModal({ title, showModal, setShowModal ,headings }) 
                     <button type='submit' onClick={handleCreateForum} >Create</button>
                 </div>
                 {isForum?
-                <h2 onClick={handleGoToQuarry}>
-                    Quarry Built!
-                    Go to {newForum.title} Quarry
+                <h2 id={styles.gotToQuarry}>
+                    <Link to={`forum/${newForum._id}`}>Quarry Built!
+                    Go to {newForum.title} Quarry</Link>
                 </h2>    
                 :
                 <></>

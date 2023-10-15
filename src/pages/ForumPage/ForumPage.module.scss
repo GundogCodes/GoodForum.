@@ -6,13 +6,13 @@
     top:5vh;
     align-items: center;
     width: 100vw;
-
+    animation: fadeIn 1s;
     height: 200vh;
-
+    
     background-size: cover;
     overflow-y: scroll;
     header{
-
+        
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -27,10 +27,10 @@
         h3{}
         h4{}
         section{
-
+            
             display: flex;
             justify-content: center;
-
+            
             button{
                 margin: 10px;
             }
@@ -38,6 +38,7 @@
         
     }
     ul{
+        animation: fadeIn 2s;
         list-style-type: none;
         position: relative;
         overflow-y: scroll;
@@ -130,3 +131,8 @@
         }
     }
 }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
