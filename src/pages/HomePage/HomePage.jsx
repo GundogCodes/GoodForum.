@@ -28,7 +28,7 @@ export default function HomePage({ user, setUser }) {
     }
     return (
         <div className={styles.HomePage}>
-            
+                  <h1 className={styles.Name}>Etch</h1>
             {showModal ?
                 <FormModal title={'Create a New Quarry'}
                     showModal={showModal}
@@ -41,7 +41,11 @@ export default function HomePage({ user, setUser }) {
             }
             <section className={styles.userInfo}>
                 <div className={styles.userPic}>UserPic</div>
+                {user?
                 <div className={styles.username}>{user ? `Hey! ${user.username}` : 'Login'}</div>
+                :
+                <></>
+            }
             </section>
             <HomePosts />
 
@@ -59,7 +63,7 @@ export default function HomePage({ user, setUser }) {
                 <button onClick={handleCreateClick} >+</button>
             </div>
 
-            <Footer />
+
         </div>
     )
 }

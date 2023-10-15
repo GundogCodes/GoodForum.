@@ -13,6 +13,7 @@
     // background-size: cover;
 
     h1{
+        font-size: 30px;
         width: 100vw;
     }
     section{
@@ -32,7 +33,7 @@
             border-color: white;
             font-size: 15px;
             padding: 5px;
-            border-radius: 7px;
+            border-radius: 4px;
         }
         p:hover{
             background-color:rgb(170,218,250);
@@ -69,12 +70,22 @@
 @media (prefers-color-scheme:dark) {
     .NavBarDiv{
         background-color: rgb(28,28,28);
-        p{
-            color:white;
+        section{
 
+            p{
+                color:white;
+                
+            }
+            p:hover{
+                background-color: #FF6410;
+            }
         }
-        p:hover{
+        .clicked{
             background-color: #FF6410;
+        }
+        .unclicked{
+            color:white;
+            background-color: rgb(28,28,28);
         }
     }
 }

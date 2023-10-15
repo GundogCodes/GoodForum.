@@ -1,20 +1,28 @@
 import styles from './Logout.module.scss'
 import {logOut} from '../../../utilities/users-service.cjs'
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function LogOut({user, setUser}){
-     
+
     const navigate = useNavigate();
+
+    function handleLogin(){
+        navigate('/login')
+    }
+
     function handleLogOut(){
-    logOut()
     setUser(null)
-    navigate('/login');
+    logOut()
+
     }
         return (
             <div className={styles.LogOut}>
-                <div onClick={handleLogOut}> Logout</div>
-
-            
+                {user?
+                <div onClick={handleLogOut}> Logout</div>            
+                :
+                <div onClick={handleLogin}> Login</div>            
+            }
             </div>
         )
     }

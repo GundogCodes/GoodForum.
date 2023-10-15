@@ -3,13 +3,23 @@
     top:30px;
     height: 100vh;
     width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     //background-color: rgb(227,211,166);
     //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
 
     animation: fadeIn 1s;
+    .Name{
+        z-index: 3;
+        width: 100vw;
+        height: 1vh;
+        left: 0;
+        position: absolute;
+        top:-20px;
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        color:white;
+
+    }
     .buttonDiv{
         display: flex;
         flex-direction: column;
@@ -59,6 +69,7 @@
             background-color: white;
             border-color: white;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            margin-bottom: 10px;
             
         }
     }
@@ -87,21 +98,24 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         left: 0;
         position: absolute;
         color: orange;
         width: 20vw;
-        height: 50vh;
+        height: 80vh;
         border-radius: 7px;
+
         .userPic{
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
             border-radius: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 150px;
             height: 150px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+         
 
 
         }
@@ -217,10 +231,14 @@
 
 @media (prefers-color-scheme:dark) {
     .HomePage{
-        background-color: black;
-        #name{
-            margin-top:40px;
+
+        .Name{
+            display: flex;
+
             color: #FF6410;
+            position: absolute;
+            left: 0;
+            margin-left: 0;
         }
         background-color: black;
         .buttonDiv{

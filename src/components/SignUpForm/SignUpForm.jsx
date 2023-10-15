@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export default function SignUpForm({user,setUser}){
     const navigate = useNavigate()
     function handleClick(){
-        navigate('/home')
+        navigate('/')
     }
     const [credentials,setCredentials] = useState({
         username:'',
@@ -23,8 +23,11 @@ export default function SignUpForm({user,setUser}){
         try {
             console.log('credentials: ',credentials)
             const user = await usersService.signUp(credentials)
-            setUser(user)           
-            handleClick()
+            setUser(user)    
+            if(user){
+
+                navigate('/')
+            }       
         } catch (error) {
             setError('Log In Failed - Try Again')
         }

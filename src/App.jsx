@@ -21,26 +21,19 @@ function App() {
 
   return (
     <div className={styles.app}>
-      {user ?
-        <>
 
-          <NavBar routes={routes} />
+
+          <NavBar user={user} setUser={setUser} />
           <Routes>
 
-            <Route path="/home" element={<HomePage user={user} setUser={setUser} />} />
+            <Route path="/" element={<HomePage user={user} setUser={setUser} />} />
             <Route path="/user" element={<UserPage user={user} setUser={setUser} />} />
             <Route path="/chats" element={<ChatsPage user={user} setUser={setUser} />} />
             <Route path="/forum/:id" element={<ForumPage user={user} setUser={setUser} />} />
+          <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
 
           </Routes>
-        </>
-        :
-        <>
-          <Routes>
-            <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
-          </Routes>
-        </>
-      }
+
 
 
 

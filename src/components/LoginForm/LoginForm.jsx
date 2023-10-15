@@ -6,7 +6,7 @@ import * as usersService from '../../../utilities/users-service.cjs'
 export default function LoginForm({user, setUser}){
     const navigate = useNavigate()
     function handleClick() {
-        navigate('/home');
+        navigate('/');
     }
 
     const [signupClicked, setSignupClicked]= useState(false)

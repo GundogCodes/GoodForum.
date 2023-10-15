@@ -10,7 +10,11 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
             <header className={styles.userPic}>
                 UserPic
             </header>
+            {user?
             <h1>{user.username}</h1>
+            :
+            <></>
+        }
             <section className={styles.controlPanel}>
                 <button className={styles.setting}>S</button>           
                 <button className={styles.friends}>Fr</button>           
