@@ -83,13 +83,16 @@ export default function ForumPage({ user, setUser }) {
                             <button onClick={handleMakePostButton} >Make a Post</button>
                         </section>
                     </header>
+                    {forumPage.posts?
 
-
-                    <ul>
+<ul>
                         {forumPage.posts.map((post)=>{
                             return <li><Post quarry={forumPage.title} postTitle={post.title} content={post.content}/></li>
                         })}
                     </ul>
+                    :
+                    <h1 className={styles.noPosts}>No Posts yet, Be the first!</h1>
+                    }
                     <Footer />
                 </>
                 :
