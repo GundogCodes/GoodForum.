@@ -1,16 +1,14 @@
 import styles from './UserPosts.module.scss'
 import Post from '../Post/Post'
-export default function UserPosts(){
+export default function UserPosts({user, setUser}){
+    console.log('user in UserPosts',user.posts)
     return(
         <div className={styles.UserPosts}>
             <ul>
                 <li className={styles.yourPosts}>Your Slabs</li>
-                <li><Post /></li>
-                <li><Post /></li>
-                <li><Post /></li>
-                <li><Post /></li>
-                <li><Post /></li>
-                <li><Post /></li>
+                {user.posts.map((post)=>{
+                    return <li>{post}</li>
+                })}
             </ul>
 
         </div>
