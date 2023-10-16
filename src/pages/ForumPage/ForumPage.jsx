@@ -8,11 +8,11 @@ import PostModal from '../../components/PostModal/PostModal'
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
     const [forumPage, setForumPage] = useState()
-    const [showPostModal, setShowPostModal ] = useState(false)
-    function handleMakePostButton(){
-        setShowPostModal(true)
-        console.log(showPostModal)
-    }
+    const [showPostModal, setShowPostModal] = useState(false)
+    const [postData, setPostData] = useState({
+        title: '',
+        content: ''
+    })
     useEffect(() => {
         (async () => {
             try {
@@ -24,15 +24,54 @@ export default function ForumPage({ user, setUser }) {
             }
         })()
     }, [id])
+
+    function handleMakePostButton() {
+        setShowPostModal(true)
+        console.log(showPostModal)
+    }
+
+    function closeModal() {
+        setShowPostModal(false)
+    }
+
+    function handleChange(e){
+        console.log(postData)
+        setPostData({
+            ...postData,
+            [e.target.name]:e.target.value
+        })
+    }
+
+    async function handlePostSubmit(e) {
+        e.preventDefault()
+        try {
+            const newPost = await forumService.postToForum(id,postData)
+            console.log(newPost)
+            setShowPostModal(false)
+        } catch (error) {
+            console.log({error:error})
+        }
+    }
+
     return (
         <div className={styles.ForumPage}>
             {forumPage ?
                 <>
-                {showPostModal?
-                <PostModal/>    
-                :
-                <></>
-            }
+                    {showPostModal ?
+                        <div className={styles.postToForum}>
+                            <form onSubmit={handlePostSubmit}>
+                                <p onClick={closeModal} >x</p>
+                                <h1>Post to {forumPage.title}</h1>
+                                <h2>Title</h2>
+                                <input onChange={handleChange} name='title' type='text' />
+                                <h2>Content</h2>
+                                <input onChange={handleChange} name='content' type='text' />
+                                <button type='submit'>Post</button>
+                            </form>
+                        </div>
+                        :
+                        <></>
+                    }
                     <header>
                         <h1>{forumPage.title}</h1>
                         <h2>{forumPage.description}</h2>
@@ -47,19 +86,16 @@ export default function ForumPage({ user, setUser }) {
 
 
                     <ul>
-
-                        <li><Post /></li>
-                        <li><Post /></li>
-                        <li><Post /></li>
-                        <li><Post /></li>
-                        <li><Post /></li>
-                        <li><Post /></li>
+                        {forumPage.posts.map((post)=>{
+                            return <li><Post quarry={forumPage.title} postTitle={post.title} content={post.content}/></li>
+                        })}
                     </ul>
                     <Footer />
                 </>
                 :
                 <></>
             }
+            
         </div>
     )
 }

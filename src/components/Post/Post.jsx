@@ -1,15 +1,15 @@
 import styles from './Post.module.scss'
-export default function Post(){
+export default function Post({quarry,postTitle,content}){
     return(
         <div className={styles.Post}>
         <header>
 
-            <h2>Quary</h2>
-            <h3>Title</h3>
-            <h4>Poster</h4>
+            <h2>{quarry}</h2>
+            <h3>{postTitle}</h3>
         </header>
             <section>
-                <p>Slab Body
+                <p>
+            <h4>{content}</h4>
 
                 {/* {img?
                 <div>img</div>
