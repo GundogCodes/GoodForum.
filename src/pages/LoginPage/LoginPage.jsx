@@ -16,13 +16,14 @@ export default function LoginPage({ user, setUser }) {
         <div className={styles.LoginPage}>
 
                 <>
-                    <section id={styles.change} onClick={handleLoginClick}>?</section>
+
                     <div className={styles.title}>Etch</div>
 
                     <h1><p className={styles.make}>Make </p><p className={styles.your}> Your </p><p className={styles.mark}>Mark</p></h1>
                     <h2>
                         Etch is where every keystroke is a chisel,<br /> sculpting conversations into masterpieces.<br /> Join our virtual studio, where ideas are carved, refined, and celebrated.<br /> Elevate your dialogue, be part of the artistry <br /> Welcome to Etch, where every word is a stroke of brilliance.
                     </h2>
+
 
                     <LoginForm user={user} setUser={setUser} />
                 </>

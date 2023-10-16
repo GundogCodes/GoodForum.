@@ -14,86 +14,86 @@
     background-size: cover;
     height: 100vh;
 
-    h4 {
-        position: absolute;
-        right: 2.5vmin;
-        top: -2vmin;
-    }
-    h2{
-        color: black;
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        overflow: hidden; /* Ensures the text doesn't overflow its container */
-        overflow: hidden;
-        white-space: nowrap;
-        margin: 0;
-        margin-left: 8vmin;
-        display: inline-block;
-        letter-spacing: .15em;
-        animation: typing 3s steps(40, end) reverse, blink-caret .75s step-end infinite;
-        overflow: hidden;
-        display: inline-block;
-        border-right: .15em solid #000;
-    }
-    .title {
-
-        width: 50vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-        font-size: 50px;
-        animation: fadeIn1 5s;
-        font-weight: 100;
-
-    }
-
-    h1 {
-
-        display: flex;
-        width: 50vw;
-        justify-content: space-evenly;
-
-        p {
-            font-size: 20px;
-            font-weight: 100;
+        h2{
+            position: absolute;
+            color: black;
+            top:50vh;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden; /* Ensures the text doesn't overflow its container */
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0;
+            margin-left: 8vmin;
+            display: inline-block;
+            letter-spacing: .15em;
+            animation: typing 3s steps(40, end) reverse, blink-caret .75s step-end infinite;
+            overflow: hidden;
+            display: inline-block;
+            border-right: .15em solid #000;
+        }
+        .title {
+            position: absolute;
+            top:30vh;
             width: 50vw;
             display: flex;
             justify-content: center;
-
+            align-items: center;
             color: black;
+            font-size: 50px;
+            animation: fadeIn1 5s;
+            font-weight: 100;
+            
         }
-
-        .make {
-
-            animation: fadeIn1 1s;
-
+        
+        h1 {
+            display: flex;
+            width: 50vw;
+            justify-content: space-evenly;
+            position: absolute;
+            top:35vh;
+            
+            p {
+                font-size: 20px;
+                font-weight: 100;
+                width: 50vw;
+                display: flex;
+                justify-content: center;
+                
+                color: black;
+            }
+            
+            .make {
+                
+                animation: fadeIn1 1s;
+                
+            }
+            
+            .your {
+                
+                
+                animation: fadeIn1 2s;
+                
+            }
+            
+            .mark {
+                
+                animation: fadeIn1 3s;
+                
+            }
         }
-
-        .your {
-
-
-            animation: fadeIn1 2s;
-
+    
+        h1:hover {
+            color: rgb(170, 218, 250);
         }
-
-        .mark {
-
-            animation: fadeIn1 3s;
-
+        #change{
+            position: absolute;
+            top:0;
+            left:99vw;
         }
-    }
-
-    h1:hover {
-        color: rgb(170, 218, 250);
-    }
-    #change{
-        position: absolute;
-        top:0;
-        left:99vw;
-        }
-
+        
+    
 }
 
 .about{

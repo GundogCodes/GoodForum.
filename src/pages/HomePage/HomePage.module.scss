@@ -1,65 +1,69 @@
-.HomePage{
+.HomePage {
     position: absolute;
-    top:30px;
+    top: 30px;
     height: 100vh;
     width: 100vw;
     //background-color: rgb(227,211,166);
     //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
 
     animation: fadeIn 1s;
-    .Name{
+
+    .Name {
         z-index: 3;
         width: 100vw;
         height: 1vh;
         left: 0;
         position: absolute;
-        top:-20px;
+        top: -20px;
         font-size: 50px;
         display: flex;
         justify-content: center;
-        color:white;
+
 
     }
-    .buttonDiv{
+
+    .buttonDiv {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
         left: 80vw;
-        top:15vmin;
+        top: 15vmin;
         position: absolute;
         width: 20vw;
         height: 80vh;
         border-radius: 7px;
-        h4{
+
+        h4 {
             color: sblack;
         }
 
-            ul{
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-                width:15vw;
-                height:80vh;
-                border-radius: 7px;
-                display: flex;
-                justify-content: flex-start;
-                align-self: center;
-                flex-direction: column;
-                list-style-type: none;
-                overflow-y: scroll;
-                li{
+        ul {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            width: 15vw;
+            height: 80vh;
+            border-radius: 7px;
+            display: flex;
+            justify-content: flex-start;
+            align-self: center;
+            flex-direction: column;
+            list-style-type: none;
+            overflow-y: scroll;
+
+            li {
                 display: flex;
                 justify-content: center;
                 width: 12.5vw;
                 border-radius: 7px;
                 margin: 2px;
-                color:black;
+                color: black;
                 height: 50px;
                 background-color: white;
 
             }
-            }
+        }
 
-        button{
+        button {
             margin-top: 10px;
             width: 50px;
             height: 50px;
@@ -70,11 +74,12 @@
             border-color: white;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
             margin-bottom: 10px;
-            
+
         }
     }
-    #name{
-        margin-top:30px;
+
+    #name {
+        margin-top: 30px;
 
         display: flex;
         justify-content: flex-start;
@@ -84,17 +89,19 @@
         color: black;
         font-size: 25px;
 
-        top:3vmin;
+        top: 3vmin;
         border-radius: 7px;
         z-index: 1;
-        
+
 
     }
-    .hidden{
-        animation: fadeIn 2s ;
+
+    .hidden {
+        animation: fadeIn 2s;
     }
-    .userInfo{
-        top:15vmin;
+
+    .userInfo {
+        top: 15vmin;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -106,8 +113,8 @@
         height: 80vh;
         border-radius: 7px;
 
-        .userPic{
-    box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        .userPic {
+            box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
             border-radius: 100px;
             display: flex;
@@ -115,14 +122,16 @@
             align-items: center;
             width: 150px;
             height: 150px;
-         
+
 
 
         }
-        .username{
+
+        .username {
             padding: 10px;
         }
-        .userForums{
+
+        .userForums {
             padding: 10px;
 
         }
@@ -132,29 +141,38 @@
 
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
+
 @media (max-width:900px) {
-    .HomePage{
-        h4{
+    .HomePage {
+        h4 {
             opacity: 0;
             width: 20px;
         }
-        #name{
-            top:0px;
+
+        #name {
+            top: 0px;
             width: 100vw;
             display: flex;
 
             align-items: center;
         }
+
         display: flex;
         flex-direction: column;
         align-self: center;
-        .buttonDiv{
+
+        .buttonDiv {
             position: absolute;
             left: 0;
-            top:40vh;
+            top: 40vh;
             width: 100vw;
             height: 5vh;
 
@@ -162,32 +180,35 @@
             flex-direction: row-reverse;
             align-items: center;
 
-                ul{
-                    height: 5vh;
-                    overflow-x: scroll;
-                    flex-direction: row;
-                    width: 100vw;
-                    overflow-y: hidden;
-                    li{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        overflow-x: hidden;
-                        overflow-wrap: normal;
-                        height: 4vh;
-                        border-radius: 7px;
-                        font-size: 10px;
-                        padding: 2px;
-                    }
+            ul {
+                height: 5vh;
+                overflow-x: scroll;
+                flex-direction: row;
+                width: 100vw;
+                overflow-y: hidden;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow-x: hidden;
+                    overflow-wrap: normal;
+                    height: 4vh;
+                    border-radius: 7px;
+                    font-size: 10px;
+                    padding: 2px;
                 }
-            button{
+            }
+
+            button {
                 width: 50px;
-                height:50px;
+                height: 50px;
                 border-radius: 100px;
                 margin: 10px;
             }
         }
-        h1{
+
+        h1 {
 
             display: flex;
             flex-direction: column;
@@ -196,43 +217,46 @@
             width: 100vw;
             padding-left: 5vw;
             color: white;
-            
-            z-index: 1;
-            top:0vh;
-            margin-top:0 ;
-        }
-         .userInfo{
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        top: 10vh;
-        position: absolute;
-        color: orange;
-        width: 100vw;
-        height: 30vh;
-        .userPic{
-            border-radius: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 150px;
-            height: 150px;
 
+            z-index: 1;
+            top: 0vh;
+            margin-top: 0;
         }
-        .username{
-            padding: 10px;
+
+        .userInfo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            top: 10vh;
+            position: absolute;
+            color: orange;
+            width: 100vw;
+            height: 30vh;
+
+            .userPic {
+                border-radius: 200px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 150px;
+                height: 150px;
+
+            }
+
+            .username {
+                padding: 10px;
+            }
         }
-    }
-        
+
     }
 }
 
 
 
 @media (prefers-color-scheme:dark) {
-    .HomePage{
+    .HomePage {
 
-        .Name{
+        .Name {
             display: flex;
 
             color: #FF6410;
@@ -240,23 +264,46 @@
             left: 0;
             margin-left: 0;
         }
-        background-color: black;
-        .buttonDiv{
-            background-color: rgb(28,28,28);
-            color: #FF6410;
-            button{
 
-            }
-            ul{
-                background-color: (10,10,10);
+        background-color: black;
+
+        .buttonDiv {
+            background-color: rgb(28, 28, 28);
+            color: #FF6410;
+
+            button {}
+
+            ul {
+                background-color: (10, 10, 10);
             }
         }
-        .userInfo{
+
+        .userInfo {
             color: #FF6410;
-            background-color: rgb(28,28,28);
-            .userPic{
+            background-color: rgb(28, 28, 28);
+
+            .userPic {
                 border: solid 1px white;
             }
         }
+    }
+}
+
+
+@keyframes typing {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #000;
     }
 }
