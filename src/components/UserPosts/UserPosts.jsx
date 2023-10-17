@@ -1,7 +1,6 @@
 import styles from './UserPosts.module.scss'
 import Post from '../Post/Post'
 export default function UserPosts({user, setUser}){
-    console.log('user in UserPosts',user.posts)
     return(
         <div className={styles.UserPosts}>
             <ul>

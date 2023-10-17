@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user.cjs')
-
+const Post = require('../models/post.cjs')
 
 //function to create a token using JWT
 function createJWT(user) {
@@ -47,11 +47,11 @@ const dataController = {
     //R
     async getUser(req, res, next) {
         try {
-            const foundUser = await User.findOne({ _id: req.params.id })
+            const foundUser = await User.findOne({ _id: req.params.id }).populate('posts')
+            console.log('foundUser in controller', foundUser)
             if (!foundUser) {
-                res.status(200).json('user does not exist')
+                res.status(200).json('User not found')
             } else {
-
                 res.status(200).json(foundUser)
             }
 
@@ -125,7 +125,19 @@ const dataController = {
             res.status(400).json(error);
             
         }
+    },
+    async getUserPosts(req,res){
+        try{
+            console.log(req.user)
+            //const userPosts = await Post.find({sender:req.user._id})
+            
+            res.json(req.user)
+        } catch{
+            
+            res.status(400).json(error);
+        }
     }
+    
 }
 
 

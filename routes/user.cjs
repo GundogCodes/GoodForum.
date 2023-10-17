@@ -21,6 +21,7 @@ router.post('/login', dataController.loginUser,apiController.auth) //works
 //S
 router.get('/:id', dataController.getUser) //works
 router.get('/', dataController.getAllUsers) //works
+router.get('/posts', dataController.getUserPosts)
 
 
 module.exports = router

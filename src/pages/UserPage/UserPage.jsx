@@ -9,11 +9,14 @@ import PostModal from '../../components/PostModal/PostModal'
 
 
 export default function UserPage({user,setUser}){
+    console.log('user in userPage',user)
+    
     const [showModal, setShowModal] = useState(false)
     useEffect(()=>{
         (async ()=>{
             try {
                 const user = await usersService.getUser()
+                console.log('user in api call',user)
                 console.log(user)
                 console.log('user: ',user)
                 setUser(user)
