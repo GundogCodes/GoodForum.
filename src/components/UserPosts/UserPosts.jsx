@@ -6,13 +6,18 @@ import * as usersAPI from '../../../utilities/users-api.cjs'
 export default function UserPosts({user, setUser}){
      
     const [allUserPost, setAllUserPosts] = useState([])
-    console.log(allUserPost)
 
     useEffect(()=>{
         (async ()=>{
             try {
                 const userPosts = await usersAPI.getUsersPosts()
-                setAllUserPosts(userPosts)
+                if(userPosts === 'no posts'){
+                    setAllUserPosts()
+                }else{
+
+                    setAllUserPosts(userPosts)
+                    console.log(userPosts)
+                }
             } catch (error) {
                 console.log(error)
             }
@@ -22,10 +27,12 @@ export default function UserPosts({user, setUser}){
     return(
             
             <ul className={styles.UserPosts}>
+                {allUserPost?
+                <>
                 <li className={styles.yourPosts}>No More Posts</li>
-                {
+                { 
                     allUserPost.map((post)=>{
-                     return   <li>
+                        return   <li>
                             <section>
                                         <h4>{post.forum.title} </h4>
                                         <h2>{post.title} </h2>
@@ -40,6 +47,10 @@ export default function UserPosts({user, setUser}){
                         </li>
                     })
                 }
+                </>
+                :
+                <h1 className={styles.noPosts}>No Posts Yet</h1>
+            }
             </ul>
 
     )

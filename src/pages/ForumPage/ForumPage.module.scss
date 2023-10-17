@@ -4,6 +4,8 @@
     flex-direction: column;
     justify-content: flex-start;
     top:32px;
+    border-top: solid 1px black;
+
     align-items: center;
     width: 100vw;
     animation: fadeIn 1s;
@@ -32,6 +34,7 @@
             display: flex;
             justify-content: space-evenly;
             width: 100vw;
+
             background-color: rgb(171,211,246);
             box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
             button{
@@ -45,12 +48,14 @@
         
     }
     ul{
-        top:20vh;
+        top:50vh;
+        background-color: red;
         background-color: lightgrey;
         animation: fadeIn 2s;
         list-style-type: none;
-        position: relative;
-        overflow-y: scroll;
+        position: absolute;
+        // overflow-y: scroll;
+        // height: 80vh;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         border-radius: 7px;
         display: flex;
@@ -58,6 +63,7 @@
         width: 90vw;
         border: solid 1px ;
         align-items: center;
+        left: 3.5vw;
 
         li{
 
@@ -92,7 +98,7 @@
                 margin-left: 2vw;
                 margin-top: 0;
                 height: 50vh;
-                width: 85vw;
+                width: 87vw;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -121,9 +127,10 @@
 
         }
     }
-    .noPost{
+    .noPosts{
+        margin-top: 10vh;
         font-size: 25px;
-        color: white;
+        color: black;
     }
     
     .postToForum{

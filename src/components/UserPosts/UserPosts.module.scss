@@ -62,6 +62,7 @@
                 justify-content: center;
                 align-items: center;
                 height: 50vh;
+                width: 65vw;
                 margin-top: 0;
                 background-color: gray;
                 border: solid 2px black;
@@ -92,6 +93,10 @@
                     color: rgb(171, 211, 246);
                 }
             }
+        }
+        .noPosts{
+
+            margin-bottom: 5vh;
         }
     }
 

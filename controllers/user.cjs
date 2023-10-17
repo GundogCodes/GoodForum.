@@ -135,7 +135,7 @@ const dataController = {
                 res.json(userPosts)
             } else{
                 console.log('no')
-                res.json('no posts yet')
+                res.json('no posts')
             }
         } catch(error){
             

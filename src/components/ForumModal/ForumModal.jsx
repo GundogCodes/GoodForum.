@@ -32,6 +32,8 @@ export default function FormModal({ title, showModal, setShowModal ,headings }) 
             setNewForum(newForum)
             if(newForum){
                 setIsForum(true)
+                console.log(isForum)
+                setShowModal(false)
             }
         } catch (error) {
             console.log('error: ',error)

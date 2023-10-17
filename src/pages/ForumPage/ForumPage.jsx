@@ -86,7 +86,7 @@ export default function ForumPage({ user, setUser }) {
                             <button onClick={handleMakePostButton} >Make a Post</button>
                         </section>
                     </header>
-                    {forumPage.posts ?
+                    {forumPage.posts.length > 0 ?
 
                         <ul>
                             {forumPosts.map((post) => {
@@ -105,7 +105,7 @@ export default function ForumPage({ user, setUser }) {
                             })}
                         </ul>
                         :
-                        <h1 className={styles.noPosts}>No Posts yet, Be the first!</h1>
+                        <h1 className={styles.noPosts}>No Posts yet, be the first to start a conversation!</h1>
                     }
                     <Footer />
                 </>

@@ -69,6 +69,7 @@ exports.updatePost = async function(req,res){
 exports.incrementLikes =  async function (req,res){
     try {
         const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{likes:1}}, {new:true})
+        await User.findOneAndUpdate({_id:req.user._id}, {$push:{likedPosts:updatedPost}}, {new:true})
         res.json(updatedPost)
     } catch (error) {
         res.status(400).json({error: error.message})
@@ -79,6 +80,7 @@ exports.incrementLikes =  async function (req,res){
 exports.incrementDislikes =  async function (req,res){
     try {
         const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{dislikes:1}}, {new:true})
+        await User.findOneAndUpdate({_id:req.user._id}, {$push:{dislikedPosts:updatedPost}}, {new:true})
         res.json(updatedPost)
     } catch (error) {
         res.status(400).json({error: error.message})

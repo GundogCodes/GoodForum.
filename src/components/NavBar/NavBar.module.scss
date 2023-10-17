@@ -24,7 +24,6 @@
 
 
         p{
-            
             color: black;
             display: flex;
             justify-content: center;
@@ -34,6 +33,7 @@
             font-size: 15px;
             padding: 5px;
             border-radius: 4px;
+            top:0;
         }
         p:hover{
             background-color:rgb(170,218,250);
@@ -89,3 +89,4 @@
         }
     }
 }
+
