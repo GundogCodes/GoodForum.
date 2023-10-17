@@ -10,7 +10,6 @@ exports.createPost = async (req,res) =>{
         if(!req.user){
             res.json('Please login to continue')
         } else{
-
             const postingForum = await  Forum.findOne({_id:req.body.id})
             const newPost =  {}
             newPost.sender = req.user

@@ -9,9 +9,10 @@ export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
     const [forumPage, setForumPage] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
+
     const [postData, setPostData] = useState({
-        title: '',
-        content: ''
+        title: "",
+        content: ""
     })
     useEffect(() => {
         (async () => {
@@ -34,22 +35,22 @@ export default function ForumPage({ user, setUser }) {
         setShowPostModal(false)
     }
 
-    function handleChange(e){
+    function handleChange(e) {
         console.log(postData)
         setPostData({
             ...postData,
-            [e.target.name]:e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
     async function handlePostSubmit(e) {
         e.preventDefault()
         try {
-            const newPost = await forumService.postToForum(id,postData)
+            const newPost = await forumService.postToForum(id, postData)
             console.log(newPost)
             setShowPostModal(false)
         } catch (error) {
-            console.log({error:error})
+            console.log({ error: error })
         }
     }
 
@@ -83,22 +84,22 @@ export default function ForumPage({ user, setUser }) {
                             <button onClick={handleMakePostButton} >Make a Post</button>
                         </section>
                     </header>
-                    {forumPage.posts?
+                    {forumPage.posts ?
 
-<ul>
-                        {forumPage.posts.map((post)=>{
-                            return <li><Post quarry={forumPage.title} postTitle={post.title} content={post.content}/></li>
-                        })}
-                    </ul>
-                    :
-                    <h1 className={styles.noPosts}>No Posts yet, Be the first!</h1>
+                        <ul>
+                            {forumPage.posts.map((post) => {
+                                return <li><Post quarry={forumPage.title} postTitle={post.title} content={post.content} /></li>
+                            })}
+                        </ul>
+                        :
+                        <h1 className={styles.noPosts}>No Posts yet, Be the first!</h1>
                     }
                     <Footer />
                 </>
                 :
                 <></>
             }
-            
+
         </div>
     )
 }

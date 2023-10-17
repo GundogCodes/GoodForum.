@@ -19,9 +19,9 @@ router.post('/new', dataController.createUser, apiController.auth) //works
 router.post('/login', dataController.loginUser,apiController.auth) //works
 //E
 //S
+router.get('/posts', dataController.getUserPosts)
 router.get('/:id', dataController.getUser) //works
 router.get('/', dataController.getAllUsers) //works
-router.get('/posts', dataController.getUserPosts)
 
 
 module.exports = router

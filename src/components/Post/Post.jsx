@@ -15,6 +15,7 @@ export default function Post({quarry,postTitle,content}){
                 <div>img</div>
                 :
             <></>} */}
+            
             </p>
             </section>
             <div className={styles.interactions}>

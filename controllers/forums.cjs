@@ -165,6 +165,7 @@ exports.postToForum = async (req,res) =>{
             newPost.sender = req.user
             newPost.forum =  postingForum
             newPost.content = req.body.content
+            newPost.title = req.body.title
             const createdPost = await Post.create(newPost)
              await Forum.findOneAndUpdate({_id:req.params.id},{$push:{posts:createdPost}},{new:true})
             const updatedUser =  await User.findOneAndUpdate({_id:req.user._id}, {$inc:{numOfPosts:1}, $push:{posts:createdPost}},{new:true})

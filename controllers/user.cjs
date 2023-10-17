@@ -128,11 +128,16 @@ const dataController = {
     },
     async getUserPosts(req,res){
         try{
-            console.log(req.user)
-            //const userPosts = await Post.find({sender:req.user._id})
-            
-            res.json(req.user)
-        } catch{
+            //console.log('hehe',req.user)
+            const userPosts = await Post.find({sender:req.user._id}).populate('forum')
+            if(userPosts.length !== 0){
+                console.log('yes')
+                res.json(userPosts)
+            } else{
+                console.log('no')
+                res.json('no posts yet')
+            }
+        } catch(error){
             
             res.status(400).json(error);
         }

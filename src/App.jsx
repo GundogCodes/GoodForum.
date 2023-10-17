@@ -14,8 +14,8 @@ import { getUser } from '../utilities/users-service.cjs'
 import LogOut from './components/Logout/Logout'
 function App() {
   const [user, setUser] = useState(getUser())
-  console.log('user in AppJSX', user)
-  console.log('userPosts: ', user.posts)
+
+  console.log('user : ', user)
 
 
 
