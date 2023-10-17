@@ -31,7 +31,7 @@ exports.getPost = async function(req,res){
     try {
         const returnedPost  = await Post.findOne({_id:req.params.id}).populate('comments')
         if(!returnedPost){
-            res.json('Post does not exist')
+            res.json('Post not found')
         }else{
 
             res.json(returnedPost)

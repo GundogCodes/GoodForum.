@@ -20,8 +20,8 @@ export function dislikePost(){
 export function commentOnPost(){
     return
 }
-export function showPost(){
-    return
+export function getPost(postId){
+    return sendRequest(`${BASE_URL}/${postId}`)
 }
 export function allPosts(){
     return sendRequest(`${BASE_URL}`)

@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import PostModal from '../../components/PostModal/PostModal'
+import { useNavigate } from 'react-router-dom'
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [forumPage, setForumPage] = useState()
     const [forumPosts, setForumPosts] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
@@ -43,6 +45,11 @@ export default function ForumPage({ user, setUser }) {
             ...postData,
             [e.target.name]: e.target.value
         })
+    }
+    function handlePostClick(e){
+        const postId = e.target.id
+        console.log(e.target.id)
+        navigate(`/post/${postId}`)
     }
 
     async function handlePostSubmit(e) {
@@ -95,7 +102,7 @@ export default function ForumPage({ user, setUser }) {
                                         <h2>{post.title} </h2>
                                         <h1>{post.sender.username} </h1>
                                     </section>
-                                    <h3>{post.content} </h3>
+                                    <h3 onClick={handlePostClick} id={`${post._id}`} >{post.content} </h3>
                                     <aside>
                                         <p className={styles.like}>Like</p>
                                         <p className={styles.dislike}>Dislikes</p>

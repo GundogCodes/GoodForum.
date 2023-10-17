@@ -1,0 +1,85 @@
+.PostPage{
+    background-color: pink;
+    position: absolute;
+    width: 100vw;
+    top:32px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    header{
+        height: 20vh;
+        width: 80vw;
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        h1{}
+        h2{}
+    }
+    section{
+        background-color: green;
+        width: 80vw;
+        height: 80vh;
+        aside{
+            margin-top: 0;
+            background-color: yellow;
+            width: 80vw;
+            display: flex;
+            p{
+
+            }
+        }
+        .content{
+            background-color: orange;
+            height: 50vh;
+        }
+        .comments{
+
+        }
+    }
+}
+
+@media(max-width:900px){
+    .PostPage{
+        header{
+            background-color: red;
+            h1{}
+            h2{}
+        }
+        section{
+            aside{
+                p{
+    
+                }
+            }
+            .content{}
+            .comments{
+    
+            }
+        }
+    }   
+}
+
+@media (prefers-color-scheme:dark) {
+    .PostPage{
+        color:white;
+        header{
+            h1{}
+            h2{}
+        }
+        section{
+            aside{
+                p{
+    
+                }
+            }
+            .content{}
+            .comments{
+    
+            }
+        }
+    }
+    
+}
