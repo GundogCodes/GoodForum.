@@ -21,14 +21,23 @@ export default function UserPosts({user, setUser}){
 
     return(
         <div className={styles.UserPosts}>
+            
             <ul>
-                <li className={styles.yourPosts}>Your Posts</li>
+                <li className={styles.yourPosts}>No More Posts</li>
                 {
                     allUserPost.map((post)=>{
                      return   <li>
-                        <h3>title: {post.title}</h3>
-                        <h2>Forum: {post.forum.title}</h2>
-                        <h1> Content: {post.content}</h1>
+                            <section>
+                                        <h4>{post.forum.title} </h4>
+                                        <h2>{post.title} </h2>
+                                        <h1>{post.sender.username} </h1>
+                                    </section>
+                                    <h3>{post.content} </h3>
+                                    <aside>
+                                        <p className={styles.like}>{post.likes} Likes</p>
+                                        <p className={styles.dislike}>{post.dislikes} Dislikes</p>
+                                        <p className={styles.comment}>Comments</p>
+                                    </aside>
                         </li>
                     })
                 }

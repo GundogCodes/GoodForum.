@@ -7,8 +7,8 @@ const postSchema = new mongoose.Schema({
     forum:{type:mongoose.Schema.ObjectId, ref:'Forum', require:true},
     sender:{type: mongoose.Schema.Types.ObjectId, ref:'User', require:true},
     comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
-    likes:{types:Number},
-    dislikes:{types:Number},
+    likes:{type:Number, default:0},
+    dislikes:{type:Number, default:0},
     edited:{type:Boolean, default:false}
     
 }, {

@@ -6,15 +6,19 @@ import { Link } from 'react-router-dom'
 import FormModal from '../../components/ForumModal/ForumModal'
 import { useState, useEffect } from 'react'
 import * as forumService from '../../../utilities/forum-api.cjs'
+import * as postAPI from '../../../utilities/post-api.cjs'
 import { useNavigate } from 'react-router-dom'
 export default function HomePage({ user, setUser }) {
     const [forums, setForums] = useState([])
+    const [allPosts, setAllPosts] = useState([])
     useEffect(() => {
         (async () => {
             try {
                 const forums = await forumService.getAll()
-                console.log('forums: ', forums)
+                const posts = await postAPI.allPosts()
                 setForums(forums)
+                setAllPosts(posts)
+                console.log(posts)
             } catch (error) {
                 console.log(error)
             }
@@ -47,7 +51,7 @@ export default function HomePage({ user, setUser }) {
                 <></>
             }
             </section>
-            <HomePosts />
+            <HomePosts allPosts={allPosts} />
 
             <div className={styles.buttonDiv}>
                 <h4>Explore Quarries</h4>

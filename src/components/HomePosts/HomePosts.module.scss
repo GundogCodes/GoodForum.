@@ -1,18 +1,16 @@
 .HomePosts{
     position: absolute;
-    top:6.5vh;
     width: 100vw;
     height: 90vh;
-    margin-top: 5vmin;
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;;
-
+    top:10vmin;
     
     ul{
-        width: 60vw;
-
+        width: 55vw;
         border-radius: 7px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         overflow-x:hidden;
@@ -25,18 +23,75 @@
         animation: fadeIn 0.5s;
 
         li{
+
+            background-color: white;
+            padding-right: 40px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+            height: 60vh;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            justify-content: flex-start;
+            margin-bottom: 7.5px;
+            margin-top: 7.5px;
             align-items: center;
-            width: 55vw;
-            height: 60vh;
-            margin: 5px;
-            margin-right: 22.5px;
-            color: black;
+            width: 56vw;
+            border-radius: 7px;
+            padding-right: 30px;
+            
+            section{
 
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-            animation: fadeIn 2s;
+                display: flex;
+                justify-content: space-between;
+                height: 10vh;
+                width: 55vw;
+
+                align-items: center;
+                h1{
+                    color: rgb(171,211,246);
+                    padding-right: 10px;
+                }
+                h2{
+                    padding-left: 10px;
+
+
+                }
+            }
+            h3{
+
+                margin-top: 0;
+                height: 50vh;
+                width: 55vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: gray;
+                border: solid 2px black;
+                border-radius: 7px;
+            }
+            h3:hover{
+                padding: 10px;
+                transition: 3s;
+                border-radius: 7px;
+                animation: borderHighlight 3s infinite; 
+            }
+            aside{
+                display: flex;
+                width: 50vw;
+                justify-content: flex-start;
+                p{
+                    margin-left:5px ;
+                    margin-right:5px ;
+                }
+                .like:hover,.dislike:hover,.comment:hover{
+                    color: rgb(171,211,246);
+                }
+            }
+
+        }
+        li:hover{
+
+            border-radius: 7px;
+            animation: borderHighlight 3s infinite; 
         }
     }
 
@@ -80,7 +135,67 @@
 @media (prefers-color-scheme:dark) {
     .HomePosts{
         // box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-
+        ul{
+            li{
+                background-color: rgb(28,28,28);
+                section{
+    
+                    width: 85vw;
+                    color:white;
+                    h1{
+                    }
+                    h2{
+                        color:white;
+                    }
+                }
+                h3{
+                }
+                h3:hover{
+                    animation: borderHighlightDarkMode 3s infinite; 
+                }
+                aside{
+                    p{
+                    }
+                    .like:hover,.dislike:hover,.comment:hover{
+                        color: #FF6410;
+                    }
+                }
+    
+            }
+            
+        }
     }
     
+}
+
+@keyframes borderHighlight {
+    0%, 100% {
+        border-color: rgb(180, 217, 247); /* Initial and final border color */
+    }
+    25% {
+        border-color: white; /* Highlighted border color */
+    }
+    50% {
+        border-color: rgb(180, 217, 247); /* Initial and final border color */
+
+    }
+    75% {
+        border-color: white; /* Highlighted border color */
+    }
+}
+
+@keyframes borderHighlightDarkMode {
+    0%, 100% {
+        border-color: #FF6410; /* Initial and final border color */
+    }
+    25% {
+        border-color: white; /* Highlighted border color */
+    }
+    50% {
+        border-color: #FF6410; /* Initial and final border color */
+
+    }
+    75% {
+        border-color: white; /* Highlighted border color */
+    }
 }

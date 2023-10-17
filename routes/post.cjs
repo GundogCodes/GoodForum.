@@ -12,6 +12,7 @@ router.put('/dislike/:id',  postController.incrementDislikes) //works
 router.put('/comment/:id', postController.commentToPost) //works
 
 router.get('/:id',  postController.getPost) //works
+router.get('/',  postController.getAllPosts) //works
 
 
 

@@ -13,12 +13,24 @@
 
 .LogOut:hover{
     border-radius: 4px;
+    background-color:rgb(180,217,247);
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+}
+@media(max-width:900px){
+    .LogOut{
+
+    }
+}
+@media(prefers-color-scheme:dark){
+    .LogOut{
+        
+    }
+    .LogOut:hover{
+        border-radius: 4px;
     background-color: #FF6410;
     cursor: pointer;
     color: white;
-}
-@media(max-width:900px){
-    .Logout{
-
     }
 }

@@ -131,6 +131,19 @@ exports.commentToPost = async (req,res) => {
         }
     } catch (error) {
         res.status(400).json({error: error.message})
+    }
+}
+
+exports.getAllPosts = async (req,res) =>{
+    try {
+        const allPosts = await Post.find({})
+        .populate('sender')
+        .populate('forum')
+        .sort({createdAt:-1})
+        .exec()
+        res.json(allPosts)
+    } catch (error) {
+        res.status(400).json({error: error.message})
         
     }
 }

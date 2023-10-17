@@ -8,6 +8,7 @@ import PostModal from '../../components/PostModal/PostModal'
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
     const [forumPage, setForumPage] = useState()
+    const [forumPosts, setForumPosts] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
 
     const [postData, setPostData] = useState({
@@ -17,9 +18,10 @@ export default function ForumPage({ user, setUser }) {
     useEffect(() => {
         (async () => {
             try {
-                const forum = await forumService.getForum(id)
+                const { forum, forumPosts } = await forumService.getForum(id)
                 console.log('forum: ', forum)
                 setForumPage(forum)
+                setForumPosts(forumPosts)
             } catch (error) {
                 console.log(error)
             }
@@ -87,8 +89,19 @@ export default function ForumPage({ user, setUser }) {
                     {forumPage.posts ?
 
                         <ul>
-                            {forumPage.posts.map((post) => {
-                                return <li><Post quarry={forumPage.title} postTitle={post.title} content={post.content} /></li>
+                            {forumPosts.map((post) => {
+                                return <li>
+                                    <section>
+                                        <h2>{post.title} </h2>
+                                        <h1>{post.sender.username} </h1>
+                                    </section>
+                                    <h3>{post.content} </h3>
+                                    <aside>
+                                        <p className={styles.like}>Like</p>
+                                        <p className={styles.dislike}>Dislikes</p>
+                                        <p className={styles.comment}>Comments</p>
+                                    </aside>
+                                </li>
                             })}
                         </ul>
                         :

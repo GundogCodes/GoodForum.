@@ -11,10 +11,15 @@
     background-color: white;
     background-size: cover;
     overflow-y: scroll;
+    border-top: solid 1px black;
     // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     // background-size: cover;
     
-    
+    .heading{
+        padding-left: 50vw;
+        width: 100vw;
+
+    }
     
 }
 

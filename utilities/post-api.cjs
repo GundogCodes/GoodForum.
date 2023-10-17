@@ -23,3 +23,6 @@ export function commentOnPost(){
 export function showPost(){
     return
 }
+export function allPosts(){
+    return sendRequest(`${BASE_URL}`)
+}
