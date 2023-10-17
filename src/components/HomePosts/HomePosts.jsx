@@ -2,12 +2,11 @@ import styles from './HomePosts.module.scss'
 import Post from '../Post/Post'
 export default function HomePosts({allPosts}){
     return(
-        <div className={styles.HomePosts}>
 
-                <ul>
+
+                <ul className={styles.HomePosts}>
                     {
                         allPosts.map((post)=>{
-                                <div>  hellow</div>
                             return <li>
                                 <section>
                                         <h4>{post.forum.title} </h4>
@@ -27,6 +26,6 @@ export default function HomePosts({allPosts}){
                 </ul>
 
 
-        </div>
+
     )
 }

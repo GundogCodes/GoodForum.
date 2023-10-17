@@ -17,8 +17,8 @@ export default function HomePage({ user, setUser }) {
                 const forums = await forumService.getAll()
                 const posts = await postAPI.allPosts()
                 setForums(forums)
+                console.log('allforums', forums)
                 setAllPosts(posts)
-                console.log(posts)
             } catch (error) {
                 console.log(error)
             }
@@ -57,13 +57,11 @@ export default function HomePage({ user, setUser }) {
                 <h4>Explore Quarries</h4>
                 <ul>
                     {
-                        forums.map(forum => {
-                            return <Link to={`/forum/${forum._id}`}><li>{forum.title}</li></Link>
-                        })
+                    forums.map((forum)=>{
+                        return <li>{forum.title}</li>
+                    })                        
                     }
-
                 </ul>
-                <h4 >Create a Quarry</h4>
                 <button onClick={handleCreateClick} >+</button>
             </div>
 

@@ -20,9 +20,8 @@ export default function UserPosts({user, setUser}){
     },[])
 
     return(
-        <div className={styles.UserPosts}>
             
-            <ul>
+            <ul className={styles.UserPosts}>
                 <li className={styles.yourPosts}>No More Posts</li>
                 {
                     allUserPost.map((post)=>{
@@ -30,7 +29,7 @@ export default function UserPosts({user, setUser}){
                             <section>
                                         <h4>{post.forum.title} </h4>
                                         <h2>{post.title} </h2>
-                                        <h1>{post.sender.username} </h1>
+
                                     </section>
                                     <h3>{post.content} </h3>
                                     <aside>
@@ -43,6 +42,5 @@ export default function UserPosts({user, setUser}){
                 }
             </ul>
 
-        </div>
     )
 }

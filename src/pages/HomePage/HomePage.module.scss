@@ -1,6 +1,6 @@
 .HomePage {
     position: absolute;
-    top:5vmin;
+    top:32px;
     height: 100vh;
     width: 100vw;
     //background-color: rgb(227,211,166);
@@ -19,27 +19,29 @@
         font-size: 50px;
         display: flex;
         justify-content: center;
-
-
+        
+        
     }
-
+    
     .buttonDiv {
+        background-color: red;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        left: 81vw;
+        right:0vw;
         top: 15vmin;
         position: absolute;
-        width: 20vw;
+        width:15vw;
+        margin-right: 2.5vw;
         height: 80vh;
         border-radius: 7px;
-
         h4 {
             color: black;
         }
 
         ul {
+            background-color: pink;
             box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
             width: 15vw;
             height: 80vh;
@@ -108,12 +110,12 @@
         align-items: center;
         justify-content: flex-start;
         left: 0;
+        margin-left: 2.5vw;
         position: absolute;
-        color: orange;
-        width: 20vw;
+        width: 15vw;
         height: 80vh;
         border-radius: 7px;
-
+        border: solid 1px;
         .userPic {
             box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 

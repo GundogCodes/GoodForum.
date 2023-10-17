@@ -1,15 +1,6 @@
-.HomePosts{
-    position: absolute;
-    width: 100vw;
-    height: 90vh;
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;;
-    top:10vmin;
-    
     ul{
+        position: absolute;
+        top:10vmin;
         width: 55vw;
         border-radius: 7px;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -19,11 +10,9 @@
         align-items: center;
         justify-content: flex-start;
         list-style-type: none;
-
         animation: fadeIn 0.5s;
-
+        left: 22.5vw;
         li{
-
             background-color: white;
             padding-right: 40px;
             box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
@@ -39,12 +28,10 @@
             padding-right: 30px;
             
             section{
-
                 display: flex;
                 justify-content: space-between;
                 height: 10vh;
                 width: 55vw;
-
                 align-items: center;
                 h1{
                     color: rgb(171,211,246);
@@ -95,7 +82,6 @@
         }
     }
 
-}
 
 @keyframes fadeIn {
     0% { opacity: 0; }

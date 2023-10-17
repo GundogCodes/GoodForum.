@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    top:30px;
+    top:32px;
     align-items: center;
     width: 100vw;
     animation: fadeIn 1s;
@@ -257,7 +257,6 @@
             
         }
         ul{
-
             li{
                 background-color: black;
                 section{
@@ -266,8 +265,6 @@
                     h1{
                     }
                     h2{
-    
-    
                     }
                 }
                 h3{
@@ -277,7 +274,6 @@
                 }
                 aside{
                     p{
-                        
                     }
                     .like:hover,.dislike:hover,.comment:hover{
                         color: #FF6410;
