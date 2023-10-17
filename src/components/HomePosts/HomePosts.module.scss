@@ -12,6 +12,8 @@
         list-style-type: none;
         animation: fadeIn 0.5s;
         left: 22.5vw;
+        overflow-y: scroll;
+        height: 80vh;
         li{
             background-color: white;
             padding-right: 40px;

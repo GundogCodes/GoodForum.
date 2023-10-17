@@ -1,6 +1,6 @@
 .HomePage {
     position: absolute;
-    top:32px;
+    top: 32px;
     height: 100vh;
     width: 100vw;
     //background-color: rgb(227,211,166);
@@ -19,67 +19,60 @@
         font-size: 50px;
         display: flex;
         justify-content: center;
-        
-        
+
+
     }
-    
+
+
+    h4 {
+        color: black;
+    }
+
     .buttonDiv {
-        background-color: red;
+
+        position: absolute;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        right:0vw;
+        right: 0;
         top: 15vmin;
-        position: absolute;
-        width:15vw;
         margin-right: 2.5vw;
+        width: 15vw;
         height: 80vh;
         border-radius: 7px;
-        h4 {
-            color: black;
-        }
-
-        ul {
-            background-color: pink;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-            width: 15vw;
-            height: 80vh;
-            border-radius: 7px;
+        left: 82vw;
+        list-style-type: none;
+        li {
             display: flex;
-            justify-content: flex-start;
-            align-self: center;
-            flex-direction: column;
-            list-style-type: none;
-            overflow-y: scroll;
-
-            li {
-                display: flex;
-                justify-content: center;
-                width: 12.5vw;
-                border-radius: 7px;
-                margin: 2px;
-                color: black;
-                height: 50px;
-                background-color: white;
-
-            }
-        }
-
-        button {
-            margin-top: 10px;
-            width: 50px;
-            height: 50px;
-            position: relative;
-            border-radius: 100px;
+            justify-content: center;
+            width: 12.5vw;
+            border-radius: 7px;
+            margin: 2px;
+            margin-right: 2vw;
             color: black;
+            height: 50px;
             background-color: white;
-            border-color: white;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-            margin-bottom: 10px;
+            align-items: center;
 
         }
     }
+
+    button {
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        border-radius: 100px;
+        color: black;
+        background-color: white;
+        border-color: white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        margin-bottom: 10px;
+
+    }
+
 
     #name {
         margin-top: 30px;
@@ -116,6 +109,7 @@
         height: 80vh;
         border-radius: 7px;
         border: solid 1px;
+
         .userPic {
             box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
@@ -297,31 +291,45 @@
     from {
         width: 100%;
     }
+
     to {
         width: 0;
     }
 }
 
 @keyframes blink-caret {
-    from, to {
+
+    from,
+    to {
         border-color: transparent;
     }
+
     50% {
         border-color: #000;
     }
 }
+
 @keyframes borderHighlightDarkMode {
-    0%, 100% {
-        border-color: #FF6410; /* Initial and final border color */
+
+    0%,
+    100% {
+        border-color: #FF6410;
+        /* Initial and final border color */
     }
+
     25% {
-        border-color: white; /* Highlighted border color */
+        border-color: white;
+        /* Highlighted border color */
     }
+
     50% {
-        border-color: #FF6410; /* Initial and final border color */
+        border-color: #FF6410;
+        /* Initial and final border color */
 
     }
+
     75% {
-        border-color: white; /* Highlighted border color */
+        border-color: white;
+        /* Highlighted border color */
     }
 }

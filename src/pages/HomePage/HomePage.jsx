@@ -32,38 +32,38 @@ export default function HomePage({ user, setUser }) {
     }
     return (
         <div className={styles.HomePage}>
-                  <h1 className={styles.Name}>Etch</h1>
+            <h1 className={styles.Name}>Etch</h1>
             {showModal ?
                 <FormModal title={'Create a New Quarry'}
-                    showModal={showModal}
-                    setShowModal={setShowModal}
-                    headings={['Title', 'Topic', 'Brief Description']}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                headings={['Title', 'Topic', 'Brief Description']}
                 />
                 :
                 <></>
-
+                
             }
             <section className={styles.userInfo}>
                 <div className={styles.userPic}>UserPic</div>
-                {user?
-                <div className={styles.username}>{user ? `Hey! ${user.username}` : 'Login'}</div>
-                :
-                <></>
-            }
+                {user ?
+                    <div className={styles.username}>{user ? `Hey! ${user.username}` : 'Login'}</div>
+                    :
+                    <></>
+                }
             </section>
-            <HomePosts allPosts={allPosts} />
 
-            <div className={styles.buttonDiv}>
+                <HomePosts allPosts={allPosts} />
+
+            <ul className={styles.buttonDiv}>
                 <h4>Explore Quarries</h4>
-                <ul>
-                    {
-                    forums.map((forum)=>{
-                        return <li>{forum.title}</li>
-                    })                        
-                    }
-                </ul>
+                {
+                    forums.map((forum) => {
+                        return <Link to={`forum/${forum._id}`}><li>{forum.title}</li></Link>
+                    })
+                }
                 <button onClick={handleCreateClick} >+</button>
-            </div>
+            </ul>
+
 
 
         </div>
