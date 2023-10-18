@@ -7,13 +7,23 @@ import * as forumService from '../../../utilities/forum-api.cjs'
 import * as postService from '../../../utilities/post-api.cjs'
 import PostModal from '../../components/PostModal/PostModal'
 import { useNavigate } from 'react-router-dom'
+import PostCard from '../../components/PostCard/PostCard'
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
     const navigate = useNavigate()
+    const [showPost, setShowPost] = useState(false)
     const [forumPage, setForumPage] = useState()
     const [forumPosts, setForumPosts] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
-
+    const [postCardInfo, setPostCardInfo] = useState({
+        poster: '',
+        title: '',
+        forum: '',
+        content: '',
+        likes: '',
+        dislikes: '',
+        comments: []
+    })
     const [postData, setPostData] = useState({
         title: "",
         content: ""
@@ -22,7 +32,7 @@ export default function ForumPage({ user, setUser }) {
         (async () => {
             try {
                 const { forum, forumPosts } = await forumService.getForum(id)
-                console.log('forum: ', forum)
+                //console.log('forum: ', forum)
                 setForumPage(forum)
                 setForumPosts(forumPosts)
             } catch (error) {
@@ -47,12 +57,6 @@ export default function ForumPage({ user, setUser }) {
             [e.target.name]: e.target.value
         })
     }
-    function handlePostClick(e) {
-        const id = e.target.id
-        console.log(e.target.id)
-        navigate(`/post/${id}`)
-    }
-
     async function handlePostSubmit(e) {
         e.preventDefault()
         try {
@@ -63,26 +67,44 @@ export default function ForumPage({ user, setUser }) {
             console.log({ error: error })
         }
     }
-    async function handleCommentClick() {
-        
-    }
-    async function handleLikeClick() {
+    async function handleLikeClick(poster) {
         try {
             const updatedPost = await postService.likePost()
             console.log(updatedPost)
         } catch (error) {
             console.log({ error: error })
-            
+
         }
     }
     async function handleDislikeClick() {
 
+    }
+    function handlePostClick(e) {
+        setPostCardInfo({
+            poster:e.currentTarget.getAttribute('poster'),
+            title:e.currentTarget.getAttribute('postTitle'),
+            forum:e.currentTarget.getAttribute('forum'),
+            content:e.currentTarget.getAttribute('content'),
+            likes:e.currentTarget.getAttribute('likes'),
+            dislikes:e.currentTarget.getAttribute('dislikes'),
+            comments:e.currentTarget.getAttribute('comments')
+
+        })
+        setShowPost(true)
     }
 
     return (
         <div className={styles.ForumPage}>
             {forumPage ?
                 <>
+                    {showPost ?
+                        <PostCard
+                            postCardInfo={postCardInfo}
+                            setShowPost={setShowPost}
+                        />
+                        :
+                        <></>
+                    }
                     {showPostModal ?
                         <div className={styles.postToForum}>
                             <form onSubmit={handlePostSubmit}>
@@ -118,11 +140,20 @@ export default function ForumPage({ user, setUser }) {
                                         <h2>{post.title} </h2>
                                         <h1>{post.sender.username} </h1>
                                     </section>
-                                    <h3 onClick={handlePostClick} id={`${post._id}`} >{post.content} </h3>
+                                    <h3 onClick={handlePostClick}
+                                        poster={post.sender.username}
+                                        postTitle={post.title}
+                                        forum={forumPage.title}
+                                        content={post.content}
+                                        likes={post.likes}
+                                        dislikes={post.dislikes}
+                                        comments={post.comments}
+                                    >
+                                        {post.content}
+                                    </h3>
                                     <aside>
-                                        <p onClick={handleLikeClick} className={styles.like}>Like</p>
-                                        <p onClick={handleDislikeClick} className={styles.dislike}>Dislikes</p>
-                                        <p onClick={handleCommentClick} className={styles.comment}>Comments</p>
+                                        <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
+                                        <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>
                                     </aside>
                                 </li>
                             })}
