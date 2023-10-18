@@ -4,6 +4,7 @@ import Post from '../../components/Post/Post'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as forumService from '../../../utilities/forum-api.cjs'
+import * as postService from '../../../utilities/post-api.cjs'
 import PostModal from '../../components/PostModal/PostModal'
 import { useNavigate } from 'react-router-dom'
 export default function ForumPage({ user, setUser }) {
@@ -46,10 +47,10 @@ export default function ForumPage({ user, setUser }) {
             [e.target.name]: e.target.value
         })
     }
-    function handlePostClick(e){
-        const postId = e.target.id
+    function handlePostClick(e) {
+        const id = e.target.id
         console.log(e.target.id)
-        navigate(`/post/${postId}`)
+        navigate(`/post/${id}`)
     }
 
     async function handlePostSubmit(e) {
@@ -61,6 +62,21 @@ export default function ForumPage({ user, setUser }) {
         } catch (error) {
             console.log({ error: error })
         }
+    }
+    async function handleCommentClick() {
+        
+    }
+    async function handleLikeClick() {
+        try {
+            const updatedPost = await postService.likePost()
+            console.log(updatedPost)
+        } catch (error) {
+            console.log({ error: error })
+            
+        }
+    }
+    async function handleDislikeClick() {
+
     }
 
     return (
@@ -104,9 +120,9 @@ export default function ForumPage({ user, setUser }) {
                                     </section>
                                     <h3 onClick={handlePostClick} id={`${post._id}`} >{post.content} </h3>
                                     <aside>
-                                        <p className={styles.like}>Like</p>
-                                        <p className={styles.dislike}>Dislikes</p>
-                                        <p className={styles.comment}>Comments</p>
+                                        <p onClick={handleLikeClick} className={styles.like}>Like</p>
+                                        <p onClick={handleDislikeClick} className={styles.dislike}>Dislikes</p>
+                                        <p onClick={handleCommentClick} className={styles.comment}>Comments</p>
                                     </aside>
                                 </li>
                             })}

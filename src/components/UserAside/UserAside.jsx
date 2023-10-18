@@ -4,8 +4,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     function setShow(){
         setShowModal(true)
     }
-    console.log(user.likedPosts.length)
-    console.log(user.dislikedPosts.length)
+
     return(
         <div  className={styles.UserAside}>
             

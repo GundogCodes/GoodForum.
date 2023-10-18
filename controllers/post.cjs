@@ -29,7 +29,9 @@ exports.createPost = async (req,res) =>{
 //Read a post
 exports.getPost = async function(req,res){
     try {
-        const returnedPost  = await Post.findOne({_id:req.params.id}).populate('comments')
+        const returnedPost  = await Post.findOne({_id:req.params.id})
+        .populate('comments')
+        .populate('sender')
         if(!returnedPost){
             res.json('Post not found')
         }else{

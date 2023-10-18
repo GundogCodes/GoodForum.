@@ -2,6 +2,9 @@ import sendRequest from "./send-request.cjs";
 
 const BASE_URL = 'api/post'
 
+export function getPost(postId){
+    return sendRequest(`${BASE_URL}/${postId}`)
+}
 export function makePost(){
     return
 }
@@ -19,9 +22,6 @@ export function dislikePost(){
 }
 export function commentOnPost(){
     return
-}
-export function getPost(postId){
-    return sendRequest(`${BASE_URL}/${postId}`)
 }
 export function allPosts(){
     return sendRequest(`${BASE_URL}`)

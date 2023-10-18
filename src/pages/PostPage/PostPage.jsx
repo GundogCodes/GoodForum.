@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react'
 import * as postAPIs from '../../../utilities/post-api.cjs'
 
 export default function PostPage(){
-    const {id} = useParams()
+    const { id } = useParams()
     const [postInfo, setPostInfo] =useState()
-    console.log(id)
+    console.log('postId: ',id)
+    console.log('type of postid',typeof(id))
     console.log(postInfo)
 useEffect(() => {
     (async () => {
         try {
-            const postInfo = await postAPIs.getPost(id);
+            const {postInfo} = await postAPIs.allPosts();
             console.log('postinfo', postInfo);
             setPostInfo(postInfo);
         } catch (error) {
