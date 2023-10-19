@@ -7,7 +7,7 @@ import * as forumService from '../../../utilities/forum-api.cjs'
 import * as postService from '../../../utilities/post-api.cjs'
 import PostModal from '../../components/PostModal/PostModal'
 import { useNavigate } from 'react-router-dom'
-import PostCard from '../../components/PostCard/PostCard'
+
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -73,8 +73,8 @@ export default function ForumPage({ user, setUser }) {
     }
     function handlePostClick(e) {
         //console.log('postId in handlePostClick',e.currentTarget.getAttribute('postId'))
-        setPostId(e.currentTarget.getAttribute('postId'))
-        setShowPost(true)
+        const id = e.currentTarget.getAttribute('postId')
+        navigate(`/post/${id}`)
     }
 
     return (
@@ -119,16 +119,16 @@ export default function ForumPage({ user, setUser }) {
 
                         <ul>
                             {forumPosts.map((post) => {
-                                return <li>
+                                return <li onClick={handlePostClick} postId={post._id}>
                                     <section>
                                         <h2>{post.title} </h2>
                                         <h1>{post.sender.username} </h1>
                                     </section>
-                                    <h3 onClick={handlePostClick}postId={post._id}>{post.content}</h3>
+                                    <h3 >{post.content}</h3>
                                     <aside>
                                         <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
                                         <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>
-                                        <p onClick={handlePostClick} postId={post._id}>Comments {post.comments.length}</p>
+                                        <p >Comments {post.comments.length}</p>
                                     </aside>
                                 </li>
                             })}

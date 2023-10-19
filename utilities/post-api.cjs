@@ -21,7 +21,7 @@ export function dislikePost(postId){
     return sendRequest(`${BASE_URL}/dislike/${postId}`, 'PUT')
 }
 export function commentOnPost(commentText, postId){
-    return sendRequest(`${BASE_URL}/${postId}`, 'PUT', commentText)
+    return sendRequest(`${BASE_URL}/comment/${postId}`, 'PUT', commentText)
 }
 export function allPosts(){
     return sendRequest(`${BASE_URL}`)

@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import UserPage from './pages/UserPage/UserPage'
 import ChatsPage from './pages/ChatsPage/ChatsPage'
 import ForumPage from './pages/ForumPage/ForumPage'
+import PostPage from './pages/PostPage/PostPage'
 import { getUser } from '../utilities/users-service.cjs'
 import LogOut from './components/Logout/Logout'
 function App() {
@@ -30,7 +31,7 @@ function App() {
             <Route path="/user" element={<UserPage user={user} setUser={setUser} />} />
             <Route path="/chats" element={<ChatsPage user={user} setUser={setUser} />} />
             <Route path="/forum/:id" element={<ForumPage user={user} setUser={setUser} />} />
-            {/* <Route path="/post/:id" element={<PostPage user={user} setUser={setUser} />} /> */}
+            <Route path="/post/:id" element={<PostPage user={user} setUser={setUser} />} />
           <Route path="/login" element={<LoginPage user={user} setUser={setUser} />} />
 
           </Routes>

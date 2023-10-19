@@ -1,10 +1,15 @@
 .PostModal{
+    position: absolute;
     width: 100vw;
     height: 100vh;
+    margin-left: 0;
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    animation: fadeIn 1s;
     section{
         
         animation: fadeIn 0.5s;

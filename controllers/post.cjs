@@ -32,6 +32,7 @@ exports.getPost = async function(req,res){
         const returnedPost  = await Post.findOne({_id:req.params.id})
         .populate('comments')
         .populate('sender')
+        .populate('forum')
         if(!returnedPost){
             res.json('Post not found')
         }else{
