@@ -3,28 +3,26 @@ import styles from './PostCard.module.scss'
 import { useEffect, useState } from 'react'
 import * as postAPIs from '../../../utilities/post-api.cjs'
 
-export default function PostCard({postCardInfo, setShowPost}){
-    const { id } = useParams()
-    console.log('postId: ',id)
-    console.log('type of postid',typeof(id))
-    console.log(postCardInfo)
-// useEffect(() => {
-//     (async () => {
-//         try {
-//             const {postInfo} = await postAPIs.allPosts();
-//             console.log('postinfo', postInfo);
-//             setPostInfo(postInfo);
-//         } catch (error) {
-//             console.error('Error fetching post info:', error);
-//         }
-//     })();
-// }, [id]);
+export default function PostCard({postId, setShowPost}){
+    const [postInfo, setPostInfo] = useState()
+    console.log('postId in PostCard', postId)
+useEffect(() => {
+    (async () => {
+        try {
+            const postInfo = await postAPIs.getPost(postId);
+            console.log('postinfo', postInfo);
+            setPostInfo(postInfo);
+        } catch (error) {
+            console.error('Error fetching post info:', error);
+        }
+    })();
+}, [postId]);
 function handleX(){
     setShowPost(false)
 }
     return(
         <div className={styles.PostCard}>
-            {postCardInfo?
+            {/* {postCardInfo?
             <div className={styles.card}>
             <p onClick={handleX}>x</p>
             <header>
@@ -46,13 +44,30 @@ function handleX(){
                 </aside>
                 <div className={styles.comments}>
                     <h3>Comments</h3>
-                    {postCardInfo.comments}
+
+                    {postCardInfo.comments.length >0 ?
+                    <ul>
+                        {
+                            postCardInfo.comments.map((comment)=>{
+
+                                return <li>{comment}</li>
+                            })
+                        }
+                    </ul>
+                    :
+                    <></>
+                    }
+                    <div className={styles.addComment}>
+                    <input type='text'/>
+                    <button>comment</button>
+                    </div>
                 </div>
             </section>
             </div>
                 :
                 <></>    
                 }
-        </div>
+                */}
+        </div> 
     )
 }

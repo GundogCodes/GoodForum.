@@ -15,15 +15,7 @@ export default function ForumPage({ user, setUser }) {
     const [forumPage, setForumPage] = useState()
     const [forumPosts, setForumPosts] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
-    const [postCardInfo, setPostCardInfo] = useState({
-        poster: '',
-        title: '',
-        forum: '',
-        content: '',
-        likes: '',
-        dislikes: '',
-        comments: []
-    })
+    const [postId, setPostId] = useState()
     const [postData, setPostData] = useState({
         title: "",
         content: ""
@@ -80,16 +72,8 @@ export default function ForumPage({ user, setUser }) {
 
     }
     function handlePostClick(e) {
-        setPostCardInfo({
-            poster:e.currentTarget.getAttribute('poster'),
-            title:e.currentTarget.getAttribute('postTitle'),
-            forum:e.currentTarget.getAttribute('forum'),
-            content:e.currentTarget.getAttribute('content'),
-            likes:e.currentTarget.getAttribute('likes'),
-            dislikes:e.currentTarget.getAttribute('dislikes'),
-            comments:e.currentTarget.getAttribute('comments')
-
-        })
+        //console.log('postId in handlePostClick',e.currentTarget.getAttribute('postId'))
+        setPostId(e.currentTarget.getAttribute('postId'))
         setShowPost(true)
     }
 
@@ -99,7 +83,7 @@ export default function ForumPage({ user, setUser }) {
                 <>
                     {showPost ?
                         <PostCard
-                            postCardInfo={postCardInfo}
+                            postId={postId}
                             setShowPost={setShowPost}
                         />
                         :
@@ -140,20 +124,11 @@ export default function ForumPage({ user, setUser }) {
                                         <h2>{post.title} </h2>
                                         <h1>{post.sender.username} </h1>
                                     </section>
-                                    <h3 onClick={handlePostClick}
-                                        poster={post.sender.username}
-                                        postTitle={post.title}
-                                        forum={forumPage.title}
-                                        content={post.content}
-                                        likes={post.likes}
-                                        dislikes={post.dislikes}
-                                        comments={post.comments}
-                                    >
-                                        {post.content}
-                                    </h3>
+                                    <h3 onClick={handlePostClick}postId={post._id}>{post.content}</h3>
                                     <aside>
                                         <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
                                         <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>
+                                        <p onClick={handlePostClick} postId={post._id}>Comments {post.comments.length}</p>
                                     </aside>
                                 </li>
                             })}

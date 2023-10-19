@@ -10,7 +10,7 @@
     width: 100vw;
     animation: fadeIn 1s;
     height: 200vh;
-
+    z-index: 1;
     background-size: cover;
     overflow-y: scroll;
     
@@ -264,6 +264,7 @@
             
         }
         ul{
+            z-index: -1;
             li{
                 background-color: black;
                 section{

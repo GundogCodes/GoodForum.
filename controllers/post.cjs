@@ -130,7 +130,7 @@ exports.commentToPost = async (req,res) => {
             newComment.sender = req.user
             newComment.text = req.body.text
             const createComment  = await Comment.create(newComment)
-            const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$push:{comments:createComment}}, {new:true})
+            const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$push:{comments:createComment}}, {new:true}).populate('comments')
             res.json(updatedPost)
         }
     } catch (error) {
