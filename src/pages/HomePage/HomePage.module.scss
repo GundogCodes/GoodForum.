@@ -267,8 +267,12 @@ text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
         .Name {
             display: flex;
 
-            color: #FF6410;
-            position: absolute;
+            color: transparent;
+            background: #FF6410;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
             left: 0;
             margin-left: 0;
         }
