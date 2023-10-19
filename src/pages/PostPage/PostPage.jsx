@@ -5,6 +5,8 @@ import * as postAPIs from '../../../utilities/post-api.cjs'
 export default function PostPage(){
     const {id} = useParams()
     const [post,setPost] = useState(null)
+    const [likedClicked,setlikedClicked] = useState(false)
+    const [dislikedClicked,setDislikedClicked] = useState(false)
     console.log('VIEW POST: ',post)
     const [comment, setComment] = useState('')
     useEffect(() => {
@@ -22,29 +24,39 @@ export default function PostPage(){
         setComment({text:e.target.value})
     }
     async function handleLike(){
-        try {
-            const likeComment = await postAPIs.likePost(id);
-        setPost(prevPost => ({
-            ...prevPost,
-            likes: likeComment.likes,
-            dislikes: likeComment.dislikes,
-        }));
-
-        } catch (error) {
-             console.log(error)
+        if(!likedClicked){
+            try {
+                const likeComment = await postAPIs.likePost(id);
+                setPost(prevPost => ({
+                    ...prevPost,
+                    likes: likeComment.likes,
+                    dislikes: likeComment.dislikes,
+                }));
+                setlikedClicked(true)
+            } catch (error) {
+                console.log(error)
+            }
+        } else{
+            return
         }
-        
+            
     }
     async function handleDislike(){
-        try {
-            const dislikeComment = await postAPIs.dislikePost(id);
-        setPost(prevPost => ({
-            ...prevPost,
-            likes: dislikeComment.likes,
-            dislikes: dislikeComment.dislikes,
-        }));
-        } catch (error) {
-             console.log(error)
+        if(!dislikedClicked){
+
+            try {
+                const dislikeComment = await postAPIs.dislikePost(id);
+                setPost(prevPost => ({
+                    ...prevPost,
+                    likes: dislikeComment.likes,
+                    dislikes: dislikeComment.dislikes,
+                }));
+                setDislikedClicked(true)
+            } catch (error) {
+                console.log(error)
+            }
+        }else{
+            return
         }
         
     }
@@ -74,7 +86,7 @@ export default function PostPage(){
                     {post.content}
                 </section>
                 <aside>
-                    <h4 onClick={handleLike}>Likes {post.likes}</h4>
+                    <h4  onClick={handleLike}>Likes {post.likes}</h4>
                     <h4 onClick={handleDislike}>Dislikes {post.dislikes}</h4>
                 </aside>
                 <footer>

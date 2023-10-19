@@ -110,7 +110,7 @@ export default function ForumPage({ user, setUser }) {
                         <h3>Created By: {forumPage.founder.username}</h3>
                         <h4>Members: {forumPage.numOfMembers}</h4>
                         <section>
-                            <button>  +  </button>
+                            <button>Follow</button>
                             <button>Sort By</button>
                             <button onClick={handleMakePostButton} >Make a Post</button>
                         </section>

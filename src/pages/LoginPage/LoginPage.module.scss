@@ -14,89 +14,98 @@
     background-size: cover;
     height: 100vh;
 
-        h2{
-            position: absolute;
-            color: black;
-            top:50vh;
-            font-size: 15px;
-            display: flex;
-            justify-content: center;
-            overflow: hidden; /* Ensures the text doesn't overflow its container */
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 0;
-            margin-left: 8vmin;
-            display: inline-block;
-            letter-spacing: .15em;
-            animation: typing 3s steps(40, end) reverse, blink-caret .75s step-end infinite;
-            overflow: hidden;
-            display: inline-block;
-            border-right: .15em solid #000;
-        }
-        .title {
-            position: absolute;
-            top:30vh;
-            width: 50vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: black;
-            font-size: 50px;
-            animation: fadeIn1 5s;
+    h2 {
+        position: absolute;
+        color: black;
+        top: 50vh;
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        overflow: hidden;
+        /* Ensures the text doesn't overflow its container */
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0;
+        margin-left: 8vmin;
+        display: inline-block;
+        letter-spacing: .15em;
+        animation: typing 3s steps(40, end) reverse, blink-caret .75s step-end infinite;
+        overflow: hidden;
+        display: inline-block;
+        border-right: .15em solid #000;
+    }
+
+    .title {
+        position: absolute;
+        top: 30vh;
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-weight: bold;
+        font-size: 50px;
+        animation: fadeIn 5s;
+        color: transparent;
+        background: rgb(180, 217, 247);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+
+    }
+
+    h1 {
+        display: flex;
+        width: 50vw;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 35vh;
+
+        p {
+            font-size: 20px;
             font-weight: 100;
-            
-        }
-        
-        h1 {
-            display: flex;
             width: 50vw;
-            justify-content: space-evenly;
-            position: absolute;
-            top:35vh;
-            
-            p {
-                font-size: 20px;
-                font-weight: 100;
-                width: 50vw;
-                display: flex;
-                justify-content: center;
-                
-                color: black;
-            }
-            
-            .make {
-                
-                animation: fadeIn1 1s;
-                
-            }
-            
-            .your {
-                
-                
-                animation: fadeIn1 2s;
-                
-            }
-            
-            .mark {
-                
-                animation: fadeIn1 3s;
-                
-            }
+            display: flex;
+            justify-content: center;
+
+            color: black;
         }
-    
-        h1:hover {
-            color: rgb(170, 218, 250);
+
+        .make {
+
+            animation: fadeIn1 1s;
+
         }
-        #change{
-            position: absolute;
-            top:0;
-            left:99vw;
+
+        .your {
+
+
+            animation: fadeIn1 2s;
+
         }
-        
-    
+
+        .mark {
+
+            animation: fadeIn1 3s;
+
+        }
+    }
+
+    h1:hover {
+        color: rgb(170, 218, 250);
+    }
+
+    #change {
+        position: absolute;
+        top: 0;
+        left: 99vw;
+    }
+
+
 }
 
-.about{
+.about {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -104,14 +113,18 @@
     align-items: center;
     width: 99vw;
     height: 120vh;
-    top:100px;
-    h1,p,h2{
+    top: 100px;
+
+    h1,
+    p,
+    h2 {
         width: 90vh;
     }
-    #change{
+
+    #change {
         position: absolute;
-        margin-left:98vw;
-        top:-30px;
+        margin-left: 98vw;
+        top: -30px;
     }
 }
 
@@ -178,10 +191,12 @@
         background-color: rgb(28, 28, 28);
         background-image: none;
         background-size: cover;
-        h2{
+
+        h2 {
             color: #FF6410;
 
         }
+
         .title {
             color: white;
 
@@ -201,15 +216,19 @@
     from {
         width: 100%;
     }
+
     to {
         width: 0;
     }
 }
 
 @keyframes blink-caret {
-    from, to {
+
+    from,
+    to {
         border-color: transparent;
     }
+
     50% {
         border-color: #000;
     }

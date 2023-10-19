@@ -20,7 +20,6 @@
         position: absolute;
         top: 10vh;
         width: 80vw;
-
         background-color: white;
         display: flex;
         flex-direction: column;
@@ -41,11 +40,12 @@
                 justify-content: center;
                 align-items: center;
                 height: 8vh;
-
-
+                width: 33%;
+                
             }
-
+            
             h2 {
+                width: 33%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -119,13 +119,14 @@
 
         .inputDiv {
 
-            width: 80vw;
+            width: 70vw;
             display: flex;
             margin-top: 10px;
-
+            align-items: center;
             input {
                 width: 75vw;
                 margin-bottom: 10px;
+                border-radius: 7px;
 
             }
 
@@ -135,57 +136,100 @@
                 margin-bottom: 10px;
 
             }
+            button:hover{
+                background-color: rgb(180, 217, 247);
+                color:white;
+            }
         }
     }
 }
 
 @media (max-width:900px) {
     .PostPage {
-        .postCard {
+        h1 {
+        }
+    
+        .postCard {           
             header {
-                h1 {}
-
-                h2 {}
+                h1 {
+                }
+                h2 {
+                }
             }
-
-            section {}
-
-            aside {}
-
-            footer {}
-
+            section {
+            }
+            aside {
+                h4 {
+                }
+                h4:hover {
+                }
+            }
+            footer {
+                h3 {
+                }
+                .commentSection {
+                    .comment {
+                    }
+                }
+            }
             .inputDiv {
-                input {}
+                input {
+                }
+                button {    
+                }
+                button:hover{
 
-                button {}
+                }
             }
         }
-
     }
+    
 }
 
 @media (prefers-color-scheme:dark) {
     .PostPage {
-        .postCard {
+        background-color: black;
+        color: #FF6410;
+        h1 {
+        }
+        
+        .postCard {    
+            background-color: rgb(28,28,28);       
+            color:white;
             header {
-                h1 {}
-
-                h2 {}
+                h1 {
+                }
+                h2 {
+                }
             }
-
-            section {}
-
-            aside {}
-
-            footer {}
-
+            section {
+            }
+            aside {
+                h4 {
+                }
+                h4:hover {
+                    color: #FF6410;
+                }
+            }
+            footer {
+                h3 {
+                }
+                .commentSection {
+                    .comment {
+                        color:black;
+                    }
+                }
+            }
             .inputDiv {
-                input {}
+                input {
+                }
+                button {    
+                }
+                button:hover{
+                    background-color: #FF6410;
 
-                button {}
+                }
             }
         }
-
     }
-
 }

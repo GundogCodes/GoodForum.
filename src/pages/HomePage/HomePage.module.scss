@@ -9,21 +9,22 @@
     animation: fadeIn 1s;
 
     .Name {
-        z-index: 3;
-        width: 100vw;
-        height: 1vh;
-        left: 0;
-        position: absolute;
-        font-size: 50px;
         display: flex;
         justify-content: center;
 
-
+        width: 100vw;
+        font-size: 50px;
+        color: transparent;
+background: rgb(180,217,247);
+-webkit-background-clip: text;
+-moz-background-clip: text;
+background-clip: text;
+text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
     }
-
 
     h4 {
         color: black;
+        
     }
 
     .buttonDiv {
@@ -106,11 +107,12 @@
         width: 15vw;
         height: 80vh;
         border-radius: 7px;
-        border: solid 1px;
+
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
         .userPic {
-            box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            margin-top: 5vmin;
             border-radius: 100px;
             display: flex;
             justify-content: center;
@@ -127,8 +129,20 @@
         }
 
         .userForums {
+            overflow-y: scroll;
+            margin-left: 2vw;
+            left: 0;
+            position: absolute;
             padding: 10px;
+            top:35vmin;
+            width: 10vw;
+            height: 30vh;
 
+            li{
+                margin-left: 2vw;
+                width: 8vw;
+                color: green
+            }
         }
     }
 
@@ -156,7 +170,6 @@
             top: 0px;
             width: 100vw;
             display: flex;
-
             align-items: center;
         }
 

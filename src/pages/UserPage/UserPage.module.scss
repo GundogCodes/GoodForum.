@@ -17,7 +17,13 @@
     .heading{
         width: 100vw;
         padding-left: 25vw;
-
+        font-size: 2em;
+        color: transparent;
+background: rgb(180,217,247);
+-webkit-background-clip: text;
+-moz-background-clip: text;
+background-clip: text;
+text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
     }
     
 }
