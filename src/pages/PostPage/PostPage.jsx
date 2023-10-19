@@ -21,10 +21,31 @@ export default function PostPage(){
         console.log(comment)
         setComment({text:e.target.value})
     }
-    function handleLike(){
+    async function handleLike(){
+        try {
+            const likeComment = await postAPIs.likePost(id);
+        setPost(prevPost => ({
+            ...prevPost,
+            likes: likeComment.likes,
+            dislikes: likeComment.dislikes,
+        }));
+
+        } catch (error) {
+             console.log(error)
+        }
         
     }
-    function handleDislike(){
+    async function handleDislike(){
+        try {
+            const dislikeComment = await postAPIs.dislikePost(id);
+        setPost(prevPost => ({
+            ...prevPost,
+            likes: dislikeComment.likes,
+            dislikes: dislikeComment.dislikes,
+        }));
+        } catch (error) {
+             console.log(error)
+        }
         
     }
     async function handleButtonClick(e){
@@ -53,20 +74,26 @@ export default function PostPage(){
                     {post.content}
                 </section>
                 <aside>
-                    <h4>Likes {post.likes}</h4>
-                    <h4>Dislikes {post.dislikes}</h4>
+                    <h4 onClick={handleLike}>Likes {post.likes}</h4>
+                    <h4 onClick={handleDislike}>Dislikes {post.dislikes}</h4>
                 </aside>
                 <footer>
                     <h3>Comments</h3>
-
+                    {post.comments?
+                    <>
                         {post.comments.length > 0?
-                        <ul className={styles.commentSection}>
+                            
+                            <ul className={styles.commentSection}>
                             {
                                 post.comments.map((comment)=>{
-                                    return <p className={styles.comment}>{comment.text}</p>
+                                    return <p className={styles.comment}>{post.sender.username}: {comment.text}</p>
                                 })
                             }
-                        </ul>
+                            </ul>
+                            :
+                            <></>
+                        }
+                        </>
                         :
                         <></>
                     }

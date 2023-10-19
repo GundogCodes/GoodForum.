@@ -1,20 +1,22 @@
-.PostPage{
+.PostPage {
     position: absolute;
-    top:33px;
-    width: 100vw;   
-    height: 100%;   
+    top: 33px;
+    width: 100vw;
+    height: 100%;
     background-color: rgb(245, 245, 245);
     border-top: solid 1px black;
-    color:black;
+    color: black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    h1{
+
+    h1 {
         position: absolute;
         height: 5vh;
     }
-    .postCard{
+
+    .postCard {
         position: absolute;
         top: 10vh;
         width: 80vw;
@@ -25,22 +27,25 @@
         align-items: center;
         border-radius: 7px;
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-        header{
+
+        header {
             display: flex;
             justify-content: space-around;
             flex-direction: row;
             align-items: center;
             width: 80vw;
             height: 8vh;
-            h1{
+
+            h1 {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 height: 8vh;
 
-                
+
             }
-            h2{
+
+            h2 {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -48,7 +53,8 @@
 
             }
         }
-        section{
+
+        section {
             height: 40vh;
             width: 80vw;
             background-color: gray;
@@ -56,62 +62,75 @@
             justify-content: center;
             align-items: center;
         }
-        aside{
+
+        aside {
 
             display: flex;
             align-items: center;
             height: 5vh;
             width: 80vw;
             border: solid 1px black;
-            h4{
+
+            h4 {
                 margin-left: 15px;
             }
-            h4:hover{
-                color: rgb(180,217,247);
+
+            h4:hover {
+                color: rgb(180, 217, 247);
             }
         }
-        footer{
+
+        footer {
             display: flex;
             flex-direction: column;
             width: 80vw;
             height: 30vh;
             align-items: center;
-            h3{
+
+            h3 {
                 align-self: flex-start;
                 padding-left: 15px;
             }
 
-                .commentSection{
-                    width: 77vw;
-                    height: 20vh;
-                    display: flex;
-                    justify-content: flex-start;
-                    flex-direction: column;
-                    left: 0;
-                    top: 60vh;
-                    overflow-y: scroll;
-                    
-                    .comment{
-                        margin: 5px;
-                        background-color: pink;
-                    list-style-type: none;
-                    position: absolute;
-                    width: 60vw;
+            .commentSection {
+                width: 77vw;
+                height: 20vh;
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                left: 0;
+                top: 60vh;
+                overflow-y: visible;
+
+                .comment {
+                    overflow-y: visible;
+                    overflow-X: visible;
+                    margin: 4px;
+                    background-color: white;
+                    width: 70vw;
                     height: 5vh;
+                    padding: 15px;
+                    border-radius: 7px;
+                    border: solid 1px black;
+
                 }
             }
         }
-        .inputDiv{
+
+        .inputDiv {
 
             width: 80vw;
             display: flex;
             margin-top: 10px;
-            input{
+
+            input {
                 width: 75vw;
                 margin-bottom: 10px;
-                
+
             }
-            button{
+
+            button {
+                border-radius: 7px;
                 width: 10vw;
                 margin-bottom: 10px;
 
@@ -120,40 +139,53 @@
     }
 }
 
-@media (max-width:900px) {   
-    .PostPage{
-        .postCard{
-            header{
-                h1{}
-                h2{}
+@media (max-width:900px) {
+    .PostPage {
+        .postCard {
+            header {
+                h1 {}
+
+                h2 {}
             }
-            section{}
-            aside{}
-            footer{}
-            .inputDiv{
-                input{}
-                button{}
+
+            section {}
+
+            aside {}
+
+            footer {}
+
+            .inputDiv {
+                input {}
+
+                button {}
             }
         }
-        
+
     }
 }
+
 @media (prefers-color-scheme:dark) {
-    .PostPage{
-        .postCard{
-            header{
-                h1{}
-                h2{}
+    .PostPage {
+        .postCard {
+            header {
+                h1 {}
+
+                h2 {}
             }
-            section{}
-            aside{}
-            footer{}
-            .inputDiv{
-                input{}
-                button{}
+
+            section {}
+
+            aside {}
+
+            footer {}
+
+            .inputDiv {
+                input {}
+
+                button {}
             }
         }
-           
+
     }
-    
+
 }
