@@ -47,9 +47,10 @@ export default function HomePage({ user, setUser }) {
                 <div className={styles.userPic}>UserPic</div>
                 {user ?
                 <>
-                    <div className={styles.username}>{user ? `Hey, ${user.username}` : 'Login'}</div>
-                    <h4>Your Quarries</h4>
+                    <div className={styles.username}>{user ? `Hey, ${user.username}` : 'Login'}
+                    </div>
                     <ul className={styles.userForums}>
+                    <h4>Your Quarries</h4>
                         <li>hi</li>
                         <li>hi</li>
                         <li>hi</li>
