@@ -48,6 +48,7 @@ export default function NavBar({ user, setUser }) {
               <Link to={'/chats'}><p onClick={handleClick} className={styles.unclicked}>Messages</p></Link>
             }
           </section>
+          <h1 className={styles.Name}>Etch</h1>
 
           <LogOut user={user} setUser={setUser} />
         </>

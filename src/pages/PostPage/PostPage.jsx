@@ -63,12 +63,17 @@ export default function PostPage(){
     async function handleButtonClick(e){
         e.preventDefault()
         console.log(comment)
-        try {
-            const commentedPost = await postAPIs.commentOnPost(comment, id)
-            setPost(commentedPost)
-        } catch (error) {
-            console.log(error)
-            
+        if(comment ===' ' || ''){
+            return 
+        } else{
+
+            try {
+                const commentedPost = await postAPIs.commentOnPost(comment, id)
+                setPost(commentedPost)
+            } catch (error) {
+                console.log(error)
+                
+            }
         }
 
     }

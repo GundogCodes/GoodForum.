@@ -47,7 +47,9 @@ const dataController = {
     //R
     async getUser(req, res, next) {
         try {
-            const foundUser = await User.findOne({ _id: req.params.id }).populate('posts')
+            const foundUser = await User.findOne({ _id: req.params.id })
+            .populate('followedForums')
+            .populate('posts')
             console.log('foundUser in controller', foundUser)
             if (!foundUser) {
                 res.status(200).json('User not found')

@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import * as postAPI from '../../../utilities/post-api.cjs'
 import { useNavigate } from 'react-router-dom'
+import SearchBar from '../../components/SearchBar/SearchBar'
 export default function HomePage({ user, setUser }) {
     const [forums, setForums] = useState([])
     const [allPosts, setAllPosts] = useState([])
@@ -32,7 +33,11 @@ export default function HomePage({ user, setUser }) {
     }
     return (
         <div className={styles.HomePage}>
-            <h1 className={styles.Name}>Etch</h1>
+           {forums?
+            <SearchBar forums={forums} />
+            :
+            <></>
+           }
             {showModal ?
                 <FormModal title={'Create a New Quarry'}
                 showModal={showModal}
@@ -51,12 +56,14 @@ export default function HomePage({ user, setUser }) {
                     </div>
                     <ul className={styles.userForums}>
                     <h4>Your Quarries</h4>
-                        <li>hi</li>
-                        <li>hi</li>
-                        <li>hi</li>
-                        <li>hi</li>
-                        <li>hi</li>
-                        <li>hi</li>
+                        {user.followedForums.length >0 ?
+                        user.followedForums.map((forum)=>{
+                            return <li className={styles.forumTitles}> {forum}</li>
+                        })
+                        :
+                        <></>
+                        }
+                        
                     </ul>
                 </>
 
@@ -82,7 +89,3 @@ export default function HomePage({ user, setUser }) {
         </div>
     )
 }
-
-
-
-
