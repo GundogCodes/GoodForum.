@@ -1,11 +1,10 @@
 .HomePage {
-    position: absolute;
-    height: 100vh;
+    position: fixed;
     width: 100vw;
     //background-color: rgb(227,211,166);
     //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     border-top: solid 1px black;
-    top:31px;
+    top:32px;
     animation: fadeIn 1s;
 
     h4 {
