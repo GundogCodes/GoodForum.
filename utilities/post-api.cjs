@@ -3,7 +3,7 @@ import sendRequest from "./send-request.cjs";
 const BASE_URL = '/api/post'
 
 export function getPost(postId){
-    return sendRequest(`${BASE_URL}/${postId}`)
+    return sendRequest(`${BASE_URL}/${postId}`) //works
 }
 export function makePost(postData){
     return sendRequest(`${BASE_URL}}`, 'POST', postData)

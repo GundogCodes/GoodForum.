@@ -72,8 +72,7 @@ exports.showAforum = async (req, res) => {
         const forum = await Forum.findOne({ '_id': req.params.id }).populate('posts')
         .populate('founder')
         const forumPosts = await Post.find({forum:forum._id}).populate('sender')
-
-        res.json({forum,forumPosts})
+        res.json(forum)
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
@@ -106,32 +105,24 @@ exports.addAMember = async (req, res) => {
         if (!req.user) {
             res.json('please login to continue')
         } else {
-            const newMember = await User.findOne({ _id: req.user._id })
-            const newFollowedForum = await Forum.findOne({ _id: req.params.id })
-            const isMember = await Forum.exists({ _id: req.params.id, members: req.user._id })
-            if (isMember) {
-                res.json('Already a Member')
-            } else {
-                await User.findOneAndUpdate({ _id: newMember._id }, { $addToSet: { followedForums: newFollowedForum } }, { new: true })
-                const newForum = await Forum.findOneAndUpdate(
-                    {_id: req.params.id},
-                    {$addToSet: { members: newMember },
-                    $inc: { numOfMembers: 1 }},
+                const newForum =await Forum.findOneAndUpdate({_id:req.params.id}, 
+                   { $inc:{numOfMembers:1},
+                    $pull:{members:req.user._id}},{new:true}
+                    ).populate('founder')
+                    .populate('posts')
+                await User.findOneAndUpdate({_id:req.user._id},
+                    {$push:{followedForums:req.params.id}},
                     {new:true}
                 )
-
                 res.json(newForum)
-            }
+
         }
     } catch (error) {
         res.status(400).json({ error: error.message })
-
     }
 }
 exports.removeAMember = async (req, res) => {
     try {
-        const forum = await Forum.findOne({_id:req.params.id})
-        const user = await User.findOne({_id:req.user._id})
         if (!req.user) {
             res.json('please login to continue')
         } else {
@@ -140,7 +131,8 @@ exports.removeAMember = async (req, res) => {
                 const newForum =await Forum.findOneAndUpdate({_id:req.params.id}, 
                    { $inc:{numOfMembers:-1},
                     $pull:{members:req.user._id}},{new:true}
-                    )
+                    ).populate('founder')
+                    .populate('posts')
                 await User.findOneAndUpdate({_id:req.user._id},
                     {$pull:{followedForums:req.params.id}},
                     {new:true}

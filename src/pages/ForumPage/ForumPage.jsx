@@ -12,9 +12,9 @@ import SearchBar from '../../components/SearchBar/SearchBar'
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
     const navigate = useNavigate()
+    const [isMember, setIsMember] = useState()
     const [showPost, setShowPost] = useState(false)
     const [forumPage, setForumPage] = useState()
-    const [forumPosts, setForumPosts] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
     const [postId, setPostId] = useState()
     const [postData, setPostData] = useState({
@@ -24,15 +24,27 @@ export default function ForumPage({ user, setUser }) {
     useEffect(() => {
         (async () => {
             try {
-                const { forum, forumPosts } = await forumService.getForum(id)
+                const forum = await forumService.getForum(id)
                 //console.log('forum: ', forum)
                 setForumPage(forum)
-                setForumPosts(forumPosts)
             } catch (error) {
                 console.log(error)
             }
         })()
     }, [id])
+
+    useEffect(() => {
+        if (!user) {
+            return
+        } else {
+            if (user.followedForums.includes(id)) {
+                setIsMember(true)
+            } else {
+                setIsMember(false)
+            }
+        }
+    },[user])
+
 
     function handleMakePostButton() {
         setShowPostModal(true)
@@ -70,13 +82,35 @@ export default function ForumPage({ user, setUser }) {
         }
     }
     async function handleDislikeClick() {
-
+        
     }
     function handlePostClick(e) {
         //console.log('postId in handlePostClick',e.currentTarget.getAttribute('postId'))
         const id = e.currentTarget.getAttribute('postId')
         navigate(`/post/${id}`)
     }
+    async function handleIsMemberClick() {
+        try {
+            const updatedForum = await forumService.removeMember(id)
+            setIsMember(false)
+            console.log(updatedForum)
+            setForumPage(updatedForum)
+        } catch (error) {
+            console.log({ error: error })
+            
+        }
+    }
+    async function handleisNotMemberClick() {
+        try {
+            const updatedForum = await forumService.addMember(id)
+            setIsMember(true)
+            setForumPage(updatedForum)
+        } catch (error) {
+            console.log({ error: error })
+            
+        }
+    }
+
 
     return (
         <div className={styles.ForumPage}>
@@ -112,7 +146,11 @@ export default function ForumPage({ user, setUser }) {
                         <h3>Created By: {forumPage.founder.username}</h3>
                         <h4>Members: {forumPage.numOfMembers}</h4>
                         <section>
-                            <button>Follow</button>
+                            {isMember ?
+                                <button onClick={handleIsMemberClick}>Following</button>
+                                :
+                                <button onClick={handleisNotMemberClick}>Follow</button>
+                            }
                             <button>Sort By</button>
                             <button onClick={handleMakePostButton} >Make a Post</button>
                         </section>
@@ -120,7 +158,7 @@ export default function ForumPage({ user, setUser }) {
                     {forumPage.posts.length > 0 ?
 
                         <ul>
-                            {forumPosts.map((post) => {
+                            {forumPage.posts.map((post) => {
                                 return <li onClick={handlePostClick} postId={post._id}>
                                     <section>
                                         <h2>{post.title} </h2>
