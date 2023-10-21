@@ -15,7 +15,7 @@ export default function UserPage({user,setUser}){
         <div className={styles.UserPage}>
             <h1 className={styles.heading} >Your Posts</h1>
             {showModal?
-           <PostModal showModal={showModal} setShowModal={setShowModal} />
+           <PostModal user={user} setUser={setUser} showModal={showModal} setShowModal={setShowModal} />
             :
             <></>
             }

@@ -20,9 +20,9 @@ export default function HomePosts({ allPosts }) {
                         </section>
                         <h3 onClick={handlePostClick} id={`${post._id}`} >{post.content} </h3>
                         <aside onClick={handlePostClick} id={`${post._id}`} >
-                            <p >Likes {post.likes}</p>
-                            <p >Dislikes {post.dislikes}</p>
-                            <p className={styles.comment}>Comments {post.comments.length}</p>
+                            <p id={`${post._id}`} onClick={handlePostClick}  className={styles.likes} >Likes {post.likes}</p>
+                            <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislikes}  >Dislikes {post.dislikes}</p>
+                            <p id={`${post._id}`} onClick={handlePostClick} className={styles.comment}>Comments {post.comments.length}</p>
                         </aside>
                     </li>
 

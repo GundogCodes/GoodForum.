@@ -7,6 +7,7 @@ import * as forumService from '../../../utilities/forum-api.cjs'
 import * as postService from '../../../utilities/post-api.cjs'
 import PostModal from '../../components/PostModal/PostModal'
 import { useNavigate } from 'react-router-dom'
+import SearchBar from '../../components/SearchBar/SearchBar'
 
 export default function ForumPage({ user, setUser }) {
     const { id } = useParams()
@@ -79,6 +80,7 @@ export default function ForumPage({ user, setUser }) {
 
     return (
         <div className={styles.ForumPage}>
+            <SearchBar />
             {forumPage ?
                 <>
                     {showPost ?

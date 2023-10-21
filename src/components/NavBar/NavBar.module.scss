@@ -1,4 +1,4 @@
-.NavBarDiv{
+.NavBarDiv {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -17,24 +17,35 @@
 
     width: 100vw;
 
-background: rgb(180,217,247);
--webkit-background-clip: text;
--moz-background-clip: text;
-background-clip: text;
-text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+    background: rgb(180, 217, 247);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
 
-    h1{
+    .Name {
+
+        color: transparent;
+        background: rgb(180, 217, 247);
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+    }
+
+    h1 {
         font-size: 30px;
         width: 100vw;
     }
-    section{
+
+    section {
         width: 100vw;
         height: 30px;
         display: flex;
         align-items: center;
 
 
-        p{
+        p {
             color: black;
             display: flex;
             justify-content: center;
@@ -44,34 +55,39 @@ text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
             font-size: 15px;
             padding: 5px;
             border-radius: 4px;
-            top:0;
+            top: 0;
         }
-        p:hover{
-            background-color:rgb(170,218,250);
+
+        p:hover {
+            background-color: rgb(170, 218, 250);
             flex-direction: row;
             justify-content: center;
             display: flex;
             color: white;
-            
+
         }
     }
-    .clicked{
+
+    .clicked {
         color: white;
-        background-color:rgb(170,218,250);
+        background-color: rgb(170, 218, 250);
     }
-    .unclicked{
+
+    .unclicked {
         background-color: white;
     }
-    
+
 }
+
 @media (max-width:900px) {
-    .NavBarDiv{
+    .NavBarDiv {
         position: fixed;
 
         height: 5vh;
         bottom: 0;
         z-index: 1;
-        .titles{
+
+        .titles {
             height: 5vh;
         }
     }
@@ -79,8 +95,9 @@ text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
 
 
 @media (prefers-color-scheme:dark) {
-    .NavBarDiv{
-        background-color: rgb(28,28,28);
+    .NavBarDiv {
+        background-color: rgb(28, 28, 28);
+
         .Name {
             color: transparent;
             background: #FF6410;
@@ -89,24 +106,26 @@ text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
             background-clip: text;
             text-shadow: 0px 3px 3px rgba(166, 39, 39, 0.5);
         }
-        
-        section{
 
-            p{
-                color:white;
-                
+        section {
+
+            p {
+                color: white;
+
             }
-            p:hover{
+
+            p:hover {
                 background-color: #FF6410;
             }
         }
-        .clicked{
+
+        .clicked {
             background-color: #FF6410;
         }
-        .unclicked{
-            color:white;
-            background-color: rgb(28,28,28);
+
+        .unclicked {
+            color: white;
+            background-color: rgb(28, 28, 28);
         }
     }
 }
-

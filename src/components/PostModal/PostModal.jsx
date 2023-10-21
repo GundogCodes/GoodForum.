@@ -15,12 +15,23 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
             <h1>Make A Post</h1>
             </div>
             <aside>
-            <h2>Title</h2>
+                <h3>Forum</h3>
+                <div className={styles.forumList} >
+                    {
+                    user.followedForums.map((forum)=>{
+                        return <h4>forum title{forum.title}</h4>
+                    })
+                    
+                        
+                    }
+                </div>
+            <h3>Title</h3>
             <input type='text'/>
             </aside>
             <aside>
-            <h2 >Content</h2>
+            <h3 >Content</h3>
             <input id={styles.content} type='text'/>
+            <button>Post</button>
             </aside>
           </section>
             </div>

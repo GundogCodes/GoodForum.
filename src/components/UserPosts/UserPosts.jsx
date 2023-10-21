@@ -46,9 +46,9 @@ export default function UserPosts({user, setUser}){
                                     </section>
                                     <h3 id={`${post._id}`} onClick={handlePostClick} >{post.content} </h3>
                                     <aside id={`${post._id}`} onClick={handlePostClick}>
-                                        <p className={styles.like}>{post.likes} Likes</p>
-                                        <p className={styles.dislike}>{post.dislikes} Dislikes</p>
-                                        <p className={styles.comment}>Comments {post.comments.length}</p>
+                                        <p id={`${post._id}`} onClick={handlePostClick} className={styles.like}>{post.likes} Likes</p>
+                                        <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislike}>{post.dislikes} Dislikes</p>
+                                        <p id={`${post._id}`} onClick={handlePostClick} className={styles.comment}>Comments {post.comments.length}</p>
                                     </aside>
                         </li>
                     })

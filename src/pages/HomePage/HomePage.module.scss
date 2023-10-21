@@ -8,20 +8,6 @@
     top:31px;
     animation: fadeIn 1s;
 
-    .Name {
-        display: flex;
-        justify-content: center;
-
-        width: 100vw;
-        font-size: 50px;
-        color: transparent;
-background: rgb(180,217,247);
--webkit-background-clip: text;
--moz-background-clip: text;
-background-clip: text;
-text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
-    }
-
     h4 {
         color: black;
         
@@ -343,29 +329,5 @@ text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
     }
     50% {
         border-color: #000;
-    }
-}
-
-@keyframes borderHighlightDarkMode {
-
-    0%,
-    100% {
-        border-color: #FF6410;
-        /* Initial and final border color */
-    }
-
-    25% {        border-color: white;
-        /* Highlighted border color */
-    }
-
-    50% {
-        border-color: #FF6410;
-        /* Initial and final border color */
-
-    }
-
-    75% {
-        border-color: white;
-        /* Highlighted border color */
     }
 }

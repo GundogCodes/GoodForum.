@@ -2,53 +2,109 @@
     position: absolute;
     width: 100vw;
     height: 100vh;
-    margin-left: 0;
     z-index: 1;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
     backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
     animation: fadeIn 1s;
-    section{
-        
+    .form{
         animation: fadeIn 0.5s;
-        background-color: white;
         border-radius: 7px;
         width: 60vw;
         height: 30vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-self: center;
-        .form{
-            background-color: pink;
-            height: 30vh;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+        section{
+            display: flex;
+            flex-direction: column;
             .heading{
+                width: 60vw;
                 display: flex;
-                justify-content: space-evenly;
                 p{
-                    color:red;
+                    color:rgb(180,217,247);
                     font-size: 25px;
-                    align-self: flex-start;
+                    padding-left: 30px;
                 }
                 h1{
+                    display: flex;
+                    justify-content: center;
+                    width: 55vw;
                     align-self: center;
                 }
             }
             aside{
-                
+
+                width: 40vw;
+
                 align-self: center;
-                h2{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                button{
+                    margin-left: 10px;
+                    background-color: white;
+                    border-color: white;
+                    width: 60px;
+                    height: 20px;
+
+                }
+                button:hover{
+                    background-color: rgb(180,217,247);
+                    color: white;
+                }
+                .forumList{
+                    display: flex;
+                    justify-content: center;
+                    width: 40vw;
+                    height: 30px;
+                    background-color: white;
+                    border-radius: 7px;
+                    margin: 10px;
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                    overflow-x: scroll;
+                    list-style-type: none;
+                    padding: 0;
+                    overflow-y: hidden;
+                    h4{
+                        height: 25px;
+                        background-color: white;
+                        margin-top: 2.5px;
+                        margin-right: 2.5px;
+                        margin-left: 2.5px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 10vw;
+                        border-radius: 7px;
+                    }
+                    h4:hover{
+                        padding: 0;
+                        background-color: rgb(180,217,247);
+                        color: white;
+                    }
+                   
+                }
+                h3{
                     
+                    margin: 10px;
                     
                 }
                 input{
-                    align-self: center;
-                    width: 30vw;
+                    
+                    margin: 10px;
+                    align-self: flex-start;
+                    width: 40vw;
+                    border-radius: 7px;
+                    border: solid 1px black;
+                    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
                 }
                 #content{
-                    height:10vh;
+                    margin: 10px;
+                    height:5vh;
                 }
             }
         }

@@ -79,7 +79,6 @@ export default function PostPage(){
     }
     return(
         <div className={styles.PostPage}>
-            <h1>ETCH</h1>
             {post?
             <div className={styles.postCard}>
                 <header>

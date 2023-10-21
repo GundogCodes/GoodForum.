@@ -68,14 +68,14 @@
                     margin-left:5px ;
                     margin-right:5px ;
                 }
-                .like:hover,.dislike:hover,.comment:hover{
+                .likes:hover,.dislikes:hover,.comment:hover{
                     color: rgb(171,211,246);
                 }
             }
 
         }
         li:hover{
-            padding: 7px;
+            padding: 4px;
             transition: 0.1s;
             border-radius: 7px;
 
@@ -147,14 +147,14 @@
                 aside{
                     p{
                     }
-                    .like:hover,.dislike:hover,.comment:hover{
+                    .likes:hover,.dislikes:hover,.comment:hover{
                         color: #FF6410;
                     }
                 }
                 
             }
             li:hover{
-                padding: 7px;
+                padding: 4px;
                 transition: 0.1s;
                 border-radius: 7px;
             }
