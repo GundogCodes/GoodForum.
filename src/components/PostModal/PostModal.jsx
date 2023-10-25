@@ -15,7 +15,7 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
             <h1>Make A Post</h1>
             </div>
             <aside>
-                <h3>Forum</h3>
+                <h3>Your Quarries </h3>
                 <div className={styles.forumList} >
                     {
                     user.followedForums.map((forum)=>{
@@ -30,7 +30,9 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
             </aside>
             <aside>
             <h3 >Content</h3>
-            <input id={styles.content} type='text'/>
+            <input id={styles.textField} type='text'/>
+            <input type='file'/>
+
             <button>Post</button>
             </aside>
           </section>

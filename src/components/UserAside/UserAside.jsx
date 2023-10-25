@@ -7,16 +7,16 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     const addUserImage  = async (userId,newImage)=>{
         try {
             const userImage = await userService.updateUserInfo(userId,newImage)
-            
+            setUserPic(userImage)
         } catch (error) {
             console.log(error)
         }
     }
-
+    
     function setShow(){
         setShowModal(true)
     }
-
+    
     function handleSubmit(e){
         e.preventDefault()
         addUserImage(user._id,userPic)
@@ -27,6 +27,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
         const base64 = await convertToBase64(file)
         console.log(base64)
         setUserPic({...userPic,profileImage:base64 })
+        
     }
     
     return(

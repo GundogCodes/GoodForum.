@@ -1,11 +1,14 @@
-import { useReducer, useState } from 'react'
+import {  useState } from 'react'
 import LogOut from '../Logout/Logout'
 import styles from './NavBar.module.scss'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 export default function NavBar({ user, setUser }) {
   const [youClicked, setYouClicked] = useState(false)
   const [homeClicked, setHomeClicked] = useState(false)
   const [messagesClicked, setMessagesClicked] = useState(false)
+
+  const navigate = useNavigate()
 
   function handleClick(e) {
     const butt = e.target.innerText
@@ -23,6 +26,10 @@ export default function NavBar({ user, setUser }) {
       setHomeClicked(false)
       setMessagesClicked(true)
     }
+  }
+
+  function handleEtchClick(){
+    navigate('/')
   }
 
 
@@ -48,7 +55,7 @@ export default function NavBar({ user, setUser }) {
               <Link to={'/chats'}><p onClick={handleClick} className={styles.unclicked}>Messages</p></Link>
             }
           </section>
-          <h1 className={styles.Name}>Etch</h1>
+          <h1 onClick={handleEtchClick} className={styles.Name}>Etch</h1>
 
           <LogOut user={user} setUser={setUser} />
         </>

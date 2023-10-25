@@ -14,13 +14,14 @@
         animation: fadeIn 0.5s;
         border-radius: 7px;
         width: 60vw;
-        height: 30vw;
+        height: 50vw;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
         section{
             display: flex;
             flex-direction: column;
             .heading{
+                margin-top: -20px;
                 width: 60vw;
                 display: flex;
                 p{
@@ -45,6 +46,7 @@
                 align-items: flex-start;
                 button{
                     margin-left: 10px;
+                    margin-top: 10px;
                     background-color: white;
                     border-color: white;
                     width: 60px;
@@ -102,9 +104,8 @@
                     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
                 }
-                #content{
-                    margin: 10px;
-                    height:5vh;
+                #textField{
+
                 }
             }
         }
@@ -117,52 +118,52 @@
 }
 @media(prefers-color-scheme:dark){
     .PostModal{
-        width: 100vw;
-        height: 100vh;
-    
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        section{
-            
-            animation: fadeIn 0.5s;
+
+        .form{
             background-color: rgb(28,28,28);
-            border-radius: 7px;
-            width: 60vw;
-            height: 30vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-self: center;
-            .form{
-                background-color: pink;
-                height: 30vh;
+            section{
+
                 .heading{
-                    display: flex;
-                    justify-content: space-evenly;
+
                     p{
-                        color:red;
-                        font-size: 25px;
-                        align-self: flex-start;
+                        color: #FF6410;
                     }
                     h1{
-                        align-self: center;
+
                     }
                 }
                 aside{
-                    
-                    align-self: center;
-                    h2{
-                        
-                        
+
+                    button{
+                        border: none;
+                        border-radius: 4px;
+                        background-color: #FF6410;
+                    }
+                    button:hover{
+
+                    }
+                    .forumList{
+
+                        h4{
+                            background-color: rgb(28,28,28);
+                            overflow-x: hidden;
+                        }
+                        h4:hover{
+                        background-color: #FF6410;
+
+                        }
+                       
+                    }
+                    h3{
+
+  
                     }
                     input{
-                        align-self: center;
-                        width: 30vw;
+
                     }
                     #content{
-                        height:10vh;
+
+
                     }
                 }
             }

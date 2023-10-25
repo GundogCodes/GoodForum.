@@ -1,4 +1,4 @@
-import cors from 'cors'
+//import cors from 'cors'
 const checkToken = require('./config/checkToken.cjs')
 const express = require('express')
 
@@ -25,7 +25,7 @@ app.use(checkToken)
 
 //use logger to log http requests
 app.use(logger('dev'))
-app.use(cors())
+//app.use(cors())
 //check if there is a user in the requests
 const ensureLoggedIn  = require('./config/ensureLoggedIn.cjs')
 
