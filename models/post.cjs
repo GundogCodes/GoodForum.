@@ -9,7 +9,10 @@ const postSchema = new mongoose.Schema({
     comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
     likes:{type:Number, default:0},
     dislikes:{type:Number, default:0},
-    edited:{type:Boolean, default:false}
+    edited:{type:Boolean, default:false},
+    image:{type:String},
+    link:{type:String},
+    video:{type:String}
     
 }, {
     timestamps:true

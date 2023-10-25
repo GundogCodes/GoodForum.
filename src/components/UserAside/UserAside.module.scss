@@ -22,6 +22,7 @@
     .userPic{
 
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
@@ -29,6 +30,22 @@
         width: 15vw;
         height: 15vw;
         border-radius: 90px;
+        input{
+            background-color: rgb(93, 58, 58);
+            display: flex;
+            flex-direction: column;
+            width: 10vw;
+            color: white;
+            border-radius: 3px;
+        }
+        button{
+            border-radius: 3px;
+            padding: 5px;
+            background-color: red;
+        }
+        img{
+            width: 10vw;
+        }
     }
 
     .controlPanel{
@@ -51,9 +68,21 @@
         }
         .setting{
             background-color: rgb(236,106,94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                width: 20px;
+            }
         }
         .friends{
             background-color: rgb(244,191,79);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                width: 20px;
+            }
         }
         .edit{
             background-color: rgb(99,200,85);

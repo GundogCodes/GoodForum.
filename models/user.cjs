@@ -20,13 +20,14 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     required: true
   },
+  profileImage:{type:String, default:'none'},
   posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   dislikedPosts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   likedPosts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
 
   friends:[{type:mongoose.Schema.Types.ObjectId, ref:'User'}],
   chats:[{type: mongoose.Schema.Types.ObjectId, ref:'privateMessage'}], //probably need to change this
-  
+
   foundedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}],
   followedForums:[{type:mongoose.Schema.Types.ObjectId,ref:'Forum'}]
   }, {

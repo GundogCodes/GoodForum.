@@ -7,17 +7,20 @@ export default function SearchBar({ forums }) {
     const navigate = useNavigate()
     const inputBar = useRef(null)
     const [userSearch, setUserSearch] = useState('')
-
+    const [matchedSearches,setMatchedSearches]= useState([])
+    console.log('forums in SearchBar', forums)
+    
     function handleChange(e) {
         const foundSearchedItem = []
+        console.log(userSearch)
         setUserSearch(e.target.value)
         if (userSearch === null || userSearch === '  Search Scamazon.com') {
             setMatchedSearches([])
         } else {
-            for (let name of itemNameArr) {
+            for (let forum of forums) {
 
-                if (name.toLowerCase().includes(userSearch.toLowerCase())) {
-                    foundSearchedItem.push(name)
+                if (forum.title.toLowerCase().includes(userSearch.toLowerCase())) {
+                    foundSearchedItem.push(forum.title)
                     setMatchedSearches(foundSearchedItem)
                 }
             }
@@ -25,22 +28,22 @@ export default function SearchBar({ forums }) {
     }
     // HANDLE SEARCH BUTTON CLICK
     function handleButtonClick() {
-        const idOfMatchedResult = []
-        for (let element of matchedSearches) {
-            for (let item of searchableItems) {
-                if (element === item.name) {
-                    idOfMatchedResult.push({
-                        name: item.name,
-                        itemId: item._id, itemPrice: item.price,
-                        itemDes: item.description,
-                        itemRating: item.rating,
-                        img: item.image
-                    })
-                }
-            }
-        }
-        setDataOfMatchedSearches(idOfMatchedResult)
-        navigate('/search')
+        // const idOfMatchedResult = []
+        // for (let element of matchedSearches) {
+        //     for (let item of searchableItems) {
+        //         if (element === item.name) {
+        //             idOfMatchedResult.push({
+        //                 name: item.name,
+        //                 itemId: item._id, itemPrice: item.price,
+        //                 itemDes: item.description,
+        //                 itemRating: item.rating,
+        //                 img: item.image
+        //             })
+        //         }
+        //     }
+        // }
+        // setDataOfMatchedSearches(idOfMatchedResult)
+        // navigate('/search')
     }
     //HANDLE LI CLICK
     function handleLiClick(e) {
@@ -81,7 +84,7 @@ export default function SearchBar({ forums }) {
     return (
         <div className={styles.SearchBar}>
             <div className={styles.form}>
-                <input placeholder='Search Quarries...' type='text' />
+                <input onChange={handleChange} placeholder='Search Quarries...' type='text' />
                 <button>Search</button>
             </div>
             {/* {matchedSearches.length > 0 && (
