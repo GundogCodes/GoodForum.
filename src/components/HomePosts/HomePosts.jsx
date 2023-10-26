@@ -16,7 +16,11 @@ export default function HomePosts({ allPosts }) {
                         <section onClick={handlePostClick} id={`${post._id}`} >
                             <h4>{post.forum.title} </h4>
                             <h2>{post.title} </h2>
+                            {post.sender.username ?
                             <h1>{post.sender.username} </h1>
+                            :
+                            <h1>Deleted User</h1>
+                        }
                         </section>
                         <h3 onClick={handlePostClick} id={`${post._id}`} >{post.content} </h3>
                         <aside onClick={handlePostClick} id={`${post._id}`} >

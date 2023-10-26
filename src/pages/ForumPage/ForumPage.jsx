@@ -143,7 +143,11 @@ export default function ForumPage({ user, setUser }) {
                     <header>
                         <h1>{forumPage.title}</h1>
                         <h2>{forumPage.description}</h2>
+                        {forumPage.founder?
                         <h3>Created By: {forumPage.founder.username}</h3>
+                        :
+                        <h3>Created By: User Deleted</h3>
+                    }
                         <h4>Members: {forumPage.numOfMembers}</h4>
                         <section>
                             {isMember ?

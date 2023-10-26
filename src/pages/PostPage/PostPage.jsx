@@ -82,7 +82,11 @@ export default function PostPage(){
             {post?
             <div className={styles.postCard}>
                 <header>
+                    {post.sender?
                     <h2>{post.sender.username}</h2>
+                    :
+                    <></>
+                }
                     <h1>{post.title}</h1>
                     <h2>{post.forum.title}</h2>
                 </header>
