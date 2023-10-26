@@ -85,7 +85,7 @@ export default function HomePage({ user, setUser }) {
             </ul>
 
 
-
+        <Footer />
         </div>
     )
 }
