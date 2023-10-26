@@ -7,6 +7,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     const addUserImage  = async (userId,newImage)=>{
         try {
             const userImage = await userService.updateUserInfo(userId,newImage)
+            console.log('userIMage from api call',userImage)
             setUserPic(userImage)
         } catch (error) {
             console.log(error)
@@ -19,7 +20,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     
     function handleSubmit(e){
         e.preventDefault()
-        addUserImage(user._id,userPic)
+        addUserImage(user._id,file)
     }
     async function handleUserPicUpload(e){
         const file = e.target.files[0]

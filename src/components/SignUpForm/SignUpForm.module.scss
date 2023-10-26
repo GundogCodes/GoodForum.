@@ -1,4 +1,4 @@
-.signUpFormDiv{
+.signUpFormDiv {
     width: 50vw;
     height: 50vw;
     display: flex;
@@ -7,47 +7,52 @@
     align-items: center;
 
 
-    .title{
+    .title {
         justify-self: center;
         font-family: 'Orbitron', sans-serif;
         position: fixed;
-        top:20vh;
+        top: 20vh;
         font-size: 2.5vmin;
         display: flex;
         flex-direction: column;
         align-items: center;
-        p{
+
+        p {
             margin-top: 0;
-            font-size:20px;
+            font-size: 20px;
         }
-        .buttonDiv{
+
+        .buttonDiv {
             width: 25vw;
 
             display: flex;
             flex-direction: row;
         }
     }
-    .signUpForm{
+
+    .signUpForm {
         top: 0;
         height: 50vh;
-        width:50vw;
+        width: 50vw;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
 
         padding-left: 20vw;
-        .text{
+
+        .text {
             font-size: 20px;
             font-family: 'Gruppo', sans-serif;
-            
-            
+
+
         }
-        .inputText{
-            
+
+        .inputText {
+
             background-color: green;
             font-family: 'Gruppo', sans-serif;
-            color:black;
+            color: black;
             height: 20px;
             width: 25vw;
             background-color: white;
@@ -57,7 +62,8 @@
             box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
         }
-        .submit{
+
+        .submit {
             font-size: 1.5vmin;
             display: flex;
             flex-direction: row;
@@ -68,45 +74,84 @@
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
             border-color: white;
             height: 20px;
-            color:black;
+            color: black;
             margin-top: 1vmin;
             padding-bottom: 0.8vmin;
             padding-top: 0.8vmin;
             margin-bottom: 10vmin;
 
-            
+
         }
-        .submit:hover{
-            background-color:rgb(170,218,250); ;
+
+        .submit:hover {
+            background-color: rgb(170, 218, 250);
+            ;
         }
     }
-    .signupButton{
+
+    .signupButton {
         display: flex;
         justify-content: center;
         width: 100vw;
         font-size: 1.5vmin;
     }
-    .signupButton:hover{
-        color:rgb(170,218,250); ;
+
+    .signupButton:hover {
+        color: rgb(170, 218, 250);
+        ;
     }
 }
 
-@media (max-width:900px){
-    .signUpFormDiv{
+@media (max-width:900px) {
+    .signUpFormDiv {
 
         width: 100vw;
         display: flex;
         justify-content: center;
-        .signUpForm{
+
+        .signUpForm {
 
             display: flex;
             justify-content: center;
             width: 100vw;
             padding: none;
-            .inputText{
+
+            .inputText {
 
                 width: 70vw;
             }
         }
     }
+}
+
+@media(prefers-color-scheme:dark) {
+    .signUpFormDiv {
+
+
+        color: white;
+        .title {
+            p {}
+
+            .buttonDiv {}
+        }
+
+        .signUpForm {
+
+
+            .text {}
+
+            .inputText {}
+
+            .submit {
+
+            }
+
+            .submit:hover {}
+        }
+
+        .signupButton {}
+
+        .signupButton:hover {}
+    }
+
 }

@@ -260,73 +260,76 @@
 
                     }
     
-        .buttonDiv {
-    
-            li {
-
-    
-            }
-        }
-    
-        button {
-
-    
-        }
-    
-    
-        #name {
-            
-        }
-        
-        .hidden {
-            
-        }
-        
-        .userInfo {
-            color: #FF6410;
-           
-            .userPic {
-
-    
-        
-            }
-    
-            .username {
-            }
-            
-            .userForums {
-                h4{
-                    color: white;
-                }
-                
-                li{
-
-
-                }
+                    .buttonDiv {
+                        h4{
+                            color: white;
+                        }
+                        li {
+                            
+                            
+                        }
+                    }
+                    
+                    button {
+                        
+                        
+                    }
+                    
+                    
+                    #name {
+                        
+                    }
+                    
+                    .hidden {
+                        
+                    }
+                    
+                    .userInfo {
+                        color: #FF6410;
+                        
+                        .userPic {
+                            
+                            
+                            
+                        }
+                        
+                        .username {
+                        }
+                        
+                        .userForums {
+                            h4{
+                                color: white;
+                            }
+                            
+                            li{
+                                
+                                
+                            }
                 .forumTitles{
                     color: white;
                 }            }
+            }
+            
         }
+    }
     
-    }
+    @keyframes typing {
+        from {
+            width: 100%;
         }
-
-@keyframes typing {
-    from {
-        width: 100%;
+        
+        to {
+            width: 0;
+        }
     }
-
-    to {
-        width: 0;
+    
+    @keyframes blink-caret {
+        from,
+        to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: #000;
+        }
     }
-}
-
-@keyframes blink-caret {
-    from,
-    to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: #000;
-    }
-}
+    
