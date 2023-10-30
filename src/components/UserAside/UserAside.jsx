@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import styles from './UserAside.module.scss'
+import { useNavigate } from 'react-router-dom'
 import * as userService from '../../../utilities/users-api.cjs'
 export default function UserAside({user,setUser, showModal, setShowModal}){
+    const navigate = useNavigate()
     const[userPic, setUserPic] = useState({profileImage:''})
 
     const addUserImage  = async (userId,newImage)=>{
@@ -20,7 +22,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     
     function handleSubmit(e){
         e.preventDefault()
-        addUserImage(user._id,file)
+        addUserImage(user._id,userPic)
     }
     async function handleUserPicUpload(e){
         const file = e.target.files[0]
@@ -30,7 +32,18 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
         setUserPic({...userPic,profileImage:base64 })
         
     }
-    
+    function handleControlPanel(e){
+        if(!user){
+            alert('Login to Continue')
+        }
+        const button = e.target.name
+        if(user && button === 'friends'){
+            
+            navigate('/friends')
+        } else if(user && button === 'settings'){
+            navigate('/settings')
+        }
+    }
     return(
         <div  className={styles.UserAside}>
             
@@ -54,8 +67,8 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
             <></>
         }
             <section className={styles.controlPanel}>
-                <button className={styles.setting}><img src='src/assets/userFunc/settings.png'/></button>           
-                <button className={styles.friends}><img src='src/assets/userFunc/friends.png'/></button>           
+                <button  className={styles.setting} ><img name={'settings'} onClick={handleControlPanel} src='src/assets/userFunc/settings.png'/></button>           
+                <button  className={styles.friends}  ><img name={'friends'} onClick={handleControlPanel}  src='src/assets/userFunc/friends.png'/></button>           
 
                 <button onClick={setShow} className={styles.create}>+</button> {/*Create a Forums*/}
             </section>

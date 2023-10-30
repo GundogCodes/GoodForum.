@@ -20,7 +20,12 @@ const userSchema = new mongoose.Schema({
     minlength: 3,
     required: true
   },
-  profileImage:{type:String, default:''},
+  bio:{type:String},
+  profileImage:{
+    name:{type:String},
+    size:{type:Number},
+    type:{type:String}
+  },
   posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   dislikedPosts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   likedPosts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],

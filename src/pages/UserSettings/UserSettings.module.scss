@@ -1,0 +1,39 @@
+.UserSettings{
+    position: absolute;
+    top: 30px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form{
+        width: 30vw;
+        height: 60vh;
+        display: flex;
+        flex-direction: column;
+
+        label{
+            align-self: flex-start;
+            font-size: 25px;
+        }
+        input{
+            width: 30vw;
+            border-radius: 7px;
+            border: solid 1px;
+        }
+        section{
+            .bioInput{
+                height: 10vh;
+            }
+            button{
+                background-color: rgb(180,217,247);
+                color: white;
+                border: solid 1px white;
+                padding: 5px;
+                border-radius: 7px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

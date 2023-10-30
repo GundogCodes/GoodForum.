@@ -1,0 +1,17 @@
+.UserFriends{
+    position: absolute;
+    top:30px;
+    width: 100vw;
+    height: 100vh;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1{
+        width: 100vw;
+        margin-left: 60px;
+    }
+    ul{
+        overflow-y: scroll;
+    }
+}

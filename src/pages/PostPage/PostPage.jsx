@@ -85,7 +85,7 @@ export default function PostPage(){
                     {post.sender?
                     <h2>{post.sender.username}</h2>
                     :
-                    <></>
+                    <h2>User Deleted</h2>
                 }
                     <h1>{post.title}</h1>
                     <h2>{post.forum.title}</h2>
