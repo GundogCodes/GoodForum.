@@ -3,6 +3,7 @@ import LogOut from '../Logout/Logout'
 import styles from './NavBar.module.scss'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+
 export default function NavBar({ user, setUser }) {
   const [youClicked, setYouClicked] = useState(false)
   const [homeClicked, setHomeClicked] = useState(false)
