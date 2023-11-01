@@ -134,6 +134,7 @@ export default function ForumPage({ user, setUser }) {
                                 <input onChange={handleChange} name='title' type='text' />
                                 <h2>Content</h2>
                                 <input onChange={handleChange} name='content' type='text' />
+                                <input type='file'/>
                                 <button type='submit'>Post</button>
                             </form>
                         </div>

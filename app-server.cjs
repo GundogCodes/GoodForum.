@@ -1,6 +1,8 @@
-//import cors from 'cors'
+const cors = require('cors')
 const checkToken = require('./config/checkToken.cjs')
 const express = require('express')
+const multer = require('multer')
+//multer to handle file uploads
 
 //created a express app
 const app = express()
@@ -20,14 +22,32 @@ app.use((req,res,next)=>{
     next()
 })
 
-
 app.use(checkToken)
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() 
+    cb(null, uniqueSuffix + file.originalname)
+  }
+})
+
+const upload = multer({ storage: storage })
+
+app.post('/upload-image', upload.single('profileImage'), async (req,res)=>{
+  console.log(req.body)
+  console.log(req.file)
+  res.send('uploaded')
+})
 
 //use logger to log http requests
 app.use(logger('dev'))
-//app.use(cors())
+app.use(cors())
 //check if there is a user in the requests
 const ensureLoggedIn  = require('./config/ensureLoggedIn.cjs')
+
 
 //defining routes(endpoints) of app(api) where req/res can be done 
 //and information can be exchanged and check if they need to be logged in

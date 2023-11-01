@@ -21,11 +21,7 @@ const userSchema = new mongoose.Schema({
     required: true
   },
   bio:{type:String},
-  profileImage:{
-    name:{type:String},
-    size:{type:Number},
-    type:{type:String}
-  },
+  profileImage:{type:String},
   posts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   dislikedPosts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
   likedPosts:[{type:mongoose.Schema.Types.ObjectId, ref:'Post'}],
