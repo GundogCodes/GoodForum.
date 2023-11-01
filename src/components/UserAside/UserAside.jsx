@@ -27,6 +27,13 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     }
 
     /******************************************** Uploading Profile Images Async Functions ********************************************/
+    async function handleFileChange(e){
+        const uploadedFile = e.target.files[0]
+        console.log('file: ', uploadedFile)
+        const base64 = await convertToBase64(uploadedFile)
+        console.log('base64: ', base64)
+        setFile(base64)
+    }
 
 
     return(
@@ -35,7 +42,8 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
             <header className={styles.userPic}>
                 <form >
                     <label htmlFor='fileUpload' className={styles.customFileUpload} >
-                    <img src={ 'src/assets/userFunc/profileImage.png'}/>
+                    <img src={ file || 'src/assets/userFunc/profileImage.png'}/>
+                    <input id='fileUpload' type='file' accept='image/*' onChange={handleFileChange}/>
                     </label>
                 </form>
             </header>
