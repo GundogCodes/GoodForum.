@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import styles from './UserAside.module.scss'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as userService from '../../../utilities/users-api.cjs'
 import axios from 'axios'
@@ -7,7 +7,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     const navigate = useNavigate()
     
     /******************************************** States ********************************************/
-    const[userPic, setUserPic] = useState()
+    const[file, setFile] = useState()
 
     /******************************************** Control Panel Functions ********************************************/
     function handleControlPanel(e){
@@ -25,56 +25,20 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     function setShow(){
         setShowModal(true)
     }
-    /******************************************** Uploading Profile Images Async Functions ********************************************/
-    
-       const handleSubmit= async (e)=> {
-            e.preventDefault() //prevent page from reloading
-           // addUserImage(user._id,userPic)
-           const formData = new FormData()
-           formData.append('profileImage', userPic)
-    
-           const result = await axios.post(
-            "http://localhost/5173/upload-image",
-            formData,
-            {
-                headers:{'Content-Type': "multipart/form-data"}
-            }
-           )
-           console.log(result)
-        }
 
-    const addUserImage  = async (userId,newImage)=>{
-        try {
-            const userImage = await userService.updateUserInfo(userId,newImage)
-            console.log('userIMage from api call',userImage)
-            setUserPic(userImage)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    async function handleUserPicUpload(e){
-        console.log(e.target.files[0])
-        setUserPic(e.target.files[0])
-        console.log('userPic', userPic)
-    }
+    /******************************************** Uploading Profile Images Async Functions ********************************************/
+
+
     return(
         <div  className={styles.UserAside}>
             
             <header className={styles.userPic}>
-                <form onSubmit={handleSubmit}>
-                    {/* <label htmlFor='fileUpload' className={styles.customFileUpload} >
-                        <img src={userPic || 'src/assets/userFunc/profileImage.png'}/>
-                        </label>
-                        <input type='file'
-                        accept='image/*'
-                        id='fileUpload'
-                        onChange={handleUserPicUpload}
-                        />
-                    <button>Add Pic</button> */}
+                <form >
+                    <label htmlFor='fileUpload' className={styles.customFileUpload} >
+                    <img src={ 'src/assets/userFunc/profileImage.png'}/>
+                    </label>
                 </form>
             </header>
-                    <input type='file' />
-                    <button>Upload</button>
             {user?
             <h1>{user.username}</h1>
             :

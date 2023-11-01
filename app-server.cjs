@@ -1,8 +1,7 @@
 const cors = require('cors')
 const checkToken = require('./config/checkToken.cjs')
 const express = require('express')
-const multer = require('multer')
-//multer to handle file uploads
+const multer  = require('multer')
 
 //created a express app
 const app = express()
@@ -15,6 +14,8 @@ const logger = require('morgan')
 
 //using json packages to communicate with server/clients
 app.use(express.json())
+app.use(cors())
+
 
 //app will use a local object in its responses which can contain info from the requests
 app.use((req,res,next)=>{
@@ -24,27 +25,8 @@ app.use((req,res,next)=>{
 
 app.use(checkToken)
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/')
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() 
-    cb(null, uniqueSuffix + file.originalname)
-  }
-})
-
-const upload = multer({ storage: storage })
-
-app.post('/upload-image', upload.single('profileImage'), async (req,res)=>{
-  console.log(req.body)
-  console.log(req.file)
-  res.send('uploaded')
-})
-
 //use logger to log http requests
 app.use(logger('dev'))
-app.use(cors())
 //check if there is a user in the requests
 const ensureLoggedIn  = require('./config/ensureLoggedIn.cjs')
 

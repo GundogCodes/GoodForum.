@@ -83,7 +83,7 @@ export default function PostPage(){
             <div className={styles.postCard}>
                 <header>
                     {post.sender?
-                    <h2>{post.sender.username}</h2>
+                    <h2>{post.sender}</h2>
                     :
                     <h2>User Deleted</h2>
                 }
@@ -106,7 +106,7 @@ export default function PostPage(){
                             <ul className={styles.commentSection}>
                             {
                                 post.comments.map((comment)=>{
-                                    return <p className={styles.comment}>{post.sender.username}: {comment.text}</p>
+                                    return <p className={styles.comment}>{post.sender}: {comment.text}</p>
                                 })
                             }
                             </ul>
