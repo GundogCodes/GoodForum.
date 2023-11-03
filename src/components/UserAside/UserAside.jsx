@@ -33,6 +33,12 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
         const base64 = await convertToBase64(uploadedFile)
         console.log('base64: ', base64)
         setFile(base64)
+        // try {
+        //     const updatedUser = await userService.updateUserInfo(user._id,{profileImage:base64})
+        //     console.log('returned User', updatedUser)
+        // } catch (error) {
+        //     console.log({error:error})
+        // }
     }
 
 
