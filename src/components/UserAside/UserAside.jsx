@@ -41,15 +41,27 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
         // }
     }
 
+    async function submit(e){
+        e.preventDefault()
+        console.log('file',file)
+        const formData = new FormData()
+        formData.append('profilePic',file)
+        const result = await axios.post('/api/profilePic', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+        console.log(result.data)
+    }
 
     return(
         <div  className={styles.UserAside}>
             <header className={styles.userPic}>
-                <form onSubmit={(e)=>{setFile(e.target.files[0])}} action='/uploadProfilePic' method='post' encType='multipart/form-data' > {/*encType tells html this form accepsts different type of data, file in this case*/}
+                <form  onSubmit={submit} > {/*encType tells html this form accepsts different type of data, file in this case*/}
                 <img src={'src/assets/userFunc/profileImage.png'}/>
-                    <label for='profilePic'>Choose A Pic</label>
-                    <input type='file' name='profilePic' id='file' required/>
-                    <button type='submit'></button>
+                <input 
+                filename={file}
+                onChange={e=>setFile(e.target.files[0])}
+                type='file'
+                accept='image/*'
+                />
+                <button type='submit'>Upload</button>
                 </form>
             </header>
             {user?
@@ -63,7 +75,6 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
 
                 <button onClick={setShow} className={styles.create}>+</button> {/*Create a Forums*/}
             </section>
-
         </div>
     )
 }
