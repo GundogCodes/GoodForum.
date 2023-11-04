@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     color: black;
-    justify-content: space-evenly;
+
     align-items: center;
 
     animation: fadeIn 0.5s;
@@ -20,21 +20,23 @@
         color: black;
     }
     .userPic{
-
+        margin-top: 15vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-        width: 20vw;
-        height: 25vw;
-        overflow: visible;
+        width: 15vw;
+        height: 15vw;
+        overflow: hidden;
+        border-radius: 100%;
+
         input{
 
         }
        
-        button{
+        p{
             border-radius: 3px;
             padding: 5px;
             width: 10vw;
@@ -42,7 +44,7 @@
         }
         img{
 
-            width: 5vw;
+            width: 15vw;
 
             // border-radius: 90px;
              overflow: hidden;
@@ -54,6 +56,16 @@
     }
     .userPic:hover{
         cursor: pointer;
+    }
+    form{
+        width: 15vw;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: pink;
+        input{
+            width: 13vw;
+        }
     }
     .controlPanel{
         display: flex;

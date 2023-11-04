@@ -8,7 +8,7 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
     
     /******************************************** States ********************************************/
     const[file, setFile] = useState()
-
+    const [showUploadForm, setShowUploadForm] = useState(false)
     /******************************************** Control Panel Functions ********************************************/
     function handleControlPanel(e){
         if(!user){
@@ -43,27 +43,47 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
 
     async function submit(e){
         e.preventDefault()
-        console.log('file',file)
+        console.log('file',file.name)
         const formData = new FormData()
         formData.append('profilePic',file)
         const result = await axios.post('/api/profilePic', formData, { headers: {'Content-Type': 'multipart/form-data'}})
         console.log(result.data)
+        try {
+            const updatedUser = await userService.updateUserInfo(user._id,{profileImage:file.name})
+            console.log('updatedUser', updatedUser)
+            setUser(updatedUser)
+        } catch (error) {
+            console.log({error:error})
+        }
     }
 
     return(
         <div  className={styles.UserAside}>
             <header className={styles.userPic}>
+                {user && user.profileImage?
+            <img src={`profilePics/${user.profileImage}` }/>
+            :
+            <></>
+        }
+                </header>
+                {user && user.profileImage?
+                <p onClick={()=>{setShowUploadForm(!showUploadForm)}}>Update Profile Pic</p>
+                :
+                <p>Upload Profile Pic</p>
+                }
+                {showUploadForm?
                 <form  onSubmit={submit} > {/*encType tells html this form accepsts different type of data, file in this case*/}
-                <img src={'src/assets/userFunc/profileImage.png'}/>
                 <input 
                 filename={file}
                 onChange={e=>setFile(e.target.files[0])}
                 type='file'
                 accept='image/*'
                 />
-                <button type='submit'>Upload</button>
+                <button type='submit'>Upload!</button>
                 </form>
-            </header>
+                :
+                <></>
+            }
             {user?
             <h1>{user.username}</h1>
             :

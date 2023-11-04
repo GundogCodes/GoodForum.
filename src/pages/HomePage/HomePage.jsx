@@ -49,7 +49,14 @@ export default function HomePage({ user, setUser }) {
                 
             }
             <section className={styles.userInfo}>
-                <div className={styles.userPic}>UserPic</div>
+                <div className={styles.userPic}>
+                    {user && user.profileImage.length >0?
+                        <img src={`profilePics/${user.profileImage}`}/>
+                        :
+                        <></>
+                    }
+                    
+                    </div>
                 {user ?
                 <>
                     <div className={styles.username}>{user ? `Hey, ${user.username}` : 'Login'}
