@@ -53,7 +53,7 @@ export default function HomePage({ user, setUser }) {
                     {user && user.profileImage.length >0?
                         <img src={`profilePics/${user.profileImage}`}/>
                         :
-                        <></>
+                        <img src='src/assets/userFunc/profileImage.png' />
                     }
                     
                     </div>

@@ -3,96 +3,108 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as userService from '../../../utilities/users-api.cjs'
 import axios from 'axios'
-export default function UserAside({user,setUser, showModal, setShowModal}){
+export default function UserAside({ user, setUser, showModal, setShowModal }) {
     const navigate = useNavigate()
-    
+
     /******************************************** States ********************************************/
-    const[file, setFile] = useState()
+    const [file, setFile] = useState()
     const [showUploadForm, setShowUploadForm] = useState(false)
+
+    /******************************************** Handle States ********************************************/
+    function showForm() {
+        setShowUploadForm(!showUploadForm)
+    }
     /******************************************** Control Panel Functions ********************************************/
-    function handleControlPanel(e){
-        if(!user){
+    function handleControlPanel(e) {
+        if (!user) {
             alert('Login to Continue')
         }
         const button = e.target.name
-        if(user && button === 'friends'){
-            
+        if (user && button === 'friends') {
+
             navigate('/friends')
-        } else if(user && button === 'settings'){
+        } else if (user && button === 'settings') {
             navigate('/settings')
         }
     }
-    function setShow(){
+    function setShow() {
         setShowModal(true)
+        console.log(showUploadForm)
     }
 
     /******************************************** Uploading Profile Images Async Functions ********************************************/
-    async function handleFileChange(e){
-        const uploadedFile = e.target.files[0]
-        console.log('file: ', uploadedFile)
-        const base64 = await convertToBase64(uploadedFile)
-        console.log('base64: ', base64)
-        setFile(base64)
-        // try {
-        //     const updatedUser = await userService.updateUserInfo(user._id,{profileImage:base64})
-        //     console.log('returned User', updatedUser)
-        // } catch (error) {
-        //     console.log({error:error})
-        // }
-    }
 
-    async function submit(e){
+    async function submit(e) {
         e.preventDefault()
-        console.log('file',file.name)
+        console.log('file', file.name)
         const formData = new FormData()
-        formData.append('profilePic',file)
-        const result = await axios.post('/api/profilePic', formData, { headers: {'Content-Type': 'multipart/form-data'}})
+        formData.append('profilePic', file)
+        const result = await axios.post('/api/profilePic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
         console.log(result.data)
         try {
-            const updatedUser = await userService.updateUserInfo(user._id,{profileImage:file.name})
+            const updatedUser = await userService.updateUserInfo(user._id, { profileImage: file.name })
             console.log('updatedUser', updatedUser)
             setUser(updatedUser)
         } catch (error) {
-            console.log({error:error})
+            console.log({ error: error })
         }
     }
-
-    return(
-        <div  className={styles.UserAside}>
-            <header className={styles.userPic}>
-                {user && user.profileImage?
-            <img src={`profilePics/${user.profileImage}` }/>
-            :
-            <></>
-        }
-                </header>
-                {user && user.profileImage?
-                <p onClick={()=>{setShowUploadForm(!showUploadForm)}}>Update Profile Pic</p>
+    console.log(showUploadForm)
+    return (
+        <div className={styles.UserAside}>
+             {user ?
+                <h1>{user.username}</h1>
                 :
-                <p>Upload Profile Pic</p>
+                <></>
+            }
+            <header className={styles.userPic}>
+                {user && user.profileImage ?
+                    <img src={`profilePics/${user.profileImage}`} />
+                    :
+
+                    <img src='src/assets/userFunc/profileImage.png' />
                 }
-                {showUploadForm?
-                <form  onSubmit={submit} > {/*encType tells html this form accepsts different type of data, file in this case*/}
-                <input 
-                filename={file}
-                onChange={e=>setFile(e.target.files[0])}
-                type='file'
-                accept='image/*'
-                />
-                <button type='submit'>Upload!</button>
+            </header>
+            {user && user.profileImage ?
+
+                <p onClick={showForm} className={styles.uploadPic}>Update Profile Pic</p>
+                :
+                <p onClick={showForm} className={styles.uploadPic}>Upload Profile Pic</p>
+            }
+            {showUploadForm ?
+                <form onSubmit={submit} > {/*encType tells html this form accepsts different type of data, file in this case*/}
+                    <input
+                        filename={file}
+                        onChange={e => setFile(e.target.files[0])}
+                        type='file'
+                        accept='image/*'
+                    />
+                    <button type='submit'>Upload!</button>
                 </form>
                 :
                 <></>
             }
-            {user?
-            <h1>{user.username}</h1>
-            :
-            <></>
-        }
-            <section className={styles.controlPanel}>
-                <button  className={styles.setting} ><img name={'settings'} onClick={handleControlPanel} src='src/assets/userFunc/settings.png'/></button>           
-                <button  className={styles.friends}  ><img name={'friends'} onClick={handleControlPanel}  src='src/assets/userFunc/friends.png'/></button>           
+           
+            <div className={styles.bio}>
+                {user ?
+                    <p>{user.bio}</p>
+                    :
+                    <p>Login or Create an Account to join the conversation!</p>
+                }
+            </div>
+            <div className={styles.userInfo}>
+                <h7>Friends Forums Posts</h7>
+                <div className={styles.pDiv}>
 
+                    <p>{user.friends.length}</p>
+                    <p>{user.foundedForums.length}</p>
+                    <p>{user.posts.length}</p>
+                </div>
+            </div>
+
+            <section className={styles.controlPanel}>
+                <button className={styles.setting} ><img name={'settings'} onClick={handleControlPanel} src='src/assets/userFunc/settings.png' /></button>
+                <button className={styles.friends}  ><img name={'friends'} onClick={handleControlPanel} src='src/assets/userFunc/friends.png' /></button>
                 <button onClick={setShow} className={styles.create}>+</button> {/*Create a Forums*/}
             </section>
         </div>
@@ -100,16 +112,16 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
 }
 
 //convert images to base64 to save it in MongoDB
-function convertToBase64(file){
-    return new Promise((resolve,reject)=>{
+function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
         const fileReader = new FileReader()
         fileReader.readAsDataURL(file)
-        fileReader.onload = ()=>{
+        fileReader.onload = () => {
             resolve(fileReader.result)
         }
-        fileReader.onerror = (error)=>{
+        fileReader.onerror = (error) => {
             reject(error)
         }
-        
+
     })
 }

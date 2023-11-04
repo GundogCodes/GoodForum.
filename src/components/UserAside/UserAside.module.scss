@@ -1,4 +1,4 @@
-.UserAside{
+.UserAside {
     position: absolute;
 
     left: 3vw;
@@ -9,73 +9,107 @@
     color: black;
 
     align-items: center;
-
     animation: fadeIn 0.5s;
-    margin:5px;
-
+    margin: 5px;
+    justify-content: space-evenly;
     border-radius: 7px;
 
-    h1{
+    h1 {
         position: relative;
         color: black;
+        height: 0;
+        margin-top: 0;
     }
-    .userPic{
-        margin-top: 15vh;
+
+    .userPic {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-        width: 15vw;
-        height: 15vw;
+        width: 10vw;
+        height: 10vw;
         overflow: hidden;
         border-radius: 100%;
 
-        input{
 
-        }
-       
-        p{
-            border-radius: 3px;
-            padding: 5px;
+        img {
             width: 10vw;
-            background-color: red;
-        }
-        img{
-
-            width: 15vw;
-
-            // border-radius: 90px;
-             overflow: hidden;
+            height: 10vw;
+            overflow: hidden;
 
         }
-        img:hover{
+
+        img:hover {
             cursor: pointer;
         }
     }
-    .userPic:hover{
+
+    .userPic:hover {
         cursor: pointer;
     }
-    form{
+
+    .uploadPic {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 14px;
+        background-color: rgb(196, 196, 196);
+        //box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        margin-top: 0;
+        color: white;
+    }
+
+    form {
         width: 15vw;
         display: flex;
         align-items: center;
         flex-direction: column;
-        background-color: pink;
-        input{
+        border-radius: 14px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        margin-top: 0;
+        color: white;
+        padding: 5px;
+        animation: fadeIn 1s;
+
+        input {
             width: 13vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+
+        }
+
+        button {
+            background-color: white;
+            border-radius: 5px;
+            border: solid 1px black;
         }
     }
-    .controlPanel{
+
+    .bio {
+        width: 20vw;
+        height: 10vh;
+        border-radius: 7px;
+        overflow-y: visible;
+
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        p{
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .controlPanel {
         display: flex;
         justify-content: space-around;
         width: 15vw;
         border-radius: 100%;
 
-        
-        button{
-            border: solid 2px ;
+
+        button {
+            border: solid 2px;
             color: white;
             display: flex;
             justify-content: center;
@@ -85,125 +119,166 @@
             width: 2.5vw;
             height: 2.5vw;
         }
-        .setting{
-            background-color: rgb(236,106,94);
+
+        .setting {
+            background-color: rgb(236, 106, 94);
             display: flex;
             align-items: center;
             justify-content: center;
-            img{
+
+            img {
                 width: 1.5vw;
             }
         }
-        .friends{
-            background-color: rgb(244,191,79);
+
+        .friends {
+            background-color: rgb(244, 191, 79);
             display: flex;
             align-items: center;
             justify-content: center;
-            img{
+
+            img {
 
                 width: 1.5vw;
             }
         }
-        .edit{
-            background-color: rgb(99,200,85);
-            
+
+        .edit {
+            background-color: rgb(99, 200, 85);
+
         }
-        .create{
-            background-color: rgb(74,119,236);
+
+        .create {
+            background-color: rgb(74, 119, 236);
         }
-        .setting:hover, .friends:hover, .edit:hover,  .create:hover{
+
+        .setting:hover,
+        .friends:hover,
+        .edit:hover,
+        .create:hover {
             transition: 0.5s;
             padding: 1px;
             cursor: pointer;
         }
     }
+    .userInfo{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        border-radius: 7px;
+        width: 20vw;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+        .pDiv{
+            display: flex;
+            p{
+    
+                padding-left: 2vw;
+                padding-right: 2vw;
+            }
+        }
+    }
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 
 @media (max-width:900px) {
-    .UserAside{
-    position: absolute;
-    margin-top: 10vh;
-    width: 100vw;
-    left:0;
-    height: 30vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: rgb(230,229,234);
-    border-radius: 7px;
-    h1{
-        font-size: 3vmin;
-        width: 15vw;
+    .UserAside {
+        position: absolute;
+        width: 100vw;
+        left: 0;
+        height: 30vh;
         display: flex;
-    }
-    .userPic{
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-        width: 100px;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(230, 229, 234);
+        border-radius: 7px;
 
-        height: 100px;
-        border-radius: 100%;
-    }
-
-    .controlPanel{
-        border-radius: 50px;
-        width: 20vw;
-
-        button{
-            margin: 2px;
-            width: 25px;
-            height: 25px;
-            color: white;
+        h1 {
+            font-size: 3vmin;
+            width: 15vw;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50px;
+        }
+
+        .userPic {
             box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+            width: 100px;
 
+            height: 100px;
+            border-radius: 100%;
         }
-        .setting{
-            background-color: red;
-        }
-        .friends{
-            background-color: yellow;
-        }
-        .edit{
-            background-color: green;
 
+        .controlPanel {
+            border-radius: 50px;
+            width: 20vw;
+
+            button {
+                margin: 2px;
+                width: 25px;
+                height: 25px;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+            }
+
+            .setting {
+                background-color: red;
+            }
+
+            .friends {
+                background-color: yellow;
+            }
+
+            .edit {
+                background-color: green;
+
+            }
+
+            .create {
+                background-color: blue;
+            }
         }
-        .create{
-            background-color: blue;
-        }
-    }
     }
 }
 
 @media (prefers-color-scheme:dark) {
-    .UserAside{
-        background-color: rgb(28,28,28);
-        h1{
+    .UserAside {
+        background-color: rgb(28, 28, 28);
+
+        h1 {
 
             color: #FF6410;
         }
-        .controlPanel{
 
-            .setting{
+        .controlPanel {
+
+            .setting {
                 background-color: #FF6410;
             }
-            .friends{
+
+            .friends {
                 background-color: #FF6410;
             }
-            .edit{
+
+            .edit {
                 background-color: #FF6410;
-                
+
             }
         }
 
     }
-    
+
 }
