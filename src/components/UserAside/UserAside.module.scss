@@ -27,22 +27,22 @@
         align-items: center;
         //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-        width: 15vw;
-        height: 15vw;
-        border-radius: 90px;
-        overflow: hidden;
+        width: 20vw;
+        height: 25vw;
+        overflow: visible;
         input{
-            display: none;
+
         }
        
         button{
             border-radius: 3px;
             padding: 5px;
+            width: 10vw;
             background-color: red;
         }
         img{
 
-            width: 25vw;
+            width: 5vw;
 
             // border-radius: 90px;
              overflow: hidden;

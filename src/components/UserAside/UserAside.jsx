@@ -44,13 +44,12 @@ export default function UserAside({user,setUser, showModal, setShowModal}){
 
     return(
         <div  className={styles.UserAside}>
-            
             <header className={styles.userPic}>
-                <form >
-                    <label htmlFor='fileUpload' className={styles.customFileUpload} >
-                    <img src={ file || 'src/assets/userFunc/profileImage.png'}/>
-                    <input id='fileUpload' type='file' accept='image/*' onChange={handleFileChange}/>
-                    </label>
+                <form onSubmit={(e)=>{setFile(e.target.files[0])}} action='/uploadProfilePic' method='post' encType='multipart/form-data' > {/*encType tells html this form accepsts different type of data, file in this case*/}
+                <img src={'src/assets/userFunc/profileImage.png'}/>
+                    <label for='profilePic'>Choose A Pic</label>
+                    <input type='file' name='profilePic' id='file' required/>
+                    <button type='submit'></button>
                 </form>
             </header>
             {user?
