@@ -72,9 +72,8 @@ export default function UserAside({ user, setUser, showModal, setShowModal }) {
                 <p onClick={showForm} className={styles.uploadPic}>Upload Profile Pic</p>
             }
             {showUploadForm ?
-                <form onSubmit={submit} > {/*encType tells html this form accepsts different type of data, file in this case*/}
+                <form onSubmit={submit} > 
                     <input
-                        filename={file}
                         onChange={e => setFile(e.target.files[0])}
                         type='file'
                         accept='image/*'

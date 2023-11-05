@@ -21,7 +21,7 @@ export default function UserPage({user,setUser}){
             }
             <UserAside user={user} setUser={setUser} showModal={showModal} setShowModal={setShowModal}/>
             <UserPosts user={user} setUser={setUser} />
-            <Footer />           
+
         </div>
 )
 }
