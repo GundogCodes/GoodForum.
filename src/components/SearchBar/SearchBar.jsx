@@ -84,7 +84,7 @@ export default function SearchBar({ forums }) {
     return (
         <div className={styles.SearchBar}>
             <div className={styles.form}>
-                <input onChange={handleChange} placeholder='Search Quarries...' type='text' />
+                <input onChange={handleChange} placeholder='Scour Quarries...' type='text' />
                 <button>Search</button>
             </div>
             {/* {matchedSearches.length > 0 && (

@@ -156,36 +156,45 @@
             animation: fadeIn 0.5s;
             background-color: white;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
             width: 60vw;
-            height: 60vh;
-            color:black;
+            height: 80vh;
+            flex-direction: column;
+            background-color: pink;
+            justify-content: flex-start;
             p{
-                padding-left: 50px;
-                margin-top: 0;
-                width: 60vw;
-                font-size: 30px;
-                justify-self: flex-start;
-                align-items: flex-start;
+                margin: 5px;
+                font-size: large;
             }
             h1{
+                display: flex;
+                justify-content: center;
+                margin: 0;
 
+
+                
             }
             h2{
-                width: 30vw;
+                padding-left: 10px;
 
-            }
-            
-            input{
+                margin: 5px;
+
+
                 
-                width: 30vw;
+            }
+            h6{
+                height: 1px;
+                background-color: white;
+                width: 60vw;
+            }
+            input{
+                margin: 5px;
+                border-radius: 7px;
+                
                 
             }
             button{
-                margin-top: 10px;
-                width: 15vw;
+
+                margin: 5px;
 
 
             }

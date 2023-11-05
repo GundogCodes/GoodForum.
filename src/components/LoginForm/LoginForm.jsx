@@ -44,7 +44,7 @@ export default function LoginForm({user, setUser}){
     return (
         <div className={styles.loginDiv}>
             {signupClicked?
-            <SignUpForm />
+            <SignUpForm user={user} setUser={setUser}/>
             :
             <form className={styles.loginForm} onSubmit={handleSubmit} >
     

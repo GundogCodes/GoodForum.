@@ -4,7 +4,10 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
     function handlePlusClick(){
         setShowModal(false)
     }
-    
+    console.log('userFolllowedForums', user.followedForums)
+    function handleClick(e){
+        console.log(e.target.innerText)
+    }
     return(
         <div className={styles.PostModal}>
             <div className={styles.form}>
@@ -18,8 +21,9 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
                 <h3>Your Quarries </h3>
                 <div className={styles.forumList} >
                     {
+                    
                     user.followedForums.map((forum)=>{
-                        return <h4>forum title{forum.title}</h4>
+                        return <h4 onClick={handleClick}>{forum.title}</h4>
                     })
                     
                         
@@ -29,7 +33,7 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
             <input type='text'/>
             </aside>
             <aside>
-            <h3 >Content</h3>
+            <h3 >Text</h3>
             <input id={styles.textField} type='text'/>
             <input type='file'/>
 

@@ -3,16 +3,16 @@ const bcrypt = require('bcrypt')
 
 const postSchema = new mongoose.Schema({
     title:{type:String, require:true},
-    content:{type:String, require:true}, // string for now
     forum:{type:mongoose.Schema.ObjectId, ref:'Forum', require:true},
     sender:{type: mongoose.Schema.Types.ObjectId, ref:'User', require:true},
     comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
     likes:{type:Number, default:0},
     dislikes:{type:Number, default:0},
     edited:{type:Boolean, default:false},
-    image:{type:String},
-    link:{type:String},
-    video:{type:String}
+    image:{type:String, default:''},
+    text:{type:String, default:''},
+    link:{type:String, default:''},
+    video:{type:String, default:''}
     
 }, {
     timestamps:true

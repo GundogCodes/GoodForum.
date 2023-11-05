@@ -49,7 +49,6 @@ export default function UserAside({ user, setUser, showModal, setShowModal }) {
             console.log({ error: error })
         }
     }
-    console.log(showUploadForm)
     return (
         <div className={styles.UserAside}>
              {user ?
@@ -92,12 +91,22 @@ export default function UserAside({ user, setUser, showModal, setShowModal }) {
                 }
             </div>
             <div className={styles.userInfo}>
-                <h7>Friends Forums Posts</h7>
+                <h6>Friends Quarries Posts</h6>
                 <div className={styles.pDiv}>
-
-                    <p>{user.friends.length}</p>
-                    <p>{user.foundedForums.length}</p>
-                    <p>{user.posts.length}</p>
+                    {
+                        user?
+                        <>
+                        <p>{user.friends.length}</p>
+                        <p>{user.followedForums.length}</p>
+                        <p>{user.posts.length}</p>
+                        </>
+                        :
+                        <>
+                        <p>0</p>
+                        <p>0</p>
+                        <p>0</p>
+                        </>
+                    }
                 </div>
             </div>
 
@@ -108,19 +117,4 @@ export default function UserAside({ user, setUser, showModal, setShowModal }) {
             </section>
         </div>
     )
-}
-
-//convert images to base64 to save it in MongoDB
-function convertToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const fileReader = new FileReader()
-        fileReader.readAsDataURL(file)
-        fileReader.onload = () => {
-            resolve(fileReader.result)
-        }
-        fileReader.onerror = (error) => {
-            reject(error)
-        }
-
-    })
 }
