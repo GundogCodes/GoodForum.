@@ -17,13 +17,14 @@
         height: 50vw;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-        section{
+        form{
             display: flex;
             flex-direction: column;
             .heading{
-                margin-top: -20px;
+                margin: 0;
                 width: 60vw;
                 display: flex;
+                flex-direction: column;
                 p{
                     color:rgb(180,217,247);
                     font-size: 25px;
@@ -90,13 +91,27 @@
                     }
                    
                 }
+                .line{
+
+                    height: 2px;
+                    width: 40vw;
+                    background-color: black;
+
+
+                }
+                .or{
+
+                    width: 40vw;
+                    font-size: 25px;
+                    display: flex;
+                    justify-content: center;
+                }
                 h3{
                     
                     margin: 10px;
                     
                 }
                 input{
-                    
                     margin: 10px;
                     align-self: flex-start;
                     width: 40vw;
@@ -111,7 +126,77 @@
             }
         }
     }
+    .form{
 
+        form{
+            
+            height: 60vh;
+            width: 60vw;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 7px;
+            p{
+                margin: 0;
+                width: 60vw;
+                color:rgb(180,217,247);
+                    font-size: 25px;
+                    padding-left: 30px;
+                
+            }
+            h1{
+                display: flex;
+                justify-content: center;
+                width: 40vw;
+                border-radius: 7px;
+                margin: 0;
+                
+            }
+            h2{
+                
+                width: 40vw;
+                border-radius: 7px;
+                margin: 0;
+                
+            }
+            input{
+                border: solid 1px black;
+                width: 40vw;
+                border-radius: 7px;
+                margin: 0;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+                
+            }
+            .line{
+                margin: 5vh;
+                width: 60vw;
+                border-radius: 7px;
+                background-color: black;
+                height: 1px;
+                
+            }
+            button{
+                margin-top: 3vh;
+                margin-left: 10vw;
+                background-color: white;
+                border-color: white;
+                width: 60px;
+                height: 20px;
+                align-self: flex-start;
+
+                
+            }
+            button:hover{
+                background-color: rgb(180,217,247);
+                color:white;
+            }
+            .or{
+                margin: 2vh;
+
+            }
+        }
+        
+    }
 }
 
 @media(max-width:990px){
@@ -122,7 +207,7 @@
 
         .form{
             background-color: rgb(28,28,28);
-            section{
+            .section{
 
                 .heading{
 

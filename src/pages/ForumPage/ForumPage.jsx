@@ -8,7 +8,7 @@ import * as postService from '../../../utilities/post-api.cjs'
 import PostModal from '../../components/PostModal/PostModal'
 import { useNavigate } from 'react-router-dom'
 import SearchBar from '../../components/SearchBar/SearchBar'
-import axios from 'axios'
+
 export default function ForumPage({ user, setUser }) {
     /******************************************** Variables ********************************************/
     const { id } = useParams()
@@ -18,30 +18,20 @@ export default function ForumPage({ user, setUser }) {
     const [showPost, setShowPost] = useState(false)
     const [forumPage, setForumPage] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
-    const [postData, setPostData] = useState({
-        title: "",
-        text: "",
-        image:""
-    })
+    console.log('forumPage Posts: ',forumPage.posts)
     /******************************************** Handling States ********************************************/
 
 
     function handleMakePostButton() {
         setShowPostModal(true)
-        console.log(showPostModal)
+
     }
 
     function closeModal() {
         setShowPostModal(false)
     }
 
-    function handleChange(e) {
-        console.log(postData)
-        setPostData({
-            ...postData,
-            [e.target.name]: e.target.value
-        })
-    }
+
     /******************************************** useEffects ********************************************/
     useEffect(() => {
         (async () => {
@@ -67,21 +57,11 @@ export default function ForumPage({ user, setUser }) {
         }
     },[user])
     /******************************************** API Calls ********************************************/
-    async function handlePostSubmit(e) { //if there is a image in the post use Multer to handle that if there is only text in the post then do the regular stuff
-        e.preventDefault()
-        console.log(postData)
-        try {
-            const newPost = await forumService.postToForum(id, postData)
-            console.log(newPost)
-            setShowPostModal(false)
-        } catch (error) {
-            console.log({ error: error })
-        }
-    }
+
     async function handleLikeClick(poster) {
         try {
             const updatedPost = await postService.likePost()
-            console.log(updatedPost)
+
         } catch (error) {
             console.log({ error: error })
 
@@ -99,7 +79,6 @@ export default function ForumPage({ user, setUser }) {
         try {
             const updatedForum = await forumService.removeMember(id)
             setIsMember(false)
-            console.log(updatedForum)
             setForumPage(updatedForum)
         } catch (error) {
             console.log({ error: error })
@@ -124,22 +103,7 @@ export default function ForumPage({ user, setUser }) {
             {forumPage ?
                 <>
                     {showPostModal ?
-                        // <div className={styles.postToForum}>
-                        //     <form onSubmit={handlePostSubmit}>
-                        //         <p onClick={closeModal} >x</p>
-                        //         <h1>Post to {forumPage.title}</h1>
-                        //         <h2>Title</h2>
-                        //         <input onChange={handleChange} name='title' type='text' required />
-                        //         <h6 className={styles.line}> </h6>
-                        //         <h2>Text</h2>
-                        //         <input onChange={handleChange} name='text' type='text' />
-                        //         <h1>Or</h1>
-                        //         <h2>Image</h2>
-                        //         <input type='file'/>
-                        //         <button type='submit'>Post</button>
-                        //     </form>
-                        // </div>
-                        <PostModal />
+                        <PostModal user={user} setUser={setUser} showModal={showPostModal} setShowModal={setShowPostModal} page={forumPage}  />
                         :
                         <></>
                     }
@@ -171,16 +135,8 @@ export default function ForumPage({ user, setUser }) {
                                         <h2>{post.title} </h2>
                                         <h1>{post.sender.username} </h1>
                                     </section>
-                                    {post.text?
                                     <h3 >{post.text}</h3>
-                                    :
-                                    <h3></h3>
-                                }
-                                {post.image?
-                                <img src=''/>
-                                :
-                                <></>
-                                }
+                    
                                     <aside>
                                         <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
                                         <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>

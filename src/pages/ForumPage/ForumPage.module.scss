@@ -5,14 +5,13 @@
     justify-content: flex-start;
     top:32px;
     border-top: solid 1px black;
-
     align-items: center;
     width: 100vw;
     animation: fadeIn 1s;
-    height: 200vh;
+    height: 140vh;
     z-index: 1;
     background-size: cover;
-    overflow-y: scroll;
+    overflow-y: scroll;  
 
     header{
 
@@ -119,6 +118,7 @@
                 align-items: center;
                 background-color: gray;
                 border-radius: 7px;
+                color: white;
             }
             
             aside{
@@ -142,65 +142,7 @@
         color: black;
     }
     
-    .postToForum{
-        width: 100vw;
-        height: 100vh;
-        z-index: 3;
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        form{
-            border-radius: 7px;
-            animation: fadeIn 0.5s;
-            background-color: white;
-            display: flex;
-            width: 60vw;
-            height: 80vh;
-            flex-direction: column;
-            background-color: pink;
-            justify-content: flex-start;
-            p{
-                margin: 5px;
-                font-size: large;
-            }
-            h1{
-                display: flex;
-                justify-content: center;
-                margin: 0;
 
-
-                
-            }
-            h2{
-                padding-left: 10px;
-
-                margin: 5px;
-
-
-                
-            }
-            h6{
-                height: 1px;
-                background-color: white;
-                width: 60vw;
-            }
-            input{
-                margin: 5px;
-                border-radius: 7px;
-                
-                
-            }
-            button{
-
-                margin: 5px;
-
-
-            }
-        }
-        
-    }
     
 }
 

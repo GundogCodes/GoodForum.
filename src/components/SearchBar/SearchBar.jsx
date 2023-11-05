@@ -8,11 +8,11 @@ export default function SearchBar({ forums }) {
     const inputBar = useRef(null)
     const [userSearch, setUserSearch] = useState('')
     const [matchedSearches,setMatchedSearches]= useState([])
-    console.log('forums in SearchBar', forums)
+    //console.log('forums in SearchBar', forums)
     
     function handleChange(e) {
         const foundSearchedItem = []
-        console.log(userSearch)
+      //  console.log(userSearch)
         setUserSearch(e.target.value)
         if (userSearch === null || userSearch === '  Search Scamazon.com') {
             setMatchedSearches([])

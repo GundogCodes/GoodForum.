@@ -1,11 +1,10 @@
 .UserPage{
-    position: relative;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     top:32px;
     align-items: center;
-    position: fixed;
     height: 100vh;
     background-color: white;
     background-size: cover;
@@ -13,7 +12,7 @@
     border-top: solid 1px black;
     // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
     // background-size: cover;
-    
+    position: fixed;
     .heading{
         width: 100vw;
         padding-left: 25vw;
