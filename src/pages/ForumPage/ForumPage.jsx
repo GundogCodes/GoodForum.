@@ -124,21 +124,22 @@ export default function ForumPage({ user, setUser }) {
             {forumPage ?
                 <>
                     {showPostModal ?
-                        <div className={styles.postToForum}>
-                            <form onSubmit={handlePostSubmit}>
-                                <p onClick={closeModal} >x</p>
-                                <h1>Post to {forumPage.title}</h1>
-                                <h2>Title</h2>
-                                <input onChange={handleChange} name='title' type='text' required />
-                                <h6 className={styles.line}> </h6>
-                                <h2>Text</h2>
-                                <input onChange={handleChange} name='text' type='text' />
-                                <h1>Or</h1>
-                                <h2>Image</h2>
-                                <input type='file'/>
-                                <button type='submit'>Post</button>
-                            </form>
-                        </div>
+                        // <div className={styles.postToForum}>
+                        //     <form onSubmit={handlePostSubmit}>
+                        //         <p onClick={closeModal} >x</p>
+                        //         <h1>Post to {forumPage.title}</h1>
+                        //         <h2>Title</h2>
+                        //         <input onChange={handleChange} name='title' type='text' required />
+                        //         <h6 className={styles.line}> </h6>
+                        //         <h2>Text</h2>
+                        //         <input onChange={handleChange} name='text' type='text' />
+                        //         <h1>Or</h1>
+                        //         <h2>Image</h2>
+                        //         <input type='file'/>
+                        //         <button type='submit'>Post</button>
+                        //     </form>
+                        // </div>
+                        <PostModal />
                         :
                         <></>
                     }

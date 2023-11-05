@@ -1,10 +1,12 @@
 import styles from './PostModal.module.scss'
-
+import { useParams } from 'react-router-dom'
 export default function PostModal({user, setUser, showModal,setShowModal}){
     function handlePlusClick(){
         setShowModal(false)
     }
-    console.log('userFolllowedForums', user.followedForums)
+    //console.log('userFolllowedForums', user.followedForums)
+    const params = useParams()
+    console.log('ID: ',params)
     function handleClick(e){
         console.log(e.target.innerText)
     }
@@ -22,9 +24,9 @@ export default function PostModal({user, setUser, showModal,setShowModal}){
                 <div className={styles.forumList} >
                     {
                     
-                    user.followedForums.map((forum)=>{
-                        return <h4 onClick={handleClick}>{forum.title}</h4>
-                    })
+                    // user.followedForums.map((forum)=>{
+                    //     return <h4 onClick={handleClick}>{forum.title}</h4>
+                    // })
                     
                         
                     }
