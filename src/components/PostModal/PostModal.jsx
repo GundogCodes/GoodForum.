@@ -23,7 +23,7 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
         setShowModal(false)
     }
     function handleChange(e) {
-        console.log(postData)
+        console.log('postData: ',postData)
         setPostData({
             ...postData,
             [e.target.name]: e.target.value
@@ -35,30 +35,35 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
 
     async function handlePostToForum(e) { //if there is a image in the post use Multer to handle that if there is only text in the post then do the regular stuff
         e.preventDefault()
-        console.log('post Data', postData)
-       // console.log('file: ', file.name)
-        if(file !== null){
-
-            setPostData({
-                ...postData,
-                image: file.name
-            })
+        console.log('file', file.name)
+        const formData = new FormData()
+        formData.append('profilePic', file)
+        const result = await axios.post('/api/postPic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        console.log(result.data)
+        try {
+            const newPost = await forumService.
+            console.log('updatedUser', updatedUser)
+            setUser(updatedUser)
+        } catch (error) {
+            console.log({ error: error })
         }
-          console.log('updated Post Data with filename', postData)
-       //const result = await axios.post('/api/profilePic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-            
-            // try {
-            //     const newPost = await forumService.postToForum(page._id, postData)
-            //     console.log(newPost)
-            //     setShowModal(false)
-            // } catch (error) {
-            //     console.log({ error: error })
-            // }
 
     }
 
     async function handleMakeAPost(e) {
-
+         e.preventDefault()
+        console.log('file', file.name)
+        const formData = new FormData()
+        formData.append('profilePic', file)
+        const result = await axios.post('/api/profilePic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+        console.log(result.data)
+        try {
+            const updatedUser = await userService.updateUserInfo(user._id, { profileImage: file.name })
+            console.log('updatedUser', updatedUser)
+            setUser(updatedUser)
+        } catch (error) {
+            console.log({ error: error })
+        }
     }
 
     return (
@@ -77,7 +82,10 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                         <h1 className={styles.or}>Or</h1>
                         <h2>Image</h2>
                         <img src='none' />
+                        <section>
                         <input type='file' accept='image/*' onChange={e =>{setFile(e.target.files[0])}} />
+
+                        </section>
                         <button type='submit'>Post</button>
                     </form>
                     :
@@ -96,7 +104,6 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                                     user.followedForums.map((forum) => {
                                         return <h4 /*onClick={}*/>{forum.title}</h4>
                                     })
-
                                 }
                             </div>
                             <h3>Title</h3>
