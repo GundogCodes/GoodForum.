@@ -10,12 +10,13 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
     /******************************************** Variables ********************************************/
     const { id } = useParams()
     /******************************************** States ********************************************/
+    const [file, setFile] = useState(null)
     const [postData, setPostData] = useState({
         title: null,
         text: null,
         image: null
     })
-    const [file,setFile] = useState()
+     console.log('init file: ',file)
     /******************************************** Handling States ********************************************/
 
     function handleXClick() {
@@ -29,23 +30,31 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
         })
     }
 
+
     /******************************************** API Calls ********************************************/
 
     async function handlePostToForum(e) { //if there is a image in the post use Multer to handle that if there is only text in the post then do the regular stuff
         e.preventDefault()
         console.log('post Data', postData)
-        if (postData.text && (postData.image === null || '')) {
-            console.log('Yes There is Text Data') //works like regular! 
-            try {
-            const newPost = await forumService.postToForum(page._id, postData)
-            console.log(newPost)
-            setShowModal(false)
-        } catch (error) {
-            console.log({ error: error })
+       // console.log('file: ', file.name)
+        if(file !== null){
+
+            setPostData({
+                ...postData,
+                image: file.name
+            })
         }
-        } else if (postData.image && (postData.text === null || '')) {
-            console.log('There is image Data')
-        }
+          console.log('updated Post Data with filename', postData)
+       //const result = await axios.post('/api/profilePic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            
+            // try {
+            //     const newPost = await forumService.postToForum(page._id, postData)
+            //     console.log(newPost)
+            //     setShowModal(false)
+            // } catch (error) {
+            //     console.log({ error: error })
+            // }
+
     }
 
     async function handleMakeAPost(e) {
@@ -68,7 +77,7 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                         <h1 className={styles.or}>Or</h1>
                         <h2>Image</h2>
                         <img src='none' />
-                        <input type='file' />
+                        <input type='file' accept='image/*' onChange={e =>{setFile(e.target.files[0])}} />
                         <button type='submit'>Post</button>
                     </form>
                     :
@@ -84,9 +93,9 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                             <h3>Your Quarries </h3>
                             <div className={styles.forumList} >
                                 {
-                                    // user.followedForums.map((forum)=>{
-                                    //     return <h4 onClick={handleClick}>{forum.title}</h4>
-                                    // })
+                                    user.followedForums.map((forum) => {
+                                        return <h4 /*onClick={}*/>{forum.title}</h4>
+                                    })
 
                                 }
                             </div>

@@ -18,7 +18,7 @@ export default function ForumPage({ user, setUser }) {
     const [showPost, setShowPost] = useState(false)
     const [forumPage, setForumPage] = useState()
     const [showPostModal, setShowPostModal] = useState(false)
-    console.log('forumPage Posts: ',forumPage.posts)
+
     /******************************************** Handling States ********************************************/
 
 
@@ -37,8 +37,9 @@ export default function ForumPage({ user, setUser }) {
         (async () => {
             try {
                 const forum = await forumService.getForum(id)
-                //console.log('forum: ', forum)
+                console.log('All Forum Posts', forum.posts)
                 setForumPage(forum)
+
             } catch (error) {
                 console.log(error)
             }
@@ -100,7 +101,7 @@ export default function ForumPage({ user, setUser }) {
     return (
         <div className={styles.ForumPage}>
             <SearchBar />
-            {forumPage ?
+            {forumPage && forumPage.posts?
                 <>
                     {showPostModal ?
                         <PostModal user={user} setUser={setUser} showModal={showPostModal} setShowModal={setShowPostModal} page={forumPage}  />

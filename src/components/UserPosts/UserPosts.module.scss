@@ -1,6 +1,5 @@
     .UserPosts {
         height: 90vh;
-        position: absolute;
         border-radius: 7px;
         top: 10vh;
         animation: fadeIn 0.5s;
@@ -9,11 +8,11 @@
         left: 25vw;
         list-style-type: none;
         display: flex;
-        flex-direction: column-reverse;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         width: 70vw;
-
+        z-index: 3;
         .yourPosts {
             display: flex;
             justify-content: center;
@@ -35,7 +34,6 @@
             width: 65vw;
             section {
                 border-radius: 7px;
-
                 display: flex;
                 justify-content: space-between;
                 align-items: center;

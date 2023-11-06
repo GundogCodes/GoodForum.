@@ -22,7 +22,7 @@ export default function HomePosts({ allPosts }) {
                             <h1>Deleted User</h1>
                         }
                         </section>
-                        <h3 onClick={handlePostClick} id={`${post._id}`} >{post.content} </h3>
+                        <h3 onClick={handlePostClick} id={`${post._id}`} >{post.text} </h3>
                         <aside onClick={handlePostClick} id={`${post._id}`} >
                             <p id={`${post._id}`} onClick={handlePostClick}  className={styles.likes} >Likes {post.likes}</p>
                             <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislikes}  >Dislikes {post.dislikes}</p>
