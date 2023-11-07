@@ -1,0 +1,380 @@
+  /********************************************** HOMEPOSTS  **********************************************/
+  /********************************************** HOMEPOSTS  **********************************************/
+ul{
+    position: absolute;
+    top:15vmin;
+    width: 55vw;
+    border-radius: 7px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    overflow-x:hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    list-style-type: none;
+    animation: fadeIn 0.5s;
+    height: 80vh;
+    overflow-y:scroll;
+    left: 21vw;
+    li{
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 7.5px;
+        margin-top: 7.5px;
+        align-items: center;
+        width: 55vw;
+        border-radius: 7px;
+        margin-right: 30px;
+        border: solid white;
+        section{
+            display: flex;
+            justify-content: space-between;
+            height: 10vh;
+            width: 55vw;
+            align-items: center;
+            h1{
+                color: rgb(171,211,246);
+                padding-right: 10px;
+            }
+            h2{
+                padding-left: 10px;
+
+
+            }
+        }
+        h3{
+
+            margin-top: 0;
+            height: 50vh;
+            width: 55vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: gray;
+            border: solid 2px white;
+            border-radius: 7px;
+            font-size: 10vmin;
+            overflow: hidden;
+        }
+        .postImage{
+            width: 55vw;
+            height: 50vh;
+        }
+        h3:hover{
+            transition: 0.1s;
+            border-radius: 7px;
+        }
+        aside{
+            display: flex;
+            width: 50vw;
+            justify-content: flex-start;
+            p{
+                margin-left:5px ;
+                margin-right:5px ;
+            }
+            .likes:hover,.dislikes:hover,.comment:hover{
+                color: rgb(171,211,246);
+            }
+        }
+
+    }
+    li:hover{
+        padding: 4px;
+        transition: 0.1s;
+        border-radius: 7px;
+
+    }
+}
+
+
+@keyframes fadeIn {
+0% { opacity: 0; }
+100% { opacity: 1; }
+}
+
+@media (max-width:900px){
+.HomePosts{
+
+
+       
+        ul{
+            position: absolute;
+            top:40vh;
+            overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-right: 5vw;
+            width: 100vw;
+            list-style-type: none;
+
+            li{
+
+                display: flex;
+                flex-direction: column;
+            align-items: center;
+            width: 100vw;
+            
+            height: 60vh;
+            
+        }
+    }
+
+   }
+}
+@media (prefers-color-scheme:dark) {
+    // box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+
+    ul{
+
+        li{
+            background-color: rgb(28,28,28);
+            border: solid 1px black;
+            
+         
+            border-color: white;
+            section{
+
+                width: 85vw;
+                color:white;
+                h1{
+                }
+                h2{
+                }
+            }
+            h3{
+            }
+            h3:hover{ 
+                padding: 7px;
+                transition: 0.1s;
+            }
+            aside{
+                p{
+                }
+                .likes:hover,.dislikes:hover,.comment:hover{
+                    color: #FF6410;
+                }
+            }
+            
+        }
+        li:hover{
+            padding: 4px;
+            transition: 0.1s;
+            border-radius: 7px;
+        }
+        
+    }
+
+}
+  /********************************************** USERPOSTS  **********************************************/
+  /********************************************** USERPOSTS  **********************************************/
+  .UserPosts {
+    height: 90vh;
+    border-radius: 7px;
+    top: 10vh;
+    animation: fadeIn 0.5s;
+    overflow-y: scroll;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    left: 25vw;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70vw;
+    z-index: 3;
+    .yourPosts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        height: 10vh;
+        color: black;
+    }
+
+    li {
+        //animation: fadeIn 1s;
+        border-radius: 7px;
+        height: 60vh;
+        margin-top: 20px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 65vw;
+        section {
+            border-radius: 7px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 65vw;
+            height: 10vh;
+
+            h4 {
+                justify-self: flex-end;
+                margin-left: 10px;
+
+            }
+
+            h2 {
+                justify-self: flex-start;
+                margin-right: 10px;
+
+
+            }
+        }
+
+        h3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            width: 65vw;
+            margin-top: 0;
+            background-color: gray;
+            border: solid 2px black;
+            border-radius: 7px;
+        }
+        .postImage{
+            width: 65vw;
+            height: 50vh;
+        }
+
+        h3:hover {
+            padding: 10px;
+            transition: 3s;
+            border-radius: 7px;
+            animation: borderHighlight 3s infinite;
+        }
+
+        aside {
+            display: flex;
+            width: 65vw;
+            justify-content: flex-start;
+            padding-left: 10px;
+
+            p {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .like:hover,
+            .dislike:hover,
+            .comment:hover {
+                color: rgb(171, 211, 246);
+            }
+        }
+    }
+
+    .noPosts {
+
+        margin-bottom: 5vh;
+    }
+}
+
+
+@media (max-width:900px) {
+    .UserPosts {
+        .yourPosts {}
+
+        li {
+
+            section {
+
+                h4 {}
+
+                h2 {}
+            }
+
+            h3 {}
+
+            h3:hover {}
+
+            aside {
+
+                p {}
+
+                .like:hover,
+                .dislike:hover,
+                .comment:hover {}
+            }
+        }
+
+        .noPosts {}
+    }
+}
+
+@media (prefers-color-scheme:dark) {
+    .UserPosts {
+        .yourPosts {
+            color: white;
+        }
+
+        li {
+
+            section {
+
+                h4 {}
+
+                h2 {}
+            }
+
+            h3 {}
+
+            h3:hover {}
+
+            aside {
+
+                p {}
+
+                .like:hover,
+                .dislike:hover,
+                .comment:hover {}
+            }
+        }
+
+        .noPosts {
+        }
+    }
+}
+
+@keyframes borderHighlight {
+
+    0%,
+    100% {
+        border-color: rgb(180, 217, 247);
+        /* Initial and final border color */
+    }
+
+    25% {
+        border-color: white;
+        /* Highlighted border color */
+    }
+
+    50% {
+        border-color: rgb(180, 217, 247);
+        /* Initial and final border color */
+    }
+
+    75% {
+        border-color: white;
+        /* Highlighted border color */
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+  /********************************************** FORMPOSTS  **********************************************/
+  /********************************************** FORMPOSTS  **********************************************/
