@@ -5,7 +5,7 @@ import { useState } from 'react'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import * as postService from '../../../utilities/post-api.cjs'
 
-export default function PostModal({ user, setUser, showModal, setShowModal, page }) {
+export default function PostModal({ user, setUser, showModal, setShowModal, page, setForumPage }) {
 
     /******************************************** Variables ********************************************/
     const { id } = useParams()
@@ -33,37 +33,48 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
 
     /******************************************** API Calls ********************************************/
 
-    async function handlePostToForum(e) { //if there is a image in the post use Multer to handle that if there is only text in the post then do the regular stuff
+    function uploadPic(e) { //if there is a image in the post use Multer to handle that if there is only text in the post then do the regular stuff
         e.preventDefault()
-        console.log('file', file.name)
-        const formData = new FormData()
-        formData.append('profilePic', file)
-        const result = await axios.post('/api/postPic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-        console.log(result.data)
-        try {
-            const newPost = await forumService.
-            console.log('updatedUser', updatedUser)
-            setUser(updatedUser)
-        } catch (error) {
-            console.log({ error: error })
+        console.log('fileName', file.name)
+        console.log('init  postData is ',postData)
+        setPostData({...postData, image:file.name})
+        
+        
+    }
+    
+    async function handlePostToForum(e){
+        e.preventDefault()
+        console.log('Data in HandlePost',postData)
+        if(postData.text !== null){
+            try {
+                const newForum = await forumService.postToForum(id,postData)
+                console.log('updated Forum: ',newForum)
+                setForumPage(newForum)
+                setShowModal(false)
+            } catch (error) {
+                console.log({error:error})
+                
+            }
+        }else{
+            const formData = new FormData()
+            formData.append('profilePic', file)
+            const result = await axios.post('/api/profilePic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+            console.log(result.data)
+            try {
+                const newForum = await forumService.postToForum(id,postData)
+                console.log('updated Forum: ',newForum)
+                setForumPage(newForum)
+                setShowModal(false)
+            } catch (error) {
+                console.log({error:error})
+                
+            }
         }
-
     }
 
     async function handleMakeAPost(e) {
          e.preventDefault()
-        console.log('file', file.name)
-        const formData = new FormData()
-        formData.append('profilePic', file)
-        const result = await axios.post('/api/profilePic', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
-        console.log(result.data)
-        try {
-            const updatedUser = await userService.updateUserInfo(user._id, { profileImage: file.name })
-            console.log('updatedUser', updatedUser)
-            setUser(updatedUser)
-        } catch (error) {
-            console.log({ error: error })
-        }
+
     }
 
     return (
@@ -83,8 +94,12 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                         <h2>Image</h2>
                         <img src='none' />
                         <section>
-                        <input type='file' accept='image/*' onChange={e =>{setFile(e.target.files[0])}} />
-
+                        
+                        <input type='file'
+                        accept='image/*' 
+                        onChange={e =>{setFile(e.target.files[0])}} 
+                        />
+                        <button className={styles.upload} onClick={uploadPic}>upload</button>
                         </section>
                         <button type='submit'>Post</button>
                     </form>

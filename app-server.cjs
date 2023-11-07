@@ -36,6 +36,7 @@ const upload = multer({ storage: storage }) // multer function gives you back fu
 //                                           up a folder to post our files
 //                                           
 
+
 const postUploads = multer({storage:storage2})
 
 app.post('/api/profilePic', upload.single('profilePic'), (req, res) => {
@@ -43,7 +44,7 @@ app.post('/api/profilePic', upload.single('profilePic'), (req, res) => {
   console.log(imageName)
   res.send(imageName)
 });
-app.post('/api/postPic', upload.single('postPic'), (req, res) => {
+app.post('/api/profilePic', postUploads.single('postPic'), (req, res) => {
   const imageName = req.file.filename
   console.log(imageName)
   res.send(imageName)

@@ -45,7 +45,7 @@ export default function ForumPage({ user, setUser }) {
             }
         })()
     }, [id])
-    
+
     useEffect(() => {
         if (!user) {
             return
@@ -56,7 +56,7 @@ export default function ForumPage({ user, setUser }) {
                 setIsMember(false)
             }
         }
-    },[user])
+    }, [user])
     /******************************************** API Calls ********************************************/
 
     async function handleLikeClick(poster) {
@@ -69,7 +69,7 @@ export default function ForumPage({ user, setUser }) {
         }
     }
     async function handleDislikeClick() {
-        
+
     }
     function handlePostClick(e) {
         //console.log('postId in handlePostClick',e.currentTarget.getAttribute('postId'))
@@ -83,7 +83,7 @@ export default function ForumPage({ user, setUser }) {
             setForumPage(updatedForum)
         } catch (error) {
             console.log({ error: error })
-            
+
         }
     }
     async function handleisNotMemberClick() {
@@ -93,7 +93,7 @@ export default function ForumPage({ user, setUser }) {
             setForumPage(updatedForum)
         } catch (error) {
             console.log({ error: error })
-            
+
         }
     }
 
@@ -101,21 +101,21 @@ export default function ForumPage({ user, setUser }) {
     return (
         <div className={styles.ForumPage}>
             <SearchBar />
-            {forumPage && forumPage.posts?
+            {forumPage && forumPage.posts ?
                 <>
                     {showPostModal ?
-                        <PostModal user={user} setUser={setUser} showModal={showPostModal} setShowModal={setShowPostModal} page={forumPage}  />
+                        <PostModal user={user} setUser={setUser} showModal={showPostModal} setShowModal={setShowPostModal} page={forumPage} setForumPage={setForumPage} />
                         :
                         <></>
                     }
                     <header>
                         <h1>{forumPage.title}</h1>
                         <h2>{forumPage.description}</h2>
-                        {forumPage.founder?
-                        <h3>Created By: {forumPage.founder.username}</h3>
-                        :
-                        <h3>Created By: User Deleted</h3>
-                    }
+                        {forumPage.founder ?
+                            <h3>Created By: {forumPage.founder.username}</h3>
+                            :
+                            <h3>Created By: User Deleted</h3>
+                        }
                         <h4>Members: {forumPage.numOfMembers}</h4>
                         <section>
                             {isMember ?
@@ -136,8 +136,12 @@ export default function ForumPage({ user, setUser }) {
                                         <h2>{post.title} </h2>
                                         <h1>{post.sender.username} </h1>
                                     </section>
-                                    <h3 >{post.text}</h3>
-                    
+                                    {post.image ?
+                                        <img className={styles.postImage} src={`/profilePics/${post.image}`} />
+                                        :
+                                        <h3 >{post.text}</h3>
+                                    }
+
                                     <aside>
                                         <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
                                         <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>

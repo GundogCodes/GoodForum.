@@ -161,10 +161,11 @@ exports.postToForum = async (req,res) =>{
             newPost.forum =  postingForum
             newPost.text = req.body.text
             newPost.title = req.body.title
+            newPost.image = req.body.image
             const createdPost = await Post.create(newPost)
-             await Forum.findOneAndUpdate({_id:req.params.id},{$push:{posts:createdPost}},{new:true})
-            const updatedUser =  await User.findOneAndUpdate({_id:req.user._id}, {$inc:{numOfPosts:1}, $push:{posts:createdPost}},{new:true})
-                res.json(updatedUser)
+            const updatedForum =  await Forum.findOneAndUpdate({_id:req.params.id},{$push:{posts:createdPost}},{new:true}).populate('posts')
+             await User.findOneAndUpdate({_id:req.user._id}, {$inc:{numOfPosts:1}, $push:{posts:createdPost}},{new:true})
+                res.json(updatedForum)
             }
     } catch (error) {
         
