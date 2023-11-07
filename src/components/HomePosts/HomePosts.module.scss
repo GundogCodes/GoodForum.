@@ -55,6 +55,12 @@
                 background-color: gray;
                 border: solid 2px white;
                 border-radius: 7px;
+                font-size: 10vmin;
+                overflow: hidden;
+            }
+            .postImage{
+                width: 55vw;
+                height: 50vh;
             }
             h3:hover{
                 transition: 0.1s;

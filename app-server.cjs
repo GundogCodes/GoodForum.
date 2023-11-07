@@ -19,15 +19,6 @@ const storage = multer.diskStorage({
     cb(null, file.originalname)
   }
 }) 
-const storage2 = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'postPics/')
-  },
-  filename: function (req, file, cb) {
-    //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.originalname)
-  }
-}) 
 
 const upload = multer({ storage: storage }) // multer function gives you back function called upload, which is a middleware
 //                                           we can put anywhere with some options
@@ -37,18 +28,13 @@ const upload = multer({ storage: storage }) // multer function gives you back fu
 //                                           
 
 
-const postUploads = multer({storage:storage2})
 
 app.post('/api/profilePic', upload.single('profilePic'), (req, res) => {
   const imageName = req.file.filename
   console.log(imageName)
   res.send(imageName)
 });
-app.post('/api/profilePic', postUploads.single('postPic'), (req, res) => {
-  const imageName = req.file.filename
-  console.log(imageName)
-  res.send(imageName)
-});
+
 
 //import log http requests with morgan
 const logger = require('morgan')

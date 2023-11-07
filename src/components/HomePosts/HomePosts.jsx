@@ -10,6 +10,7 @@ export default function HomePosts({ allPosts }) {
     }
     return (
         <ul className={styles.HomePosts}>
+
             {
                 allPosts.map((post) => {
                     return <li onClick={handlePostClick} id={`${post._id}`} >
@@ -22,7 +23,11 @@ export default function HomePosts({ allPosts }) {
                             <h1>Deleted User</h1>
                         }
                         </section>
+                        {post.image?
+                        <h3 onClick={handlePostClick} id={`${post._id}`} ><img className={styles.postImage} src={`/profilePics/${post.image}`}/> </h3>
+                        :
                         <h3 onClick={handlePostClick} id={`${post._id}`} >{post.text} </h3>
+                        }
                         <aside onClick={handlePostClick} id={`${post._id}`} >
                             <p id={`${post._id}`} onClick={handlePostClick}  className={styles.likes} >Likes {post.likes}</p>
                             <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislikes}  >Dislikes {post.dislikes}</p>

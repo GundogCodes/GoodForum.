@@ -14,7 +14,7 @@ export default function UserPosts({user, setUser}){
                 if(userPosts === 'no posts'){
                     setAllUserPosts()
                 }else{
-
+                    
                     setAllUserPosts(userPosts)
                     console.log(userPosts)
                 }
@@ -44,7 +44,11 @@ export default function UserPosts({user, setUser}){
                                         <h2>{post.title} </h2>
 
                                     </section>
-                                    <h3 id={`${post._id}`} onClick={handlePostClick} >{post.content} </h3>
+                                    {post.image?
+                                    <h3 id={`${post._id}`} onClick={handlePostClick} ><img className={styles.postImage} src={`profilePics/${post.image}`}/> </h3>
+                                    :
+                                    <h3 id={`${post._id}`} onClick={handlePostClick} >{post.text} </h3>
+                                }
                                     <aside id={`${post._id}`} onClick={handlePostClick}>
                                         <p id={`${post._id}`} onClick={handlePostClick} className={styles.like}>{post.likes} Likes</p>
                                         <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislike}>{post.dislikes} Dislikes</p>
