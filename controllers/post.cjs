@@ -72,6 +72,9 @@ exports.updatePost = async function(req,res){
 exports.incrementLikes =  async function (req,res){
     try {
         const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{likes:1}}, {new:true})
+        .populate('comments')
+        .populate('sender')
+        .populate('forum')
         await User.findOneAndUpdate({_id:req.user._id}, {$push:{likedPosts:updatedPost}}, {new:true})
         res.json(updatedPost)
     } catch (error) {
@@ -79,10 +82,39 @@ exports.incrementLikes =  async function (req,res){
         
     }
 }
-//decrementLikes
+exports.decrementLikes =  async function (req,res){
+    try {
+        const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{likes:-1}}, {new:true})
+        .populate('comments')
+        .populate('sender')
+        .populate('forum')
+        await User.findOneAndUpdate({_id:req.user._id}, {$push:{likedPosts:updatedPost}}, {new:true})
+        res.json(updatedPost)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}
+//incrementDislikes
 exports.incrementDislikes =  async function (req,res){
     try {
         const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{dislikes:1}}, {new:true})
+        .populate('comments')
+        .populate('sender')
+        .populate('forum')
+        await User.findOneAndUpdate({_id:req.user._id}, {$push:{dislikedPosts:updatedPost}}, {new:true})
+        res.json(updatedPost)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+        
+    }
+}
+exports.decrementDislikes =  async function (req,res){
+    try {
+        const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$inc:{dislikes:-1}}, {new:true})
+        .populate('comments')
+        .populate('sender')
+        .populate('forum')
         await User.findOneAndUpdate({_id:req.user._id}, {$push:{dislikedPosts:updatedPost}}, {new:true})
         res.json(updatedPost)
     } catch (error) {
@@ -131,8 +163,13 @@ exports.commentToPost = async (req,res) => {
             newComment.sender = req.user
             newComment.text = req.body.text
             const createComment  = await Comment.create(newComment)
-            const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$push:{comments:createComment}}, {new:true}).populate('comments')
-            res.json(updatedPost)
+            const updatedPost = await Post.findOneAndUpdate({_id:req.params.id}, {$push:{comments:createComment}}, {new:true})
+            .populate('comments')
+            const senders = updatedPost.comments.map((comment)=>({
+                sender:comment.sender,
+                text:comment.text
+            }))
+            res.json({updatedPost, senders})
         }
     } catch (error) {
         res.status(400).json({error: error.message})

@@ -19,3 +19,8 @@ export function updateUserInfo(userId,newData){
 export function getUsersPosts(){
     return sendRequest (`${BASE_URL}/posts`)
 }
+
+export function getUser(id){
+    return sendRequest (`${BASE_URL}/${id}`)
+
+}

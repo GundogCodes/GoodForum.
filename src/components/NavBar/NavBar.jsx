@@ -14,7 +14,7 @@ export default function NavBar({ user, setUser }) {
   function handleClick(e) {
     const butt = e.target.innerText
     console.log(e.target.innerText)
-    if (butt === 'You') {
+    if (butt === '') {
       setYouClicked(true)
       setHomeClicked(false)
       setMessagesClicked(false)
@@ -41,9 +41,23 @@ export default function NavBar({ user, setUser }) {
           <section>
 
             {youClicked ?
-              <Link to={'/user'}><p onClick={handleClick} className={styles.clicked} >You</p></Link>
+              <Link to={`/user`}><p onClick={handleClick} className={styles.clicked} >
+                {user.profileImage?
+                <img className={styles.profilePic} src={`/profilePics/${user.profileImage}`}/>
+                :
+                <img className={styles.profilePic} src={`/src/assets/userFunc/profileImage.png`}/>
+                }
+                </p>
+                </Link>
               :
-              <Link to={'/user'}><p onClick={handleClick} className={styles.unclicked}>You</p></Link>
+              <Link to={`/user`}><p onClick={handleClick} className={styles.unclicked}>
+                {user.profileImage?
+                <img className={styles.profilePic} src={`/profilePics/${user.profileImage}`}/>
+                :
+                <img className={styles.profilePic} src={`/src/assets/userFunc/profileImage.png`}/>
+                }
+                </p>
+                </Link>
             }
             {homeClicked ?
               <Link to={'/'}><p onClick={handleClick} className={styles.clicked} >Home</p></Link>

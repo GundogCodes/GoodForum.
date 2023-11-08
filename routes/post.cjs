@@ -8,7 +8,9 @@ router.delete('/:id', postController.deletePost) //works
 router.put('/:id',  postController.updatePost) //works
     //like/dislike
 router.put('/like/:id',  postController.incrementLikes) //works
+router.put('/unlike/:id',  postController.decrementLikes) //works
 router.put('/dislike/:id',  postController.incrementDislikes) //works
+router.put('/undislike/:id',  postController.decrementDislikes) //works
 router.put('/comment/:id', postController.commentToPost) //works
 
 router.get('/:id',  postController.getPost) //works

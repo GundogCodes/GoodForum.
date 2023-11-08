@@ -4,12 +4,24 @@ import UserPosts from '../../components/UserPosts/UserPosts'
 import Footer from '../../components/Footer/Footer'
 import {useState, useEffect } from 'react'
 import PostModal from '../../components/PostModal/PostModal'
-
+import { useParams } from 'react-router-dom'
+import * as usersAPIs from '../../../utilities/users-api.cjs'
 
 
 export default function UserPage({user,setUser}){
-
+    /********************************************** VARIABLES **********************************************/
+    const {id} = useParams()
     const [showModal, setShowModal] = useState(false)
+    useEffect(() => {
+        (async () => {
+            try {
+                const user = await usersAPIs.getUser(id)
+                setUser(user)
+            } catch (error) {
+                console.log(error)
+            }
+        })()
+    }, [id])
    
     return(
         <div className={styles.UserPage}>
