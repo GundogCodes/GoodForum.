@@ -14,7 +14,7 @@
     .form{
         background-color: white;
         border-radius:7px;
-        height: 70vh;
+        height: 80vh;
         box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
         .forumList{
             width: 45vw;
@@ -93,7 +93,6 @@
                 width: 60px;
                 height: 20px;
                 align-self: flex-start;
-
                 
             }
             button:hover{
@@ -120,6 +119,33 @@
 
         .form{
             background-color: rgb(28,28,28);
+            form{
+                
+                button{
+                    border: none;
+                    border-radius: 7px;
+                    color: black;
+                }
+                button:hover{
+                    color: white;
+                    background-color: #FF6410;
+
+                }
+                .forumList{
+
+                    h4{
+                        background-color: rgb(28,28,28);
+                        overflow-x: hidden;
+                        color: white;
+                        border: solid 1px white;
+                    }
+                    h4:hover{
+                    background-color: #FF6410;
+
+                    }
+                   
+                }
+            }
             .section{
 
                 .heading{
@@ -134,26 +160,13 @@
                 aside{
 
                     button{
-                        border: none;
-                        border-radius: 4px;
-                        background-color: #FF6410;
+                  
+
                     }
                     button:hover{
 
                     }
-                    .forumList{
-
-                        h4{
-                            background-color: rgb(28,28,28);
-                            overflow-x: hidden;
-                            color: white;
-                        }
-                        h4:hover{
-                        background-color: #FF6410;
-
-                        }
-                       
-                    }
+                   
                     h3{
 
   

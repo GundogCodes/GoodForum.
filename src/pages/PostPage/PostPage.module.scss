@@ -28,6 +28,7 @@
             align-items: center;
             .headerClickables:hover{
                 color: rgb(180,217,247);
+                cursor: pointer;
             }
         }
         aside{
@@ -109,6 +110,7 @@
             button:hover{
                 background-color: rgb(180,217,247);
                 color: white;
+                cursor: pointer;
             }
         }
     }
