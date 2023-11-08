@@ -141,7 +141,7 @@
                         background-color: rgb(180, 217, 247);
                         color: white;
                         border-radius: 7px;
-                        padding: 5px;
+
                     }
                 }
 
@@ -172,6 +172,7 @@
                     p:hover {
                         background-color: #FF6410;
                         color: white;
+                        cursor: pointer;
                     }
                 }
             }
@@ -201,6 +202,9 @@
                         }
                     }
 
+                }
+                .post:hover{
+                    cursor: pointer;
                 }
             }
         }
