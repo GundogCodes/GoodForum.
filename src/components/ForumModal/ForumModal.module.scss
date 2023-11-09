@@ -1,4 +1,4 @@
-.FormModal{
+.FormModal {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -9,15 +9,22 @@
     justify-content: center;
     align-items: center;
     animation: fadeIn 0.5s;
-    background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
-    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Adjust the alpha value for transparency */
+    backdrop-filter: blur(10px);
+    /* Adjust the blur radius as needed */
 
 
-    h1{
+    h1 {
         margin-top: 0;
         font-size: 20px;
     }
-    section{
+
+    h1 {
+        cursor: pointer;
+    }
+
+    section {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
         background-color: white;
         border-radius: 7px;
@@ -27,28 +34,31 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        p{
+
+        p {
             font-size: 25px;
 
             width: 60vw;
             height: 10px;
             margin-left: 60px;
-            color:black;
+            color: black;
         }
-  
-        
-        .inputField{
-            color:black;
+
+
+        .inputField {
+            color: black;
             height: 60vh;
-            
+
             width: 30vw;
-            h3{
+
+            h3 {
                 width: 30vw;
                 border-radius: 7px;
                 border-color: white;
-                
+
             }
-            input{
+
+            input {
                 width: 30vw;
                 border-radius: 7px;
                 border-color: black;
@@ -57,8 +67,9 @@
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
             }
         }
-        button{
-            color:black;
+
+        button {
+            color: black;
             border-radius: 7px;
             margin-top: 10px;
             background-color: white;
@@ -66,14 +77,16 @@
             width: 60px;
             height: 20px;
         }
-        button:hover{
-            color:white;
-            background-color: rgb(84,118,228);
+
+        button:hover {
+            color: white;
+            background-color: rgb(84, 118, 228);
             cursor: pointer;
         }
-        #description{
 
-            height: 10vh;
+        #description {
+
+            padding-bottom: 10vh;
             display: flex;
             justify-content: flex-start;
             align-items: flex-start;
@@ -82,91 +95,106 @@
 }
 
 @media (max-width:900px) {
-    .FormModal{
-        h1{
+    .FormModal {
+        h1 {
             margin-top: 10vh;
-            color:black;
+            color: black;
             margin-left: 10px;
         }
-        section{
+
+        section {
             height: 100vh;
             width: 100vw;
-            p{
+
+            p {
                 font-size: 25px;
                 height: 30px;
                 width: 90vw;
             }
-            .inputField{
+
+            .inputField {
                 width: 80vw;
-                h3{
-                    width: 80vw;
-                    
-                    
-                }
-                input{
+
+                h3 {
                     width: 80vw;
 
-                    
+
+                }
+
+                input {
+                    width: 80vw;
+
+
                 }
             }
-            button{
+
+            button {
                 width: 100px;
                 height: 50px;
             }
-            #description{
 
-            }
+            #description {}
         }
     }
 }
 
 @media (prefers-color-scheme:dark) {
-    .FormModal{
-        h1{
+    .FormModal {
+        h1 {
             color: white;
         }
-        section{
+
+        section {
 
             border-width: 1px;
             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-            background-color: rgb(28,28,28);
-            p{
-                color:rgb(237,119,49)
+            background-color: rgb(28, 28, 28);
+
+            p {
+                color: rgb(237, 119, 49)
             }
-            .inputField{
+
+            .inputField {
                 color: white;
-                
-                
-                h3{
-                    
-                    
-                }
-                input{
-                    background-color: rgb(28,28,28);
-                    color:white;
+
+
+                h3 {}
+
+                input {
+                    background-color: rgb(28, 28, 28);
+                    color: white;
                 }
             }
-            button{
+
+            button {
                 border-color: black;
-                color:white;                
-                background-color: rgb(28,28,28);
-                
-                
-            }
-            #description{
+                color: white;
+                background-color: rgb(28, 28, 28);
 
 
             }
+
+            #description {}
         }
     }
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    0% {
+        opacity: 0;
+    }
 
-  @keyframes fadeInAndUp {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInAndUp {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

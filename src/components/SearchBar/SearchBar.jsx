@@ -14,7 +14,7 @@ export default function SearchBar({ forums }) {
         const foundSearchedItem = []
       //  console.log(userSearch)
         setUserSearch(e.target.value)
-        if (userSearch === null || userSearch === '  Search Scamazon.com') {
+        if (userSearch === null || userSearch === '  Scour Quarries...') {
             setMatchedSearches([])
         } else {
             for (let forum of forums) {

@@ -28,6 +28,10 @@ export default function UserAside({ user, setUser, showModal, setShowModal }) {
         }
     }
     function setShow() {
+        if (!user) {
+            alert('Login to Continue')
+            navigate('/login')
+        }
         setShowModal(true)
         console.log(showUploadForm)
     }
@@ -91,7 +95,11 @@ export default function UserAside({ user, setUser, showModal, setShowModal }) {
                 }
             </div>
             <div className={styles.userInfo}>
-                <h6>Friends Quarries Posts</h6>
+                <div>
+                <h6>Friends</h6>
+                <h6>Quarries</h6>
+                <h6>Posts</h6>
+                </div>
                 <div className={styles.pDiv}>
                     {
                         user?

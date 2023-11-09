@@ -43,6 +43,9 @@
                     
                     
                 }
+                .forumTitle{
+                    padding-left: 1vw;
+                }
             }
             h3{
                 
@@ -118,79 +121,89 @@
   }
 
 @media (max-width:900px){
-    .HomePosts{
-
-
-           
-            ul{
-                position: absolute;
-                top:40vh;
-                overflow-y: scroll;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding-right: 5vw;
-                width: 100vw;
-                list-style-type: none;
-
-                li{
-
-                    display: flex;
-                    flex-direction: column;
-                align-items: center;
-                width: 100vw;
-                
-                height: 60vh;
-                
-            }
-        }
-
-       }
-}
-@media (prefers-color-scheme:dark) {
-        // box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-
-        ul{
-
-            li{
-                background-color: rgb(28,28,28);
-                border: solid 1px black;
-                
-             
-                border-color: white;
-                section{
+    ul{
+        li{
+            section{
+                h1{
+                }
+                h2{
                     
-                    width: 85vw;
-                    color:white;
-                    h1{
-                        color:white;
-                    }
-                    h2{
-                        color:white;
-                    }
                 }
-                h3{
+                .forumTitle{
                 }
-                h3:hover{ 
-                    padding: 7px;
-                    transition: 0.1s;
-                }
-                aside{
+            }
+            h3{
+            }
+            .postImage{
+
+            }
+            .postImage:hover{
+
+            }
+            h3:hover{
+
+            }
+            aside{
+
+                .pDiv{
+
                     p{
                     }
-                    .likes:hover,.dislikes:hover,.comment:hover{
-                        color: #FF6410;
+                }
+                .likes:hover,.dislikes:hover,.comment:hover{
+
+                }
+                footer{
+
+                }            
+        }
+        li:hover{
+        }
+    }
+}
+}
+@media (prefers-color-scheme:dark) {
+    ul{
+        li{
+            background-color: rgb(28,28,28);
+            section{
+                h1{
+                    color: #FF6410;
+                }
+                h2{
+                    
+                }
+                .forumTitle{
+                    color: white;
+                }
+            }
+            h3{
+            }
+            .postImage{
+
+            }
+            .postImage:hover{
+
+            }
+            h3:hover{
+
+            }
+            aside{
+
+                .pDiv{
+
+                    p{
                     }
                 }
-                
-            }
-            li:hover{
-                padding: 4px;
-                transition: 0.1s;
-                border-radius: 7px;
-            }
-            
+                .likes:hover,.dislikes:hover,.comment:hover{
+
+                }
+                footer{
+
+                }            
         }
-    
-    
+        li:hover{
+        }
+    }
+}
 }

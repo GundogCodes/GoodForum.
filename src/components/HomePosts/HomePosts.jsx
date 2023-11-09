@@ -28,7 +28,7 @@ console.log(allPosts)
                 allPosts.map((post) => {
                     return <li onClick={handlePostClick} id={`${post._id}`} >
                         <section onClick={handlePostClick} id={`${post._id}`} >
-                            <h4 onClick={handlePostClick} id={`${post._id}`}  >{post.forum.title} </h4>
+                            <h4 className={styles.forumTitle} onClick={handlePostClick} id={`${post._id}`}  >{post.forum.title} </h4>
                             <h2 >{post.title} </h2>
                             {post.sender ?
                             <h1  >{post.sender.username} </h1>
@@ -37,19 +37,19 @@ console.log(allPosts)
                         }
                         </section>
                         {post.image?
-                        <h3  ><img onClick={handlePostClick} id={`${post._id}`}className={styles.postImage} src={`/profilePics/${post.image}`}/> </h3>
+                        <h3   onClick={handlePostClick} id={`${post._id}`} ><img onClick={handlePostClick} id={`${post._id}`}className={styles.postImage} src={`/profilePics/${post.image}`}/> </h3>
                         :
                         <h3 onClick={handlePostClick} id={`${post._id}`} >{post.text} </h3>
                         }
                         <aside onClick={handlePostClick} id={`${post._id}`} >
-                            <div className={styles.pDiv}>
+                            <div  onClick={handlePostClick} id={`${post._id}`} className={styles.pDiv}>
 
                             <p id={`${post._id}`} onClick={handlePostClick}  className={styles.likes} >Likes {post.likes}</p>
                             <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislikes}  >Dislikes {post.dislikes}</p>
                             <p id={`${post._id}`} onClick={handlePostClick} className={styles.comment}>Comments {post.comments.length}</p>
                             </div>
                         {post.comments.length > 0?
-                        <footer>{post.comments[0].text}</footer>
+                        <footer  onClick={handlePostClick} id={`${post._id}`}  >{post.comments[0].text}</footer>
                         :
                         <></>
                     }

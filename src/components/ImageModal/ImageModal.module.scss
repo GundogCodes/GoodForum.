@@ -8,13 +8,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    cursor: pointer;
+    
     div{
         display: flex;
         flex-direction: column;
         margin-top: 33px;
         align-items: center;
         img{
+            cursor: auto;
             width: 50%;
             height: auto;
         }
