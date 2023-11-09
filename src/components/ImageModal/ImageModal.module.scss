@@ -1,0 +1,22 @@
+.ImageModal{
+    z-index: 5;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        margin-top: 33px;
+        align-items: center;
+        img{
+            width: 50%;
+            height: auto;
+        }
+    }
+}

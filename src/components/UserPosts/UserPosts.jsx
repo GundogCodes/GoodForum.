@@ -3,18 +3,18 @@ import Post from '../Post/Post'
 import { useState, useEffect } from 'react'
 import * as usersAPI from '../../../utilities/users-api.cjs'
 import { useNavigate } from 'react-router-dom'
-export default function UserPosts({user, setUser}){
+export default function UserPosts({ user, setUser }) {
     const navigate = useNavigate()
     const [allUserPost, setAllUserPosts] = useState([])
 
-    useEffect(()=>{
-        (async ()=>{
+    useEffect(() => {
+        (async () => {
             try {
                 const userPosts = await usersAPI.getUsersPosts()
-                if(userPosts === 'no posts'){
+                if (userPosts === 'no posts') {
                     setAllUserPosts()
-                }else{
-                    
+                } else {
+
                     setAllUserPosts(userPosts)
                     console.log(userPosts)
                 }
@@ -22,46 +22,51 @@ export default function UserPosts({user, setUser}){
                 console.log(error)
             }
         })()
-    },[])
+    }, [])
 
-    function handlePostClick(e){
-        const id  = e.target.id
+    function handlePostClick(e) {
+        const id = e.target.id
+        console.log('ID: ', id)
         navigate(`/post/${id}`)
 
     }
 
-    return(
-            
-            <ul className={styles.UserPosts}>
-                {allUserPost?
-                <>
-                <li className={styles.yourPosts}>No More Posts</li>
-                { 
-                    allUserPost.map((post)=>{
-                        return   <li id={`${post._id}`} onClick={handlePostClick}>
-                            <section id={`${post._id}`} onClick={handlePostClick}>
-                                        <h4>{post.forum.title} </h4>
-                                        <h2>{post.title} </h2>
+    return (
 
-                                    </section>
-                                    {post.image?
-                                    <h3 id={`${post._id}`} onClick={handlePostClick} ><img className={styles.postImage} src={`profilePics/${post.image}`}/> </h3>
+        <ul className={styles.UserPosts}>
+            {allUserPost ?
+                <>
+                    <li className={styles.yourPosts}>No More Posts</li>
+                    {
+                        allUserPost.map((post) =>  <li id={`${post._id}`} onClick={handlePostClick}>
+                            <section id={`${post._id}`} onClick={handlePostClick} >
+                                <h4 id={`${post._id}`} onClick={handlePostClick} >{post.forum.title} </h4>
+                                <h2 id={`${post._id}`} onClick={handlePostClick} >{post.title} </h2>
+
+                            </section>
+                            {post.image ?
+                                <h3 id={`${post._id}`} onClick={handlePostClick}><img id={`${post._id}`} onClick={handlePostClick} className={styles.postImage} src={`profilePics/${post.image}`} /> </h3>
+                                :
+                                <h3 id={`${post._id}`} onClick={handlePostClick}>{post.text} </h3>}
+                            <aside>
+                                <div className={styles.pDiv}>
+
+                                    <p className={styles.like}>{post.likes} Likes</p>
+                                    <p className={styles.dislike}>{post.dislikes} Dislikes</p>
+                                    <p className={styles.comment}>Comments {post.comments.length}</p>
+                                </div>
+                                {post.comments.length > 0 ?
+                                    <footer id={`${post._id}`} onClick={handlePostClick}>{post.comments[0].text}</footer>
                                     :
-                                    <h3 id={`${post._id}`} onClick={handlePostClick} >{post.text} </h3>
-                                }
-                                    <aside id={`${post._id}`} onClick={handlePostClick}>
-                                        <p id={`${post._id}`} onClick={handlePostClick} className={styles.like}>{post.likes} Likes</p>
-                                        <p id={`${post._id}`} onClick={handlePostClick} className={styles.dislike}>{post.dislikes} Dislikes</p>
-                                        <p id={`${post._id}`} onClick={handlePostClick} className={styles.comment}>Comments {post.comments.length}</p>
-                                    </aside>
-                        </li>
-                    })
-                }
+                                    <></>}
+                            </aside>
+                        </li>)
+                    }
                 </>
                 :
                 <h1 className={styles.noPosts}>No Posts Yet</h1>
             }
-            </ul>
+        </ul>
 
     )
 }

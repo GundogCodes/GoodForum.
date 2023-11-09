@@ -181,6 +181,7 @@ exports.getAllPosts = async (req,res) =>{
         const allPosts = await Post.find({})
         .populate('sender')
         .populate('forum')
+        .populate('comments')
         .sort({createdAt:-1})
         .exec()
         res.json(allPosts)

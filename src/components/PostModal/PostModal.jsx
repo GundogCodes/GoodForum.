@@ -101,7 +101,7 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                     <input name='title' type='text' required />
                     <h6 className={styles.line}> </h6>
                     <h2>Text</h2>
-                    <input name='text' type='text' />
+                    <input id={styles.text} name='text' type='text' />
                     <h1 className={styles.or}>Or</h1>
                     <h2>Image</h2>
                     <img src='none' />

@@ -69,8 +69,10 @@ exports.updateForumInfo = async (req, res) => {
 
 exports.showAforum = async (req, res) => {
     try {
-        const forum = await Forum.findOne({ '_id': req.params.id }).populate('posts')
+        const forum = await Forum.findOne({ '_id': req.params.id })
+        .populate('posts')
         .populate('founder')
+
         const forumPosts = await Post.find({forum:forum._id}).populate('sender')
         res.json(forum)
     } catch (error) {

@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import * as postAPIs from '../../../utilities/post-api.cjs'
 import React from 'react';
 import { useMediaQuery } from '@react-hook/media-query';
-
+import ImageModal from '../../components/ImageModal/ImageModal';
 export default function PostPage() {
     /********************************************** VARIABLES **********************************************/
     const { id } = useParams()
@@ -17,8 +17,7 @@ export default function PostPage() {
     const [post, setPost] = useState()
     const [likedClicked, setLikedClicked] = useState(false)
     const [dislikedClicked, setDislikedClicked] = useState(false)
-    console.log(post)
-    console.log(commentInfo)
+    const [showImageModal,setShowImageModal] = useState(false)
     /********************************************** USEEFFECT **********************************************/
     useEffect(() => {
         (async () => {
@@ -96,6 +95,11 @@ export default function PostPage() {
     }
     return (
         <div className={styles.PostPage}>
+            {showImageModal?
+            <ImageModal setShowImageModal={setShowImageModal} image={post.image}/>
+            :
+            <></>
+            }
             {post ?
                 <section>
                     <header>
@@ -105,7 +109,7 @@ export default function PostPage() {
                     </header>
                     <aside>
                         {post.image ?
-                            <img className={styles.postImage} src={`/profilePics/${post.image}`} />
+                            <img onClick={()=>{setShowImageModal(true)}} className={styles.postImage} src={`/profilePics/${post.image}`} />
                             :
                             <p>{post.text}</p>
                         }

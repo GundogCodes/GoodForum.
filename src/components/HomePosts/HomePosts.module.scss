@@ -40,12 +40,12 @@
                 }
                 h2{
                     padding-left: 10px;
-
-
+                    
+                    
                 }
             }
             h3{
-
+                
                 margin-top: 0;
                 height: 50vh;
                 width: 55vw;
@@ -62,20 +62,43 @@
                 width: 55vw;
                 height: 50vh;
             }
+            .postImage:hover{
+                cursor: pointer;
+            }
             h3:hover{
                 transition: 0.1s;
                 border-radius: 7px;
+                cursor: pointer;
             }
             aside{
                 display: flex;
-                width: 50vw;
+                width: 55vw;
                 justify-content: flex-start;
-                p{
-                    margin-left:5px ;
-                    margin-right:5px ;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 0;
+                height: 15vh;
+                .pDiv{
+                    display: flex;
+                    border-top: solid 1px black;
+                    width: 55vw;
+                    p{
+                        margin-left:5px ;
+                        margin-right:5px ;
+                        height: 2.5vh;
+                    }
                 }
                 .likes:hover,.dislikes:hover,.comment:hover{
                     color: rgb(171,211,246);
+                    cursor: pointer;
+                }
+                footer{
+                    align-self: center;
+                    border-radius: 7px;
+                    padding: 2.5px;
+                    border: solid 1px black;
+                    width: 50vw;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                 }
             }
 
@@ -136,12 +159,14 @@
              
                 border-color: white;
                 section{
-    
+                    
                     width: 85vw;
                     color:white;
                     h1{
+                        color:white;
                     }
                     h2{
+                        color:white;
                     }
                 }
                 h3{

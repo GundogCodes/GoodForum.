@@ -143,9 +143,11 @@ export default function ForumPage({ user, setUser }) {
                                     }
 
                                     <aside>
-                                        <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
-                                        <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>
-                                        <p >Comments {post.comments.length}</p>
+                                        <div className={styles.pDiv}>
+                                            <p onClick={handleLikeClick} className={styles.like}>Like {post.likes}</p>
+                                            <p onClick={handleDislikeClick} className={styles.dislike}>Dislike {post.dislikes}</p>
+                                            <p >Comments {post.comments.length}</p>
+                                        </div>
                                     </aside>
                                 </li>
                             })}

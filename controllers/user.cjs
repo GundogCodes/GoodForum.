@@ -131,7 +131,7 @@ const dataController = {
     async getUserPosts(req,res){
         try{
             //console.log('hehe',req.user)
-            const userPosts = await Post.find({sender:req.user._id}).populate('forum')
+            const userPosts = await Post.find({sender:req.user._id}).populate('forum').populate('comments')
             if(userPosts.length !== 0){
                 console.log('yes')
                 res.json(userPosts)

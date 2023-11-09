@@ -32,6 +32,7 @@
             flex-direction: column;
             justify-content: flex-start;
             width: 65vw;
+            padding-bottom: 1vh;
             section {
                 border-radius: 7px;
                 display: flex;
@@ -92,6 +93,28 @@
                 .dislike:hover,
                 .comment:hover {
                     color: rgb(171, 211, 246);
+                }
+                .pDiv{
+                    display: flex;
+                    border-top: solid 1px black;
+                    width: 64.5vw;
+                    p{
+                        margin-left:5px ;
+                        margin-right:5px ;
+                        height: 2.5vh;
+                    }
+                }
+                .likes:hover,.dislikes:hover,.comment:hover{
+                    color: rgb(171,211,246);
+                    cursor: pointer;
+                }
+                footer{
+                    align-self: center;
+                    border-radius: 7px;
+                    padding: 2.5px;
+                    border: none;
+                    width: 50vw;
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                 }
             }
         }
@@ -160,6 +183,17 @@
                     .like:hover,
                     .dislike:hover,
                     .comment:hover {}
+                    .pDiv{
+                    
+                        p{
+                        }
+                    }
+                    .likes:hover,.dislikes:hover,.comment:hover{
+                    }
+                    footer{
+
+                        border: solid 1px white;
+                                        }
                 }
             }
 

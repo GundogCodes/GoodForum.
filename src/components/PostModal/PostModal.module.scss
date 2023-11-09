@@ -74,6 +74,9 @@
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
                 
             }
+            #text{
+                padding-bottom: 6vh;
+            }
             .fileInput{
                 width:20vw;
             }
@@ -120,7 +123,6 @@
         .form{
             background-color: rgb(28,28,28);
             form{
-                
                 button{
                     border: none;
                     border-radius: 7px;
@@ -129,10 +131,11 @@
                 button:hover{
                     color: white;
                     background-color: #FF6410;
-
+                    
                 }
                 .forumList{
-
+                    border: solid 1px white;
+                    
                     h4{
                         background-color: rgb(28,28,28);
                         overflow-x: hidden;
@@ -140,51 +143,49 @@
                         border: solid 1px white;
                     }
                     h4:hover{
-                    background-color: #FF6410;
-
+                        background-color: #FF6410;
+                        
                     }
-                   
+                    
                 }
             }
             .section{
-
+                
                 .heading{
-
+                    
                     p{
                         color: #FF6410;
                     }
                     h1{
-
+                        
                     }
                 }
                 aside{
-
+                    
                     button{
-                  
-
+                        
+                        
                     }
                     button:hover{
-
+                        
                     }
-                   
+                    
                     h3{
-
-  
+                        
+                        
                     }
                     input{
-
+                        
                     }
-                    #content{
 
-
-                    }
                 }
             }
         }
-    
+        
     }
-
+    
 }
+
 
 
 @keyframes fadeIn {
