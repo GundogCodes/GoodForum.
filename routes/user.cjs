@@ -14,6 +14,8 @@ router.get('/check-token', ensureLoggedIn, checkToken)
 router.delete('/:id', dataController.deleteUser) //works
 //U
 router.put('/:id', dataController.updateUser, apiController.auth) //works
+router.put('/addFriend/:id', dataController.addFriend)
+router.put('/removeFriend/:id', dataController.removeFriend)
 //C
 router.post('/new', dataController.createUser, apiController.auth) //works
 router.post('/login', dataController.loginUser,apiController.auth) //works
@@ -22,7 +24,6 @@ router.post('/login', dataController.loginUser,apiController.auth) //works
 router.get('/posts', dataController.getUserPosts)
 router.get('/:id', dataController.getUser) //works
 router.get('/', dataController.getAllUsers) //works
-
 
 module.exports = router
 

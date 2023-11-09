@@ -1,9 +1,12 @@
 import styles from './ChatsAside.module.scss'
 
-export default function ChatsAside(){
+export default function ChatsAside({user, setUser}){
     return(
         <div className={styles.ChatsAside}>
-            On Going Chats with People here
+            <h1>friend</h1>
+            {user.friends.map((friend)=>{
+                return <h1><img src={`/profilePics/${friend.profileImage}`}/></h1>
+            })}
         </div>
     )
 }

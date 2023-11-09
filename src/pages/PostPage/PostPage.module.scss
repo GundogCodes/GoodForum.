@@ -191,16 +191,15 @@
                 }
             }
             aside{
-
-
-
+                background-color: gray;
             }
             h4{
 
-
+                color: white;
             }
             h4:hover{
-                background-color: white;
+                background-color: #FF6410;
+                color: white;
 
             }
             p{
@@ -220,6 +219,7 @@
                 }
             }
             .commentSection{
+                margin-top: 5vh;
                 background-color: black;
                 li{
                     color: white;

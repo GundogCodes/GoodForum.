@@ -22,5 +22,13 @@ export function getUsersPosts(){
 
 export function getUser(id){
     return sendRequest (`${BASE_URL}/${id}`)
+    
+}
+export function addFriend(id){
+    return sendRequest (`${BASE_URL}/${id}`)
+
+}
+export function removeFriend(id){
+    return sendRequest (`${BASE_URL}/${id}`)
 
 }

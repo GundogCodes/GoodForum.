@@ -50,6 +50,7 @@ const dataController = {
             const foundUser = await User.findOne({ _id: req.params.id })
             .populate('followedForums')
             .populate('posts')
+            .populate('friends')
             console.log('foundUser in controller', foundUser)
             if (!foundUser) {
                 res.status(200).json('User not found')
@@ -142,6 +143,32 @@ const dataController = {
         } catch(error){
             
             res.status(400).json(error);
+        }
+    },
+    async addFriend(req,res){
+        try {
+            const newFriend = await User.findOneAndUpdate({_id:req.params.id}, {$addToSet:{friends:req.user}}, {new:true})
+            const updatedUser = await User.findOneAndUpdate({_id:req.user._id}, {$addToSet:{friends:newFriend}}, {new:true})
+            .populate('followedForums')
+            .populate('posts')
+            .populate('friends')
+            res.json(updatedUser)
+        } catch (error) {
+            res.status(400).json(error);
+            
+        }
+    },
+    async removeFriend(req,res){
+        try {
+            const removingFriend = await User.findOne({_id:req.params.id})
+            const updatedUser = await User.findOneAndUpdate({_id:req.user._id}, {$pull:{friends:removingFriend}}, {new:true})
+            .populate('followedForums')
+            .populate('posts')
+            .populate('friends')
+            res.json(updatedUser)
+        } catch (error) {
+            res.status(400).json(error);
+            
         }
     }
     
