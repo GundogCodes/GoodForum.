@@ -123,7 +123,7 @@ export default function ForumPage({ user, setUser }) {
                                 :
                                 <button onClick={handleisNotMemberClick}>Follow</button>
                             }
-                            <button>Sort By</button>
+
                             <button onClick={handleMakePostButton} >Make a Post</button>
                         </section>
                     </header>
