@@ -95,69 +95,79 @@ export default function PostPage() {
     }
     return (
         <div className={styles.PostPage}>
+            {post?
+            <>
             {showImageModal?
-            <ImageModal setShowImageModal={setShowImageModal} image={post.image}/>
-            :
-            <></>
+                <ImageModal setShowImageModal={setShowImageModal} image={post.image}/>
+                :
+                <></>
             }
             {post ?
                 <section>
-                    <header>
-                        <h3  onClick={()=>{navigate(`/user/${post.sender._id}`)}} className={styles.headerClickables}>{post.sender.username}</h3>
+                <header>
+                    {post.sender?
+                <h3  onClick={()=>{navigate(`/user/${post.sender._id}`)}} className={styles.headerClickables}>{post.sender.username}</h3>
+                :
+                <h3>Deleted User</h3>
+            }
                         <h1>{post.title}</h1>
                         <h3 onClick={()=>{navigate(`/forum/${post.forum._id}`)}} className={styles.headerClickables}>{post.forum.title}</h3>
-                    </header>
-                    <aside>
+                        </header>
+                        <aside>
                         {post.image ?
                             <img onClick={()=>{setShowImageModal(true)}} className={styles.postImage} src={`/profilePics/${post.image}`} />
                             :
                             <p>{post.text}</p>
                         }
-                    </aside>
-                    <div className={styles.interactions}>
+                        </aside>
+                        <div className={styles.interactions}>
                         {likedClicked ?
-                        darkMode?
+                            darkMode?
                             <h4 style={{ color: '#FF6410' }} className={styles.dislike} onClick={handleLike}>Like {post.likes}</h4>
                             :
                             <h4 style={{ color: 'rgb(180,217,247)' }} className={styles.dislike} onClick={handleLike}>Like {post.likes}</h4>
-
-                        
+                            
+                            
                             :
                             <h4 className={styles.dislike} onClick={handleLike}>Like {post.likes}</h4>
                         }
-
+                        
                         {dislikedClicked ?
-                        darkMode?
+                            darkMode?
                             <h4 style={{ color: '#FF6410' }} className={styles.dislike} onClick={handleDislike}>Dislike {post.dislikes}</h4>
                             :
                             <h4 style={{ color: 'rgb(180,217,247)' }} className={styles.dislike} onClick={handleDislike}>Dislike {post.dislikes}</h4>
-
+                            
                             :
                             <h4  className={styles.dislike} onClick={handleDislike}>Dislike {post.dislikes}</h4>
                         }
-                    </div>
-                    <ul className={styles.commentSection}>
-
+                        </div>
+                        <ul className={styles.commentSection}>
+                        
                         {
                             post.comments ?
-
-                                post.comments.map((comment) => {
-                                    return <li> {comment.text}</li>
-                                })
-
-                                :
-                                <></>
+                            
+                            post.comments.map((comment) => {
+                                return <li> {comment.text}</li>
+                            })
+                            
+                            :
+                            <></>
                         }
-                    </ul>
-                    <div className={styles.inputDiv}>
-
+                        </ul>
+                        <div className={styles.inputDiv}>
+                        
                         <input ref={inputRef} onChange={handleChange} type='text' />
                         <button onClick={addComment}>Comment</button>
+                        </div>
+                        </section>
+                        :
+                        <img className={styles.loading} src={'../../src/assets/AppFunctions/ZKZg.gif'} />
+                    }
+                    </>
+                    :
+                    <div>Post Deleted</div>
+                    }
                     </div>
-                </section>
-                :
-                <img className={styles.loading} src={'../../src/assets/AppFunctions/ZKZg.gif'} />
-            }
-        </div>
-    )
-}
+                    )
+                }

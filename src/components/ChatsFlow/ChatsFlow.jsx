@@ -1,4 +1,4 @@
-import styles from './ChatsFlow.module.scss'
+ import styles from './ChatsFlow.module.scss'
 
 export default function ChatsFlow(){
     return(

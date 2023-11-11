@@ -25,10 +25,10 @@ export function getUser(id){
     
 }
 export function addFriend(id){
-    return sendRequest (`${BASE_URL}/${id}`)
+    return sendRequest (`${BASE_URL}/addFriend/${id}`, 'PUT')
 
 }
 export function removeFriend(id){
-    return sendRequest (`${BASE_URL}/${id}`)
+    return sendRequest (`${BASE_URL}/removeFriend/${id}`, 'PUT')
 
 }

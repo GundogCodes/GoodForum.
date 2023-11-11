@@ -2,14 +2,21 @@ const cors = require('cors')
 const checkToken = require('./config/checkToken.cjs')
 const express = require('express')
 const multer  = require('multer')
+const WebStocket = require('ws')
+const server = new WebStocket.Server({port:8080})
+/****************************************************************** WEBSOCKET ******************************************************************/
+server.on('connection', socket =>{
+  console.log('websocket is rolling yo')
+  socket.on('message', message =>{
+    socket.send(`Roger that! ${message}`)
+  })
+})
+
 
 //created a express app
 const app = express()
 
-//import path to use and manipulate the file paths on our system
-const path = require('path')
-
-
+/****************************************************************** MULTER ******************************************************************/
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'profilePics/')
@@ -26,14 +33,16 @@ const upload = multer({ storage: storage }) // multer function gives you back fu
 //                                           to post our files we care bout the dest option which basically sets
 //                                           up a folder to post our files
 //                                           
-
-
-
 app.post('/api/profilePic', upload.single('profilePic'), (req, res) => {
   const imageName = req.file.filename
   console.log(imageName)
   res.send(imageName)
 });
+
+//import path to use and manipulate the file paths on our system
+const path = require('path')
+
+
 
 
 //import log http requests with morgan

@@ -1,17 +1,27 @@
 import styles from './OtherUserPage.module.scss'
 import * as userAPIs from '../../../utilities/users-api.cjs'
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export default function OtherUserPage({ user, setUser }) {
     /********************************************** VARIABLES **********************************************/
     const { id } = useParams()
+    const navigate = useNavigate()
     /********************************************** STATES **********************************************/
-
+    const [isFriend, setIsFriend] = useState()
     const [userPage, setUserPage] = useState(null)
+    /********************************************** FUNCTIONS **********************************************/
     /********************************************** USE EFFECTS **********************************************/
-
+    
     useEffect(() => {
+        for (let friend of user.friends) {
+            console.log('friend', friend._id)
+            if (friend._id === id) {
+                setIsFriend(true)
+            } else {
+                setIsFriend(false)
+            }
+        }
         (async () => {
             try {
                 const user = await userAPIs.getUser(id)
@@ -22,15 +32,65 @@ export default function OtherUserPage({ user, setUser }) {
             }
         })()
     }, [id])
+    /********************************************** API CALLS **********************************************/
+    
+       async function handleMessageClicked() {
+            if (isFriend) {
+                try {
+                    navigate('/chats')
+    
+                } catch (error) {
+    
+                    console.log(error)
+                }
+    
+            } else if (!isFriend) {
+                try {
+                    setIsFriend(true)
+                    const updatedUser = await userAPIs.addFriend(id)
+                    setUser(updatedUser)
+                    console.log(updatedUser)
+                    navigate('/chats')
+                } catch (error) {
+    
+                    console.log(error)
+                }
+            }
+        }
+    async function handleFriend() {
+        if (isFriend) {
+            try {
+                setIsFriend(false)
+                const updatedUser = await userAPIs.removeFriend(id)
+                setUser(updatedUser)
+                console.log(updatedUser)
+            } catch (error) {
+
+                console.log(error)
+            }
+
+        } else {
+            try {
+                setIsFriend(true)
+                const updatedUser = await userAPIs.addFriend(id)
+                setUser(updatedUser)
+                console.log(updatedUser)
+                //navigate('/chats')
+            } catch (error) {
+
+                console.log(error)
+            }
+        }
+    }
     return (
         <div className={styles.OtherUserPage}>
             {userPage ?
                 <section>
                     <header>
-                        {userPage.profileImage?
-                        <img className={styles.profilePic} src={`/profilePics/${userPage.profileImage}`} />
-                        :
-                        <img className={styles.profilePic} src={`/src/assets/userFunc/profileImage.png`} />
+                        {userPage.profileImage ?
+                            <img className={styles.profilePic} src={`/profilePics/${userPage.profileImage}`} />
+                            :
+                            <img className={styles.profilePic} src={`/src/assets/userFunc/profileImage.png`} />
                         }
                         <h1>{userPage.username}</h1>
                         <h6>{userPage.bio}</h6>
@@ -40,35 +100,39 @@ export default function OtherUserPage({ user, setUser }) {
                             <p>Posts: {userPage.posts.length}</p>
                         </aside>
                         <div className={styles.interactions}>
-                            <p>Message</p>
-                            <p>Add Friend</p>
+                            <p onClick={handleMessageClicked} >Message</p>
+                            {isFriend ?
+                                <p onClick={handleFriend}>Remove Friend</p>
+                                :
+                                <p onClick={handleFriend}>Add Friend</p>
+                            }
                         </div>
                     </header>
                     <div>
-                        {userPage.posts.map((post)=>{
+                        {userPage.posts.map((post) => {
                             return <div className={styles.post}>
                                 <header>
-                                {post.forum.title}
-                                {post.title}
+                                    {post.forum.title}
+                                    {post.title}
                                 </header>
-                                {post.image?
-                                <img className={styles.postImage} src={`/profilePics/${post.image}`}/>
-                                :
-                                <></>
+                                {post.image ?
+                                    <img className={styles.postImage} src={`/profilePics/${post.image}`} />
+                                    :
+                                    <></>
                                 }
-                                {post.text?
-                                <h5>
-                                    {post.text}
-                                </h5>
-                                :
-                                <></>
+                                {post.text ?
+                                    <h5>
+                                        {post.text}
+                                    </h5>
+                                    :
+                                    <></>
                                 }
                                 <section>
                                     <p>Likes {post.likes}</p>
                                     <p>Dislikes {post.dislikes}</p>
                                     <p>Comments {post.comments.length}</p>
                                 </section>
-                                </div>
+                            </div>
                         })}
                     </div>
                 </section>

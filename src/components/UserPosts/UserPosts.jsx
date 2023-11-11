@@ -38,14 +38,20 @@ export default function UserPosts({ user, setUser }) {
                 <>
                     <li className={styles.yourPosts}>No More Posts</li>
                     {
-                        allUserPost.map((post) =>  <li id={`${post._id}`} onClick={handlePostClick}>
+                        allUserPost.map((post) => <li id={`${post._id}`} onClick={handlePostClick}>
                             <section id={`${post._id}`} onClick={handlePostClick} >
                                 <h4 id={`${post._id}`} onClick={handlePostClick} >{post.forum.title} </h4>
                                 <h2 id={`${post._id}`} onClick={handlePostClick} >{post.title} </h2>
 
                             </section>
                             {post.image ?
-                                <h3 id={`${post._id}`} onClick={handlePostClick}><img id={`${post._id}`} onClick={handlePostClick} className={styles.postImage} src={`profilePics/${post.image}`} /> </h3>
+                                <h3 id={`${post._id}`}
+                                    onClick={handlePostClick}>
+                                    <img id={`${post._id}`}
+                                        onClick={handlePostClick}
+                                        className={styles.postImage}
+                                        src={`profilePics/${post.image}`} />
+                                </h3>
                                 :
                                 <h3 id={`${post._id}`} onClick={handlePostClick}>{post.text} </h3>}
                             <aside>

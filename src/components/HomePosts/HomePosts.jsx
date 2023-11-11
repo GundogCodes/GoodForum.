@@ -29,9 +29,9 @@ console.log(allPosts)
                     return <li onClick={handlePostClick} id={`${post._id}`} >
                         <section onClick={handlePostClick} id={`${post._id}`} >
                             <h4 className={styles.forumTitle} onClick={handlePostClick} id={`${post._id}`}  >{post.forum.title} </h4>
-                            <h2 >{post.title} </h2>
+                            <h2  onClick={handlePostClick} id={`${post._id}`} >{post.title} </h2>
                             {post.sender ?
-                            <h1  >{post.sender.username} </h1>
+                            <h1   onClick={handlePostClick} id={`${post._id}`} >{post.sender.username} </h1>
                             :
                             <h1>Deleted User</h1>
                         }

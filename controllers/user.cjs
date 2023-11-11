@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const User = require('../models/user.cjs')
 const Post = require('../models/post.cjs')
-
+const Forum = require('../models/forums.cjs')
 //function to create a token using JWT
 function createJWT(user) {
     return jwt.sign(
@@ -30,6 +30,7 @@ const dataController = {
     async createUser(req, res, next) {
         try {
             const user = await User.create(req.body)
+            
             const token = createJWT(user)
             console.log(user)
             req.user = user
@@ -48,14 +49,14 @@ const dataController = {
     async getUser(req, res, next) {
         try {
             const foundUser = await User.findOne({ _id: req.params.id })
+            .populate('friends')
             .populate('followedForums')
             .populate('posts')
-            .populate('friends')
             console.log('foundUser in controller', foundUser)
             if (!foundUser) {
                 res.status(200).json('User not found')
             } else {
-                res.status(200).json(foundUser)
+                res.json(foundUser)
             }
 
 
@@ -123,6 +124,9 @@ const dataController = {
     async getAllUsers(req, res) {
         try {
             const users = await User.find({})
+            .populate('friends')
+            .populate('followedForums')
+            .populate('posts')
             res.json(users)
         } catch (error) {
             res.status(400).json(error);
@@ -145,33 +149,83 @@ const dataController = {
             res.status(400).json(error);
         }
     },
-    async addFriend(req,res){
-        try {
-            const newFriend = await User.findOneAndUpdate({_id:req.params.id}, {$addToSet:{friends:req.user}}, {new:true})
-            const updatedUser = await User.findOneAndUpdate({_id:req.user._id}, {$addToSet:{friends:newFriend}}, {new:true})
-            .populate('followedForums')
-            .populate('posts')
-            .populate('friends')
-            res.json(updatedUser)
-        } catch (error) {
-            res.status(400).json(error);
+    async getUserFollowedForums(req,res){
+        try{
+            const userForums = await Forum.find({members:req.user})
+            console.log()
+        } catch(error){
             
+            res.status(400).json(error);
         }
     },
-    async removeFriend(req,res){
+    async addFriend(req, res) {
         try {
-            const removingFriend = await User.findOne({_id:req.params.id})
-            const updatedUser = await User.findOneAndUpdate({_id:req.user._id}, {$pull:{friends:removingFriend}}, {new:true})
+          const user = req.user;
+          const friendId = req.params.id;
+          console.log(user.friends.length)
+          console.log(user.friends)
+          if(!user){
+            res.json('Login to continue')
+          }
+
+          if (user.friends.includes(friendId)) {
+             res.json('User is already your friend');
+          } else{
+
+              const newFriend = await User.findByIdAndUpdate(
+                  friendId,
+                  { $push: { friends: user._id } },
+                  { new: true }
+                  );
+                  
+                  const updatedUser = await User.findByIdAndUpdate(
+                      user._id,
+                      { $push: { friends: newFriend._id } },
+                      { new: true }
+                      )
+                      .populate('friends')
             .populate('followedForums')
-            .populate('posts')
-            .populate('friends')
-            res.json(updatedUser)
-        } catch (error) {
-            res.status(400).json(error);
+            .populate('posts');
             
+            res.json(updatedUser);
         }
-    }
-    
+        } catch (error) {
+          console.error(error);
+          res.status(400).json({ error: 'Bad Request' });
+        }
+      }
+      ,
+    async removeFriend(req, res) {
+        try {
+          const removingFriend = await User.findOne({ _id: req.params.id })
+            if(!req.user){
+                res.json('Login to continue')
+            }
+          if (!removingFriend) {
+            return res.status(404).json({ error: 'Friend not found' });
+          } else{
+
+            await User.findByIdAndUpdate(
+                removingFriend._id,
+                { $pull: { friends: req.user._id } },
+                { new: true }
+                );
+
+              const updatedUser = await User.findByIdAndUpdate(
+                  {_id:req.user._id},
+                  { $pull: { friends: removingFriend._id } },
+                  { new: true }
+                  )
+                  .populate('followedForums')
+                  .populate('posts')
+                  .populate('friends');
+                  res.json(updatedUser);
+                }
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      }
 }
 
 

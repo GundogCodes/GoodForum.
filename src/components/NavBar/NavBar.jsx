@@ -1,16 +1,30 @@
 import {  useState } from 'react'
 import LogOut from '../Logout/Logout'
 import styles from './NavBar.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
 export default function NavBar({ user, setUser }) {
+  /******************************************** VARIABLES ********************************************/
+  const navigate = useNavigate()
+  const params = useParams()
+  console.log('PARAMS IN NAV BAR',params)
+  /******************************************** STATES ********************************************/
   const [youClicked, setYouClicked] = useState(false)
   const [homeClicked, setHomeClicked] = useState(false)
   const [messagesClicked, setMessagesClicked] = useState(false)
+  /******************************************** USE EFFECTS ********************************************/
 
-  const navigate = useNavigate()
-
+//   useEffect(() => {
+//     (async () => {
+//         try {
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     })()
+// }, [])
+  
+  /******************************************** FUNCTIONS ********************************************/
   function handleClick(e) {
     const butt = e.target.innerText
     console.log(e.target.innerText)

@@ -1,7 +1,7 @@
 import styles from './PostModal.module.scss'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as forumService from '../../../utilities/forum-api.cjs'
 import * as postService from '../../../utilities/post-api.cjs'
 
@@ -18,7 +18,7 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
     })
     console.log('init file: ', file)
     /******************************************** Handling States ********************************************/
-
+    
     function handleXClick() {
         setShowModal(false)
     }
@@ -29,7 +29,7 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
             [e.target.name]: e.target.value
         })
     }
-
+    /******************************************** USE EFFECT ********************************************/
 
     /******************************************** API Calls ********************************************/
 
@@ -91,7 +91,7 @@ export default function PostModal({ user, setUser, showModal, setShowModal, page
                             <div className={styles.forumList} >
                                 {
                                     user.followedForums.map((forum) => {
-                                        return <h4 /*onClick={}*/>Forum Name{forum.title}</h4>
+                                        return <h4 /*onClick={}*/>{forum}</h4>
                                     })
                                 }
                             </div>

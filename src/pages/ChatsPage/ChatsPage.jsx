@@ -4,12 +4,17 @@ import ChatsFlow from '../../components/ChatsFlow/ChatsFlow'
 import Footer from '../../components/Footer/Footer'
 export default function ChatsPage({user,setUser}){
     return(
-
         <div className={styles.ChatsPage}>
+            {user?
+            <>
         <ChatsAside user={user} setUser={setUser}/>
         <h3>Your Messages</h3>
         <ChatsFlow/>
         <Footer />
+            </>
+        :
+        <>Not LoggedIn </>
+    }
         </div>
 )
 }

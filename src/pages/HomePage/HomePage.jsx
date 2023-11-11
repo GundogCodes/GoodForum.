@@ -10,8 +10,13 @@ import * as postAPI from '../../../utilities/post-api.cjs'
 import { useNavigate } from 'react-router-dom'
 import SearchBar from '../../components/SearchBar/SearchBar'
 export default function HomePage({ user, setUser }) {
+    /******************************************** VARIABLES ********************************************/
+    const navigate  = useNavigate() 
+    /******************************************** STATES ********************************************/
+    const [showModal, setShowModal] = useState(false)
     const [forums, setForums] = useState([])
     const [allPosts, setAllPosts] = useState([])
+    /******************************************** USE EFFECTS ********************************************/
     useEffect(() => {
         (async () => {
             try {
@@ -25,7 +30,7 @@ export default function HomePage({ user, setUser }) {
             }
         })()
     }, [])
-    const [showModal, setShowModal] = useState(false)
+    /******************************************** FUNCTIONS ********************************************/
 
     function handleCreateClick() {
         console.log('showModal', showModal)
@@ -51,9 +56,9 @@ export default function HomePage({ user, setUser }) {
             <section className={styles.userInfo}>
                 <div className={styles.userPic}>
                     {user && user.profileImage.length >0?
-                        <img src={`profilePics/${user.profileImage}`}/>
+                        <img onClick={()=>{navigate('/user')}} src={`profilePics/${user.profileImage}`}/>
                         :
-                        <img src='src/assets/userFunc/profileImage.png' />
+                        <img  onClick={()=>{navigate('/user')}}src='src/assets/userFunc/profileImage.png' />
                     }
                     
                     </div>
