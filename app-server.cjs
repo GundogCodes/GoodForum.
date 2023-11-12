@@ -1,21 +1,8 @@
 const cors = require('cors')
 const checkToken = require('./config/checkToken.cjs')
 const express = require('express')
-const multer  = require('multer')
-const WebStocket = require('ws')
-const server = new WebStocket.Server({port:8080})
-/****************************************************************** WEBSOCKET ******************************************************************/
-server.on('connection', socket =>{
-  console.log('websocket is rolling yo')
-  socket.on('message', message =>{
-    socket.send(`Roger that! ${message}`)
-  })
-})
-
-
-//created a express app
 const app = express()
-
+const multer  = require('multer')
 /****************************************************************** MULTER ******************************************************************/
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

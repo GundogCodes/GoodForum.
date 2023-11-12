@@ -14,7 +14,7 @@ if (process.env.NODE_ENV == 'development') {
 
 db.on('connected', () => {
   console.log(
-    `Connected to ${db.name} at ${db.host}:${db.port}!`
+    ` Mongoose is connected to ${db.name} at ${db.host}:${db.port}!`
   );
 });
 
