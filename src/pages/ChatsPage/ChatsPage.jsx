@@ -9,7 +9,7 @@ export default function ChatsPage({user,setUser}){
             <>
         <ChatsAside user={user} setUser={setUser}/>
         <h3>Your Messages</h3>
-        <ChatsFlow/>
+        <ChatsFlow user={user} setUser={setUser} />
         <Footer />
             </>
         :

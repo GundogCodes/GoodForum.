@@ -20,9 +20,18 @@ const io = require('socket.io')(server, {
   )
 
   io.on('connection', (socket)=>{
+    
     console.log('connected to socket.io!')
+    
     socket.on('setup', (userData)=>{
       socket.join(userData._id)
+      console.log('userData',userData._id)
       socket.emit('user joined room')
     })
+
+    socket.on('join chat',(room)=>{
+      socket.join(room)
+      console.log('user joined room:', room)
+    })
+
   })
