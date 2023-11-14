@@ -4,8 +4,8 @@ const router = express.Router()
 
 //INDUCES
 
-router.get('/:id', chatsController.getChat)
-router.post('/:id', chatsController.createChat)
-router.delete('/:id', chatsController.deleteChat)
+router.post('/createChat/:id', chatsController.createChat) //WORKS
+router.get('/:id', chatsController.getChat) //WORKS
+router.delete('/:id', chatsController.deleteChat) //WORKS
 
 module.exports =router

@@ -60,6 +60,8 @@ app.use('/api/users',require('./routes/user.cjs'))
 app.use('/api/forum',require('./routes/forums.cjs'))
 app.use('/api/post',require('./routes/post.cjs'))
 app.use('/api/comment',require('./routes/comment.cjs'))
+app.use('/api/chat',require('./routes/chat.cjs'))
+app.use('/api/message',require('./routes/message.cjs'))
 app.use('/images', express.static('uploadProfilePic'))
 
 app.use('/profilePics', express.static('images'))

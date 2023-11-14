@@ -156,9 +156,10 @@ export default function PostPage() {
                         }
                         </ul>
                         <div className={styles.inputDiv}>
-                        
+                        <form onSubmit={addComment}>
                         <input ref={inputRef} onChange={handleChange} type='text' />
-                        <button onClick={addComment}>Comment</button>
+                        <button type='submit'>Comment</button>
+                        </form>
                         </div>
                         </section>
                         :
