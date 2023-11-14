@@ -16,11 +16,11 @@ export default function ChatsAside({user, setUser}){
             {user.friends.map((friend)=>{
                 return <h1>
                     {friend.profileImage?
-                    <img onClick={goToUserPage} id={`${friend._id}`} src={`/profilePics/${friend.profileImage}`}/>
+                    <img  src={`/profilePics/${friend.profileImage}`}/>
                     :
-                    <img onClick={goToUserPage} id={`${friend._id}`} src={`/src/assets/userFunc/profileImage.png`}/>
+                    <img src={`/src/assets/userFunc/profileImage.png`}/>
                 }
-                <p>{friend.username}</p>
+                <p  onClick={goToUserPage} id={`${friend._id}`} >{friend.username}</p>
                     </h1>
             })}
             </>

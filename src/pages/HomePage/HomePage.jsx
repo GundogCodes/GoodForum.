@@ -70,7 +70,7 @@ export default function HomePage({ user, setUser }) {
                     <h4>Your Quarries</h4>
                         {user.followedForums.length >0 ?
                         user.followedForums.map((forum)=>{
-                            return <li className={styles.forumTitles}>forum title {forum.title}</li>
+                            return <li onClick={()=>{navigate(`/forum/${forum._id}`)}} className={styles.forumTitles}>{forum.title}</li>
                         })
                         :
                         <></>

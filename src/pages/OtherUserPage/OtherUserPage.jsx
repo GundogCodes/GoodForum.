@@ -11,6 +11,10 @@ export default function OtherUserPage({ user, setUser }) {
     const [isFriend, setIsFriend] = useState()
     const [userPage, setUserPage] = useState(null)
     /********************************************** FUNCTIONS **********************************************/
+    function handlePostClick(e){
+        console.log(e.target.id)
+        navigate(`/post/${e.target.id}`)
+    }
     /********************************************** USE EFFECTS **********************************************/
     
     useEffect(() => {
@@ -110,27 +114,37 @@ export default function OtherUserPage({ user, setUser }) {
                     </header>
                     <div>
                         {userPage.posts.map((post) => {
-                            return <div className={styles.post}>
-                                <header>
+                            return <div className={styles.post} onClick={handlePostClick} id={`${post._id}`} >
+                                <header onClick={handlePostClick} id={`${post._id}`}>
                                     {post.forum.title}
                                     {post.title}
                                 </header>
                                 {post.image ?
-                                    <img className={styles.postImage} src={`/profilePics/${post.image}`} />
+                                    <img 
+                                    className={styles.postImage}
+                                    src={`/profilePics/${post.image}`}  
+                                    onClick={handlePostClick} 
+                                    id={`${post._id}`}/>
                                     :
                                     <></>
                                 }
                                 {post.text ?
-                                    <h5>
+                                    <h5 onClick={handlePostClick} id={`${post._id}`}>
                                         {post.text}
                                     </h5>
                                     :
                                     <></>
                                 }
-                                <section>
-                                    <p>Likes {post.likes}</p>
-                                    <p>Dislikes {post.dislikes}</p>
-                                    <p>Comments {post.comments.length}</p>
+                                <section onClick={handlePostClick} id={`${post._id}`} >
+                                    <p 
+                                    onClick={handlePostClick} 
+                                    id={`${post._id}`} >Likes {post.likes}</p>
+                                    <p 
+                                    onClick={handlePostClick} 
+                                    id={`${post._id}`} >Dislikes {post.dislikes}</p>
+                                    <p 
+                                    onClick={handlePostClick} 
+                                    id={`${post._id}`} >Comments {post.comments.length}</p>
                                 </section>
                             </div>
                         })}
