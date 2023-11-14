@@ -30,6 +30,15 @@ export default function ChatsPage({ user, setUser }) {
   }, []);
   //socket.emit('join chat', '')
   /*********************************************** API CALLS ***********************************************/
+  async function getUserChats(e) {
+    const friendId = e.target.id;
+    try {
+      const chats = await messageAPI.getMessages(friendId); // how am i gonna find a chat with the userID duhh
+      console.log("CHATS", chats);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className={styles.ChatsPage}>
@@ -42,9 +51,17 @@ export default function ChatsPage({ user, setUser }) {
                   return (
                     <h1>
                       {friend.profileImage ? (
-                        <img src={`/profilePics/${friend.profileImage}`} />
+                        <img
+                          onClick={getUserChats}
+                          id={`${friend._id}`}
+                          src={`/profilePics/${friend.profileImage}`}
+                        />
                       ) : (
-                        <img src={`/src/assets/userFunc/profileImage.png`} />
+                        <img
+                          onClick={getUserChats}
+                          id={`${friend._id}`}
+                          src={`/src/assets/userFunc/profileImage.png`}
+                        />
                       )}
                       <p onClick={goToUserPage} id={`${friend._id}`}>
                         {friend.username}
