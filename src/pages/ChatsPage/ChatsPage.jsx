@@ -46,9 +46,10 @@ export default function ChatsPage({ user, setUser }) {
       console.log("RETURNED CHAT", chatId);
       //get chatId with chatName then get messages using chatId
       const chats = await messageAPI.getMessages(chatId._id);
+      console.log("RETURNED MESSAGES", chats);
       setSelectedChats(chats);
       setSelectedChatId(chatId._id);
-      console.log("selectedChatId", chatId);
+      console.log("selectedChatId", chatId._id);
     } catch (error) {
       console.log(error);
     }
