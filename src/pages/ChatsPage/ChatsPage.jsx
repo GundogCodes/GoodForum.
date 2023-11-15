@@ -14,11 +14,18 @@ export default function ChatsPage({ user, setUser }) {
   const navigate = useNavigate();
   /*********************************************** STATES ***********************************************/
   const [socketConnected, setSocketConnected] = useState(false);
-
+  const [selectedChats, setSelectedChats] = useState([]);
+  const [selectedChatId, setSelectedChatId] = useState();
+  const [newMessage, setNewMessage] = useState();
   /*********************************************** FUNCTIONS ***********************************************/
   function goToUserPage(e) {
     const id = e.target.id;
     navigate(`/user/${id}`);
+  }
+  function handleChange(e) {
+    e.preventDefault();
+    setNewMessage({ content: e.target.value });
+    console.log(newMessage);
   }
   /*********************************************** USE EFFECTS ***********************************************/
   useEffect(() => {
@@ -31,15 +38,37 @@ export default function ChatsPage({ user, setUser }) {
   //socket.emit('join chat', '')
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
+    e.preventDefault();
     const friendId = e.target.id;
+    console.log(friendId);
     try {
-      const chats = await messageAPI.getMessages(friendId); // how am i gonna find a chat with the userID duhh
-      console.log("CHATS", chats);
+      const chatId = await chatAPI.findChat(friendId);
+      console.log("RETURNED CHAT", chatId);
+      //get chatId with chatName then get messages using chatId
+      const chats = await messageAPI.getMessages(chatId._id);
+      setSelectedChats(chats);
+      setSelectedChatId(chatId._id);
+      console.log("selectedChatId", chatId);
     } catch (error) {
       console.log(error);
     }
   }
 
+  async function sendAMessage(e) {
+    e.preventDefault();
+    try {
+      const sentMessage = await messageAPI.sendMessage(
+        selectedChatId,
+        newMessage
+      );
+      console.log("sent a new message", sentMessage);
+      setSelectedChats({ ...selectedChats, sentMessage });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log("SELECTEDCHATS", selectedChats);
   return (
     <div className={styles.ChatsPage}>
       {user ? (
@@ -75,11 +104,31 @@ export default function ChatsPage({ user, setUser }) {
             )}
           </div>
           <div className={styles.ChatsFlow}>
-            <div className={styles.messages}>Messages here</div>
-            <section>
+            <div className={styles.messages}>
+              {selectedChats && selectedChats.length > 0 ? (
+                selectedChats.map((chat) => {
+                  return (
+                    <div className={styles.message}>
+                      <p>
+                        {chat.sender ? (
+                          <>
+                            {chat.sender.username}: {chat.content}
+                          </>
+                        ) : (
+                          <>{chat.content}</>
+                        )}
+                      </p>
+                    </div>
+                  );
+                })
+              ) : (
+                <></>
+              )}
+            </div>
+            <form onSubmit={sendAMessage} onChange={handleChange}>
               <input type="text" />
               <button type="submit">Send</button>
-            </section>
+            </form>
           </div>
 
           <Footer />

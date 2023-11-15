@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user.cjs");
 const Post = require("../models/post.cjs");
 const Forum = require("../models/forums.cjs");
+const Chat = require("../models/chat.cjs");
+
 //function to create a token using JWT
 function createJWT(user) {
   return jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
@@ -170,6 +172,7 @@ const dataController = {
     try {
       const user = req.user;
       const friendId = req.params.id;
+      const friend = await User.findOne({ _id: friendId });
       console.log(user.friends.length);
       console.log(user.friends);
       if (!user) {
@@ -193,7 +196,18 @@ const dataController = {
           .populate("friends")
           .populate("followedForums")
           .populate("posts");
-
+        /**************** create a new chat for new friend */
+        const aNewChat = {};
+        aNewChat.chatName = user._id + friendId;
+        aNewChat.isGroupChat = true;
+        aNewChat.users = [];
+        aNewChat.users.push(user);
+        aNewChat.users.push(friend);
+        aNewChat.groupAdmin = user;
+        await Chat.create(aNewChat);
+        const newChat = await Chat.findOne({ chatName: aNewChat.chatName })
+          .populate("users")
+          .populate("groupAdmin");
         res.json(updatedUser);
       }
     } catch (error) {

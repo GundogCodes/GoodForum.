@@ -42,15 +42,17 @@ exports.createChat = async (req, res) => {
 exports.findChat = async (req, res) => {
   try {
     const potChatName1 = req.user._id + req.params.id;
-    const potChatName2 = req.user._id + req.params.id;
+    const potChatName2 = req.params.id + req.user._id;
     const potFoundChat1 = await Chat.findOne({ chatName: potChatName1 });
     const potFoundChat2 = await Chat.findOne({ chatName: potChatName2 });
     if (potFoundChat1) {
-      res.json(potChatName1);
-    } else if (potChatName2) {
-      res.json(potChatName2);
+      res.json(potFoundChat1);
+    } else if (potFoundChat2._id) {
+      res.json(potFoundChat2._id);
     }
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 //get chat

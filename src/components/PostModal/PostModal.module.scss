@@ -34,6 +34,11 @@
                 display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 12px;
+            overflow: hidden;
+            }
+            h4:hover{
+                cursor: pointer;
             }
         }
         form{
@@ -44,11 +49,12 @@
             align-items: center;
             flex-direction: column;
             border-radius: 7px;
+            
             p{
                 margin: 0;
                 width: 60vw;
                 color:rgb(180,217,247);
-                    font-size: 25px;
+                font-size: 25px;
                     padding-left: 30px;
                 
             }
@@ -109,6 +115,7 @@
             .upload{
                 margin-left: 5px;
             }
+            
         }
         
     }
