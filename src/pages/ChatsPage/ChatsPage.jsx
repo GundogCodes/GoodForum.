@@ -36,6 +36,7 @@ export default function ChatsPage({ user, setUser }) {
       socket.on("connection", () => setSocketConnected(true));
     }
   }, []);
+
   //socket.emit('join chat', '')
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
@@ -54,7 +55,8 @@ export default function ChatsPage({ user, setUser }) {
     try {
       const messages = await messageAPI.getMessages(chatId);
       console.log("MESSAGES", messages);
-      setSelectedChats(messages);
+      const reversedMessages = messages.reverse();
+      setSelectedChats(reversedMessages);
     } catch (error) {
       console.log(error);
     }
@@ -71,7 +73,7 @@ export default function ChatsPage({ user, setUser }) {
         selectedChatId,
         newMessage
       );
-      setSelectedChats((selectedChats) => [...selectedChats, sentMessage]);
+      setSelectedChats([sentMessage, ...selectedChats]);
     } catch (error) {
       console.log(error);
     }

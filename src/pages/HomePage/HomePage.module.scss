@@ -134,8 +134,12 @@
             height: 30vh;
             
             li{
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 color: black;
                 width: 8vw;
+                height: 10vh;
                 margin-left: 2vw;
             }
             .forumTitles{

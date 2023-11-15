@@ -8,7 +8,7 @@
     justify-content: space-evenly;
     z-index: 0;
     align-items: center;
-
+    border-top: solid 1px black;
     .yourMessages{
         position: absolute;
         top: 0;
@@ -27,11 +27,11 @@
     .messages {
         height: 80vh;
         overflow-y: scroll;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: auto;
-        .message{
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            .message{
+            animation: fadeIn 1s;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
             background-color: white;
             color: black;
