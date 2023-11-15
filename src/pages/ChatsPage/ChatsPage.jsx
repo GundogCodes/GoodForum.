@@ -85,7 +85,6 @@ export default function ChatsPage({ user, setUser }) {
   console.log("SELECTEDCHATS", selectedChats);
   return (
     <div className={styles.ChatsPage}>
-      <h1 className={styles.yourMessages}>Your Messages</h1>
       {user ? (
         <>
           <div className={styles.ChatsAside}>
@@ -130,9 +129,9 @@ export default function ChatsPage({ user, setUser }) {
                     <div className={styles.message}>
                       <p>
                         {chat.sender ? (
-                          <>
+                          <div className={styles.messageBubble}>
                             {chat.sender}: {chat.content}
-                          </>
+                          </div>
                         ) : (
                           <>{chat.content}</>
                         )}
@@ -141,7 +140,11 @@ export default function ChatsPage({ user, setUser }) {
                   );
                 })
               ) : (
-                <></>
+                <aside>
+                  Your
+                  <br />
+                  Messages
+                </aside>
               )}
             </div>
             <form onSubmit={sendAMessage} onChange={handleChange}>
