@@ -27,10 +27,8 @@ const dataController = {
   //C
   async createUser(req, res, next) {
     try {
-      const user = await User.create(req.body)
-        .populate("friends")
-        .populate("followedForums")
-        .populate("posts");
+      const user = await User.create(req.body);
+      //user.populate("friends").populate("followedForums").populate("posts");
       const token = createJWT(user);
       console.log(user);
       req.user = user;
@@ -170,49 +168,58 @@ const dataController = {
   },
   async addFriend(req, res) {
     try {
-      const user = req.user;
-      const friendId = req.params.id;
-      const friend = await User.findOne({ _id: friendId });
-      console.log(user.friends.length);
-      console.log(user.friends);
-      if (!user) {
-        res.json("Login to continue");
-      }
-
-      if (user.friends.includes(friendId)) {
-        res.json(user);
+      const user = await User.findOne({ _id: req.user._id });
+      const friend = await User.findOne({ _id: req.params.id });
+      //if chat already exits dont create a new one, if it doesnt then create on
+      const potChatName1 = user._id + friend._id;
+      const isChat1 = await Chat.findOne({ chatName: potChatName1 });
+      const potChatName2 = friend._id + user._id;
+      const isChat2 = await Chat.findOne({ chatName: potChatName2 });
+      if (isChat1) {
+        res.json(isChat1);
+      } else if (isChat2) {
+        res.json(isChat2);
       } else {
-        const newFriend = await User.findByIdAndUpdate(
-          { _id: friendId },
-          { $push: { friends: user._id } },
-          { new: true }
-        );
-
-        const updatedUser = await User.findByIdAndUpdate(
-          { _id: user._id },
-          { $push: { friends: newFriend._id } },
-          { new: true }
-        )
-          .populate("friends")
-          .populate("followedForums")
-          .populate("posts");
-        /**************** create a new chat for new friend */
+        //create a chat and add the chats to the users chat arrays
         const aNewChat = {};
-        aNewChat.chatName = user._id + friendId;
+        aNewChat.chatName = user._id + friend._id;
         aNewChat.isGroupChat = true;
         aNewChat.users = [];
         aNewChat.users.push(user);
         aNewChat.users.push(friend);
         aNewChat.groupAdmin = user;
-        await Chat.create(aNewChat);
-        const newChat = await Chat.findOne({ chatName: aNewChat.chatName })
-          .populate("users")
-          .populate("groupAdmin");
+        const newChat = await Chat.create(aNewChat);
+        //update Users friends list include other user
+        const updatedFriend = await User.findOneAndUpdate(
+          { _id: friend._id },
+          {
+            $addToSet: { friends: req.user, chats: aNewChat.chatName },
+          },
+          { new: true }
+        )
+          .populate("friends")
+          .populate("followedForums")
+          .populate("posts");
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: user._id },
+          {
+            $addToSet: { friends: updatedFriend, chats: aNewChat.chatName },
+          },
+          { new: true }
+        )
+          .populate("friends")
+          .populate("followedForums")
+          .populate("posts");
+        // const updatedUser = await User.findOne({ _id: req.user._id })
+        //   .populate("friends")
+        //   .populate("followedForums")
+        //   .populate("posts");
+        //res.json("Chat created");
+        //return updatedUser
         res.json(updatedUser);
       }
     } catch (error) {
-      console.error(error);
-      res.status(400).json({ error: "Bad Request" });
+      res.status(400).json(error);
     }
   },
   async removeFriend(req, res) {
