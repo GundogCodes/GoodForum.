@@ -1,7 +1,7 @@
 import styles from "./ChatsPage.module.scss";
 import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import io from "socket.io-client";
 import * as chatAPI from "../../../utilities/chat-api.cjs";
@@ -12,6 +12,7 @@ var socket, selectedChatCompare;
 export default function ChatsPage({ user, setUser }) {
   /*********************************************** VARIABLES***********************************************/
   const navigate = useNavigate();
+  const messageBar = useRef(null);
   /*********************************************** STATES ***********************************************/
   const [socketConnected, setSocketConnected] = useState(false);
   const [selectedChats, setSelectedChats] = useState([]);
@@ -40,38 +41,49 @@ export default function ChatsPage({ user, setUser }) {
   async function getUserChats(e) {
     e.preventDefault();
     const friendId = e.target.id;
-    console.log(friendId);
+    const potChatName1 = user._id + friendId;
+    const potChatName2 = friendId + user._id;
+    console.log(user._id);
+    let chatId = "";
+    for (let chat of user.chats) {
+      if (chat.chatName === potChatName1 || chat.chatName === potChatName2) {
+        console.log(chat._id);
+        chatId = chat._id;
+      }
+    }
     try {
-      const chatId = await chatAPI.findChat(friendId);
-      console.log("RETURNED CHAT", chatId);
-      //get chatId with chatName then get messages using chatId
-      const chats = await messageAPI.getMessages(chatId._id);
-      console.log("RETURNED MESSAGES", chats);
-      setSelectedChats(chats);
-      setSelectedChatId(chatId._id);
-      console.log("selectedChatId", chatId._id);
+      const messages = await messageAPI.getMessages(chatId);
+      console.log("MESSAGES", messages);
+      setSelectedChats(messages);
     } catch (error) {
       console.log(error);
     }
+    console.log("CHAT ID", chatId); //// THIS MAKES SENSE SO FAR
+    setSelectedChatId(chatId);
   }
 
   async function sendAMessage(e) {
     e.preventDefault();
+    console.log("new typed Message", newMessage);
+    console.log("chatID in sendAMessage", selectedChatId);
     try {
       const sentMessage = await messageAPI.sendMessage(
         selectedChatId,
         newMessage
       );
-      console.log("sent a new message", sentMessage);
-      setSelectedChats({ ...selectedChats, sentMessage });
+      setSelectedChats((selectedChats) => [...selectedChats, sentMessage]);
     } catch (error) {
       console.log(error);
     }
+    const text = document.getElementById("inputText");
+    messageBar.current.value = "";
+    setNewMessage("");
   }
 
   console.log("SELECTEDCHATS", selectedChats);
   return (
     <div className={styles.ChatsPage}>
+      <h1 className={styles.yourMessages}>Your Messages</h1>
       {user ? (
         <>
           <div className={styles.ChatsAside}>
@@ -93,7 +105,11 @@ export default function ChatsPage({ user, setUser }) {
                           src={`/src/assets/userFunc/profileImage.png`}
                         />
                       )}
-                      <p onClick={goToUserPage} id={`${friend._id}`}>
+                      <p
+                        onClick={goToUserPage}
+                        className={styles.friendName}
+                        id={`${friend._id}`}
+                      >
                         {friend.username}
                       </p>
                     </h1>
@@ -113,7 +129,7 @@ export default function ChatsPage({ user, setUser }) {
                       <p>
                         {chat.sender ? (
                           <>
-                            {chat.sender.username}: {chat.content}
+                            {chat.sender}: {chat.content}
                           </>
                         ) : (
                           <>{chat.content}</>
@@ -127,12 +143,10 @@ export default function ChatsPage({ user, setUser }) {
               )}
             </div>
             <form onSubmit={sendAMessage} onChange={handleChange}>
-              <input type="text" />
+              <input ref={messageBar} type="text" />
               <button type="submit">Send</button>
             </form>
           </div>
-
-          <Footer />
         </>
       ) : (
         <h1>Not LoggedIn </h1>

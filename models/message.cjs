@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const messageSchmea = new mongoose.Schema(
   {
     sender: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      type: String,
       require: true,
     },
     content: { type: String, trim: true, default: "" },

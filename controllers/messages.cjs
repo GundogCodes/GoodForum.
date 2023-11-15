@@ -7,8 +7,9 @@ const Chat = require("../models/chat.cjs");
 //send Message
 exports.sendMessage = async (req, res) => {
   try {
+    const user = await User.findOne({ _id: req.user._id });
     const aNewMessage = {};
-    aNewMessage.sender = req.user;
+    aNewMessage.sender = req.user.username;
     aNewMessage.content = req.body.content;
     aNewMessage.chat = req.params.id;
     const newMessage = await Message.create(aNewMessage);
@@ -22,7 +23,7 @@ exports.sendMessage = async (req, res) => {
 
 exports.getMessages = async (req, res) => {
   try {
-    const messages = await Message.find({ chat: req.params.chat }).populate(
+    const messages = await Message.find({ chat: req.params.chatId }).populate(
       "sender"
     );
     if (messages) {

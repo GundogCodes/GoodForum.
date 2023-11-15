@@ -49,7 +49,8 @@ const dataController = {
       const foundUser = await User.findOne({ _id: req.params.id })
         .populate("friends")
         .populate("followedForums")
-        .populate("posts");
+        .populate("posts")
+        .populate("chats");
       if (foundUser) {
         res.json(foundUser);
       } else {
@@ -65,7 +66,8 @@ const dataController = {
       const user = await User.findOne({ email: req.body.email })
         .populate("friends")
         .populate("followedForums")
-        .populate("posts");
+        .populate("posts")
+        .populate("chats");
       if (!user) throw Error();
       const match = await bcrypt.compare(req.body.password, user.password);
       if (!match) throw new Error();
@@ -91,7 +93,8 @@ const dataController = {
       )
         .populate("friends")
         .populate("followedForums")
-        .populate("posts");
+        .populate("posts")
+        .populate("chats");
       res.json(updatedUser);
       res.locals.data.user = updatedUser;
       res.locals.data.user = req.user.token;
@@ -137,7 +140,8 @@ const dataController = {
       const users = await User.find({})
         .populate("friends")
         .populate("followedForums")
-        .populate("posts");
+        .populate("posts")
+        .populate("chats");
       res.json(users);
     } catch (error) {
       res.status(400).json(error);
@@ -193,28 +197,26 @@ const dataController = {
         const updatedFriend = await User.findOneAndUpdate(
           { _id: friend._id },
           {
-            $addToSet: { friends: req.user, chats: aNewChat.chatName },
+            $addToSet: { friends: user, chats: newChat },
           },
           { new: true }
         )
           .populate("friends")
           .populate("followedForums")
-          .populate("posts");
+          .populate("posts")
+          .populate("chats");
         const updatedUser = await User.findOneAndUpdate(
           { _id: user._id },
           {
-            $addToSet: { friends: updatedFriend, chats: aNewChat.chatName },
+            $addToSet: { friends: updatedFriend, chats: newChat },
           },
           { new: true }
         )
           .populate("friends")
           .populate("followedForums")
-          .populate("posts");
-        // const updatedUser = await User.findOne({ _id: req.user._id })
-        //   .populate("friends")
-        //   .populate("followedForums")
-        //   .populate("posts");
-        //res.json("Chat created");
+          .populate("posts")
+          .populate("chats");
+
         //return updatedUser
         res.json(updatedUser);
       }
@@ -244,7 +246,8 @@ const dataController = {
         )
           .populate("friends")
           .populate("followedForums")
-          .populate("posts");
+          .populate("posts")
+          .populate("chats");
         res.json(updatedUser);
       }
     } catch (error) {

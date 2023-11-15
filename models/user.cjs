@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
     likedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
 
     friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    chats: [{ type: String, default: "" }],
+    chats: [{ type: mongoose.Schema.Types.ObjectId, ref: "Chat" }],
 
     foundedForums: [{ type: mongoose.Schema.Types.ObjectId, ref: "Forum" }],
     followedForums: [{ type: mongoose.Schema.Types.ObjectId, ref: "Forum" }],
