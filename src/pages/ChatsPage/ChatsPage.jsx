@@ -37,7 +37,7 @@ export default function ChatsPage({ user, setUser }) {
     }
   }, []);
 
-  //socket.emit('join chat', '')
+  //socket.emit("join chat", "");
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
@@ -60,7 +60,7 @@ export default function ChatsPage({ user, setUser }) {
     } catch (error) {
       console.log(error);
     }
-    console.log("CHAT ID", chatId); //// THIS MAKES SENSE SO FAR
+    console.log("CHAT ID", chatId);
     setSelectedChatId(chatId);
   }
 

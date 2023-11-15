@@ -22,7 +22,14 @@
             justify-content: space-evenly;
             width: 80vw;
             height: 25vh;
-            
+            h1{
+                color: transparent;
+                    background: #666666;
+                    -webkit-background-clip: text;
+                    -moz-background-clip: text;
+                    background-clip: text;
+                    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+            }
             .profilePic {
                 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
                 width: 10vw;
@@ -40,6 +47,7 @@
                 flex-direction: column;
                 border-radius: 7px;
                 box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                
             }
             
             aside {

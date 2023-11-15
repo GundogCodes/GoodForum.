@@ -1,322 +1,332 @@
-.ForumPage{
-    position: relative;
+.ForumPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  top: 32px;
+  border-top: solid 1px black;
+  align-items: center;
+  width: 100vw;
+  animation: fadeIn 1s;
+  height: 140vh;
+  z-index: 1;
+  background-size: cover;
+  overflow-y: scroll;
+
+  header {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    top:32px;
-    border-top: solid 1px black;
-    align-items: center;
+    align-items: flex-start;
+    color: black;
     width: 100vw;
-    animation: fadeIn 1s;
-    height: 140vh;
-    z-index: 1;
-    background-size: cover;
-    overflow-y: scroll;  
+    height: 45vh;
+    border-bottom: solid 1px black;
 
-    header{
-
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        color: black;
-        width: 100vw;
-        height: 40vh;
-        
-        h1{
-            margin: 0;
-            color: transparent;
-            background: rgb(180,217,247);
-            -webkit-background-clip: text;
-            -moz-background-clip: text;
-            background-clip: text;
-            text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
-        }
-        h2{
-            margin-top: 5vh;
-        }
-        h3{}
-        h4{}
-        section{
-           top: 40vh; 
-            display: flex;
-            justify-content: space-evenly;
-            width: 100vw;
-
-            background-color: rgb(171,211,246);
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-            button{
-                padding: 5px;
-                background-color: white;
-                border-color: white;
-                margin: 10px;
-            }
-        }
-
+    h1 {
+      margin: 0;
+      font-size: 10vh;
+      color: transparent;
+      width: 100vw;
+      background: #666666;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+      padding-left: 10px;
     }
-    ul{
-        top:50vh;
-        background-color: lightgrey;
-        animation: fadeIn 2s;
-        list-style-type: none;
-        position: absolute;
-        // overflow-y: scroll;
-        // height: 80vh;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    h2 {
+      padding-left: 10px;
+    }
+    h3 {
+      padding-left: 10px;
+    }
+    h4 {
+      padding-left: 10px;
+    }
+    section {
+      top: 40vh;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      margin-top: 10px;
+      //   border-top: solid 1px black;
+      //   border-bottom: solid 1px black;
+      aside {
+        background-color: rgb(171, 211, 246);
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        width: 75vw;
+        display: flex;
+        justify-content: flex-end;
         border-radius: 7px;
-        display: flex;
-        flex-direction: column;
-        width: 70vw;
-        border: solid 1px ;
-        align-items: center;
-        left: 3.5vw;
-        margin-left: 10vw;
-
-        li{
-
-            background-color: white;
-            padding-right: 40px;
-            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-            height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin-bottom: 15px;
-            align-items: center;
-            width: 65vw;
-            border: solid 2px black;
-            li:hover{
-                padding: 20px;
-                transition: 3s;
-                border-radius: 7px;
-            }
-            section{
-                display: flex;
-                justify-content: space-between;
-
-                height: 10vh;
-                width: 65vw;
-                align-items: center;
-                h1{
-                    color: rgb(171,211,246);
-                    padding-right: 10px;
-                }
-                h2{
-                    padding-left: 10px;
-
-
-                }
-            }
-            .postImage{
-                overflow: hidden;
-                background-size: contain;
-                width: 65vw;
-                height: 80vh;
-                border-radius: 6px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-left: 2vw;
-            }
-            h3{
-                margin-left: 2vw;
-                margin-top: 0;
-                height: 50vh;
-                width: 55vw;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: gray;
-                border-radius: 7px;
-                color: white;
-                font-size: 10vmin;
-                overflow: hidden;
-            }
-            
-            aside{
-                display: flex;
-                width: 65vw;
-                justify-content: flex-start;
-                p{
-                    margin-left:5px ;
-                    margin-right:5px ;
-                }
-                .like:hover,.dislike:hover,.comment:hover{
-                    color: rgb(171,211,246);
-                }
-                .pDiv{
-                    margin-top: 5px;
-                    display: flex;
-                    p{
-                        margin-left:5px ;
-                        margin-right:5px ;
-                        height: 2.5vh;
-                    }
-                }
-                .likes:hover,.dislikes:hover,.comment:hover{
-                    color: rgb(171,211,246);
-                    cursor: pointer;
-                }
-                footer{
-                    align-self: center;
-                    border-radius: 7px;
-                    padding: 2.5px;
-                    border: solid 1px black;
-                    width: 75vw;
-                    height: 5vh;
-                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-                }
-            
-                
-            }
-
+        button {
+          padding: 5px;
+          background-color: white;
+          border-color: white;
+          margin: 10px;
+          border-radius: 7px;
+          border: none;
         }
+      }
     }
-    .noPosts{
-        margin-top: 10vh;
-        font-size: 25px;
-        color: black;
-    }
-    
+  }
+  ul {
+    top: 50vh;
+    background-color: lightgrey;
+    animation: fadeIn 2s;
+    list-style-type: none;
+    position: absolute;
+    // overflow-y: scroll;
+    // height: 80vh;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    border: solid 1px;
+    align-items: center;
+    left: 3.5vw;
+    margin-left: 10vw;
 
-    
-}
-
-@media(max-width:900px){
-    .ForumPage{
-        width: 100vw;
-        height: 140vh;
+    li {
+      background-color: white;
+      padding-right: 40px;
+      box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+        rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+        rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-bottom: 15px;
+      align-items: center;
+      width: 65vw;
+      border: solid 2px black;
+      li:hover {
+        padding: 20px;
+        transition: 3s;
+        border-radius: 7px;
+      }
+      section {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+
+        height: 10vh;
+        width: 65vw;
+        align-items: center;
+        h1 {
+          color: rgb(171, 211, 246);
+          padding-right: 10px;
+        }
+        h2 {
+          padding-left: 10px;
+        }
+      }
+      .postImage {
+        overflow: hidden;
+        background-size: contain;
+        width: 65vw;
+        height: 80vh;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 2vw;
+      }
+      h3 {
+        margin-left: 2vw;
+        margin-top: 0;
+        height: 50vh;
+        width: 55vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: gray;
+        border-radius: 7px;
+        color: white;
+        font-size: 10vmin;
+        overflow: hidden;
+      }
+
+      aside {
+        display: flex;
+        width: 65vw;
         justify-content: flex-start;
-        align-items: center;
-        color:black;
-
-        top:0;
-        header{
-    
-            padding: 10px;
-            padding-left: 5vw;
-            width: 100vw;
-            height: 30vh;
-            h1{}
-            h2{}
-            h3{}
-            h4{}
-            section{
-
-                display: flex;
-                justify-content: center;
-    
-                button{
-                    margin: 10px;
-                }
-            }
-            
+        p {
+          margin-left: 5px;
+          margin-right: 5px;
         }
-        ul{
-
-            width: 80vw;
-            height: 100vh;
-            overflow-y: scroll;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-            border-radius: 7px;
-            padding: 50px;
-    
-            li{
-                width: 90vw;
-                padding-right:0 ;
-                h3{
-                    width: 85vw;
-
-                }
-            }
+        .like:hover,
+        .dislike:hover,
+        .comment:hover {
+          color: rgb(171, 211, 246);
         }
+        .pDiv {
+          margin-top: 5px;
+          display: flex;
+          p {
+            margin-left: 5px;
+            margin-right: 5px;
+            height: 2.5vh;
+          }
+        }
+        .likes:hover,
+        .dislikes:hover,
+        .comment:hover {
+          color: rgb(171, 211, 246);
+          cursor: pointer;
+        }
+        footer {
+          align-self: center;
+          border-radius: 7px;
+          padding: 2.5px;
+          border: solid 1px black;
+          width: 75vw;
+          height: 5vh;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+      }
     }
+  }
+  .noPosts {
+    margin-top: 10vh;
+    font-size: 25px;
+    color: black;
+  }
 }
 
-@media (prefers-color-scheme:dark) {
-    .ForumPage{
-        header{
-            //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-            color: #FF6410;
-            h1{
-                color: #FF6410;
-            }
-            h2,h3{
-                color: white;
-                
-            }
-            
-            section{
-                background-color:lightgray;
-                button{
-                    background-color: #FF6410;
-                    border-radius: 7px;
-                    padding: 2px;
-                }
-                
-            }
-            
-        }
-        ul{
-            z-index: -1;
-            li{
-            background-color: rgb(28,28,28);
+@media (max-width: 900px) {
+  .ForumPage {
+    width: 100vw;
+    height: 140vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: black;
 
-            }
-            li:hover{
+    top: 0;
+    header {
+      padding: 10px;
+      padding-left: 5vw;
+      width: 100vw;
+      height: 30vh;
+      h1 {
+      }
+      h2 {
+      }
+      h3 {
+      }
+      h4 {
+      }
+      section {
+        display: flex;
+        justify-content: center;
 
-            }
-                section{
-    
-                    width: 85vw;
-                    h1{
-                    }
-                    h2{
-                    }
-                }
-                h3{
-              
-                aside{
-                    p{
-                    }
-                    .like:hover,.dislike:hover,.comment:hover{
-                        color: #FF6410;
-                    }
-                }
-    
-            }
-            
+        button {
+          margin: 10px;
         }
-        .postToForum{
-    
-            p{
-            }
-            form{
-                background-color: rgb(28,28,28);
-                color:white;
-                border: solid 2px white;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-
-                h1{
-                }
-                h2{
-                }
-                
-                input{
-                    
-                }
-                button{
-                }
-            }
-            
-        }
+      }
     }
-    
+    ul {
+      width: 80vw;
+      height: 100vh;
+      overflow-y: scroll;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      border-radius: 7px;
+      padding: 50px;
+
+      li {
+        width: 90vw;
+        padding-right: 0;
+        h3 {
+          width: 85vw;
+        }
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ForumPage {
+    header {
+      //box-shadow: rgba(255, 255, 255, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+      color: #ff6410;
+      h1 {
+        color: #ff6410;
+      }
+      h2,
+      h3 {
+        color: white;
+      }
+
+      section {
+        background-color: lightgray;
+        button {
+          background-color: #ff6410;
+          border-radius: 7px;
+          padding: 2px;
+        }
+      }
+    }
+    ul {
+      z-index: -1;
+      li {
+        background-color: rgb(28, 28, 28);
+      }
+      li:hover {
+      }
+      section {
+        width: 85vw;
+        h1 {
+        }
+        h2 {
+        }
+      }
+      h3 {
+        aside {
+          p {
+          }
+          .like:hover,
+          .dislike:hover,
+          .comment:hover {
+            color: #ff6410;
+          }
+        }
+      }
+    }
+    .postToForum {
+      p {
+      }
+      form {
+        background-color: rgb(28, 28, 28);
+        color: white;
+        border: solid 2px white;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+        h1 {
+        }
+        h2 {
+        }
+
+        input {
+        }
+        button {
+        }
+      }
+    }
+  }
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}
