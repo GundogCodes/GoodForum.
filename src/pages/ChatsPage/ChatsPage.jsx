@@ -37,7 +37,26 @@ export default function ChatsPage({ user, setUser }) {
     }
   }, []);
 
-  //socket.emit("join chat", "");
+  useEffect(() => {
+    selectedChatCompare = selectedChats;
+  }, [selectedChats]);
+
+  useEffect(() => {
+    if (user) {
+      socket.on("message received", (newMessageReceived) => {
+        if (
+          !selectedChatCompare ||
+          selectedChatCompare._id !== newMessageReceived.chat
+        ) {
+          //notify
+        } else {
+          //add to selectedChats
+          setSelectedChats([sentMessage, ...selectedChats]);
+        }
+      });
+    }
+  });
+
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
@@ -62,6 +81,7 @@ export default function ChatsPage({ user, setUser }) {
     }
     console.log("CHAT ID", chatId);
     setSelectedChatId(chatId);
+    socket.emit("join chat", chatId);
   }
 
   async function sendAMessage(e) {
@@ -73,6 +93,8 @@ export default function ChatsPage({ user, setUser }) {
         selectedChatId,
         newMessage
       );
+      console.log("sent message is: ", sentMessage);
+      socket.emit("new message", sentMessage);
       setSelectedChats([sentMessage, ...selectedChats]);
     } catch (error) {
       console.log(error);
@@ -88,7 +110,7 @@ export default function ChatsPage({ user, setUser }) {
       {user ? (
         <>
           <div className={styles.ChatsAside}>
-            {user.friends.length > 0 ? (
+            {user.friends && user.friends.length > 0 ? (
               <>
                 {user.friends.map((friend) => {
                   return (

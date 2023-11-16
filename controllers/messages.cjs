@@ -12,7 +12,9 @@ exports.sendMessage = async (req, res) => {
     aNewMessage.sender = req.user.username;
     aNewMessage.content = req.body.content;
     aNewMessage.chat = req.params.id;
-    const newMessage = await Message.create(aNewMessage);
+    const newMessage = await Message.create(aNewMessage)
+      .populate("sender")
+      .populate("users");
     console.log("NEW MESSAGE", newMessage);
 
     res.json(newMessage);
@@ -23,9 +25,9 @@ exports.sendMessage = async (req, res) => {
 
 exports.getMessages = async (req, res) => {
   try {
-    const messages = await Message.find({ chat: req.params.chatId }).populate(
-      "sender"
-    );
+    const messages = await Message.find({ chat: req.params.chatId })
+      .populate("sender")
+      .populate("chat");
     if (messages) {
       res.json(messages);
     } else {

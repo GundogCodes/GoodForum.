@@ -8,7 +8,9 @@ exports.createChat = async (req, res) => {
     const friendId = req.params.id;
     const isChat = await Chat.findOne({
       users: { $all: [userId, friendId] },
-    });
+    })
+      .populate("users")
+      .populate("groupAdmin");
     const isChatty = await Chat.findOne({
       users: { $all: [friendId, userId] },
     })
@@ -43,8 +45,12 @@ exports.findChat = async (req, res) => {
   try {
     const potChatName1 = req.user._id + req.params.id;
     const potChatName2 = req.params.id + req.user._id;
-    const potFoundChat1 = await Chat.findOne({ chatName: potChatName1 });
-    const potFoundChat2 = await Chat.findOne({ chatName: potChatName2 });
+    const potFoundChat1 = await Chat.findOne({ chatName: potChatName1 })
+      .populate("users")
+      .populate("groupAdmin");
+    const potFoundChat2 = await Chat.findOne({ chatName: potChatName2 })
+      .populate("users")
+      .populate("groupAdmin");
     if (potFoundChat1) {
       res.json(potFoundChat1);
     } else if (potFoundChat2._id) {
