@@ -94,9 +94,9 @@ export default function ChatsPage({ user, setUser }) {
         newMessage
       );
       const foundChat = await chatAPI.getChat(selectedChatId);
-      console.log("Found chat", foundChat);
-      //console.log("sent message is: ", sentMessage);
-      socket.emit("new message", foundChat);
+      console.log("sent message is: ", sentMessage);
+      console.log("foundChat ", foundChat);
+      socket.emit("new message", sentMessage);
       setSelectedChats([sentMessage, ...selectedChats]);
     } catch (error) {
       console.log(error);
@@ -154,7 +154,7 @@ export default function ChatsPage({ user, setUser }) {
                       <p>
                         {chat.sender ? (
                           <div className={styles.messageBubble}>
-                            {chat.sender}: {chat.content}
+                            {chat.sender.username}: {chat.content}
                           </div>
                         ) : (
                           <>{chat.content}</>
