@@ -12,12 +12,13 @@ exports.sendMessage = async (req, res) => {
     aNewMessage.sender = req.user.username;
     aNewMessage.content = req.body.content;
     aNewMessage.chat = req.params.id;
-    const newMessage = await Message.create(aNewMessage)
-      .populate("sender")
-      .populate("users");
+    const newMessage = await Message.create(aNewMessage);
+    const theNewMessage = await Message.findOne({
+      _id: newMessage._id,
+    }).populate("sender");
     console.log("NEW MESSAGE", newMessage);
 
-    res.json(newMessage);
+    res.json(theNewMessage);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

@@ -93,8 +93,10 @@ export default function ChatsPage({ user, setUser }) {
         selectedChatId,
         newMessage
       );
-      console.log("sent message is: ", sentMessage);
-      socket.emit("new message", sentMessage);
+      const foundChat = await chatAPI.getChat(selectedChatId);
+      console.log("Found chat", foundChat);
+      //console.log("sent message is: ", sentMessage);
+      socket.emit("new message", foundChat);
       setSelectedChats([sentMessage, ...selectedChats]);
     } catch (error) {
       console.log(error);
