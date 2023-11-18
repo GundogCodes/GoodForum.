@@ -7,7 +7,7 @@ import io from "socket.io-client";
 import * as chatAPI from "../../../utilities/chat-api.cjs";
 import * as messageAPI from "../../../utilities/messages-api.cjs";
 const ENDPOINT = "http://localhost:8004";
-//var socket, selectedChatCompare;
+var selectedChatCompare;
 const socket = io.connect(ENDPOINT);
 export default function ChatsPage({ user, setUser }) {
   /*********************************************** VARIABLES***********************************************/
@@ -38,11 +38,12 @@ export default function ChatsPage({ user, setUser }) {
   // }, []);
 
   // useEffect(() => {
-  //   selectedChatCompare = selectedChats;
   // }, [selectedChats]);
+  //   selectedChatCompare = selectedChats;
 
   useEffect(() => {
     if (user) {
+      setSelectedChats(selectedChats);
       socket.on("message received", (newMessageReceived) => {
         console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
         //alert(newMessageReceived);
@@ -53,11 +54,9 @@ export default function ChatsPage({ user, setUser }) {
         //   //notify
         // } else {
         //   //add to selectedChats
-        console.log("the chats are", selectedChats);
-        setSelectedChatId(selectedChatId);
-
+        console.log("the chats are", selectedChats); // this is emprty whyy??
         setSelectedChats([newMessageReceived, ...selectedChats]);
-        // }\
+        // }
       });
     }
   }, []);
