@@ -44,10 +44,20 @@ export default function ChatsPage({ user, setUser }) {
   useEffect(() => {
     if (user) {
       socket.on("message received", (newMessageReceived) => {
-        //console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
-        //notify
-        //add to selectedChats
+        console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
+        //alert(newMessageReceived);
+        // if (
+        //   !selectedChatCompare ||
+        //   selectedChatCompare._id !== newMessageReceived.chat
+        // ) {
+        //   //notify
+        // } else {
+        //   //add to selectedChats
+        console.log("the chats are", selectedChats);
+        setSelectedChatId(selectedChatId);
+
         setSelectedChats([newMessageReceived, ...selectedChats]);
+        // }\
       });
     }
   }, []);
@@ -151,7 +161,7 @@ export default function ChatsPage({ user, setUser }) {
                             {chat.sender.username}: {chat.content}
                           </div>
                         ) : (
-                          <>{chat.content}</>
+                          <>hey daeg{chat.content}</>
                         )}
                       </p>
                     </div>

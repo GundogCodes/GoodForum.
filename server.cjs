@@ -45,9 +45,7 @@ io.on("connection", (socket) => {
       console.log("chat._id", chat._id);
       if (user == newMessageReceived.sender._id) {
         console.log("USER EXISTS!!");
-        socket
-          .in(chat._id)
-          .emit("message received", newMessageReceived.content);
+        socket.in(chat._id).emit("message received", newMessageReceived);
       }
     });
   });
