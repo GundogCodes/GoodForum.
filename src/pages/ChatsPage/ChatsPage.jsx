@@ -7,8 +7,8 @@ import io from "socket.io-client";
 import * as chatAPI from "../../../utilities/chat-api.cjs";
 import * as messageAPI from "../../../utilities/messages-api.cjs";
 const ENDPOINT = "http://localhost:8004";
-var socket, selectedChatCompare;
-
+//var socket, selectedChatCompare;
+const socket = io.connect(ENDPOINT);
 export default function ChatsPage({ user, setUser }) {
   /*********************************************** VARIABLES***********************************************/
   const navigate = useNavigate();
@@ -26,76 +26,70 @@ export default function ChatsPage({ user, setUser }) {
   function handleChange(e) {
     e.preventDefault();
     setNewMessage({ content: e.target.value });
-    console.log(newMessage);
+    //console.log(newMessage);
   }
   /*********************************************** USE EFFECTS ***********************************************/
-  useEffect(() => {
-    if (user) {
-      socket = io(ENDPOINT);
-      socket.emit("setup", user);
-      socket.on("connection", () => setSocketConnected(true));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (user) {
+  //     socket = io(ENDPOINT);
+  //     socket.emit("setup", user);
+  //     socket.on("connection", () => setSocketConnected(true));
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    selectedChatCompare = selectedChats;
-  }, [selectedChats]);
+  // useEffect(() => {
+  //   selectedChatCompare = selectedChats;
+  // }, [selectedChats]);
 
   useEffect(() => {
     if (user) {
       socket.on("message received", (newMessageReceived) => {
-        if (
-          !selectedChatCompare ||
-          selectedChatCompare._id !== newMessageReceived.chat
-        ) {
-          //notify
-        } else {
-          //add to selectedChats
-          setSelectedChats([sentMessage, ...selectedChats]);
-        }
+        //console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
+        //notify
+        //add to selectedChats
+        setSelectedChats([newMessageReceived, ...selectedChats]);
       });
     }
-  });
-
+  }, []);
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
     const friendId = e.target.id;
     const potChatName1 = user._id + friendId;
     const potChatName2 = friendId + user._id;
-    console.log(user._id);
+    //console.log(user._id);
     let chatId = "";
     for (let chat of user.chats) {
       if (chat.chatName === potChatName1 || chat.chatName === potChatName2) {
-        console.log(chat._id);
+        //  console.log(chat._id);
         chatId = chat._id;
       }
     }
     try {
       const messages = await messageAPI.getMessages(chatId);
-      console.log("MESSAGES", messages);
+      // console.log("MESSAGES", messages);
       const reversedMessages = messages.reverse();
       setSelectedChats(reversedMessages);
     } catch (error) {
       console.log(error);
     }
-    console.log("CHAT ID", chatId);
+    //console.log("CHAT ID", chatId);
     setSelectedChatId(chatId);
     socket.emit("join chat", chatId);
   }
 
   async function sendAMessage(e) {
     e.preventDefault();
-    console.log("new typed Message", newMessage);
-    console.log("chatID in sendAMessage", selectedChatId);
+    // console.log("new typed Message", newMessage);
+    // console.log("chatID in sendAMessage", selectedChatId);
     try {
       const sentMessage = await messageAPI.sendMessage(
         selectedChatId,
         newMessage
       );
       const foundChat = await chatAPI.getChat(selectedChatId);
-      console.log("sent message is: ", sentMessage);
-      console.log("foundChat ", foundChat);
+      // console.log("sent message is: ", sentMessage);
+      // console.log("foundChat ", foundChat);
       socket.emit("new message", sentMessage);
       setSelectedChats([sentMessage, ...selectedChats]);
     } catch (error) {
@@ -106,7 +100,7 @@ export default function ChatsPage({ user, setUser }) {
     setNewMessage("");
   }
 
-  console.log("SELECTEDCHATS", selectedChats);
+  //console.log("SELECTEDCHATS", selectedChats);
   return (
     <div className={styles.ChatsPage}>
       {user ? (

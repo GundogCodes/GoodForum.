@@ -1,6 +1,8 @@
 require("dotenv").config();
 require("./config/database.cjs");
+const cors = require("cors");
 
+const http = require("http");
 const app = require("./app-server.cjs");
 
 const PORT = process.env.PORT || 8004;
@@ -10,6 +12,7 @@ const server = app.listen(PORT, () => {
 });
 
 /****************************************************************** SOCKET.IO ******************************************************************/
+app.use(cors());
 
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
@@ -33,12 +36,18 @@ io.on("connection", (socket) => {
   });
 
   socket.on("new message", (newMessageReceived) => {
+    console.log("HEY ITS A NEW MESSAGE!!!", newMessageReceived);
     var chat = newMessageReceived.chat;
-    console.log("Chat in socket is: ", chat);
-    if (!chat.users) return console.log("chat.users not defined");
+    // console.log("var chat", newMessageReceived.chat);
+    // console.log("Chat in socket is: ", chat);
+    // if (!chat.users) return console.log("chat.users not defined");
     chat.users.forEach((user) => {
-      if (user._id == newMessageReceived.sender._id) {
-        socket.in(user._id).emit("message received", newMessageReceived);
+      console.log("chat._id", chat._id);
+      if (user == newMessageReceived.sender._id) {
+        console.log("USER EXISTS!!");
+        socket
+          .in(chat._id)
+          .emit("message received", newMessageReceived.content);
       }
     });
   });
