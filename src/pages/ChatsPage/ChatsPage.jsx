@@ -41,25 +41,33 @@ export default function ChatsPage({ user, setUser }) {
   // }, [selectedChats]);
   //   selectedChatCompare = selectedChats;
 
-  useEffect(() => {
-    if (user) {
-      setSelectedChats(selectedChats);
-      socket.on("message received", (newMessageReceived) => {
-        console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
-        //alert(newMessageReceived);
-        // if (
-        //   !selectedChatCompare ||
-        //   selectedChatCompare._id !== newMessageReceived.chat
-        // ) {
-        //   //notify
-        // } else {
-        //   //add to selectedChats
-        console.log("the chats are", selectedChats); // this is emprty whyy??
-        setSelectedChats([newMessageReceived, ...selectedChats]);
-        // }
-      });
-    }
-  }, []);
+  if (user) {
+    socket.on("message received", async (newMessageReceived) => {
+      console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
+      //alert(newMessageReceived);
+      // if (
+      //   !selectedChatCompare ||
+      //   selectedChatCompare._id !== newMessageReceived.chat
+      // ) {
+      //   //notify
+      // } else {
+      //   //add to selectedChats
+      console.log("which chat is the receiver in", selectedChatId);
+      // const prevChats = await messageAPI.getMessages(
+      //   newMessageReceived.chat._id
+      // );
+
+      console.log("the chats are", selectedChats); // this is emprty whyy??
+      setSelectedChats([newMessageReceived, ...selectedChats]);
+
+      // setSelectedChats((selectedChats) => [
+      //   newMessageReceived,
+      //   ...selectedChats,
+      // ]);
+
+      // }
+    });
+  }
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
@@ -160,7 +168,7 @@ export default function ChatsPage({ user, setUser }) {
                             {chat.sender.username}: {chat.content}
                           </div>
                         ) : (
-                          <>hey daeg{chat.content}</>
+                          <>{chat.content}</>
                         )}
                       </p>
                     </div>
