@@ -13,11 +13,13 @@ export default function ChatsPage({ user, setUser }) {
   /*********************************************** VARIABLES***********************************************/
   const navigate = useNavigate();
   const messageBar = useRef(null);
+  const selectedUser = useRef(null);
   /*********************************************** STATES ***********************************************/
   const [socketConnected, setSocketConnected] = useState(false);
   const [selectedChats, setSelectedChats] = useState([]);
   const [selectedChatId, setSelectedChatId] = useState();
   const [newMessage, setNewMessage] = useState();
+  const [userSelected, setUserSelected] = useState(false);
   /*********************************************** FUNCTIONS ***********************************************/
   function goToUserPage(e) {
     const id = e.target.id;
@@ -29,51 +31,31 @@ export default function ChatsPage({ user, setUser }) {
     //console.log(newMessage);
   }
   /*********************************************** USE EFFECTS ***********************************************/
-  // useEffect(() => {
-  //   if (user) {
-  //     socket = io(ENDPOINT);
-  //     socket.emit("setup", user);
-  //     socket.on("connection", () => setSocketConnected(true));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  // }, [selectedChats]);
-  //   selectedChatCompare = selectedChats;
 
   if (user) {
     socket.on("message received", async (newMessageReceived) => {
       console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
-      //alert(newMessageReceived);
-      // if (
-      //   !selectedChatCompare ||
-      //   selectedChatCompare._id !== newMessageReceived.chat
-      // ) {
-      //   //notify
-      // } else {
-      //   //add to selectedChats
+
       console.log("which chat is the receiver in", selectedChatId);
-      // const prevChats = await messageAPI.getMessages(
-      //   newMessageReceived.chat._id
-      // );
+
       if (newMessageReceived.chat._id !== selectedChatId) {
         return;
       } else {
         console.log("the chats are", selectedChats); // this is emprty whyy??
         setSelectedChats([newMessageReceived, ...selectedChats]);
       }
-
-      // setSelectedChats((selectedChats) => [
-      //   newMessageReceived,
-      //   ...selectedChats,
-      // ]);
-
-      // }
     });
   }
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
+    if (!userSelected) {
+      selectedUser.current.style.border = "solid 3px rgb(180,217,247)";
+      setUserSelected(true);
+    } else if (userSelected) {
+      selectedUser.current.style.border = "none";
+      setUserSelected(false);
+    }
     const friendId = e.target.id;
     const potChatName1 = user._id + friendId;
     const potChatName2 = friendId + user._id;
@@ -133,12 +115,14 @@ export default function ChatsPage({ user, setUser }) {
                     <h1>
                       {friend.profileImage ? (
                         <img
+                          ref={selectedUser}
                           onClick={getUserChats}
                           id={`${friend._id}`}
                           src={`/profilePics/${friend.profileImage}`}
                         />
                       ) : (
                         <img
+                          ref={selectedUser}
                           onClick={getUserChats}
                           id={`${friend._id}`}
                           src={`/src/assets/userFunc/profileImage.png`}

@@ -26,17 +26,14 @@ io.on("connection", (socket) => {
 
   socket.on("setup", (userData) => {
     socket.join(userData._id); //on set up create new room with the id of the user
-    console.log("userData", userData._id);
     socket.emit("connected");
   });
 
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("user joined room (ChatId): ", room);
   });
 
   socket.on("new message", (newMessageReceived) => {
-    console.log("HEY ITS A NEW MESSAGE!!!", newMessageReceived);
     var chat = newMessageReceived.chat;
     // console.log("var chat", newMessageReceived.chat);
     // console.log("Chat in socket is: ", chat);
@@ -44,7 +41,6 @@ io.on("connection", (socket) => {
     chat.users.forEach((user) => {
       console.log("chat._id", chat._id);
       if (user == newMessageReceived.sender._id) {
-        console.log("USER EXISTS!!");
         socket.in(chat._id).emit("message received", newMessageReceived);
       }
     });
