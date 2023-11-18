@@ -56,9 +56,12 @@ export default function ChatsPage({ user, setUser }) {
       // const prevChats = await messageAPI.getMessages(
       //   newMessageReceived.chat._id
       // );
-
-      console.log("the chats are", selectedChats); // this is emprty whyy??
-      setSelectedChats([newMessageReceived, ...selectedChats]);
+      if (newMessageReceived.chat._id !== selectedChatId) {
+        return;
+      } else {
+        console.log("the chats are", selectedChats); // this is emprty whyy??
+        setSelectedChats([newMessageReceived, ...selectedChats]);
+      }
 
       // setSelectedChats((selectedChats) => [
       //   newMessageReceived,
