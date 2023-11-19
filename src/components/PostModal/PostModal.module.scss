@@ -1,201 +1,188 @@
-.PostModal{
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: 4;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.5); /* Adjust the alpha value for transparency */
-    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
-    animation: fadeIn 1s;
+.PostModal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Adjust the alpha value for transparency */
+  backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+  animation: fadeIn 1s;
 
-    .form{
+  .form {
+    background-color: white;
+    border-radius: 7px;
+    height: 80vh;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+      rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    .forumList {
+      width: 45vw;
+      height: 3vh;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      margin: 5px;
+      h4 {
+        border-radius: 7px;
+        width: 10vw;
+        height: 2.5vh;
         background-color: white;
-        border-radius:7px;
-        height: 80vh;
-        box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
-        .forumList{
-            width: 45vw;
-            height: 3vh;
-            border-radius: 7px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-            margin: 5px;
-            h4{
-                border-radius: 7px;
-                width: 10vw;
-                height: 2.5vh;
-                background-color: white;
-                margin-left: 2.5px;
-                display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            overflow: hidden;
-            }
-            h4:hover{
-                cursor: pointer;
-            }
-        }
-        form{
-            
-            height: 60vh;
-            width: 60vw;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            border-radius: 7px;
-            
-            p{
-                margin: 0;
-                width: 60vw;
-                color:rgb(180,217,247);
-                font-size: 25px;
-                    padding-left: 30px;
-                
-            }
-            h1{
-                display: flex;
-                justify-content: center;
-                width: 40vw;
-                border-radius: 7px;
-                
-            }
-            h2{
-                
-                width: 40vw;
-                border-radius: 7px;
-                margin: 0;
-                
-            }
-            input{
-                border: solid 1px black;
-                width: 40vw;
-                border-radius: 7px;
-                margin: 0;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-                
-            }
-            #text{
-                padding-bottom: 6vh;
-            }
-            .fileInput{
-                width:20vw;
-            }
-            .line{
-                margin: 5vh;
-                width: 60vw;
-                border-radius: 7px;
-                background-color: black;
-                height: 1px;
-                
-            }
-            button{
-                margin-top: 3vh;
-                margin-left: 10vw;
-                background-color: white;
-                border-color: white;
-                width: 60px;
-                height: 20px;
-                align-self: flex-start;
-                
-            }
-            button:hover{
-                background-color: rgb(180,217,247);
-                color:white;
-            }
-            .or{
-                margin: 2vh;
-
-            }
-            .upload{
-                margin-left: 5px;
-            }
-            
-        }
-        
+        margin-left: 2.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        overflow: hidden;
+      }
+      h4:hover {
+        cursor: pointer;
+      }
     }
-}
+    form {
+      height: 60vh;
+      width: 60vw;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      border-radius: 7px;
 
-@media(max-width:990px){
-
-}
-@media(prefers-color-scheme:dark){
-    .PostModal{
-
-        .form{
-            background-color: rgb(28,28,28);
-            form{
-                button{
-                    border: none;
-                    border-radius: 7px;
-                    color: black;
-                }
-                button:hover{
-                    color: white;
-                    background-color: #FF6410;
-                    
-                }
-                .forumList{
-                    border: solid 1px white;
-                    
-                    h4{
-                        background-color: rgb(28,28,28);
-                        overflow-x: hidden;
-                        color: white;
-                        border: solid 1px white;
-                    }
-                    h4:hover{
-                        background-color: #FF6410;
-                        
-                    }
-                    
-                }
-            }
-            .section{
-                
-                .heading{
-                    
-                    p{
-                        color: #FF6410;
-                    }
-                    h1{
-                        
-                    }
-                }
-                aside{
-                    
-                    button{
-                        
-                        
-                    }
-                    button:hover{
-                        
-                    }
-                    
-                    h3{
-                        
-                        
-                    }
-                    input{
-                        
-                    }
-
-                }
-            }
-        }
-        
+      p {
+        margin: 0;
+        width: 60vw;
+        color: rgb(180, 217, 247);
+        font-size: 25px;
+        padding-left: 30px;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        width: 40vw;
+        border-radius: 7px;
+      }
+      h2 {
+        width: 40vw;
+        border-radius: 7px;
+        margin: 0;
+      }
+      input {
+        border: solid 1px black;
+        width: 40vw;
+        border-radius: 7px;
+        margin: 0;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      }
+      #text {
+        padding-bottom: 6vh;
+      }
+      .fileInput {
+        width: 20vw;
+        background-color: red;
+      }
+      .line {
+        margin: 5vh;
+        width: 60vw;
+        border-radius: 7px;
+        background-color: black;
+        height: 1px;
+      }
+      button {
+        margin-top: 3vh;
+        margin-left: 10vw;
+        background-color: white;
+        border-color: white;
+        width: 60px;
+        height: 20px;
+        align-self: flex-start;
+        border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -1px,
+          rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+      }
+      button:hover {
+        background-color: rgb(180, 217, 247);
+        color: white;
+        cursor: pointer;
+      }
+      .or {
+        margin: 2vh;
+      }
+      .upload {
+        margin-left: 5px;
+      }
     }
-    
+  }
 }
 
+@media (max-width: 990px) {
+}
+@media (prefers-color-scheme: dark) {
+  .PostModal {
+    .form {
+      background-color: rgb(28, 28, 28);
+      form {
+        button {
+          border: none;
+          border-radius: 7px;
+          color: black;
+        }
+        button:hover {
+          color: white;
+          background-color: #ff6410;
+        }
+        .forumList {
+          border: solid 1px white;
 
+          h4 {
+            background-color: rgb(28, 28, 28);
+            overflow-x: hidden;
+            color: white;
+            border: solid 1px white;
+          }
+          h4:hover {
+            background-color: #ff6410;
+          }
+        }
+      }
+      .section {
+        .heading {
+          p {
+            color: #ff6410;
+          }
+          h1 {
+          }
+        }
+        aside {
+          button {
+          }
+          button:hover {
+          }
+
+          h3 {
+          }
+          input {
+          }
+        }
+      }
+    }
+  }
+}
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+  0% {
+    opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
+}

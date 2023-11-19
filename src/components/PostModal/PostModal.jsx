@@ -156,7 +156,7 @@ export default function PostModal({
               className={styles.fileInput}
             />
             <button className={styles.upload} onClick={uploadPic}>
-              upload
+              upload?
             </button>
           </section>
           <button type="submit">Post</button>

@@ -49,6 +49,7 @@ export default function ChatsPage({ user, setUser }) {
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
+    console.log(e.target);
     if (!userSelected) {
       selectedUser.current.style.border = "solid 3px rgb(180,217,247)";
       setUserSelected(true);
@@ -148,17 +149,38 @@ export default function ChatsPage({ user, setUser }) {
               {selectedChats && selectedChats.length > 0 ? (
                 selectedChats.map((chat) => {
                   return (
-                    <div className={styles.message}>
-                      <p>
-                        {chat.sender ? (
-                          <div className={styles.messageBubble}>
-                            {chat.sender.username}: {chat.content}
-                          </div>
-                        ) : (
-                          <>{chat.content}</>
-                        )}
-                      </p>
-                    </div>
+                    <>
+                      {chat.sender._id === user._id ? (
+                        <div id={styles.userMessage} className={styles.message}>
+                          <p>
+                            {chat.sender ? (
+                              <div className={styles.messageBubble}>
+                                {chat.sender.username}: {chat.content}
+                                {/* <span>{chat.createdAt.slice(0, 10)}</span> */}
+                              </div>
+                            ) : (
+                              <>{chat.content}</>
+                            )}
+                          </p>
+                        </div>
+                      ) : (
+                        <div
+                          id={styles.friendMessage}
+                          className={styles.message}
+                        >
+                          <p>
+                            {chat.sender ? (
+                              <div className={styles.messageBubble}>
+                                {chat.sender.username}: {chat.content}
+                                {/* <span>{chat.createdAt.slice(0, 10)}</span> */}
+                              </div>
+                            ) : (
+                              <>{chat.content}</>
+                            )}
+                          </p>
+                        </div>
+                      )}
+                    </>
                   );
                 })
               ) : (

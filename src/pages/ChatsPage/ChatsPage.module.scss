@@ -8,13 +8,10 @@
   justify-content: space-evenly;
   z-index: 0;
   align-items: center;
-  border-top: solid 1px black;
 
   .ChatsFlow {
     width: 70vw;
     height: 85vh;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     border-radius: 7px;
     .messages {
       height: 80vh;
@@ -24,18 +21,52 @@
       align-items: center;
       .message {
         //animation: fadeIn 1s;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        background-color: white;
         color: black;
-        margin: 5px;
         border-radius: 7px;
-        height: 10vh;
-        max-height: 20vh;
         width: 65vw;
         //width: 32.5vw;
         padding: 5px;
+        display: flex;
+
+        align-items: center;
+        span {
+        }
+      }
+      #userMessage > p {
+        width: 40vw;
+        height: 100%;
+        margin: 0;
+        height: 10vh;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        display: flex;
+        border-radius: 7px;
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-left: 10px;
+        justify-self: flex-end;
+        margin-left: 25vw;
+        background-color: rgb(180, 217, 247);
+        color: white;
+        overflow-x: scroll;
+      }
+      #friendMessage > p {
+        background-color: rgb(243, 242, 242);
+        width: 40vw;
+        height: 100%;
+        margin: 0;
+        height: 10vh;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        display: flex;
+        border-radius: 7px;
+        justify-content: flex-start;
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-top: 10px;
+        overflow-x: scroll;
       }
     }
 
@@ -60,7 +91,12 @@
         color: black;
         width: 5vw;
         padding: 5px;
+        margin-left: 10px;
+        border: none;
         border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -1px,
+          rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
       }
 
       button:hover {
@@ -73,14 +109,17 @@
       font-style: bold;
       display: flex;
       justify-content: center;
-      font-size: 10vh;
+      font-size: 5vh;
+      align-items: center;
       color: transparent;
       background: #666666;
       -webkit-background-clip: text;
       -moz-background-clip: text;
       background-clip: text;
       text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
-      margin-bottom: 15vh;
+      width: 70vw;
+      height: 85vh;
+      margin-bottom: 0;
     }
   }
 
@@ -110,6 +149,7 @@
     }
 
     img {
+      animation: fadeIn 2s;
       padding: 2px;
       border-radius: 50%;
       overflow: hidden;
@@ -143,10 +183,11 @@
       }
     }
     .ChatsFlow {
-      box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 0px,
-        rgba(255, 255, 255, 0.1) 0px 8px 24px,
-        rgba(255, 255, 255, 0.1) 0px 16px 48px;
-      border: solid 2px white;
+      border: solid 1px white;
+      aside {
+        color: #ff6410;
+        text-shadow: #474747 3px 5px 2px;
+      }
       .messages {
         .message {
           background-color: rgb(28, 28, 28);
@@ -155,6 +196,7 @@
         }
       }
       form {
+        border-top: solid 1px white;
         input {
           background-color: rgb(18, 18, 18);
           border: solid 1px white;
@@ -181,7 +223,7 @@
     .ChatsAside {
       margin-top: 10px;
       width: 90vw;
-      height: 10vh;
+      height: 15vh;
       flex-direction: row;
       justify-content: center;
       align-items: center;
@@ -208,6 +250,7 @@
     .ChatsFlow {
       width: 90vw;
       align-items: center;
+      height: 70vh;
       .messages {
         width: 90vw;
         .message {
@@ -226,16 +269,72 @@
         button:hover {
         }
       }
+      aside {
+      }
     }
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
+@media (prefers-color-scheme: dark) {
+  .ChatsPage {
+    background-color: black;
+    .ChatsFlow {
+      background-color: rgb(28, 28, 28);
+      .messages {
+        .message {
+          border: none;
+          align-items: center;
+        }
+        #userMessage > p {
+          background-color: #ff6410;
+        }
+        #friendMessage > p {
+          background-color: rgb(130, 129, 129);
+        }
 
-  100% {
-    opacity: 1;
+        form {
+          input {
+          }
+
+          button {
+            background-color: #ff6410;
+            border: none;
+          }
+
+          button:hover {
+          }
+        }
+        aside {
+          width: 70vw;
+          margin-bottom: 0;
+        }
+      }
+
+      .ChatsAside {
+        background-color: rgb(28, 28, 28);
+        h1 {
+          p {
+          }
+        }
+
+        img {
+        }
+
+        h1:hover,
+        img:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
   }
 }

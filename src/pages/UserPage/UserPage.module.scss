@@ -1,56 +1,47 @@
 .UserPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  top: 32px;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+  background-size: cover;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    top: 32px;
-    align-items: center;
-    height: 100vh;
-    background-color: white;
-    background-size: cover;
+  // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
+  // background-size: cover;
+  position: fixed;
 
-    border-top: solid 1px black;
-    // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
-    // background-size: cover;
-    position: fixed;
+  .heading {
+    width: 100vw;
+    padding-left: 25vw;
+    font-size: 2em;
+    color: transparent;
+    background: rgb(180, 217, 247);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@media (max-width: 900px) {
+  .UserPage {
+    top: 0;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .UserPage {
+    background-color: black;
 
     .heading {
-        width: 100vw;
-        padding-left: 25vw;
-        font-size: 2em;
-        color: transparent;
-        background: rgb(180, 217, 247);
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        background-clip: text;
-        text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+      color: transparent;
+      background: #ff6410;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
     }
-
-}
-
-
-
-@media (max-width:900px) {
-    .UserPage {
-        top: 0;
-
-    }
-}
-
-
-@media (prefers-color-scheme:dark) {
-    .UserPage {
-
-        background-color: black;
-
-        .heading {
-            color: transparent;
-            background: #FF6410;
-            -webkit-background-clip: text;
-            -moz-background-clip: text;
-            background-clip: text;
-            text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
-        }
-
-    }
+  }
 }

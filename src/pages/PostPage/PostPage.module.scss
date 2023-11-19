@@ -76,8 +76,17 @@
       top: 61vh;
       display: flex;
       align-items: center;
+
       h4 {
         margin-left: 10px;
+        width: 30%;
+      }
+      .date {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .date:hover {
+        background-color: rgb(28, 28, 28);
       }
     }
     .commentSection {
@@ -114,6 +123,9 @@
       button {
         width: 10vw;
         border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -1px,
+          rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
         border: none;
       }
       button:hover {
@@ -178,12 +190,19 @@
       background-color: rgb(28, 28, 28);
       header {
         color: white;
+        .headerClickables {
+          text-shadow: none;
+          color: white;
+        }
         .headerClickables:hover {
           color: #ff6410;
         }
       }
       aside {
         background-color: gray;
+        border: solid 1px white;
+
+        color: white;
       }
       h4 {
         color: white;

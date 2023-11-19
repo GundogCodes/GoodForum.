@@ -14,7 +14,7 @@ ul {
   animation: fadeIn 0.5s;
   height: 80vh;
   overflow-y: scroll;
-  left: 21vw;
+  left: 20vw;
   li {
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
@@ -62,7 +62,7 @@ ul {
     }
     h3 {
       margin-top: 0;
-      height: 50vh;
+      height: 100%;
       width: 54vw;
       display: flex;
       justify-content: center;
@@ -75,7 +75,7 @@ ul {
     }
     .postImage {
       width: 55vw;
-      height: 70vh;
+      height: 100%;
     }
     .postImage:hover {
       cursor: pointer;
@@ -100,24 +100,40 @@ ul {
         p {
           margin-left: 5px;
           margin-right: 5px;
-          height: 2.5vh;
+          margin-top: 0;
+          height: 100%;
+          width: 25%;
         }
-      }
-      .likes:hover,
-      .dislikes:hover,
-      .comment:hover {
-        color: rgb(171, 211, 246);
-        cursor: pointer;
+        p:hover {
+          color: white;
+        }
+        .date {
+          display: flex;
+          justify-content: flex-end;
+          font-weight: bolder;
+        }
+        .likes,
+        .dislikes,
+        .comment {
+          display: flex;
+          align-items: center;
+        }
+        .likes:hover,
+        .dislikes:hover,
+        .comment:hover {
+          color: white;
+          background-color: rgb(180, 217, 247);
+          border-radius: 7px;
+          cursor: pointer;
+        }
       }
       footer {
         align-self: center;
         border-radius: 7px;
         padding: 2.5px;
-        border: solid 1px black;
         width: 50vw;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
     }
   }
@@ -179,11 +195,14 @@ ul {
       background-color: rgb(28, 28, 28);
       section {
         h1 {
+          text-shadow: none;
           color: #ff6410;
         }
         h2 {
+          padding-left: 10px;
         }
         .forumTitle {
+          text-shadow: none;
           color: white;
         }
       }
@@ -192,23 +211,40 @@ ul {
       .postImage {
       }
       .postImage:hover {
+        cursor: pointer;
       }
       h3:hover {
       }
       aside {
+        border-top: solid 1px white;
         .pDiv {
           p {
           }
-        }
-        .likes:hover,
-        .dislikes:hover,
-        .comment:hover {
+          p:hover {
+            color: white;
+            background-color: #ff6410;
+          }
+          .date {
+          }
+          .likes,
+          .dislikes,
+          .comment {
+          }
+          .likes:hover,
+          .dislikes:hover,
+          .comment:hover {
+            cursor: pointer;
+            background-color: #ff6410;
+          }
+          .date:hover {
+            background-color: rgb(28, 28, 28);
+          }
         }
         footer {
         }
       }
-      li:hover {
-      }
+    }
+    li:hover {
     }
   }
 }

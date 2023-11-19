@@ -95,31 +95,38 @@
       justify-content: flex-start;
       padding-left: 10px;
 
-      p {
-        margin-left: 5px;
-        margin-right: 5px;
-      }
-
       .like:hover,
       .dislike:hover,
       .comment:hover {
-        color: rgb(171, 211, 246);
+        color: white;
+        cursor: pointer;
       }
       .pDiv {
         display: flex;
         border-top: solid 1px black;
         width: 64.5vw;
         p {
-          margin-left: 5px;
-          margin-right: 5px;
+          width: 25%;
           height: 2.5vh;
+          margin-top: 0;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding-left: 2px;
+        }
+        .date {
+          display: flex;
+          justify-content: flex-end;
+          font-weight: bolder;
         }
       }
-      .likes:hover,
-      .dislikes:hover,
-      .comment:hover {
-        color: rgb(171, 211, 246);
-        cursor: pointer;
+      .date:hover {
+        background-color: white;
+      }
+      p:hover {
+        background-color: rgb(180, 217, 247);
+        border-radius: 7px;
+        color: white;
       }
       footer {
         align-self: center;
@@ -182,9 +189,13 @@
     li {
       section {
         h4 {
+          text-shadow: none;
+          color: #ff6410;
         }
 
         h2 {
+          text-shadow: none;
+          color: white;
         }
       }
 
@@ -195,6 +206,7 @@
       }
 
       aside {
+        border-top: solid 1px white;
         p {
         }
 
@@ -204,6 +216,14 @@
         }
         .pDiv {
           p {
+          }
+          p:hover {
+            background-color: #ff6410;
+
+            color: white;
+          }
+          .date:hover {
+            background-color: rgb(28, 28, 28);
           }
         }
         .likes:hover,

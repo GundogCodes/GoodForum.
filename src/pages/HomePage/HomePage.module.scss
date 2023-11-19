@@ -1,345 +1,324 @@
 .HomePage {
+  position: fixed;
+  width: 100vw;
+  //background-color: rgb(227,211,166);
+  //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
+
+  top: 32px;
+  animation: fadeIn 1s;
+  h4 {
+    color: black;
+  }
+
+  .buttonDiv {
+    position: absolute;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    top: 5vmin;
+    margin-right: 2.5vw;
+    width: 15vw;
+    height: 95vmin;
+    border-radius: 7px;
+    left: 80vw;
+    list-style-type: none;
+    li {
+      display: flex;
+      justify-content: center;
+      width: 12.5vw;
+      border-radius: 7px;
+      margin: 2px;
+      margin-right: 2vw;
+      color: black;
+      height: 50px;
+      background-color: white;
+      align-items: center;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    border-radius: 100px;
+    color: black;
+    background-color: white;
+    border-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    margin-bottom: 10px;
+  }
+
+  #name {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: flex-start;
     position: fixed;
-    width: 100vw;
-    //background-color: rgb(227,211,166);
-    //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
-    border-top: solid 1px black;
-    top:32px;
-    animation: fadeIn 1s;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    color: black;
+    font-size: 25px;
 
-    h4 {
-        color: black;
-        
+    top: 3vmin;
+    border-radius: 7px;
+    z-index: 1;
+  }
+
+  .hidden {
+    animation: fadeIn 2s;
+  }
+
+  .userInfo {
+    top: 5vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    left: 0;
+    margin-left: 2.5vw;
+    position: absolute;
+    width: 15vw;
+    height: 90vh;
+    border-radius: 7px;
+    height: 95vmin;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+    .userPic {
+      margin-top: 5vmin;
+      border-radius: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 10vw;
+      height: 10vw;
+      overflow: hidden;
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      img {
+        width: 10vw;
+        height: 10vw;
+      }
+    }
+    .userPic:hover {
+      cursor: pointer;
     }
 
-    .buttonDiv {
+    .username {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        position: absolute;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    .userForums {
+      overflow-y: scroll;
+      left: 0;
+      margin-top: 20vh;
+
+      margin-left: 2vw;
+      padding: 10px;
+
+      width: 10vw;
+      height: 30vh;
+
+      li {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        justify-content: flex-start;
-        right: 0;
-        top: 15vmin;
-        margin-right: 2.5vw;
-        width: 15vw;
-        height: 80vh;
-        border-radius: 7px;
-        left: 82vw;
-        list-style-type: none;
-        li {
-            display: flex;
-            justify-content: center;
-            width: 12.5vw;
-            border-radius: 7px;
-            margin: 2px;
-            margin-right: 2vw;
-            color: black;
-            height: 50px;
-            background-color: white;
-            align-items: center;
-
-        }
-    }
-
-    button {
-        margin-top: 10px;
-        width: 50px;
-        height: 50px;
-        position: relative;
-        border-radius: 100px;
         color: black;
-        background-color: white;
-        border-color: white;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-        margin-bottom: 10px;
-
+        width: 8vw;
+        height: 10vh;
+        margin-left: 2vw;
+      }
+      .forumTitles {
+      }
     }
+  }
+}
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .HomePage {
+    h4 {
+      opacity: 0;
+      width: 20px;
+    }
 
     #name {
-        margin-top: 30px;
-
-        display: flex;
-        justify-content: flex-start;
-        position: fixed;
-        padding-left: 2.5vw;
-        padding-right: 2.5vw;
-        color: black;
-        font-size: 25px;
-
-        top: 3vmin;
-        border-radius: 7px;
-        z-index: 1;
-
-
+      top: 0px;
+      width: 100vw;
+      display: flex;
+      align-items: center;
     }
 
-    .hidden {
-        animation: fadeIn 2s;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+
+    .buttonDiv {
+      position: absolute;
+      left: 0;
+      top: 40vh;
+      width: 100vw;
+      height: 5vh;
+
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+
+      ul {
+        height: 10vmin;
+        overflow-x: scroll;
+        flex-direction: row;
+        width: 100vw;
+
+        li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow-x: hidden;
+          overflow-wrap: normal;
+          height: 5vmin;
+          width: 20vmin;
+          border-radius: 7px;
+          font-size: 10px;
+          padding: 2px;
+        }
+      }
+
+      button {
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        margin: 10px;
+      }
+    }
+
+    h1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: fixed;
+      width: 100vw;
+      padding-left: 5vw;
+      color: white;
+
+      z-index: 1;
+      top: 0vh;
+      margin-top: 0;
     }
 
     .userInfo {
-        top: 15vmin;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      top: 10vh;
+      position: absolute;
+      color: orange;
+      width: 100vw;
+      height: 30vh;
+
+      .userPic {
+        border-radius: 200px;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        justify-content: flex-start;
-        left: 0;
-        margin-left: 2.5vw;
-        position: absolute;
-        width: 15vw;
-        height: 80vh;
-        border-radius: 7px;
+        width: 150px;
+        height: 150px;
+      }
 
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-       
-        .userPic {
-            margin-top: 5vmin;
-            border-radius: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 10vw;
-            height: 10vw;
-            overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            img{
-                width: 10vw;
-                height: 10vw;
-            }
-
-        }
-        .userPic:hover{
-            cursor: pointer;
-        }
-
-        .username {
-            margin: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .userForums {
-            overflow-y: scroll;
-            left: 0;
-            margin-top:20vh;
-
-            margin-left: 2vw;
-            padding: 10px;
-
-            width: 10vw;
-            height: 30vh;
-            
-            li{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: black;
-                width: 8vw;
-                height: 10vh;
-                margin-left: 2vw;
-            }
-            .forumTitles{
-            }
-        }
+      .username {
+        padding: 10px;
+      }
     }
-
+  }
 }
 
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: black;
+  }
+  .HomePage {
+    h4 {
     }
 
-    100% {
-        opacity: 1;
+    .buttonDiv {
+      border: solid 1px white;
+      background-color: rgb(28, 28, 28);
+      h4 {
+        color: white;
+      }
+      li {
+      }
     }
-}
 
-@media (max-width:900px) {
-    .HomePage {
+    button {
+    }
+
+    #name {
+    }
+
+    .hidden {
+    }
+
+    .userInfo {
+      color: #ff6410;
+      border: solid 1px white;
+      background-color: rgb(28, 28, 28);
+      .userPic {
+      }
+
+      .username {
+      }
+
+      .userForums {
+        border: solid 1px white;
         h4 {
-            opacity: 0;
-            width: 20px;
+          color: white;
         }
 
-        #name {
-            top: 0px;
-            width: 100vw;
-            display: flex;
-            align-items: center;
+        li {
         }
-
-        display: flex;
-        flex-direction: column;
-        align-self: center;
-
-        .buttonDiv {
-            position: absolute;
-            left: 0;
-            top: 40vh;
-            width: 100vw;
-            height: 5vh;
-
-            display: flex;
-            flex-direction: row-reverse;
-            align-items: center;
-
-            ul {
-                height: 10vmin;
-                overflow-x: scroll;
-                flex-direction: row;
-                width: 100vw;
-
-                li {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    overflow-x: hidden;
-                    overflow-wrap: normal;
-                    height: 5vmin;
-                    width: 20vmin;
-                    border-radius: 7px;
-                    font-size: 10px;
-                    padding: 2px;
-                }
-            }
-
-            button {
-                width: 50px;
-                height: 50px;
-                border-radius: 100px;
-                margin: 10px;
-            }
+        .forumTitles {
+          color: white;
         }
-
-        h1 {
-
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            position: fixed;
-            width: 100vw;
-            padding-left: 5vw;
-            color: white;
-
-            z-index: 1;
-            top: 0vh;
-            margin-top: 0;
-        }
-
-        .userInfo {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            top: 10vh;
-            position: absolute;
-            color: orange;
-            width: 100vw;
-            height: 30vh;
-
-            .userPic {
-                border-radius: 200px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 150px;
-                height: 150px;
-
-            }
-
-            .username {
-                padding: 10px;
-            }
-        }
-
+      }
     }
+  }
 }
 
+@keyframes typing {
+  from {
+    width: 100%;
+  }
 
+  to {
+    width: 0;
+  }
+}
 
-@media (prefers-color-scheme:dark) {
-    .HomePage {
-
-
-            h4 {
-
-                    }
-    
-                    .buttonDiv {
-                        h4{
-                            color: white;
-                        }
-                        li {
-                            
-                            
-                        }
-                    }
-                    
-                    button {
-                        
-                        
-                    }
-                    
-                    
-                    #name {
-                        
-                    }
-                    
-                    .hidden {
-                        
-                    }
-                    
-                    .userInfo {
-                        color: #FF6410;
-                        
-                        .userPic {
-                            
-                            
-                            
-                        }
-                        
-                        .username {
-                        }
-                        
-                        .userForums {
-                            h4{
-                                color: white;
-                            }
-                            
-                            li{
-                                
-                                
-                            }
-                .forumTitles{
-                    color: white;
-                }            }
-            }
-            
-        }
-    }
-    
-    @keyframes typing {
-        from {
-            width: 100%;
-        }
-        
-        to {
-            width: 0;
-        }
-    }
-    
-    @keyframes blink-caret {
-        from,
-        to {
-            border-color: transparent;
-        }
-        50% {
-            border-color: #000;
-        }
-    }
-    
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #000;
+  }
+}
