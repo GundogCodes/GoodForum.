@@ -14,12 +14,13 @@ export default function ChatsPage({ user, setUser }) {
   const navigate = useNavigate();
   const messageBar = useRef(null);
   const selectedUser = useRef(null);
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   /*********************************************** STATES ***********************************************/
-  const [socketConnected, setSocketConnected] = useState(false);
   const [selectedChats, setSelectedChats] = useState([]);
   const [selectedChatId, setSelectedChatId] = useState();
   const [newMessage, setNewMessage] = useState();
-  const [userSelected, setUserSelected] = useState(false);
+  const [userSelected, setUserSelected] = useState("");
   /*********************************************** FUNCTIONS ***********************************************/
   function goToUserPage(e) {
     const id = e.target.id;
@@ -28,7 +29,6 @@ export default function ChatsPage({ user, setUser }) {
   function handleChange(e) {
     e.preventDefault();
     setNewMessage({ content: e.target.value });
-    //console.log(newMessage);
   }
   /*********************************************** USE EFFECTS ***********************************************/
 
@@ -36,12 +36,9 @@ export default function ChatsPage({ user, setUser }) {
     socket.on("message received", async (newMessageReceived) => {
       console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
 
-      console.log("which chat is the receiver in", selectedChatId);
-
       if (newMessageReceived.chat._id !== selectedChatId) {
         return;
       } else {
-        console.log("the chats are", selectedChats); // this is emprty whyy??
         setSelectedChats([newMessageReceived, ...selectedChats]);
       }
     });
@@ -49,50 +46,59 @@ export default function ChatsPage({ user, setUser }) {
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
-    console.log(e.target);
-    if (!userSelected) {
-      selectedUser.current.style.border = "solid 3px rgb(180,217,247)";
-      setUserSelected(true);
-    } else if (userSelected) {
-      selectedUser.current.style.border = "none";
-      setUserSelected(false);
+    /*********************** Frontend ************************/
+    let clickedImageID = e.target.id;
+    setUserSelected(clickedImageID);
+    if (clickedImageID !== userSelected) {
+      const prev = document.getElementById(userSelected);
+      if (prev) {
+        if (isDarkMode) {
+          prev.style.backgroundColor = "black";
+        } else {
+          prev.style.backgroundColor = "white";
+        }
+      }
+      const current = document.getElementById(clickedImageID);
+      if (isDarkMode) {
+        current.style.backgroundColor = "#ff6410";
+      } else {
+        current.style.backgroundColor = "rgb(180,217,247)";
+      }
     }
     const friendId = e.target.id;
     const potChatName1 = user._id + friendId;
     const potChatName2 = friendId + user._id;
-    //console.log(user._id);
+
     let chatId = "";
     for (let chat of user.chats) {
       if (chat.chatName === potChatName1 || chat.chatName === potChatName2) {
-        //  console.log(chat._id);
         chatId = chat._id;
       }
     }
+    /*********************** Backend ************************/
     try {
       const messages = await messageAPI.getMessages(chatId);
-      // console.log("MESSAGES", messages);
+
       const reversedMessages = messages.reverse();
       setSelectedChats(reversedMessages);
     } catch (error) {
       console.log(error);
     }
-    //console.log("CHAT ID", chatId);
+
     setSelectedChatId(chatId);
     socket.emit("join chat", chatId);
   }
 
   async function sendAMessage(e) {
     e.preventDefault();
-    // console.log("new typed Message", newMessage);
-    // console.log("chatID in sendAMessage", selectedChatId);
+
     try {
       const sentMessage = await messageAPI.sendMessage(
         selectedChatId,
         newMessage
       );
       const foundChat = await chatAPI.getChat(selectedChatId);
-      // console.log("sent message is: ", sentMessage);
-      // console.log("foundChat ", foundChat);
+
       socket.emit("new message", sentMessage);
       setSelectedChats([sentMessage, ...selectedChats]);
     } catch (error) {
@@ -103,7 +109,6 @@ export default function ChatsPage({ user, setUser }) {
     setNewMessage("");
   }
 
-  //console.log("SELECTEDCHATS", selectedChats);
   return (
     <div className={styles.ChatsPage}>
       {user ? (

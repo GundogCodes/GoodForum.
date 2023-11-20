@@ -115,7 +115,6 @@ export default function NavBar({ user, setUser }) {
           <h1 onClick={handleEtchClick} className={styles.Name}>
             Etch
           </h1>
-
           <LogOut user={user} setUser={setUser} />
         </>
       ) : (
@@ -161,6 +160,9 @@ export default function NavBar({ user, setUser }) {
               </Link>
             )}
           </section>
+          <h1 onClick={handleEtchClick} className={styles.Name}>
+            Etch
+          </h1>
 
           <LogOut user={user} setUser={setUser} />
         </>
