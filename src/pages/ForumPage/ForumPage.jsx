@@ -34,7 +34,6 @@ export default function ForumPage({ user, setUser }) {
     (async () => {
       try {
         const forum = await forumService.getForum(id);
-        console.log("All Forum Posts", forum.posts);
         setForumPage(forum);
       } catch (error) {
         console.log(error);
@@ -46,10 +45,12 @@ export default function ForumPage({ user, setUser }) {
     if (!user) {
       return;
     } else {
-      if (user.followedForums.includes(id)) {
-        setIsMember(true);
-      } else {
-        setIsMember(false);
+      setIsMember(false);
+      for (let followedForum of user.followedForums) {
+        console.log(followedForum._id);
+        if (followedForum._id === id) {
+          setIsMember(true);
+        }
       }
     }
   }, [user]);
@@ -68,25 +69,21 @@ export default function ForumPage({ user, setUser }) {
     const id = e.currentTarget.getAttribute("postId");
     navigate(`/post/${id}`);
   }
-  async function handleIsMemberClick() {
-    try {
-      const updatedForum = await forumService.removeMember(id);
+  async function handleMemberClick(e) {
+    if (isMember) {
+      const newInfo = await forumService.removeMember(id);
+      console.log("REMOVE USER RETURNED INFO", newInfo);
       setIsMember(false);
-      setForumPage(updatedForum);
-    } catch (error) {
-      console.log({ error: error });
-    }
-  }
-  async function handleisNotMemberClick() {
-    try {
-      const updatedForum = await forumService.addMember(id);
+      setForumPage(newInfo.updatedForum);
+      setUser(newInfo.updatedUser);
+    } else if (!isMember) {
+      const newInfo = await forumService.addMember(id);
+      console.log("ADD USER RETURNED INFO", newInfo);
       setIsMember(true);
-      setForumPage(updatedForum);
-    } catch (error) {
-      console.log({ error: error });
+      setForumPage(newInfo.updatedForum);
+      setUser(newInfo.updatedUser);
     }
   }
-
   return (
     <div className={styles.ForumPage}>
       {forumPage && forumPage.posts ? (
@@ -115,9 +112,9 @@ export default function ForumPage({ user, setUser }) {
             <section>
               <aside>
                 {isMember ? (
-                  <button onClick={handleIsMemberClick}>Following</button>
+                  <button onClick={handleMemberClick}>Following</button>
                 ) : (
-                  <button onClick={handleisNotMemberClick}>+</button>
+                  <button onClick={handleMemberClick}>+</button>
                 )}
 
                 <button onClick={handleMakePostButton}>Etch Post</button>
