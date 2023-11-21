@@ -24,6 +24,7 @@ export default function PostModal({
     image: null,
   });
   const [selectedForum, setSelectedForum] = useState("");
+  const [isFile, setIsFile] = useState(false);
   /******************************************** Handling States ********************************************/
 
   function handleXClick() {
@@ -69,6 +70,7 @@ export default function PostModal({
     console.log("fileName", file.name);
     console.log("init  postData is ", postData);
     setPostData({ ...postData, image: file.name });
+    setIsFile(true);
   }
 
   async function handlePostToForum(e) {
@@ -102,10 +104,7 @@ export default function PostModal({
   }
 
   async function handleMakeAPost(e) {
-    /*********************** Frontend ************************/
     e.preventDefault();
-    console.log("SELECTED FORUM IN USERASIDE", selectedForum);
-    /*********************** Backend ************************/
     if (postData.text !== null) {
       try {
         const newForum = await forumService.postToForum(
@@ -180,7 +179,7 @@ export default function PostModal({
               className={styles.fileInput}
             />
             <button className={styles.upload} onClick={uploadPic}>
-              upload?
+              {isFile ? "uploaded!" : "upload?"}
             </button>
           </section>
           {page ? (
