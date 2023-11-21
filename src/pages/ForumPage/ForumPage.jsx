@@ -15,10 +15,9 @@ export default function ForumPage({ user, setUser }) {
   const navigate = useNavigate();
   /******************************************** States ********************************************/
   const [isMember, setIsMember] = useState();
-  const [showPost, setShowPost] = useState(false);
   const [forumPage, setForumPage] = useState();
   const [showPostModal, setShowPostModal] = useState(false);
-
+  const [sortedForumPosts, setSortedForumPosts] = useState([]);
   /******************************************** Handling States ********************************************/
 
   function handleMakePostButton() {
@@ -35,6 +34,8 @@ export default function ForumPage({ user, setUser }) {
       try {
         const forum = await forumService.getForum(id);
         setForumPage(forum);
+        console.log("FORUM POSTS ARE ", forum.posts);
+        setSortedForumPosts(forum.posts.reverse());
       } catch (error) {
         console.log(error);
       }
@@ -47,7 +48,6 @@ export default function ForumPage({ user, setUser }) {
     } else {
       setIsMember(false);
       for (let followedForum of user.followedForums) {
-        console.log(followedForum._id);
         if (followedForum._id === id) {
           setIsMember(true);
         }
@@ -122,10 +122,14 @@ export default function ForumPage({ user, setUser }) {
             </section>
           </header>
           {forumPage.posts.length > 0 ? (
-            <ul>
+            <div className={styles.postsList}>
               {forumPage.posts.map((post) => {
                 return (
-                  <li onClick={handlePostClick} postId={post._id}>
+                  <div
+                    className={styles.post}
+                    onClick={handlePostClick}
+                    postId={post._id}
+                  >
                     <section>
                       <h2>{post.title} </h2>
                       <h1>{post.sender.username} </h1>
@@ -136,27 +140,27 @@ export default function ForumPage({ user, setUser }) {
                         src={`/profilePics/${post.image}`}
                       />
                     ) : (
-                      <h3>{post.text}</h3>
+                      <h3 className={styles.postText}>{post.text}</h3>
                     )}
 
                     <aside>
                       <div className={styles.pDiv}>
-                        <p onClick={handleLikeClick} className={styles.like}>
-                          Like {post.likes}
+                        <p className={styles.like}>{post.likes} Likes</p>
+                        <p className={styles.dislike}>
+                          {post.dislikes} Dislikes
                         </p>
-                        <p
-                          onClick={handleDislikeClick}
-                          className={styles.dislike}
-                        >
-                          Dislike {post.dislikes}
+                        <p className={styles.comment}>
+                          Comments {post.comments.length}
                         </p>
-                        <p>Comments {post.comments.length}</p>
+                        <p className={styles.date}>
+                          {post.createdAt.slice(0, 10)}
+                        </p>
                       </div>
                     </aside>
-                  </li>
+                  </div>
                 );
               })}
-            </ul>
+            </div>
           ) : (
             <h1 className={styles.noPosts}>
               No Posts yet, be the first to start a conversation!

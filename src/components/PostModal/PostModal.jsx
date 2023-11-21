@@ -15,6 +15,7 @@ export default function PostModal({
 }) {
   /******************************************** Variables ********************************************/
   const { id } = useParams();
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   /******************************************** States ********************************************/
   const [file, setFile] = useState(null);
   const [postData, setPostData] = useState({
@@ -22,7 +23,7 @@ export default function PostModal({
     text: null,
     image: null,
   });
-  console.log("init file: ", file);
+  const [selectedForum, setSelectedForum] = useState("");
   /******************************************** Handling States ********************************************/
 
   function handleXClick() {
@@ -35,7 +36,30 @@ export default function PostModal({
       [e.target.name]: e.target.value,
     });
   }
-  /******************************************** USE EFFECT ********************************************/
+  /******************************************** FUNCTIONS ********************************************/
+  function handleForumSelection(e) {
+    let pickedForum = e.target.id;
+    console.log("PICKED FORUM", pickedForum);
+    setSelectedForum(pickedForum);
+    if (selectedForum !== pickedForum) {
+      const prev = document.getElementById(selectedForum);
+      if (prev) {
+        if (isDarkMode) {
+          prev.style.backgroundColor = "black";
+        } else {
+          prev.style.backgroundColor = "white";
+          prev.style.color = "black";
+        }
+      }
+      const current = document.getElementById(pickedForum);
+      if (isDarkMode) {
+        current.style.backgroundColor = "#ff6410";
+      } else {
+        current.style.backgroundColor = "rgb(180,217,247)";
+        current.style.color = "white";
+      }
+    }
+  }
 
   /******************************************** API Calls ********************************************/
 
@@ -78,40 +102,36 @@ export default function PostModal({
   }
 
   async function handleMakeAPost(e) {
+    /*********************** Frontend ************************/
     e.preventDefault();
-    console.log(e.target.id);
-    const pickedForum = document.getElementById(`${e.target.id}`);
-    pickedForum.style.backgroundColor = "rgb(180,217,247)";
-    pickedForum.style.color = "white";
-    console.log("picked Forum", pickedForum);
-    if (pickedForum) {
-      if (postData.text !== null) {
-        try {
-          const newForum = await forumService.postToForum(id, postData);
-          console.log("updated Forum: ", newForum);
-          setForumPage(newForum);
-          setShowModal(false);
-        } catch (error) {
-          console.log({ error: error });
-        }
-      } else {
-        const formData = new FormData();
-        formData.append("profilePic", file);
-        const result = await axios.post("/api/profilePic", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        console.log(result.data);
-        try {
-          const newForum = await forumService.postToForum(
-            e.target.id,
-            postData
-          );
-          console.log("updated Forum: ", newForum);
-          setForumPage(newForum);
-          setShowModal(false);
-        } catch (error) {
-          console.log({ error: error });
-        }
+    console.log("SELECTED FORUM IN USERASIDE", selectedForum);
+    /*********************** Backend ************************/
+    if (postData.text !== null) {
+      try {
+        const newForum = await forumService.postToForum(
+          selectedForum,
+          postData
+        );
+        console.log("updated Forum: ", newForum);
+        setShowModal(false);
+      } catch (error) {
+        console.log({ error: error });
+      }
+    } else {
+      const formData = new FormData();
+      formData.append("profilePic", file);
+      const result = await axios.post("/api/profilePic", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log(result.data);
+      try {
+        const newForum = await forumService.postToForum(
+          selectedForum,
+          postData
+        );
+        setShowModal(false);
+      } catch (error) {
+        console.log({ error: error });
       }
     }
   }
@@ -120,7 +140,7 @@ export default function PostModal({
     <div className={styles.PostModal}>
       <div className={styles.form}>
         {/* If User is on the Forum Page show this PostModal otherwise */}
-        <form onChange={handleChange} onSubmit={handlePostToForum}>
+        <form onChange={handleChange}>
           <p onClick={handleXClick}>x</p>
           {page ? (
             <h1>Post to {page.title}</h1>
@@ -130,7 +150,11 @@ export default function PostModal({
               <div className={styles.forumList}>
                 {user.followedForums.map((forum) => {
                   return (
-                    <h4 id={`${forum._id}`} onClick={handleMakeAPost}>
+                    <h4
+                      onClick={handleForumSelection}
+                      id={`${forum._id}`}
+                      name={forum.title}
+                    >
                       {forum.title}
                     </h4>
                   );
@@ -159,7 +183,15 @@ export default function PostModal({
               upload?
             </button>
           </section>
-          <button type="submit">Post</button>
+          {page ? (
+            <button onClick={handlePostToForum} type="submit">
+              Post
+            </button>
+          ) : (
+            <button onClick={handleMakeAPost} type="submit">
+              Post
+            </button>
+          )}
         </form>
       </div>
     </div>

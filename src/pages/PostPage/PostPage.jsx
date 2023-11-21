@@ -200,7 +200,7 @@ export default function PostPage() {
                     return <li> {comment.text}</li>;
                   })
                 ) : (
-                  <></>
+                  <h4>Add Comment</h4>
                 )}
               </ul>
               <div className={styles.inputDiv}>

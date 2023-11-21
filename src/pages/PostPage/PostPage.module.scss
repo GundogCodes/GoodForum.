@@ -59,7 +59,6 @@
       height: 40vh;
 
       font-size: 7vmin;
-      overflow-wrap: break-word;
       overflow-y: scroll;
       overflow: hidden;
     }
@@ -81,13 +80,18 @@
       h4 {
         margin-left: 10px;
         width: 30%;
+        height: 50%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
       }
       .date {
         display: flex;
         justify-content: flex-end;
       }
       .date:hover {
-        background-color: rgb(28, 28, 28);
+        background-color: white;
+        color: black;
       }
     }
     .commentSection {
@@ -106,6 +110,7 @@
         justify-content: center;
         align-items: flex-start;
         padding-left: 10px;
+        animation: fadeIn 1s;
       }
     }
     .inputDiv {
@@ -201,7 +206,6 @@
       }
       aside {
         background-color: gray;
-        border: solid 1px white;
 
         color: white;
       }
@@ -223,6 +227,13 @@
         background-color: rgb(28, 28, 28);
         h4 {
         }
+        .date {
+          font-weight: bolder;
+        }
+        .date:hover {
+          background-color: rgb(28, 28, 28);
+          color: white;
+        }
       }
       .commentSection {
         margin-top: 5vh;
@@ -242,5 +253,14 @@
     }
     .loading {
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

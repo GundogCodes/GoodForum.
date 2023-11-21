@@ -1,5 +1,4 @@
 import styles from "./ChatsPage.module.scss";
-import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
@@ -7,7 +6,7 @@ import io from "socket.io-client";
 import * as chatAPI from "../../../utilities/chat-api.cjs";
 import * as messageAPI from "../../../utilities/messages-api.cjs";
 const ENDPOINT = "http://localhost:8004";
-var selectedChatCompare;
+
 const socket = io.connect(ENDPOINT);
 export default function ChatsPage({ user, setUser }) {
   /*********************************************** VARIABLES***********************************************/

@@ -154,6 +154,7 @@ export default function OtherUserPage({ user, setUser }) {
                     <p onClick={handlePostClick} id={`${post._id}`}>
                       Comments {post.comments.length}
                     </p>
+                    <p className={styles.date}>{post.createdAt.slice(0, 10)}</p>
                   </section>
                 </div>
               );

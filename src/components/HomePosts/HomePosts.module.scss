@@ -128,6 +128,9 @@ ul {
         }
       }
       footer {
+        display: flex;
+        justify-content: flex-start;
+        border: solid 1px white;
         align-self: center;
         border-radius: 7px;
         padding: 2.5px;

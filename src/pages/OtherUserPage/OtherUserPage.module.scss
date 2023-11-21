@@ -1,275 +1,314 @@
 .OtherUserPage {
-    position: absolute;
-    top: 33px;
-    width: 100vw;
-    height: 98vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  position: absolute;
+  top: 33px;
+  width: 100vw;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 
-    section {
-        width: 80vw;
-        margin-top: 5vh;
-        height: 90vh;
+  section {
+    width: 80vw;
+    margin-top: 5vh;
+    height: 90vh;
+    border-radius: 7px;
+
+    header {
+      border-radius: 7px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 80vw;
+      height: 25vh;
+      h1 {
+        color: transparent;
+        background: #666666;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+      }
+      .profilePic {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        width: 10vw;
+        height: 10vw;
+        border-radius: 50%;
+      }
+
+      h6 {
+        width: 25vw;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
         border-radius: 7px;
-        
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      }
+
+      aside {
+        width: 10vw;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 7px;
+
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+      }
+
+      .interactions {
+        height: 20vh;
+        width: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+        p {
+          width: 5vw;
+          border-radius: 10px;
+          background-color: white;
+          padding: 5px;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        p:hover {
+          background-color: rgb(180, 217, 247);
+          padding: 5px;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+
+    div {
+      top: 30vh;
+      left: auto;
+      width: 80vw;
+      padding: 0;
+      height: 65vh;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      overflow-y: scroll;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 7px;
+
+      .post {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+          rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        margin-left: 2.5vw;
+        margin-top: 20px;
+        width: 75vw;
+        height: 80vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
         header {
-            
-            border-radius: 7px;
-            
+          height: 20vh;
+          font-size: 5vmin;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 75vw;
+          font-weight: bolder;
+          border-bottom: solid 1px black;
+        }
+
+        .postImage {
+          width: 75vw;
+          height: 60vh;
+        }
+
+        h5 {
+          width: 74vw;
+          padding: 5px;
+          height: 80vh;
+          background-color: gray;
+          color: white;
+          font-size: 5vmin;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        section {
+          display: flex;
+          height: 10vh;
+          margin-top: 0;
+          width: 75vw;
+          display: flex;
+          align-items: center;
+          border-top: solid 1px black;
+          p {
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-evenly;
-            width: 80vw;
-            height: 25vh;
-            h1{
-                color: transparent;
-                    background: #666666;
-                    -webkit-background-clip: text;
-                    -moz-background-clip: text;
-                    background-clip: text;
-                    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
-            }
-            .profilePic {
-                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-                width: 10vw;
-                height: 10vw;
-                border-radius: 50%;
-            }
-            
-            h6 {
-                
-                width: 25vw;
-                height: 20vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                border-radius: 7px;
-                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-                
-            }
-            
-            aside {
-                width: 10vw;
-                height: 20vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                border-radius: 7px;
+            height: 100%;
+            margin-left: 10px;
+            width: 25%;
+          }
 
-                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-                
-            }
-            
-            .interactions {
-                height: 20vh;
-                width: 10vw;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                border-radius: 7px;
-                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-                
-                p {
-                    width: 5vw;
-                    border-radius: 10px;
-                    background-color: white;
-                    padding: 5px;
-                    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-                
-                p:hover {
-                    background-color: rgb(180, 217, 247);
-                    padding: 5px;
-                    color: white;
-                    cursor: pointer;
-                    
-                }
-                
-            }
-            
-        }
-        
-        div {
-            top: 30vh;
-            left: auto;
-            width: 80vw;
-            padding: 0;
-            height: 65vh;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-            overflow-y: scroll;
-            flex-direction: column;
-            align-items: center;
+          p:hover {
+            background-color: rgb(180, 217, 247);
+            color: white;
             border-radius: 7px;
-            
-            .post {
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-                
-                margin-left: 2.5vw;
-                margin-top: 20px;
-                width: 75vw;
-                height: 80vh;
-                background-color: white;
-                display: flex;
-                justify-content: flex-start;
-                flex-direction: column;
-                align-items: center;
-                
-
-                header {
-                    height: 10vh;
-
-                    width: 75vw;
-                }
-
-                .postImage {
-                    width: 75vw;
-                    height: 60vh;
-                }
-
-                h5 {
-                    width: 70vw;
-                    padding: 5px;
-                    border-radius: 7px;
-                    height: 60vh;
-                    border: solid 1px black;
-                    font-size: 5vmin;
-                    overflow: hidden;
-                }
-
-                section {
-                    display: flex;
-                    height: 10vh;
-                    margin-top: 0;
-
-                    width: 75vw;
-                    display: flex;
-                    align-items: center;
-
-                    p {
-                        margin-left: 10px;
-                    }
-
-                    p:hover {
-                        background-color: rgb(180, 217, 247);
-                        color: white;
-                        border-radius: 7px;
-
-                    }
-                }
-
-            }
+            cursor: pointer;
+          }
+          .date {
+            width: 20%;
+            display: flex;
+            justify-content: flex-end;
+            font-weight: bolder;
+            margin-right: 10px;
+          }
+          .date:hover {
+            background-color: white;
+            color: black;
+          }
         }
+      }
     }
+  }
 }
 
-@media (prefers-color-scheme:dark) {
-    .OtherUserPage {
-        section {
-            header {
-                .profilePic {}
-
-                h6 {}
-
-                aside {}
-
-                .interactions {
-
-
-                    p {
-                        background-color: rgb( 28,28,28);
-                        color: white;
-                        border: solid 1px white;
-                    }
-
-                    p:hover {
-                        background-color: #FF6410;
-                        color: white;
-                        cursor: pointer;
-                    }
-                }
-            }
-
-            div {
-                .post {
-                    background-color: rgb( 28,28,28);
-                    border: solid 1px;
-                    header {}
-                    
-                    .postImage {
-                        border: solid 1px;
-
-                    }
-
-                    h5 {
-                        background-color: gray;
-                    }
-
-                    section {
-                        p {
-                        }
-
-                        p:hover {
-                            background-color: #FF6410;
-                        color: white;
-                        }
-                    }
-
-                }
-                .post:hover{
-                    cursor: pointer;
-                }
-            }
+@media (prefers-color-scheme: dark) {
+  .OtherUserPage {
+    section {
+      background-color: rgb(28, 28, 28);
+      header {
+        h1 {
+          text-shadow: none;
+          color: #ff6410;
         }
-    }
+        .profilePic {
+        }
 
+        h6 {
+        }
+
+        aside {
+        }
+
+        .interactions {
+          p {
+            background-color: rgb(28, 28, 28);
+            color: white;
+            border: solid 1px white;
+          }
+
+          p:hover {
+            background-color: #ff6410;
+            color: white;
+            cursor: pointer;
+          }
+        }
+      }
+
+      div {
+        .post {
+          background-color: rgb(28, 28, 28);
+          border: solid 1px;
+          header {
+            border-bottom: solid 1px white;
+          }
+
+          .postImage {
+            border: solid 1px;
+          }
+
+          h5 {
+            background-color: gray;
+          }
+
+          section {
+            border-top: solid 1px white;
+            p {
+            }
+
+            p:hover {
+              background-color: #ff6410;
+              color: white;
+            }
+            .date:hover {
+              background-color: rgb(28, 28, 28);
+              color: white;
+            }
+          }
+        }
+        .post:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 
-
-@media (max-width:900px) {
-    .OtherUserPage {
-        section {
-            header {
-                .profilePic {}
-
-                h6 {}
-
-                aside {}
-
-                .interactions {
-
-
-                    p {}
-
-                    p:hover {}
-                }
-            }
-
-            div {
-                .post {
-                    header {}
-
-                    .postImage {}
-
-                    h5 {}
-
-                    section {
-                        p {
-                            margin-left: 10p
-                        }
-
-                        p:hover {}
-                    }
-
-                }
-            }
+@media (max-width: 900px) {
+  .OtherUserPage {
+    section {
+      header {
+        .profilePic {
         }
-    }
 
+        h6 {
+        }
+
+        aside {
+        }
+
+        .interactions {
+          p {
+          }
+
+          p:hover {
+          }
+        }
+      }
+
+      div {
+        .post {
+          header {
+          }
+
+          .postImage {
+          }
+
+          h5 {
+          }
+
+          section {
+            p {
+              margin-left: 10p;
+            }
+
+            p:hover {
+            }
+          }
+        }
+      }
+    }
+  }
 }
