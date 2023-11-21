@@ -1,39 +1,71 @@
-.UserSettings{
-    position: absolute;
-    top: 30px;
+.UserSettings {
+  position: absolute;
+  top: 30px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  h1 {
     width: 100vw;
-    height: 100vh;
+    padding-left: 10vw;
+    margin-top: 10vh;
+    color: rgb(180, 217, 247);
+  }
+  form {
+    width: 30vw;
+    height: 60vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    form{
-        width: 30vw;
-        height: 60vh;
-        display: flex;
-        flex-direction: column;
+    flex-direction: column;
 
-        label{
-            align-self: flex-start;
-            font-size: 25px;
-        }
-        input{
-            width: 30vw;
-            border-radius: 7px;
-            border: solid 1px;
-        }
-        section{
-            .bioInput{
-                height: 10vh;
-            }
-            button{
-                background-color: rgb(180,217,247);
-                color: white;
-                border: solid 1px white;
-                padding: 5px;
-                border-radius: 7px;
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-        }
+    label {
+      align-self: flex-start;
+      font-size: 25px;
     }
+    input {
+      width: 30vw;
+      border-radius: 7px;
+      border: solid 1px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      border: solid 1px white;
+      padding: 5px;
+    }
+    section {
+      .bioInput {
+        height: 10vh;
+      }
+      button {
+        background-color: rgb(180, 217, 247);
+        color: white;
+        border: solid 1px white;
+        padding: 5px;
+        border-radius: 7px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .UserSettings {
+    h1 {
+      color: #ff6410;
+    }
+    form {
+      label {
+      }
+      input {
+      }
+      section {
+        .bioInput {
+        }
+        button {
+          background-color: #ff6410;
+        }
+      }
+    }
+  }
 }

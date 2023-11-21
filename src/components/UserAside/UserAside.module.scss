@@ -141,7 +141,7 @@
     }
 
     .setting {
-      background-color: rgb(245, 191, 79);
+      background-color: rgb(87, 190, 66);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -193,14 +193,19 @@
     padding: 10px;
     div {
       display: flex;
-      width: 20vw;
+      width: 14vw;
       justify-content: space-evenly;
       font-size: 20px;
     }
+    h6 {
+      font-size: 1.5vmin;
+    }
     .pDiv {
+      width: 14vw;
       display: flex;
 
       p {
+        font-size: 15px;
         padding-left: 2vw;
         padding-right: 2vw;
       }
@@ -262,19 +267,15 @@
       }
 
       .setting {
-        background-color: rgb(245, 191, 79);
       }
 
       .friends {
-        background-color: #ff6410;
       }
 
       .edit {
-        background-color: green;
       }
 
       .create {
-        background-color: blue;
       }
     }
   }
@@ -290,7 +291,7 @@
 
     .controlPanel {
       .setting {
-        background-color: rgb(245, 191, 79);
+        background-color: rgb(211, 45, 35);
       }
 
       .friends {
