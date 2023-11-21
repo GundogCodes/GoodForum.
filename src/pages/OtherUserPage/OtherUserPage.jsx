@@ -8,7 +8,7 @@ export default function OtherUserPage({ user, setUser }) {
   const { id } = useParams();
   const navigate = useNavigate();
   /********************************************** STATES **********************************************/
-  const [isFriend, setIsFriend] = useState();
+  const [isFriend, setIsFriend] = useState(false);
   const [userPage, setUserPage] = useState(null);
   /********************************************** FUNCTIONS **********************************************/
   function handlePostClick(e) {
@@ -18,41 +18,40 @@ export default function OtherUserPage({ user, setUser }) {
   /********************************************** USE EFFECTS **********************************************/
 
   useEffect(() => {
-    if (user) {
-      for (let friend of user.friends) {
-        console.log("friend", friend._id);
-        if (friend._id === id) {
-          setIsFriend(true);
-        } else {
-          setIsFriend(false);
-        }
-      }
-    } else {
-      setIsFriend(false);
-    }
     (async () => {
       try {
-        const user = await userAPIs.getUser(id);
-        console.log("user is ", user);
-        setUserPage(user);
+        const viewingUser = await userAPIs.getUser(id);
+        console.log("user is ", viewingUser);
+        setUserPage(viewingUser);
       } catch (error) {
         console.log(error);
       }
+      if (user) {
+        for (let friend of user.friends) {
+          console.log("FRIEND ID", friend._id);
+          if (friend._id === id) {
+            setIsFriend(true);
+            console.log(`USER IS FRIEND: ${isFriend}`);
+          } else {
+            setIsFriend(false);
+            console.log(`USER IS FRIEND: ${isFriend}`);
+          }
+        }
+      } else {
+        setIsFriend(false);
+      }
     })();
-  }, [id]);
+  }, []);
   /********************************************** API CALLS **********************************************/
 
   async function handleMessageClicked() {
     if (isFriend) {
-      try {
-        navigate("/chats");
-      } catch (error) {
-        console.log(error);
-      }
+      navigate("/chats");
     } else if (!isFriend) {
       try {
         setIsFriend(true);
         const updatedUser = await userAPIs.addFriend(id);
+        console.log("UPDATED USER", updatedUser);
         setUser(updatedUser);
         console.log(updatedUser);
         navigate("/chats");
@@ -64,19 +63,22 @@ export default function OtherUserPage({ user, setUser }) {
   async function handleFriend() {
     if (isFriend) {
       try {
-        setIsFriend(false);
         const updatedUser = await userAPIs.removeFriend(id);
+        console.log("UPDATED USER", updatedUser);
+        setIsFriend(false);
         setUser(updatedUser);
+        console.log("UPDATED USER", updatedUser);
         console.log(updatedUser);
       } catch (error) {
         console.log(error);
       }
     } else {
       try {
-        setIsFriend(true);
         const updatedUser = await userAPIs.addFriend(id);
+
+        setIsFriend(true);
         setUser(updatedUser);
-        console.log(updatedUser);
+        console.log("UPDATED USER", updatedUser);
         //navigate('/chats')
       } catch (error) {
         console.log(error);
@@ -162,7 +164,7 @@ export default function OtherUserPage({ user, setUser }) {
           </div>
         </section>
       ) : (
-        <></>
+        <div className={styles.wrong}>wrong</div>
       )}
     </div>
   );

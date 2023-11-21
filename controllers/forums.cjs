@@ -2,6 +2,7 @@ const Forum = require("../models/forums.cjs");
 const User = require("../models/user.cjs");
 const Post = require("../models/post.cjs");
 const Comment = require("../models/comment.cjs");
+const Chat = require("../models/chat.cjs");
 
 exports.showAllForums = async (req, res) => {
   try {

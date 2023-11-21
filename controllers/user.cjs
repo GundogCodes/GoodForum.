@@ -197,7 +197,8 @@ const dataController = {
         const updatedFriend = await User.findOneAndUpdate(
           { _id: friend._id },
           {
-            $addToSet: { friends: user, chats: newChat },
+            $addToSet: { chats: newChat },
+            $addToSet: { friends: user },
           },
           { new: true }
         )
@@ -208,7 +209,8 @@ const dataController = {
         const updatedUser = await User.findOneAndUpdate(
           { _id: user._id },
           {
-            $addToSet: { friends: updatedFriend, chats: newChat },
+            $addToSet: { chats: newChat },
+            $addToSet: { friends: updatedFriend },
           },
           { new: true }
         )

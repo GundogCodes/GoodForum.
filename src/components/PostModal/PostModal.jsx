@@ -25,8 +25,27 @@ export default function PostModal({
   });
   const [selectedForum, setSelectedForum] = useState("");
   const [isFile, setIsFile] = useState(false);
+  const [showText, setShowText] = useState(true);
+  const [showImage, setShowImage] = useState(false);
+  const [showLink, setShowLink] = useState(false);
+  const [showPic, setShowPic] = useState(false);
   /******************************************** Handling States ********************************************/
-
+  function handlePostOptions(e) {
+    const option = e.target.id;
+    if (option === "Text") {
+      setShowText(true);
+      setShowImage(false);
+      setShowLink(false);
+    } else if (option === "Image") {
+      setShowText(false);
+      setShowImage(true);
+      setShowLink(false);
+    } else if (option === "Link") {
+      setShowText(false);
+      setShowImage(false);
+      setShowLink(true);
+    }
+  }
   function handleXClick() {
     setShowModal(false);
   }
@@ -164,24 +183,54 @@ export default function PostModal({
           <h2>Title</h2>
           <input name="title" type="text" required />
           <h6 className={styles.line}> </h6>
-          <h2>Text</h2>
-          <input id={styles.text} name="text" type="text" />
-          <h1 className={styles.or}>Or</h1>
-          <h2>Image</h2>
-          <img src="none" />
-          <section>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => {
-                setFile(e.target.files[0]);
-              }}
-              className={styles.fileInput}
-            />
-            <button className={styles.upload} onClick={uploadPic}>
-              {isFile ? "uploaded!" : "upload?"}
-            </button>
-          </section>
+          <header>
+            <h5 id="Text" onClick={handlePostOptions}>
+              Text
+            </h5>
+            <h5 id="Image" onClick={handlePostOptions}>
+              Image
+            </h5>
+            <h5 id="Link" onClick={handlePostOptions}>
+              Link
+            </h5>
+          </header>
+          {showText ? (
+            <>
+              <h2>Text</h2>
+              <input id={styles.text} name="text" type="text" />
+            </>
+          ) : (
+            <></>
+          )}
+          {showImage ? (
+            <>
+              <h2>Image</h2>
+              {showImage ? <img src="" /> : <img src="" />}
+              <section>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    setFile(e.target.files[0]);
+                  }}
+                  className={styles.fileInput}
+                />
+                <button className={styles.upload} onClick={uploadPic}>
+                  {isFile ? "uploaded!" : "upload?"}
+                </button>
+              </section>
+            </>
+          ) : (
+            <></>
+          )}
+          {showLink ? (
+            <div className={styles.linkDiv}>
+              <h2>Link</h2>
+              <input></input>
+            </div>
+          ) : (
+            <></>
+          )}
           {page ? (
             <button onClick={handlePostToForum} type="submit">
               Post
