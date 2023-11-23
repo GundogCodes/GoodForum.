@@ -110,8 +110,7 @@ export default function HomePage({ user, setUser }) {
         })}
         <button onClick={handleCreateClick}>+</button>
       </ul>
-
-      <Footer />
+      <footer>Hi</footer>
     </div>
   );
 }

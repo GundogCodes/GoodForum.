@@ -170,91 +170,92 @@ const dataController = {
       res.status(400).json(error);
     }
   },
-  async addFriend(req, res) {
+  async addFriend(req, res, next) {
     try {
-      const user = await User.findOne({ _id: req.user._id });
-      const friend = await User.findOne({ _id: req.params.id });
-      //if chat already exits dont create a new one, if it doesnt then create on
-      const potChatName1 = user._id + friend._id;
-      const isChat1 = await Chat.findOne({ chatName: potChatName1 });
-      const potChatName2 = friend._id + user._id;
-      const isChat2 = await Chat.findOne({ chatName: potChatName2 });
-      if (isChat1) {
-        res.json(isChat1);
-      } else if (isChat2) {
-        res.json(isChat2);
+      //if user and friend are not already friends create a Chat for them
+      const potChatName1 = req.user._id + req.params.id;
+      const potChatName2 = req.params.id + req.user._id;
+      const potChat1 = await Chat.findOne({ chatName: potChatName1 });
+      const potChat2 = await Chat.findOne({ chatName: potChatName2 });
+      if (potChat1 || potChat2) {
+        return;
       } else {
-        //create a chat and add the chats to the users chat arrays
-        const aNewChat = {};
-        aNewChat.chatName = user._id + friend._id;
-        aNewChat.isGroupChat = true;
-        aNewChat.users = [];
-        aNewChat.users.push(user);
-        aNewChat.users.push(friend);
-        aNewChat.groupAdmin = user;
-        const newChat = await Chat.create(aNewChat);
-        //update Users friends list include other user
-        const updatedFriend = await User.findOneAndUpdate(
-          { _id: friend._id },
-          {
-            $addToSet: { chats: newChat },
-            $addToSet: { friends: user },
-          },
-          { new: true }
-        )
-          .populate("friends")
-          .populate("followedForums")
-          .populate("posts")
-          .populate("chats");
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: user._id },
-          {
-            $addToSet: { chats: newChat },
-            $addToSet: { friends: updatedFriend },
-          },
-          { new: true }
-        )
-          .populate("friends")
-          .populate("followedForums")
-          .populate("posts")
-          .populate("chats");
-
-        //return updatedUser
-        res.json(updatedUser);
+        const newChat = await Chat.create({ chatName: potChatName1 });
+        await User.findOneAndUpdate(
+          { _id: req.user._id },
+          { $addToSet: { chats: newChat } }
+        );
+        await User.findOneAndUpdate(
+          { _id: req.params.id },
+          { $addToSet: { chats: newChat } }
+        );
       }
+      //add the friend and Chat to user's friends and Chat Arrays respectivley
+      //add the user and Chat to friends's friends and Chat Arrays respectivley
+      //return updatedUser, updatedFriend, and Chat
+      console.log("ADDING");
+      //if they are already friends return updatedUser
+      const newFriend = await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $addToSet: { friends: req.user },
+        },
+        { new: true }
+      )
+        .populate("friends")
+        .populate("followedForums")
+        .populate("posts")
+        .populate("chats");
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $addToSet: { friends: newFriend },
+        },
+        { new: true }
+      )
+        .populate("friends")
+        .populate("followedForums")
+        .populate("posts")
+        .populate("chats");
+      return res.json({ user: updatedUser, friend: newFriend });
     } catch (error) {
-      res.status(400).json(error);
+      res.status(400).json({ error: error });
     }
   },
   async removeFriend(req, res) {
+    console.log("REMOVING");
     try {
-      const removingFriend = await User.findOne({ _id: req.params.id });
       if (!req.user) {
         res.json("Login to continue");
       }
+      const removingFriend = await User.findOne({ _id: req.params.id });
       if (!removingFriend) {
         return res.status(404).json({ error: "Friend not found" });
       } else {
-        await User.findByIdAndUpdate(
-          { _id: removingFriend._id },
-          { $pull: { friends: req.user._id } },
-          { new: true }
-        );
-
-        const updatedUser = await User.findByIdAndUpdate(
-          { _id: req.user._id },
-          { $pull: { friends: removingFriend._id } },
+        const updatedFriend = await User.findByIdAndUpdate(
+          { _id: req.params.id },
+          { $pull: { friends: { _id: req.user._id } } },
           { new: true }
         )
           .populate("friends")
           .populate("followedForums")
           .populate("posts")
           .populate("chats");
-        res.json(updatedUser);
+
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: req.user._id },
+          { $pull: { friends: { _id: removingFriend._id } } },
+          { new: true }
+        )
+          .populate("friends")
+          .populate("followedForums")
+          .populate("posts")
+          .populate("chats");
+        res.json({ user: updatedUser, friend: updatedFriend });
       }
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
+      res.status(500).json({ error: error });
     }
   },
 };

@@ -31,6 +31,7 @@ io.on("connection", (socket) => {
 
   socket.on("join chat", (room) => {
     socket.join(room);
+    console.log("user connected to room: ", room);
   });
 
   socket.on("new message", (newMessageReceived) => {
@@ -40,6 +41,7 @@ io.on("connection", (socket) => {
     // if (!chat.users) return console.log("chat.users not defined");
     chat.users.forEach((user) => {
       console.log("chat._id", chat._id);
+      console.log("chat users", user);
       if (user == newMessageReceived.sender._id) {
         socket.in(chat._id).emit("message received", newMessageReceived);
       }

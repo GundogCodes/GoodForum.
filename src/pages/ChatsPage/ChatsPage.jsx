@@ -30,7 +30,6 @@ export default function ChatsPage({ user, setUser }) {
     setNewMessage({ content: e.target.value });
   }
   /*********************************************** USE EFFECTS ***********************************************/
-
   if (user) {
     socket.on("message received", async (newMessageReceived) => {
       console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
@@ -64,6 +63,8 @@ export default function ChatsPage({ user, setUser }) {
         current.style.backgroundColor = "rgb(180,217,247)";
       }
     }
+    /*********************** Check for Chat ************************/
+
     const friendId = e.target.id;
     const potChatName1 = user._id + friendId;
     const potChatName2 = friendId + user._id;
@@ -74,6 +75,9 @@ export default function ChatsPage({ user, setUser }) {
         chatId = chat._id;
       }
     }
+    console.log("selectedChat is ID of:", chatId);
+    socket.emit("join chat", chatId);
+
     /*********************** Backend ************************/
     try {
       const messages = await messageAPI.getMessages(chatId);
@@ -85,7 +89,6 @@ export default function ChatsPage({ user, setUser }) {
     }
 
     setSelectedChatId(chatId);
-    socket.emit("join chat", chatId);
   }
 
   async function sendAMessage(e) {
