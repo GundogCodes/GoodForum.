@@ -25,8 +25,10 @@ io.on("connection", (socket) => {
   console.log("connected to socket.io!");
 
   socket.on("setup", (userData) => {
-    socket.join(userData._id); //on set up create new room with the id of the user
-    socket.emit("connected");
+    if (userData) {
+      socket.join(userData._id); //on set up create new room with the id of the user
+      socket.emit("connected");
+    }
   });
 
   socket.on("join chat", (room) => {
@@ -42,7 +44,7 @@ io.on("connection", (socket) => {
     chat.users.forEach((user) => {
       console.log("chat._id", chat._id);
       console.log("chat users", user);
-      if (user == newMessageReceived.sender._id) {
+      if (user === newMessageReceived.sender._id) {
         socket.in(chat._id).emit("message received", newMessageReceived);
       }
     });

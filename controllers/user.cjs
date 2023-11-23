@@ -181,13 +181,21 @@ const dataController = {
         return;
       } else {
         const newChat = await Chat.create({ chatName: potChatName1 });
-        await User.findOneAndUpdate(
+
+        const theUser = await User.findOneAndUpdate(
           { _id: req.user._id },
           { $addToSet: { chats: newChat } }
         );
-        await User.findOneAndUpdate(
+        const theFriend = await User.findOneAndUpdate(
           { _id: req.params.id },
           { $addToSet: { chats: newChat } }
+        );
+        await Chat.findOneAndUpdate(
+          { _id: newChat._id },
+          {
+            $addToSet: { users: { $each: [theUser, theFriend] } },
+          },
+          { new: true }
         );
       }
       //add the friend and Chat to user's friends and Chat Arrays respectivley

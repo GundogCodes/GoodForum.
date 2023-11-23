@@ -18,7 +18,7 @@ exports.sendMessage = async (req, res) => {
     })
       .populate("sender")
       .populate("chat");
-    console.log("NEW MESSAGE", newMessage);
+    //console.log("NEW MESSAGE", newMessage);
 
     res.json(theNewMessage);
   } catch (error) {

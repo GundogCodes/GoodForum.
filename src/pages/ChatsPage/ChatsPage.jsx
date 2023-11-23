@@ -14,7 +14,7 @@ export default function ChatsPage({ user, setUser }) {
   const messageBar = useRef(null);
   const selectedUser = useRef(null);
   const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
+  socket.emit("setup", user);
   /*********************************************** STATES ***********************************************/
   const [selectedChats, setSelectedChats] = useState([]);
   const [selectedChatId, setSelectedChatId] = useState();
@@ -30,10 +30,11 @@ export default function ChatsPage({ user, setUser }) {
     setNewMessage({ content: e.target.value });
   }
   /*********************************************** USE EFFECTS ***********************************************/
+
   if (user) {
     socket.on("message received", async (newMessageReceived) => {
       console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
-
+      //alert(newMessageReceived);
       if (newMessageReceived.chat._id !== selectedChatId) {
         return;
       } else {
