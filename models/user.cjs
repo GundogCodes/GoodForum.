@@ -5,7 +5,7 @@ const SALT_ROUNDS = 6;
 
 const userSchema = new mongoose.Schema(
   {
-    username: { type: String, unique: true, required: true },
+    username: { type: String, unique: true, maxlength: 15, required: true },
     email: {
       type: String,
       unique: true,
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema(
       minlength: 3,
       required: true,
     },
-    bio: { type: String, default: "About" },
+    bio: { type: String, maxlength: 150, default: "About" },
     profileImage: { type: String, default: "" },
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
     dislikedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],

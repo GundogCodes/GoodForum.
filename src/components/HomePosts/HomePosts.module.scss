@@ -59,6 +59,11 @@ ul {
         background-clip: text;
         text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
       }
+      h1:hover,
+      .forumTitle:hover,
+      h2:hover {
+        cursor: pointer;
+      }
     }
     h3 {
       margin-top: 0;
@@ -112,6 +117,12 @@ ul {
           justify-content: flex-end;
           font-weight: bolder;
         }
+        .date:hover,
+        .comment:hover {
+          background-color: white;
+          color: black;
+          cursor: default;
+        }
         .likes,
         .dislikes,
         .comment {
@@ -119,8 +130,7 @@ ul {
           align-items: center;
         }
         .likes:hover,
-        .dislikes:hover,
-        .comment:hover {
+        .dislikes:hover {
           color: white;
           background-color: rgb(180, 217, 247);
           border-radius: 7px;
@@ -137,6 +147,11 @@ ul {
         width: 50vw;
         border-radius: 7px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      footer:hover {
+        cursor: pointer;
+        background-color: rgb(180, 217, 247);
+        color: white;
       }
     }
   }

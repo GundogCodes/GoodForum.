@@ -1,32 +1,38 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
-const postSchema = new mongoose.Schema({
-    title:{type:String, require:true},
-    forum:{type:mongoose.Schema.ObjectId, ref:'Forum', require:true},
-    sender:{type: mongoose.Schema.Types.ObjectId, ref:'User', require:true},
-    comments:[{type:mongoose.Schema.Types.ObjectId, ref:'Comment'}],
-    likes:{type:Number, default:0},
-    dislikes:{type:Number, default:0},
-    edited:{type:Boolean, default:false},
-    image:{type:String, default:''},
-    text:{type:String, default:''},
-    link:{type:String, default:''},
-    video:{type:String, default:''}
-    
-}, {
-    timestamps:true
-})
+const postSchema = new mongoose.Schema(
+  {
+    title: { type: String, maxlength: 15, require: true },
+    forum: { type: mongoose.Schema.ObjectId, ref: "Forum", require: true },
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      require: true,
+    },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+    likes: { type: Number, default: 0 },
+    dislikes: { type: Number, default: 0 },
+    edited: { type: Boolean, default: false },
+    image: { type: String, default: "" },
+    text: { type: String, default: "" },
+    link: { type: String, default: "" },
+    video: { type: String, default: "" },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-postSchema.methods.incrementLikes = async function(postId){
-    this.likes = this.likes +1
-    return this.save()
-}
+postSchema.methods.incrementLikes = async function (postId) {
+  this.likes = this.likes + 1;
+  return this.save();
+};
 
-postSchema.methods.incrementDislikes = async function(postId){
-    this.dislikes = this.dislikes +1
-    return this.save()
-}
+postSchema.methods.incrementDislikes = async function (postId) {
+  this.dislikes = this.dislikes + 1;
+  return this.save();
+};
 /*
 postSchema.pre('save', async function(next){
     this.text = await bcrypt.hash(this.text,8)
@@ -36,6 +42,6 @@ postSchema.pre('save', async function(next){
 
 */
 
-const Post = mongoose.model('Post', postSchema)
+const Post = mongoose.model("Post", postSchema);
 
-module.exports = Post
+module.exports = Post;

@@ -107,14 +107,18 @@ export default function OtherUserPage({ user, setUser }) {
               <p>Quarries: {userPage.followedForums.length}</p>
               <p>Posts: {userPage.posts.length}</p>
             </aside>
-            <div className={styles.interactions}>
-              <p onClick={handleMessageClicked}>Message</p>
-              {isFriend ? (
-                <p onClick={handleFriend}>Remove Friend</p>
-              ) : (
-                <p onClick={handleFriend}>Add Friend</p>
-              )}
-            </div>
+            {user && id === user._id ? (
+              <></>
+            ) : (
+              <div className={styles.interactions}>
+                <p onClick={handleMessageClicked}>Message</p>
+                {isFriend ? (
+                  <p onClick={handleFriend}>Remove Friend</p>
+                ) : (
+                  <p onClick={handleFriend}>Add Friend</p>
+                )}
+              </div>
+            )}
           </header>
           <div>
             {userPage.posts.map((post) => {
