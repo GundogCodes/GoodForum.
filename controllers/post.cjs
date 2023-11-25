@@ -95,7 +95,7 @@ exports.incrementLikes = async function (req, res) {
       .populate("forum");
     await User.findOneAndUpdate(
       { _id: req.user._id },
-      { $push: { likedPosts: updatedPost } },
+      { $addToSet: { likedPosts: updatedPost } },
       { new: true }
     );
     res.json(updatedPost);
@@ -115,7 +115,7 @@ exports.decrementLikes = async function (req, res) {
       .populate("forum");
     await User.findOneAndUpdate(
       { _id: req.user._id },
-      { $push: { likedPosts: updatedPost } },
+      { $addToSet: { likedPosts: updatedPost } },
       { new: true }
     );
     res.json(updatedPost);

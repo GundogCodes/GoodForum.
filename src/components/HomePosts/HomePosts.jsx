@@ -2,12 +2,13 @@ import styles from "./HomePosts.module.scss";
 import Post from "../Post/Post";
 import * as postAPIs from "../../../utilities/post-api.cjs";
 import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 export default function HomePosts({ allPosts }) {
   /********************************* VARIABLES *********************************/
   const navigate = useNavigate();
   const likeButton = useRef(null);
   const dislikeButton = useRef(null);
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
   /********************************* FUNCTIONS *********************************/
   function handlePostClick(e) {
     const id = e.target.id;
@@ -21,15 +22,56 @@ export default function HomePosts({ allPosts }) {
     const id = e.target.id;
     navigate(`/user/${id}`);
   }
+  /********************************* USE EFFECTS *********************************/
+
+  /********************************* API CALLS *********************************/
 
   async function handleLike(e) {
-    //const likeButt = document.getElementById(e.target.id);
-    const innerText = e.target.innerText;
-    console.log(innerText);
-    const newText = innerText.splice(5, 6);
-    console.log(newText);
+    const id = e.target.id;
+    console.log(e.target.innerText);
+    const numOfLikes = parseInt(e.target.innerText.slice(6, 7));
+    if (isDarkMode) {
+      e.target.innerText = `Likes ${numOfLikes + 1}`;
+      e.target.style.color = "white";
+      e.target.style.backgroundColor = "#ff6410";
+      e.target.style.borderRadius = "7px";
+    } else {
+      e.target.innerText = `Likes ${numOfLikes + 1}`;
+      e.target.style.color = "white";
+      e.target.style.backgroundColor = "rgb(180,217,247)";
+      e.target.style.borderRadius = "7px";
+    }
+
+    try {
+      const updatedPost = await postAPIs.likePost(id);
+      console.log("updated post: ", updatedPost);
+    } catch (error) {
+      console.log({ error: error });
+    }
   }
-  async function handleDislike(e) {}
+  async function handleDislike(e) {
+    const id = e.target.id;
+    console.log(e.target.innerText);
+    const numOfDislikes = parseInt(e.target.innerText.slice(8, 10));
+    console.log(numOfDislikes);
+    if (isDarkMode) {
+      e.target.innerText = `Dislikes ${numOfDislikes + 1}`;
+      e.target.style.color = "white";
+      e.target.style.backgroundColor = "#ff6410";
+      e.target.style.borderRadius = "7px";
+    } else {
+      e.target.innerText = `Dislikes ${numOfDislikes + 1}`;
+      e.target.style.color = "white";
+      e.target.style.backgroundColor = "rgb(180,217,247)";
+      e.target.style.borderRadius = "7px";
+    }
+    try {
+      const updatedPost = await postAPIs.dislikePost(id);
+      console.log("updated post: ", updatedPost);
+    } catch (error) {
+      console.log({ error: error });
+    }
+  }
 
   function doNothing() {
     return;
@@ -79,7 +121,6 @@ export default function HomePosts({ allPosts }) {
                   id={`${post._id}`}
                   onClick={handleLike}
                   className={styles.likes}
-                  ref={likeButton}
                 >
                   Likes {post.likes}
                 </p>
@@ -87,7 +128,6 @@ export default function HomePosts({ allPosts }) {
                   id={`${post._id}`}
                   onClick={handleDislike}
                   className={styles.dislikes}
-                  ref={dislikeButton}
                 >
                   Dislikes {post.dislikes}
                 </p>

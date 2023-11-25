@@ -146,6 +146,7 @@ ul {
         padding: 2.5px;
         width: 50vw;
         border-radius: 7px;
+        margin-top: 10px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       }
       footer:hover {
@@ -253,12 +254,19 @@ ul {
           .comment:hover {
             cursor: pointer;
             background-color: #ff6410;
+            border-radius: 7px;
+            color: white;
           }
           .date:hover {
             background-color: rgb(28, 28, 28);
+            color: white;
           }
         }
         footer {
+        }
+        footer:hover {
+          background-color: #ff6410;
+          color: white;
         }
       }
     }
