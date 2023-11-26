@@ -6,13 +6,13 @@
   display: flex;
   justify-content: center;
   .form {
-    width: 55vw;
+    width: 60vw;
     display: flex;
     align-items: center;
     input {
-      border-radius: 7px;
+      border-radius: 3px;
       height: 30px;
-      width: 50vw;
+      width: 60vw;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
       border: solid 1px white;
@@ -21,12 +21,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
       margin-left: 10px;
-      padding: 16px;
+      align-self: center;
       height: 30px;
-      width: 5vw;
-      border-radius: 7px;
+      width: 10vw;
+      border-radius: 3px;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -1px,
         rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
@@ -39,21 +38,6 @@
   }
   .searchResultsList {
     .searchResults {
-    }
-  }
-}
-
-@media (max-width: 900px) {
-  .SearchBar {
-    form {
-      input {
-      }
-      button {
-      }
-    }
-    .searchResultsList {
-      .searchResults {
-      }
     }
   }
 }
@@ -72,6 +56,28 @@
       }
       button:hover {
         background-color: #983f10;
+      }
+    }
+    .searchResultsList {
+      .searchResults {
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .SearchBar {
+    top: 0px;
+    .form {
+      width: 90vw;
+      input {
+        width: 90vw;
+      }
+      button {
+        padding-left: 5vw;
+        padding-right: 5vw;
+      }
+      button:hover {
       }
     }
     .searchResultsList {

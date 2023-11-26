@@ -115,7 +115,7 @@ export default function HomePosts({ allPosts }) {
                 {post.text}
               </h3>
             )}
-            <aside>
+            <div className={styles.bottomSection}>
               <div id={`${post._id}`} className={styles.pDiv}>
                 <p
                   id={`${post._id}`}
@@ -149,7 +149,7 @@ export default function HomePosts({ allPosts }) {
               ) : (
                 <></>
               )}
-            </aside>
+            </div>
           </li>
         );
       })}
