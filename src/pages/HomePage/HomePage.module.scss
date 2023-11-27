@@ -129,6 +129,7 @@
       border: none;
       border-radius: 0px;
       overflow-y: scroll;
+
       li {
         display: flex;
         justify-content: center;
@@ -284,7 +285,9 @@
     .userInfo {
       color: #ff6410;
       background-color: rgb(28, 28, 28);
-
+      left: 0px;
+      margin-left: 0px;
+      width: 18vw;
       .userPic {
       }
 
@@ -292,7 +295,7 @@
       }
 
       .userForums {
-        width: 13.4vw;
+        width: 16.2vw;
         h4 {
           color: white;
         }

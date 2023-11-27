@@ -136,9 +136,9 @@ export default function UserSettings({ user, setUser }) {
         <label onClick={handleLabelClick} id="Email">
           Email
         </label>
-        <label onClick={handleLabelClick} id="Password">
+        {/* <label onClick={handleLabelClick} id="Password">
           Password
-        </label>
+        </label> */}
         <label onClick={handleLabelClick} id="Bio">
           Bio
         </label>
