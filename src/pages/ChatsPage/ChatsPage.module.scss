@@ -220,6 +220,8 @@
   .ChatsPage {
     flex-direction: column;
     align-items: center;
+    height: 80vh;
+    top: 5vh;
     .ChatsAside {
       margin-top: 10px;
       width: 90vw;
@@ -252,19 +254,25 @@
       align-items: center;
       height: 70vh;
       .messages {
+        margin-left: 0px;
         width: 90vw;
+        overflow-x: hidden;
         .message {
-          width: 85vw;
+          margin-left: 50px;
+          width: 90vw;
         }
       }
 
       form {
+        display: flex;
+        justify-content: flex-start;
         input {
           color: white;
-          width: 80vw;
+          width: 70vw;
         }
         button {
-          width: 10vw;
+          width: 20vw;
+          height: 4vh;
         }
         button:hover {
         }

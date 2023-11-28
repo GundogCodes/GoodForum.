@@ -87,12 +87,9 @@
     }
 
     button {
+      border-radius: 3px;
+      color: rgb(74, 119, 236);
       background-color: white;
-      border-radius: 5px;
-      border: solid 1px black;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-      border-radius: 7px;
     }
   }
 
@@ -226,35 +223,72 @@
 @media (max-width: 900px) {
   .UserAside {
     position: absolute;
-    width: 100vw;
+    width: 97vw;
     left: 0;
     height: 30vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: space-evenly;
     align-items: center;
     background-color: rgb(230, 229, 234);
     border-radius: 7px;
 
     h1 {
-      font-size: 3vmin;
-      width: 15vw;
+      font-size: 25px;
       display: flex;
+      justify-content: center;
+      height: 5vh;
+      width: 80vw;
     }
-
+    .uploadPic {
+      border-radius: 3px;
+    }
+    form {
+      width: 70vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: row;
+      input {
+        width: 35vw;
+      }
+      button {
+        width: 20vw;
+      }
+    }
+    .bio {
+      height: 10vh;
+      width: 72vw;
+      border-radius: 3px;
+    }
     .userPic {
+      align-self: flex-start;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
         rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-      width: 100px;
 
-      height: 100px;
+      height: 50px;
       border-radius: 100%;
+      display: none;
+      height: 0px;
+      width: 0px;
     }
+    .userInfo {
+      width: 80vw;
 
+      box-shadow: none;
+      div {
+        width: 75vw;
+      }
+      .pDiv {
+        width: 75vw;
+      }
+    }
     .controlPanel {
-      border-radius: 50px;
-      width: 20vw;
-
+      width: 80vw;
+      display: flex;
+      height: 5vh;
+      align-items: center;
+      box-shadow: none;
       button {
         margin: 2px;
         width: 25px;
@@ -267,15 +301,31 @@
       }
 
       .setting {
+        img {
+          width: 15px;
+          height: 15px;
+        }
       }
 
       .friends {
+        img {
+          width: 15px;
+          height: 15px;
+        }
       }
 
       .edit {
+        img {
+          width: 15px;
+          height: 15px;
+        }
       }
 
       .create {
+        img {
+          width: 15px;
+          height: 15px;
+        }
       }
     }
   }

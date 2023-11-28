@@ -10,7 +10,7 @@
 
   // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
   // background-size: cover;
-  position: fixed;
+  position: absolute;
 
   .heading {
     width: 100vw;
@@ -27,7 +27,7 @@
 
 @media (max-width: 900px) {
   .UserPage {
-    top: 0;
+    top: 5vh;
   }
 }
 

@@ -1,235 +1,126 @@
 .LoginPage {
-    font-family: 'Orbitron', sans-serif;
-    //background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
-    background-image: url('../../assets/waves/waves.png');
-
-    color: black;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  width: 100vw;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  height: 95.1vh;
+  position: absolute;
+  top: 5vh;
+  background-image: url("../../assets/cascades/c2.jpg");
+  h1 {
     display: flex;
-    flex-direction: column;
-    left: 0;
-    width: 100vw;
-    color: white;
-
     justify-content: center;
-    background-size: cover;
-    height: 100vh;
-
-    h2 {
-        position: absolute;
-        color: black;
-        top: 50vh;
-        font-size: 15px;
-        display: flex;
-        justify-content: center;
-        overflow: hidden;
-        /* Ensures the text doesn't overflow its container */
-        overflow: hidden;
-        white-space: nowrap;
-        margin: 0;
-        margin-left: 8vmin;
-        display: inline-block;
-        letter-spacing: .15em;
-        animation: typing 3s steps(40, end) reverse, blink-caret .75s step-end infinite;
-        overflow: hidden;
-        display: inline-block;
-        border-right: .15em solid #000;
-    }
-
-    .title {
-        position: absolute;
-        top: 30vh;
-        width: 50vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-        font-weight: bold;
-        font-size: 50px;
-        animation: fadeIn 5s;
-        color: transparent;
-        background: rgb(180, 217, 247);
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        background-clip: text;
-        text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
-
-    }
-
-    h1 {
-        display: flex;
-        width: 50vw;
-        justify-content: space-evenly;
-        position: absolute;
-        top: 35vh;
-
-        p {
-            font-size: 20px;
-            font-weight: 100;
-            width: 50vw;
-            display: flex;
-            justify-content: center;
-
-            color: black;
-        }
-
-        .make {
-
-            animation: fadeIn1 1s;
-
-        }
-
-        .your {
-
-
-            animation: fadeIn1 2s;
-
-        }
-
-        .mark {
-
-            animation: fadeIn1 3s;
-
-        }
-    }
-
-    h1:hover {
-        color: rgb(170, 218, 250);
-    }
-
-    #change {
-        position: absolute;
-        top: 0;
-        left: 99vw;
-    }
-
-
-}
-
-.about {
-    position: relative;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
     align-items: center;
-    width: 99vw;
-    height: 120vh;
-    top: 100px;
-
-    h1,
-    p,
-    h2 {
-        width: 90vh;
-    }
-
-    #change {
-        position: absolute;
-        margin-left: 98vw;
-        top: -30px;
-    }
+    position: absolute;
+    top: 5vh;
+    width: 100vw;
+    height: 10vh;
+    font-size: 10vh;
+    color: rgb(180, 217, 247);
+    z-index: 100;
+  }
 }
 
 @keyframes fadeIn1 {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn3 {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn3 {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
-@media(max-width:900px) {
-    .LoginPage {
-        display: flex;
-        flex-direction: column;
-        height: 30vh;
-        position: absolute;
-        top: 0.5vh;
-        background-image: none;
-        background-color: white;
-
-        .title {
-            display: flex;
-            flex-direction: column;
-
-            width: 100vw;
-        }
-
-        h1 {
-            display: flex;
-            flex-direction: row;
-
-            width: 100vw;
-            margin-top: 0;
-        }
+@media (max-width: 900px) {
+  .LoginPage {
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    position: absolute;
+    top: 5vh;
+    background-image: url("../../assets/cascades/c2.jpg");
+    height: 100vh;
+    width: 100vw;
+    .title {
+      display: flex;
+      flex-direction: column;
     }
+
+    h1 {
+      display: flex;
+      flex-direction: row;
+
+      width: 100vw;
+      margin-top: 0;
+    }
+  }
 }
 
-@media(prefers-color-scheme:dark) {
-    .LoginPage {
-        color: #FF6410;
-        background-color: rgb(28, 28, 28);
-        background-image: none;
-        background-size: cover;
+@media (prefers-color-scheme: dark) {
+  .LoginPage {
+    color: #ff6410;
+    background-color: rgb(28, 28, 28);
+    background-image: none;
+    background-size: cover;
 
-        h2 {
-            color: #FF6410;
-
-        }
-
-        .title {
-            color: white;
-
-        }
-
-        h1 {
-            p {
-                color: #FF6410;
-
-            }
-        }
+    h2 {
+      color: #ff6410;
     }
-}
 
+    .title {
+      color: white;
+    }
+
+    h1 {
+      p {
+        color: #ff6410;
+      }
+    }
+  }
+}
 
 @keyframes typing {
-    from {
-        width: 100%;
-    }
+  from {
+    width: 100%;
+  }
 
-    to {
-        width: 0;
-    }
+  to {
+    width: 0;
+  }
 }
 
 @keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
 
-    from,
-    to {
-        border-color: transparent;
-    }
-
-    50% {
-        border-color: #000;
-    }
+  50% {
+    border-color: #000;
+  }
 }

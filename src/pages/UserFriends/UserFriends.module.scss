@@ -1,6 +1,6 @@
 .UserFriends {
   position: fixed;
-  top: 30px;
+  top: 5vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -81,6 +81,39 @@
         button:hover {
           background-color: #ff6410;
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .UserFriends {
+    top: 6vh;
+    h1 {
+      margin-left: 10px;
+    }
+    .friendsList {
+      width: 100vw;
+      .friendCard {
+        width: 95vw;
+        display: flex;
+        justify-content: space-evenly;
+        img {
+          margin: 10px;
+          width: 70px;
+          height: 70px;
+        }
+        img:hover {
+        }
+        .friendName {
+          margin: 10px;
+        }
+        button {
+          margin: 10px;
+          padding: none;
+        }
+        button:hover {
         }
       }
     }

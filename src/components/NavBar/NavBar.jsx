@@ -48,7 +48,7 @@ export default function NavBar({ user, setUser }) {
           <Link to={"/user"}>
             {youClicked ? (
               <p onClick={handleClick}>
-                {user.profileImage ? (
+                {user && user.profileImage ? (
                   <img
                     style={{ width: "20px", height: "20px" }}
                     src={`/profilePics/${user.profileImage}`}

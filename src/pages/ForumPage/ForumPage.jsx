@@ -135,10 +135,12 @@ export default function ForumPage({ user, setUser }) {
                       <h1>{post.sender.username} </h1>
                     </section>
                     {post.image ? (
-                      <img
-                        className={styles.postImage}
-                        src={`/profilePics/${post.image}`}
-                      />
+                      <h3>
+                        <img
+                          className={styles.postImage}
+                          src={`/profilePics/${post.image}`}
+                        />
+                      </h3>
                     ) : (
                       <h3 className={styles.postText}>{post.text}</h3>
                     )}
@@ -150,7 +152,7 @@ export default function ForumPage({ user, setUser }) {
                           {post.dislikes} Dislikes
                         </p>
                         <p className={styles.comment}>
-                          Comments {post.comments.length}
+                          {post.comments.length} Comments
                         </p>
                         <p className={styles.date}>
                           {post.createdAt.slice(0, 10)}

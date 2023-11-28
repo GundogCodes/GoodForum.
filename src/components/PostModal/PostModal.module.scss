@@ -150,8 +150,6 @@
   }
 }
 
-@media (max-width: 990px) {
-}
 @media (prefers-color-scheme: dark) {
   .PostModal {
     .form {
@@ -198,6 +196,63 @@
           }
           input {
           }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .PostModal {
+    .form {
+      width: 90vw;
+      justify-content: center;
+      h1 {
+        width: 90vw;
+      }
+      header {
+        width: 90vw;
+        h5 {
+        }
+        h5:hover {
+        }
+      }
+      .forumList {
+        width: 85vw;
+        h4 {
+        }
+        h4:hover {
+        }
+      }
+      form {
+        width: 90vw;
+        p {
+          width: 90vw;
+        }
+        p:hover {
+        }
+        h1 {
+        }
+        h2 {
+          align-self: flex-start;
+          padding-left: 20px;
+        }
+        input {
+          width: 80vw;
+        }
+        #text {
+        }
+        .fileInput {
+        }
+        .line {
+        }
+        button {
+        }
+        button:hover {
+        }
+        .or {
+        }
+        .upload {
         }
       }
     }

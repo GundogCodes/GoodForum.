@@ -96,3 +96,38 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .UserSettings {
+    display: flex;
+    flex-direction: column;
+    section {
+      border-right: none;
+      width: 100vw;
+      height: 10vh;
+      flex-direction: row;
+      label {
+        height: 3vh;
+      }
+      label:hover {
+      }
+      h1 {
+        display: none;
+      }
+    }
+    aside {
+      form {
+        label {
+        }
+        input {
+        }
+        button {
+        }
+        button:hover {
+        }
+        #bio {
+        }
+      }
+    }
+  }
+}

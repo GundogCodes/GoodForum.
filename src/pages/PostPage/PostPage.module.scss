@@ -150,34 +150,48 @@
 @media (max-width: 900px) {
   .PostPage {
     section {
+      width: 97vw;
       header {
+        width: 97vw;
         .headerClickables:hover {
         }
       }
       aside {
+        width: 97vw;
       }
       h4 {
       }
       h4:hover {
       }
       p {
+        width: 97vw;
       }
       img {
+        width: 97vw;
       }
       img:hover {
       }
       .interactions {
+        width: 97vw;
         h4 {
         }
       }
       .commentSection {
+        width: 95vw;
+        left: 10px;
         li {
+          width: 85vw;
         }
       }
       .inputDiv {
+        width: 97vw;
+        align-items: center;
         input {
+          width: 70vw;
         }
         button {
+          width: 20vw;
+          margin-left: 10px;
         }
         button:hover {
         }

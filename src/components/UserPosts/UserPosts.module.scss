@@ -36,7 +36,6 @@
     width: 65vw;
     padding-bottom: 1vh;
     section {
-      border-radius: 7px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -74,8 +73,6 @@
       width: 64vw;
       margin-top: 0;
       background-color: gray;
-      border: solid 2px black;
-      border-radius: 7px;
     }
     .postImage {
       width: 64vw;
@@ -103,7 +100,6 @@
       }
       .pDiv {
         display: flex;
-        border-top: solid 1px black;
         width: 64.5vw;
         p {
           width: 25%;
@@ -146,11 +142,18 @@
 
 @media (max-width: 900px) {
   .UserPosts {
+    top: 35vh;
+    width: 95vw;
+    left: 2.5vw;
     .yourPosts {
     }
 
     li {
+      width: 91vw;
+      left: 2vw;
       section {
+        width: 91vw;
+        left: 2vw;
         h4 {
         }
 
@@ -159,18 +162,41 @@
       }
 
       h3 {
+        width: 91vw;
+      }
+      .postImage {
+        width: 91vw;
       }
 
       h3:hover {
       }
 
       aside {
-        p {
-        }
-
+        width: 91vw;
+        display: flex;
+        flex-direction: column;
         .like:hover,
         .dislike:hover,
         .comment:hover {
+        }
+        .pDiv {
+          width: 91vw;
+          margin-left: -10px;
+          margin-top: 20px;
+
+          p {
+            font-size: 12px;
+          }
+          .date {
+          }
+        }
+        .date:hover {
+        }
+        p:hover {
+          width: 80vw;
+        }
+        footer {
+          margin-top: 20px;
         }
       }
     }
