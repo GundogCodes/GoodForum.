@@ -1,134 +1,132 @@
-.loginDiv{
-    position: fixed;
-    right: 0;
-    width: 50vw;
-    height: 100vh;
+.loginDiv {
+  position: fixed;
+  right: 0;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1vmin;
+  color: black;
+  animation: fadeIn 2s;
+  .title {
+    justify-self: center;
+    font-family: "Orbitron", sans-serif;
+    font-size: 50px;
+    display: flex;
+
+    align-items: center;
+
+    p {
+      margin-top: 0;
+    }
+    .buttonDiv {
+      width: 25vmin;
+      width: 20vmin;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  .loginForm {
+    height: 50vh;
+    width: 25vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    font-size: 1vmin;
-    color: black;
-    animation: fadeIn 2s;
-    .title{
-        justify-self: center;
-        font-family: 'Orbitron', sans-serif;
-        font-size: 50px;
-        display: flex;
-
-        align-items: center;
-
-        p{
-
-            margin-top: 0;
-        }
-        .buttonDiv{
-            width: 25vmin;
-            width: 20vmin;
-            display: flex;
-            flex-direction: row;
-        }
+    .text {
+      font-size: 20px;
+      font-family: "Gruppo", sans-serif;
     }
-    .loginForm{
-
-        height:50vh;
-        width: 25vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .text{
-            font-size: 20px;
-            font-family: 'Gruppo', sans-serif;
-            
-
-        }
-        .inputText{
-            font-family: 'Gruppo', sans-serif;
-            color:white;
-            height: 20px;
-            background-color: white;
-            border-width: 1px;
-            border-color: black;
-            border-radius: 7px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-
-        }
-        .submit{
-            font-size: 1.5vmin;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            width: 10vw;
-            font-family: 'Gruppo', sans-serif;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-            border-color: white;
-            height: 20px;
-            color:black;
-            margin-top: 1vmin;
-            padding-bottom: 0.8vmin;
-            padding-top: 0.8vmin;
-            margin-bottom: 10vmin;
-
-            
-        }
-        .submit:hover{
-            background-color:rgb(170,218,250); ;
-        }
+    .inputText {
+      font-family: "Gruppo", sans-serif;
+      color: white;
+      height: 20px;
+      background-color: white;
+      border-width: 1px;
+      border-color: black;
+      border-radius: 7px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     }
-    .signupButton{
-        display: flex;
-        justify-content: center;
-        width: 100vw;
-        font-size: 1.5vmin;
+    .submit {
+      font-size: 1.5vmin;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 10vw;
+      font-family: "Gruppo", sans-serif;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+      border-color: white;
+      height: 20px;
+      color: black;
+      margin-top: 1vmin;
+      padding-bottom: 0.8vmin;
+      padding-top: 0.8vmin;
+      margin-bottom: 10vmin;
     }
-    .signupButton:hover{
-        color:rgb(170,218,250); 
-        cursor: pointer;
+    .submit:hover {
+      background-color: rgb(170, 218, 250);
     }
+  }
+  .signupButton {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    font-size: 1.5vmin;
+  }
+  .signupButton:hover {
+    color: rgb(170, 218, 250);
+    cursor: pointer;
+  }
 }
 
-@media (max-width:900px) {
-    .loginDiv{
-        top: 20vh;
-        width: 100vw;
-        height: 100vh;
-        background-color: white;
-        .loginForm{
-
-            width: 70vw;
-        }
-        .signupButton, .errorMessage{
-            margin: 5px;
-            font-size: 20px;
-        }
+@media (max-width: 900px) {
+  .loginDiv {
+    top: 20vh;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    .loginForm {
+      width: 70vw;
     }
+    .signupButton,
+    .errorMessage {
+      margin: 5px;
+      font-size: 20px;
+    }
+  }
 }
 
-@media(prefers-color-scheme:dark){
- .loginDiv{
+@media (prefers-color-scheme: dark) {
+  .loginDiv {
     height: 80vh;
     margin-top: 20px;
-    background-color: rgb(28,28,28);
-    .loginForm{
-        color:white;
-        .inputText{
-            background-color: rgba(28,28,28);
-            color:white;
-        }
-    }
-    .signupButton{
+    background-color: rgb(28, 28, 28);
+    .loginForm {
+      color: white;
+      .inputText {
+        background-color: rgba(28, 28, 28);
         color: white;
+      }
     }
- }
+    .signupButton {
+      color: white;
+    }
+    .errorMessage {
+      color: white;
+    }
+  }
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }

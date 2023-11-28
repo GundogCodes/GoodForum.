@@ -1,36 +1,35 @@
-.LogOut{
-    top: 10vh;
-    //background-color: rgb(52,120,246);
-    //border:  solid white 1px;
-
-    width: 10vw;
-    display: flex;
-    justify-content: center;
-
-    //box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    
+.LogOut {
+  //background-color: rgb(52,120,246);
+  //border:  solid white 1px;
+  position: absolute;
+  width: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0px;
+  top: 2px;
+  //box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.LogOut:hover{
+.LogOut:hover {
+  border-radius: 4px;
+  background-color: rgb(180, 217, 247);
+  cursor: pointer;
+  color: white;
+}
+@media (max-width: 900px) {
+  .LogOut {
+    right: 20px;
+    top: 10px;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .LogOut {
+  }
+  .LogOut:hover {
     border-radius: 4px;
-    background-color:rgb(180,217,247);
+    background-color: #ff6410;
     cursor: pointer;
     color: white;
-    padding: 5px;
-}
-@media(max-width:900px){
-    .LogOut{
-
-    }
-}
-@media(prefers-color-scheme:dark){
-    .LogOut{
-        
-    }
-    .LogOut:hover{
-        border-radius: 4px;
-    background-color: #FF6410;
-    cursor: pointer;
-    color: white;
-    }
+  }
 }

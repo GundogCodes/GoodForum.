@@ -110,25 +110,6 @@ export default function HomePage({ user, setUser }) {
         })}
         <button onClick={handleCreateClick}>+</button>
       </ul>
-      {/* <footer>Hi</footer> */}
-      <div className={styles.bottomDiv}>
-        <section>
-          <h6>Sections</h6>
-          <p>sdofhiosodfdii</p>
-        </section>
-        <section>
-          <h6>Contact</h6>
-          <p>sdofhiosoii</p>
-        </section>
-        <section>
-          <h6>Something</h6>
-          <p>sdofhiosoii</p>
-        </section>
-        <section>
-          <h6>Innovation</h6>
-          <p>sdofhiosoii</p>
-        </section>
-      </div>
     </div>
   );
 }

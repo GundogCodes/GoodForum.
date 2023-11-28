@@ -12,7 +12,7 @@
   }
 
   .buttonDiv {
-    top: 6vmin;
+    top: 10vmin;
     margin-right: 2.5vw;
     width: 20vw;
     height: 100vh;
@@ -24,7 +24,7 @@
     position: absolute;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     li {
       display: flex;
       justify-content: center;
@@ -47,7 +47,7 @@
     background-color: white;
     border-color: white;
     margin-bottom: 10px;
-    align-self: flex-start;
+    align-self: center;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
       rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -89,9 +89,8 @@
     margin-left: 2vw;
     height: 90vh;
     height: 100vh;
-    top: 10px;
+    top: 10vmin;
     .userPic {
-      margin-top: 5vmin;
       border-radius: 100px;
       display: flex;
       justify-content: center;
@@ -195,22 +194,39 @@
 
 @media (max-width: 900px) {
   .HomePage {
+    width: 95vw;
+    overflow-x: hidden;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
     h4 {
       color: black;
     }
 
     .buttonDiv {
-      display: none;
-      width: 0;
-      height: 0;
+      top: 20vh;
+      width: 100vw;
+      height: 15vw;
+      left: 0;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      h4 {
+        display: none;
+      }
       li {
+        font-size: 10px;
+        border-radius: 3px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
     }
 
     button {
+      align-self: center;
     }
 
     #name {
@@ -220,12 +236,21 @@
     }
 
     .userInfo {
-      display: none;
-      width: 0;
-      height: 0;
+      margin-left: 0px;
+      top: 12vh;
+      width: 100vw;
+      height: 5vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
       .userPic {
-        display: none;
+        height: 5vh;
+        width: 5vh;
+        margin-top: 0;
         img {
+          height: 5vh;
+          width: 5vh;
         }
       }
       .userPic:hover {
@@ -233,17 +258,17 @@
       }
 
       .username {
-        display: none;
+        width: 40vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
       }
 
       .userForums {
         display: none;
-        width: 0;
         height: 0;
+        width: 0;
         li {
-          display: none;
-          width: 0;
-          height: 0;
         }
         li:hover {
           cursor: pointer;

@@ -2,7 +2,7 @@
   position: absolute;
   width: 100vw;
   height: 50px;
-  top: 5vh;
+  top: 7vmin;
   display: flex;
   justify-content: center;
   .form {
@@ -67,15 +67,15 @@
 
 @media (max-width: 900px) {
   .SearchBar {
-    top: 0px;
+    top: 5vh;
+    width: 100vw;
     .form {
-      width: 90vw;
+      width: 95vw;
       input {
-        width: 90vw;
+        width: 75vw;
       }
       button {
-        padding-left: 5vw;
-        padding-right: 5vw;
+        width: 25vw;
       }
       button:hover {
       }
