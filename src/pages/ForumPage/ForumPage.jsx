@@ -8,6 +8,7 @@ import * as postService from "../../../utilities/post-api.cjs";
 import PostModal from "../../components/PostModal/PostModal";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { PhoneIcon, ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
 
 export default function ForumPage({ user, setUser }) {
   /******************************************** Variables ********************************************/
@@ -73,12 +74,20 @@ export default function ForumPage({ user, setUser }) {
     if (isMember) {
       const newInfo = await forumService.removeMember(id);
       console.log("REMOVE USER RETURNED INFO", newInfo);
+      const flippedPosts = newInfo.updatedForum.posts.reverse();
+      newInfo.updatedForum.posts = flippedPosts;
+      console.log("FLIPPED POSTS", flippedPosts);
+      console.log("UPDATED FLIPPED FORUM", newInfo.updatedForum);
       setIsMember(false);
       setForumPage(newInfo.updatedForum);
       setUser(newInfo.updatedUser);
     } else if (!isMember) {
       const newInfo = await forumService.addMember(id);
       console.log("ADD USER RETURNED INFO", newInfo);
+      const flippedPosts = newInfo.updatedForum.posts.reverse();
+      newInfo.updatedForum.posts = flippedPosts;
+      console.log("FLIPPED POSTS", flippedPosts);
+      console.log("UPDATED FLIPPED FORUM", newInfo.updatedForum);
       setIsMember(true);
       setForumPage(newInfo.updatedForum);
       setUser(newInfo.updatedUser);
@@ -147,9 +156,9 @@ export default function ForumPage({ user, setUser }) {
 
                     <aside>
                       <div className={styles.pDiv}>
-                        <p className={styles.like}>{post.likes} Likes</p>
+                        <p className={styles.like}>{post.likes} &#8593; </p>
                         <p className={styles.dislike}>
-                          {post.dislikes} Dislikes
+                          {post.dislikes} &#8595;
                         </p>
                         <p className={styles.comment}>
                           {post.comments.length} Comments

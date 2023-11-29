@@ -3,6 +3,8 @@ import Post from "../Post/Post";
 import { useState, useEffect } from "react";
 import * as usersAPI from "../../../utilities/users-api.cjs";
 import { useNavigate } from "react-router-dom";
+import { PhoneIcon, ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
+
 export default function UserPosts({ user, setUser }) {
   const navigate = useNavigate();
   const [allUserPost, setAllUserPosts] = useState([]);
@@ -60,8 +62,13 @@ export default function UserPosts({ user, setUser }) {
               )}
               <aside>
                 <div className={styles.pDiv}>
-                  <p className={styles.like}>{post.likes} Likes</p>
-                  <p className={styles.dislike}>{post.dislikes} Dislikes</p>
+                  <p className={styles.like}>
+                    {" "}
+                    <ArrowUpIcon /> {post.likes}
+                  </p>
+                  <p className={styles.dislike}>
+                    <ArrowDownIcon /> {post.dislikes}{" "}
+                  </p>
                   <p className={styles.comment}>
                     Comments {post.comments.length}
                   </p>

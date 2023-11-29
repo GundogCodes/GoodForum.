@@ -28,8 +28,8 @@ export default function LoginForm({ user, setUser }) {
       console.log(credentials);
       const user = await usersService.login(credentials);
       console.log("USER", user);
-      //setUser(user);
-      //handleClick();
+      setUser(user);
+      handleClick();
     } catch {
       setError("Login Failed");
     }

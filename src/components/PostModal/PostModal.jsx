@@ -99,6 +99,10 @@ export default function PostModal({
       try {
         const newForum = await forumService.postToForum(id, postData);
         console.log("updated Forum: ", newForum);
+        const flippedPosts = newForum.posts.reverse();
+        newForum.posts = flippedPosts;
+        console.log("FLIPPED POSTS", flippedPosts);
+        console.log("UPDATED FLIPPED FORUM", newForum);
         setForumPage(newForum);
         setShowModal(false);
       } catch (error) {

@@ -38,7 +38,7 @@ export default function HomePage({ user, setUser }) {
   }
   return (
     <div className={styles.HomePage}>
-      {forums ? <SearchBar forums={forums} /> : <></>}
+      {forums ? <SearchBar forums={forums} allPosts={allPosts} /> : <></>}
       {showModal ? (
         <FormModal
           title={"Create a New Quarry"}

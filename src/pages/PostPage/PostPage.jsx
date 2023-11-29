@@ -5,6 +5,8 @@ import * as postAPIs from "../../../utilities/post-api.cjs";
 import React from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import ImageModal from "../../components/ImageModal/ImageModal";
+import { PhoneIcon, ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
+
 export default function PostPage() {
   /********************************************** VARIABLES **********************************************/
   const { id } = useParams();
@@ -160,12 +162,12 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleLike}
                     >
-                      Like {post.likes}
+                      <ArrowUpIcon /> {post.likes}
                     </h4>
                   )
                 ) : (
                   <h4 className={styles.dislike} onClick={handleLike}>
-                    Like {post.likes}
+                    <ArrowUpIcon /> {post.likes}
                   </h4>
                 )}
 
@@ -184,12 +186,12 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleDislike}
                     >
-                      Dislike {post.dislikes}
+                      <ArrowDownIcon /> {post.dislikes}
                     </h4>
                   )
                 ) : (
                   <h4 className={styles.dislike} onClick={handleDislike}>
-                    Dislike {post.dislikes}
+                    <ArrowDownIcon /> {post.dislikes}
                   </h4>
                 )}
                 <h4 className={styles.date}>{post.createdAt.slice(0, 10)}</h4>

@@ -3,6 +3,8 @@ import Post from "../Post/Post";
 import * as postAPIs from "../../../utilities/post-api.cjs";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { PhoneIcon, ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
+
 export default function HomePosts({ allPosts }) {
   /********************************* VARIABLES *********************************/
   const navigate = useNavigate();
@@ -29,14 +31,15 @@ export default function HomePosts({ allPosts }) {
   async function handleLike(e) {
     const id = e.target.id;
     console.log(e.target.innerText);
-    const numOfLikes = parseInt(e.target.innerText.slice(6, 7));
+    const numOfLikes = parseInt(e.target.innerText.slice(1, 3));
+    console.log(numOfLikes);
     if (isDarkMode) {
-      e.target.innerText = `Likes ${numOfLikes + 1}`;
+      e.target.innerHTML = `&#8593; ${numOfLikes + 1}`;
       e.target.style.color = "white";
       e.target.style.backgroundColor = "#ff6410";
       e.target.style.borderRadius = "7px";
     } else {
-      e.target.innerText = `Likes ${numOfLikes + 1}`;
+      e.target.innerHTML = `&#8593; ${numOfLikes + 1}`;
       e.target.style.color = "white";
       e.target.style.backgroundColor = "rgb(180,217,247)";
       e.target.style.borderRadius = "7px";
@@ -52,15 +55,15 @@ export default function HomePosts({ allPosts }) {
   async function handleDislike(e) {
     const id = e.target.id;
     console.log(e.target.innerText);
-    const numOfDislikes = parseInt(e.target.innerText.slice(8, 10));
+    const numOfDislikes = parseInt(e.target.innerText.slice(1, 3));
     console.log(numOfDislikes);
     if (isDarkMode) {
-      e.target.innerText = `Dislikes ${numOfDislikes + 1}`;
+      e.target.innerHTML = `&#8595; ${numOfDislikes + 1}`;
       e.target.style.color = "white";
       e.target.style.backgroundColor = "#ff6410";
       e.target.style.borderRadius = "7px";
     } else {
-      e.target.innerText = `Dislikes ${numOfDislikes + 1}`;
+      e.target.innerHTML = `&#8595; ${numOfDislikes + 1}`;
       e.target.style.color = "white";
       e.target.style.backgroundColor = "rgb(180,217,247)";
       e.target.style.borderRadius = "7px";
@@ -122,14 +125,14 @@ export default function HomePosts({ allPosts }) {
                   onClick={handleLike}
                   className={styles.likes}
                 >
-                  Likes {post.likes}
+                  &#8593; {post.likes}
                 </p>
                 <p
                   id={`${post._id}`}
                   onClick={handleDislike}
                   className={styles.dislikes}
                 >
-                  Dislikes {post.dislikes}
+                  &#8595; {post.dislikes}
                 </p>
                 <p
                   id={`${post._id}`}

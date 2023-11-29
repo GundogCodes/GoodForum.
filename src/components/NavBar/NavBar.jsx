@@ -50,12 +50,20 @@ export default function NavBar({ user, setUser }) {
               <p onClick={handleClick}>
                 {user && user.profileImage ? (
                   <img
-                    style={{ width: "20px", height: "20px" }}
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      borderRadius: "50px",
+                    }}
                     src={`/profilePics/${user.profileImage}`}
                   />
                 ) : (
                   <img
-                    style={{ width: "20px", height: "20px" }}
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      borderRadius: "50px",
+                    }}
                     src={`/src/assets/userFunc/profileImage.png`}
                   />
                 )}
@@ -64,12 +72,20 @@ export default function NavBar({ user, setUser }) {
               <p onClick={handleClick}>
                 {user && user.profileImage ? (
                   <img
-                    style={{ width: "20px", height: "20px" }}
+                    style={{
+                      width: "20px",
+                      height: "20px",
+                      borderRadius: "50px",
+                    }}
                     src={`/profilePics/${user.profileImage}`}
                   />
                 ) : (
                   <img
-                    style={{ width: "20px", height: "20px" }}
+                    style={{
+                      width: "20px",
+                      borderRadius: "50px",
+                      height: "20px",
+                    }}
                     src={`/src/assets/userFunc/profileImage.png`}
                   />
                 )}
