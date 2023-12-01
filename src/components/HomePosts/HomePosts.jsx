@@ -81,81 +81,81 @@ export default function HomePosts({ allPosts }) {
   }
   console.log(allPosts);
   return (
-    <ul className={styles.HomePosts}>
-      {allPosts.map((post) => {
-        return (
-          <li>
-            <section>
-              <h4
-                className={styles.forumTitle}
-                onClick={handleForumClick}
-                id={`${post.forum._id}`}
-              >
-                {post.forum.title}{" "}
-              </h4>
-              <h2 onClick={handlePostClick} id={`${post._id}`}>
-                {post.title}
-              </h2>
-              {post.sender ? (
-                <h1 onClick={userClick} id={`${post.sender._id}`}>
-                  {post.sender.username}
-                </h1>
+    <>
+      {allPosts && allPosts.length > 0 && (
+        <ul className={styles.HomePosts}>
+          {allPosts.map((post) => (
+            <li key={post._id}>
+              <section>
+                <h4
+                  className={styles.forumTitle}
+                  onClick={handleForumClick}
+                  id={post.forum._id}
+                >
+                  {post.forum.title}{" "}
+                </h4>
+                <h2 onClick={handlePostClick} id={post._id}>
+                  {post.title}
+                </h2>
+                {post.sender ? (
+                  <h1 onClick={userClick} id={post.sender._id}>
+                    {post.sender.username}
+                  </h1>
+                ) : (
+                  <h1>Deleted User</h1>
+                )}
+              </section>
+              {post.image ? (
+                <h3 onClick={handlePostClick} id={post._id}>
+                  <img
+                    onClick={handlePostClick}
+                    id={post._id}
+                    className={styles.postImage}
+                    src={`/profilePics/${post.image}`}
+                  />
+                </h3>
               ) : (
-                <h1>Deleted User</h1>
+                <h3 onClick={handlePostClick} id={post._id}>
+                  {post.text}
+                </h3>
               )}
-            </section>
-            {post.image ? (
-              <h3 onClick={handlePostClick} id={`${post._id}`}>
-                <img
-                  onClick={handlePostClick}
-                  id={`${post._id}`}
-                  className={styles.postImage}
-                  src={`/profilePics/${post.image}`}
-                />
-              </h3>
-            ) : (
-              <h3 onClick={handlePostClick} id={`${post._id}`}>
-                {post.text}
-              </h3>
-            )}
-            <div className={styles.bottomSection}>
-              <div id={`${post._id}`} className={styles.pDiv}>
-                <p
-                  id={`${post._id}`}
-                  onClick={handleLike}
-                  className={styles.likes}
-                >
-                  &#8593; {post.likes}
-                </p>
-                <p
-                  id={`${post._id}`}
-                  onClick={handleDislike}
-                  className={styles.dislikes}
-                >
-                  &#8595; {post.dislikes}
-                </p>
-                <p
-                  id={`${post._id}`}
-                  onClick={handlePostClick}
-                  className={styles.comment}
-                >
-                  Comments {post.comments.length}
-                </p>
-                <p onClick={doNothing} className={styles.date}>
-                  {post.createdAt.slice(0, 10)}
-                </p>
+              <div className={styles.bottomSection}>
+                <div id={post._id} className={styles.pDiv}>
+                  <p
+                    id={post._id}
+                    onClick={handleLike}
+                    className={styles.likes}
+                  >
+                    &#8593; {post.likes}
+                  </p>
+                  <p
+                    id={post._id}
+                    onClick={handleDislike}
+                    className={styles.dislikes}
+                  >
+                    &#8595; {post.dislikes}
+                  </p>
+                  <p
+                    id={post._id}
+                    onClick={handlePostClick}
+                    className={styles.comment}
+                  >
+                    Comments {post.comments.length}
+                  </p>
+                  <p onClick={doNothing} className={styles.date}>
+                    {post.createdAt.slice(0, 10)}
+                  </p>
+                </div>
+                {post.comments.length > 0 && (
+                  <footer onClick={handlePostClick} id={post._id}>
+                    {post.comments[0].text}
+                  </footer>
+                )}
               </div>
-              {post.comments.length > 0 ? (
-                <footer onClick={handlePostClick} id={`${post._id}`}>
-                  {post.comments[0].text}
-                </footer>
-              ) : (
-                <></>
-              )}
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }

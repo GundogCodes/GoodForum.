@@ -28,10 +28,11 @@ const dataController = {
   async createUser(req, res, next) {
     try {
       const user = await User.create(req.body);
-      //user.populate("friends").populate("followedForums").populate("posts");
+      console.log("BACKEND CREATED USER", user);
       const token = createJWT(user);
-      console.log(user);
+      console.log("CREATED TOKEN", token);
       req.user = user;
+      console.log("setting req.user", req.user);
       res.locals.data.user = user;
       res.locals.data.token = token;
       console.log("----res.locals.data.user-----", res.locals.data.user);

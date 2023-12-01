@@ -18,6 +18,7 @@ export default function SignUpForm({ user, setUser }) {
   function handleChange(evt) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
     setError("");
+    console.log("CHANGING SIGN UP CREDENTALS", credentials);
   }
   async function handleSubmit(e) {
     e.preventDefault();

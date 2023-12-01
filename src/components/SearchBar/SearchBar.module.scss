@@ -36,8 +36,34 @@
       background-color: rgb(180, 217, 247);
     }
   }
-  .searchResultsList {
-    .searchResults {
+  section {
+    position: absolute;
+    width: 100vw;
+    top: 7vh;
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .searchList {
+      position: absolute;
+      width: 50vw;
+      left: 20vw;
+      z-index: 10;
+      background-color: white;
+      border-bottom: solid 1px black;
+      border-left: solid 1px black;
+      border-right: solid 1px black;
+      border-radius: 3px;
+      aside {
+      }
+      aside:hover {
+        background-color: rgb(180, 217, 247);
+        color: white;
+      }
+    }
+    .searchList:hover {
+      cursor: pointer;
     }
   }
 }

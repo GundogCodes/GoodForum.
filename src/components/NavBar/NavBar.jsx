@@ -7,7 +7,6 @@ export default function NavBar({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
   const navigate = useNavigate();
   const params = useParams();
-  console.log("PARAMS IN NAV BAR", params);
   /******************************************** STATES ********************************************/
   const [youClicked, setYouClicked] = useState(false);
   const [homeClicked, setHomeClicked] = useState(false);

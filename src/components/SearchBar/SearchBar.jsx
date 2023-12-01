@@ -1,109 +1,83 @@
-import styles from './SearchBar.module.scss'
-import { useEffect, useState, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import styles from "./SearchBar.module.scss";
+import { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SearchBar({ forums }) {
-    const [searchButtonClicked, setSearchButtonClicked] = useState(false)
-    const navigate = useNavigate()
-    const inputBar = useRef(null)
-    const [userSearch, setUserSearch] = useState('')
-    const [matchedSearches,setMatchedSearches]= useState([])
-    //console.log('forums in SearchBar', forums)
-    
-    function handleChange(e) {
-        const foundSearchedItem = []
-      //  console.log(userSearch)
-        setUserSearch(e.target.value)
-        if (userSearch === null || userSearch === '  Scour Quarries...') {
-            setMatchedSearches([])
-        } else {
-            for (let forum of forums) {
+  /****************************** VARIABLES ******************************/
+  const navigate = useNavigate();
 
-                if (forum.title.toLowerCase().includes(userSearch.toLowerCase())) {
-                    foundSearchedItem.push(forum.title)
-                    setMatchedSearches(foundSearchedItem)
-                }
-            }
+  const forumsNameList = [];
+  /****************************** STATES ******************************/
+  const [userSearch, setUserSearch] = useState("");
+  const [matchedSearches, setMatchedSearches] = useState([]);
+
+  /****************************** SETUP CODE ******************************/
+  for (let forum of forums) {
+    forumsNameList.push(forum.title);
+  }
+
+  /****************************** FUNCTIONS ******************************/
+  function handleChange(e) {
+    const foundSearchedItem = [];
+    setUserSearch(e.target.value);
+
+    if (
+      userSearch === null ||
+      userSearch === "Scour Quarries..." ||
+      userSearch === ""
+    ) {
+      setMatchedSearches([]);
+    } else {
+      for (let forum of forums) {
+        if (forum.title.toLowerCase().includes(userSearch.toLowerCase())) {
+          foundSearchedItem.push(forum);
+          setMatchedSearches(foundSearchedItem);
         }
+      }
     }
-    // HANDLE SEARCH BUTTON CLICK
-    function handleButtonClick() {
-        // const idOfMatchedResult = []
-        // for (let element of matchedSearches) {
-        //     for (let item of searchableItems) {
-        //         if (element === item.name) {
-        //             idOfMatchedResult.push({
-        //                 name: item.name,
-        //                 itemId: item._id, itemPrice: item.price,
-        //                 itemDes: item.description,
-        //                 itemRating: item.rating,
-        //                 img: item.image
-        //             })
-        //         }
-        //     }
-        // }
-        // setDataOfMatchedSearches(idOfMatchedResult)
-        // navigate('/search')
-    }
-    //HANDLE LI CLICK
-    function handleLiClick(e) {
-        const clickedItem = e.target.innerText
+  }
 
-        const indexOfClickedItem = itemNameArr.indexOf(clickedItem)
-        const idOfClickedItem = itemIdArr[indexOfClickedItem]
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("USER SEARCHED: ", userSearch);
+  }
 
-
-
-
-        navigate(`/item/${idOfClickedItem}`)
-
-    }
-
-    function handleKeyDown(e) {
-        if (e.code === 'Enter') {
-            const idOfMatchedResult = []
-
-
-            for (let element of matchedSearches) {
-                for (let item of searchableItems) {
-                    if (element === item.name) {
-                        idOfMatchedResult.push({
-                            name: item.name,
-                            itemId: item._id, itemPrice: item.price,
-                            itemDes: item.description,
-                            itemRating: item.rating,
-                            img: item.image
-                        })
-                    }
-                }
-            }
-            setDataOfMatchedSearches(idOfMatchedResult)
-            navigate('/search')
-        }
-    }
-    return (
-        <div className={styles.SearchBar}>
-            <div className={styles.form}>
-                <input onChange={handleChange} placeholder='Scour Quarries...' type='text' />
-                <button>Search</button>
-            </div>
-            {/* {matchedSearches.length > 0 && (
-
-                <ul className={styles.searchResultsList}
-                    onMouseLeave={
-                        e => {
-                            setMatchedSearches([''])
-                        }
-                    }
-                >
-                    {
-                        matchedSearches.map(result => {
-                            return <li key={itemIdArr.indexOf(result)} onClick={handleLiClick} className={styles.searchResult}>{result}</li>
-                        })
-                    }
-                </ul>
-
-            )} */}
+  function handleLiClick(e) {
+    console.log(e.target.id);
+    navigate(`/forum/${e.target.id}`);
+  }
+  function removeSearchList() {
+    setMatchedSearches([]);
+  }
+  /****************************** API CALLS ******************************/
+  return (
+    <div className={styles.SearchBar}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <input
+          onChange={handleChange}
+          placeholder="Scour Quarries..."
+          type="text"
+          name="userSearch"
+        />
+        <button type="submit">Search</button>
+      </form>
+      <section>
+        <div className={styles.searchList}>
+          {matchedSearches.map((result) => {
+            return matchedSearches.length > 0 ? (
+              <aside
+                id={result._id}
+                onClick={handleLiClick}
+                className={styles.searchResult}
+              >
+                {result.title}
+              </aside>
+            ) : (
+              <></>
+            );
+          })}
         </div>
-    )
+      </section>
+    </div>
+  );
 }

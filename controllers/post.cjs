@@ -21,12 +21,17 @@ exports.createPost = async (req, res) => {
         { $push: { posts: createdPost } },
         { new: true }
       );
-      await User.findOneAndUpdate(
+
+      const updatedUser = await User.findOneAndUpdate(
         { _id: req.user._id },
         { $inc: { numOfPosts: 1 }, $push: { posts: createdPost } },
         { new: true }
-      );
-      res.json(createdPost);
+      )
+        .populate("friends")
+        .populate("followedForums")
+        .populate("posts")
+        .populate("chats");
+      res.json(updatedUser);
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

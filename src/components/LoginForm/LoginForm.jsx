@@ -4,24 +4,31 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as usersService from "../../../utilities/users-service.cjs";
 export default function LoginForm({ user, setUser }) {
+  /************************************ VARIABLES  ************************************/
   const navigate = useNavigate();
-  function handleClick() {
-    navigate("/");
-  }
 
+  /************************************ STATES  ************************************/
   const [signupClicked, setSignupClicked] = useState(false);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
-  const [showSignUpForm, setShowSignUpForm] = useState(false);
 
+  /************************************ FUNCTIONS  ************************************/
+  function handleClick() {
+    navigate("/");
+  }
   function handleChange(e) {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
     setError("");
+    console.log("CHANGING LOGGIN IN CREDENTIALS");
   }
 
+  function handleSignupClick() {
+    setSignupClicked(!signupClicked);
+  }
+  /************************************ API CALLS  ************************************/
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -30,18 +37,11 @@ export default function LoginForm({ user, setUser }) {
       console.log("USER", user);
       setUser(user);
       handleClick();
-    } catch {
+    } catch (error) {
       setError("Login Failed");
     }
   }
 
-  // Function to show the SignUpForm when the "Create your Amazon Account" button is clicked
-  function handleSignUpClick() {
-    setShowSignUpForm(true);
-  }
-  function handleSignupClick() {
-    setSignupClicked(!signupClicked);
-  }
   return (
     <div className={styles.loginDiv}>
       {signupClicked ? (
