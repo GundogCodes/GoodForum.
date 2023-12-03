@@ -1,4 +1,4 @@
-import SignUpForm from "../SignupForm/SignUpForm";
+import SignUpForm from "../SignupForm/SignUpForm.jsx";
 import styles from "./LoginForm.module.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
