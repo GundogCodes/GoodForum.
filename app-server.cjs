@@ -61,7 +61,7 @@ app.use("/profilePics", express.static("images"));
 
 // catch all for wrong routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 module.exports = app;
