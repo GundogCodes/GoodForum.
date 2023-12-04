@@ -25,6 +25,7 @@ app.post("/api/profilePic", upload.single("profilePic"), (req, res) => {
   res.send(imageName);
 });
 
+/****************************************************************** APP SETUP ******************************************************************/
 //import path to use and manipulate the file paths on our system
 const path = require("path");
 
@@ -33,7 +34,7 @@ const logger = require("morgan");
 
 //using json packages to communicate with server/clients
 app.use(express.json());
-
+app.use(express.static("dist"));
 //app will use a local object in its responses which can contain info from the requests
 app.use((req, res, next) => {
   res.locals.data = {};
@@ -47,6 +48,7 @@ app.use(logger("dev"));
 //check if there is a user in the requests
 const ensureLoggedIn = require("./config/ensureLoggedIn.cjs");
 
+/****************************************************************** APP ROUTES SETUP ******************************************************************/
 //defining routes(endpoints) of app(api) where req/res can be done
 //and information can be exchanged and check if they need to be logged in
 app.use("/api/users", require("./routes/user.cjs"));
