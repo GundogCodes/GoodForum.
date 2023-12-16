@@ -39,9 +39,7 @@ export default function UserPosts({ user, setUser }) {
           {allUserPost.map((post) => (
             <li id={`${post._id}`} onClick={handlePostClick}>
               <section id={`${post._id}`} onClick={handlePostClick}>
-                <h4 id={`${post._id}`} onClick={handlePostClick}>
-                  {post.forum.title}{" "}
-                </h4>
+                <h4 id={`${post._id}`} onClick={handlePostClick}></h4>
                 <h2 id={`${post._id}`} onClick={handlePostClick}>
                   {post.title}{" "}
                 </h2>

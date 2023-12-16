@@ -87,13 +87,19 @@ export default function HomePosts({ allPosts }) {
           {allPosts.map((post) => (
             <li key={post._id}>
               <section>
-                <h4
-                  className={styles.forumTitle}
-                  onClick={handleForumClick}
-                  id={post.forum._id}
-                >
-                  {post.forum.title}{" "}
-                </h4>
+                {post.forum ? (
+                  <>
+                    <h4
+                      className={styles.forumTitle}
+                      onClick={handleForumClick}
+                      id={post.forum._id}
+                    >
+                      {post.forum.title}{" "}
+                    </h4>
+                  </>
+                ) : (
+                  <></>
+                )}
                 <h2 onClick={handlePostClick} id={post._id}>
                   {post.title}
                 </h2>
