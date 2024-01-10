@@ -35,13 +35,14 @@
     }
   }
   .loginForm {
-    background-color: white;
+    background-color: pink;
     height: 30vw;
     width: 30vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     .text {
+      background-color: orange;
       font-size: 20px;
       padding-left: 55px;
       font-family: "Gruppo", sans-serif;
