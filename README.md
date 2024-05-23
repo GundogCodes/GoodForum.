@@ -1,10 +1,10 @@
-Welcome to Etch, where the art of conversation meets the precision of marble sculpting. Unleash your creativity in our chisel-inspired messaging platform, where every word is a stroke, and every conversation is a masterpiece.
+Welcome to Fractalus, where the art of conversation meets the precision of marble sculpting. Unleash your creativity in our chisel-inspired messaging platform, where every word is a stroke, and every conversation is a masterpiece.
 
 Discover Quarries:
 Join our forums, known as Quarries, where ideas are mined and refined like precious stones. Engage in Artisan Assemblies and Stone Symposiums to sculpt discussions into brilliant works of collaborative art.
 
 Craft Marble Slabs:
-Create your own space within Etch with Marble Slabs. These are your posts, waiting to be sculpted into narratives, anecdotes, or profound expressions. The canvas is yours— chisel away!
+Create your own space within Fractalus with Marble Slabs. These are your posts, waiting to be sculpted into narratives, anecdotes, or profound expressions. The canvas is yours— chisel away!
 
 Chisel Chronicles:
 Messages take the form of Chisels, allowing you to delicately carve out your thoughts. Share your Mallet Messages with fellow sculptors and witness the evolution of conversations as if they were sculpted in real-time.
@@ -12,19 +12,22 @@ Messages take the form of Chisels, allowing you to delicately carve out your tho
 Carve-ins and Gritty Glimmers:
 Engage in Carve-ins, our unique comment section, where each comment is a chip adding intricate details to the conversation. These Gritty Glimmers enrich the discussion, creating a mosaic of perspectives.
 
-Etch is more than a platform; it's a virtual sculpture studio where ideas are carved, refined, and celebrated. Join us and be part of a community that understands the artistry in every word.
-
-
+Fractalus is more than a platform; it's a virtual sculpture studio where ideas are carved, refined, and celebrated. Join us and be part of a community that understands the artistry in every word.
 
 TRELLO For User Stories, Wireframes, and ERD
 
 https://trello.com/b/aDPYrUfn/api
 
 # Tentative Login Page
+
 ![StartingPage](image.png)
-# Tentative Home Page 
+
+# Tentative Home Page
+
 ![HomePage](image-1.png)
+
 # ERD
+
 ![ERD](image-2.png)
 
 potential background images:
