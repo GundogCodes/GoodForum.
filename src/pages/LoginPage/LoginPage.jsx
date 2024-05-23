@@ -12,7 +12,7 @@ export default function LoginPage({ user, setUser }) {
 
   return (
     <div className={styles.LoginPage}>
-      <h1>ETCH</h1>
+      <h1>Fractalus</h1>
       <LoginForm user={user} setUser={setUser} />
     </div>
   );
