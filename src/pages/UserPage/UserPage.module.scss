@@ -1,45 +1,17 @@
 .UserPage {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  top: 32px;
-  align-items: center;
-  height: 100vh;
-  background-color: rgb(23, 23, 23);
-  background-size: cover;
-
-  // background-image: url('../../assets/iosBackgrounds/iosMain.jpg');
-  // background-size: cover;
-  position: absolute;
-
   .heading {
-    width: 100vw;
-    padding-left: 25vw;
-    font-size: 2em;
-    color: transparent;
-    background: rgb(180, 217, 247);
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-    text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
-    border-top: white 1px solid;
-    border-bottom: white 1px solid;
   }
 }
 
 @media (max-width: 900px) {
   .UserPage {
-    top: 5vh;
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .UserPage {
-    background-color: black;
-
     .heading {
       color: #ff6410;
-      text-shadow: none;
     }
   }
 }

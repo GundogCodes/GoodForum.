@@ -1,197 +1,83 @@
 .PostPage {
-  position: absolute;
-  top: 33px;
-  width: 100vw;
-  height: 95vh;
-  background-color: rgb(245, 245, 245);
-  color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
   section {
-    margin-top: 1vh;
-    width: 80vw;
-    height: 90vh;
-    border-radius: 7px;
-
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     header {
-      height: 10vh;
-      width: 80vw;
-
-      border-radius: 7px;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
       .headerClickables {
-        color: transparent;
-        background: #666666;
-        -webkit-background-clip: text;
-        -moz-background-clip: text;
-        background-clip: text;
-        text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
       }
       .headerClickables:hover {
-        color: rgb(180, 217, 247);
         cursor: pointer;
       }
     }
     aside {
-      width: 80vw;
-      height: 50vh;
-      overflow-y: scroll;
     }
     h4 {
-      padding: 5px;
     }
     h4:hover {
       cursor: pointer;
-      background-color: rgb(180, 217, 247);
-      padding: 5px;
-      border-radius: 7px;
     }
     p {
-      width: 80vw;
-      height: 40vh;
-
-      font-size: 7vmin;
-      overflow-y: scroll;
-      overflow: hidden;
     }
     img {
-      width: 80vw;
-      height: 50vh;
     }
     img:hover {
       cursor: pointer;
     }
     .interactions {
-      width: 80vw;
-      height: 5vh;
-      position: absolute;
-      top: 61vh;
-      display: flex;
-      align-items: center;
-
       h4 {
-        margin-left: 10px;
-        width: 30%;
-        height: 50%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
       }
       .date {
-        display: flex;
-        justify-content: flex-end;
       }
       .date:hover {
-        background-color: white;
-        color: black;
       }
     }
     .commentSection {
-      top: 65vh;
-      left: 12.5vw;
-
-      height: 15vh;
-      width: 70vw;
-      overflow-y: scroll;
-      display: flex;
-      flex-direction: column-reverse;
       li {
-        height: 10vh;
-        width: 65vw;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        padding-left: 10px;
-        animation: fadeIn 1s;
       }
     }
     .inputDiv {
-      position: absolute;
-      top: 85vh;
-      width: 80vw;
-      display: flex;
-      justify-content: center;
       input {
-        width: 50vw;
-        border-radius: 7px;
-        border: solid 1px black;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-          rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
       }
       button {
-        width: 10vw;
-        border-radius: 7px;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
-          rgba(0, 0, 0, 0.3) 0px 3px 7px -1px,
-          rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
-        border: none;
       }
       button:hover {
-        background-color: rgb(180, 217, 247);
-        color: white;
         cursor: pointer;
       }
     }
   }
   .loading {
-    width: 5vh;
-    top: 50vh;
-    position: absolute;
   }
 }
 
 @media (max-width: 900px) {
   .PostPage {
     section {
-      width: 97vw;
       header {
-        width: 97vw;
         .headerClickables:hover {
         }
       }
       aside {
-        width: 97vw;
       }
       h4 {
       }
       h4:hover {
       }
       p {
-        width: 97vw;
       }
       img {
-        width: 97vw;
       }
       img:hover {
       }
       .interactions {
-        width: 97vw;
         h4 {
         }
       }
       .commentSection {
-        width: 95vw;
-        left: 10px;
         li {
-          width: 85vw;
         }
       }
       .inputDiv {
-        width: 97vw;
-        align-items: center;
         input {
-          width: 70vw;
         }
         button {
-          width: 20vw;
-          margin-left: 10px;
         }
         button:hover {
         }
