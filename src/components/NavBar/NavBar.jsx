@@ -36,8 +36,8 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <Tabs variant="enclosed">
-      <TabList marginLeft="5px" height="5vh">
+    <Tabs variant="enclosed" backgroundColor="rgb(23, 23, 23)" color="white">
+      <TabList marginLeft="5px" height="5vh" maxHeight="50px">
         <Tab
           _selected={{
             border: "solid 2px rgb(180,217,247)",

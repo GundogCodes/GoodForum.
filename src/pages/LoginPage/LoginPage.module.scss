@@ -1,5 +1,4 @@
 .LoginPage {
-  color: black;
   display: flex;
   flex-direction: column;
   left: 0;
@@ -11,7 +10,7 @@
   height: 95.1vh;
   position: absolute;
   top: 5vh;
-  background-image: url("../../assets/cascades/c2.jpg");
+  background-color: rgb(23, 23, 23);
   h1 {
     display: flex;
     justify-content: center;

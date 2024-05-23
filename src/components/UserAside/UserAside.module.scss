@@ -1,9 +1,9 @@
 .UserAside {
   position: absolute;
-
+  top: 100px;
   left: 3vw;
   width: 20vw;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   color: black;
@@ -13,7 +13,8 @@
   margin: 5px;
   justify-content: space-evenly;
   border-radius: 7px;
-
+  background-color: rgb(28, 28, 28);
+  color: white;
   h1 {
     position: relative;
     color: black;
