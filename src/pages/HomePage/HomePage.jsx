@@ -9,6 +9,7 @@ import * as forumService from "../../../utilities/forum-api.cjs";
 import * as postAPI from "../../../utilities/post-api.cjs";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import Post from "../../components/Post/Post";
 export default function HomePage({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
   const navigate = useNavigate();
@@ -23,8 +24,9 @@ export default function HomePage({ user, setUser }) {
         const forums = await forumService.getAll();
         const posts = await postAPI.allPosts();
         setForums(forums);
-        console.log("allforums", forums);
+        // console.log("allforums", forums);
         setAllPosts(posts);
+        console.log("POSTS: ", posts);
       } catch (error) {
         console.log(error);
       }
@@ -35,6 +37,9 @@ export default function HomePage({ user, setUser }) {
   function handleCreateClick() {
     console.log("showModal", showModal);
     setShowModal(!showModal);
+  }
+  if (user) {
+    console.log(user);
   }
   return (
     <div className={styles.HomePage}>
@@ -49,67 +54,85 @@ export default function HomePage({ user, setUser }) {
       ) : (
         <></>
       )}
-      <section className={styles.userInfo}>
-        <div className={styles.userPic}>
-          {user && user.profileImage ? (
-            <img
-              onClick={() => {
-                navigate("/user");
-              }}
-              src={`profilePics/${user.profileImage}`}
-            />
-          ) : (
-            <img
-              onClick={() => {
-                navigate("/user");
-              }}
-              src="src/assets/userFunc/profileImage.png"
-            />
-          )}
+      {user ? (
+        <div className={styles.userInfo}>
+          <h1> Hey, {user.username}</h1>
+          <img
+            className={styles.profilePic}
+            src={`/profilePics/${user.profileImage}`}
+          />
+          <div className={styles.userForums}>
+            <h2>Your Forums</h2>
+            {user.followedForums.map((forum) => {
+              return (
+                <Link className={styles.userForum} to={`/forum/${forum._id}`}>
+                  {forum.title}
+                </Link>
+              );
+            })}
+          </div>
         </div>
-        {user ? (
-          <>
-            <div className={styles.username}>
-              {user ? `Hey, ${user.username}` : "Login"}
-            </div>
-            <ul className={styles.userForums}>
-              <h4>Your Quarries</h4>
-              {user.followedForums.length > 0 ? (
-                user.followedForums.map((forum) => {
-                  return (
-                    <li
-                      onClick={() => {
-                        navigate(`/forum/${forum._id}`);
-                      }}
-                      className={styles.forumTitles}
-                    >
-                      {forum.title}
-                    </li>
-                  );
-                })
-              ) : (
-                <></>
-              )}
-            </ul>
-          </>
+      ) : (
+        <div className={styles.userInfo}>
+          <h1>Login</h1>
+          <img
+            className={styles.profilePic}
+            src={`/src/assets/userFunc/profileImage.png`}
+          />
+        </div>
+      )}
+      <div className={styles.homePosts}>
+        <img id={styles.logo} src="/public/images/logo.png" />
+        {allPosts ? (
+          <div className={styles.postList}>
+            {allPosts.map((post) => {
+              return (
+                <Post
+                  id={post._id}
+                  title={post.title}
+                  forum={post.forum.title}
+                  sender={post.sender.username}
+                  text={post.text}
+                  image={post.image}
+                  comments={post.comments}
+                  likes={post.likes}
+                  dislikes={post.dislikes}
+                ></Post>
+              );
+            })}
+          </div>
         ) : (
           <></>
         )}
-      </section>
-
-      <HomePosts allPosts={allPosts} />
-
-      <ul className={styles.buttonDiv}>
-        <h4>Explore Quarries</h4>
-        {forums.map((forum) => {
-          return (
-            <Link to={`forum/${forum._id}`}>
-              <li>{forum.title}</li>
-            </Link>
-          );
-        })}
-        <button onClick={handleCreateClick}>+</button>
-      </ul>
+      </div>
+      <div className={styles.explore}>
+        <h1>Explore</h1>
+        <div>
+          {forums ? (
+            <div className={styles.forumList}>
+              {forums.map((forum) => {
+                return (
+                  <Link to={`forum/${forum._id}`}>
+                    <p>{forum.title}</p>
+                  </Link>
+                );
+              })}
+              {user ? (
+                <button
+                  className={styles.createPost}
+                  onClick={handleCreateClick}
+                >
+                  +
+                </button>
+              ) : (
+                <></>
+              )}
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

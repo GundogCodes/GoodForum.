@@ -23,7 +23,7 @@ export default function SearchBar({ forums }) {
 
     if (
       userSearch === null ||
-      userSearch === "Scour Quarries..." ||
+      userSearch === "Scour Forums..." ||
       userSearch === ""
     ) {
       setMatchedSearches([]);
@@ -55,7 +55,7 @@ export default function SearchBar({ forums }) {
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           onChange={handleChange}
-          placeholder="Scour Quarries..."
+          placeholder="Scour Forums..."
           type="text"
           name="userSearch"
         />
