@@ -17,7 +17,8 @@
   animation: fadeIn 1s;
 
   .form {
-    background-color: white;
+    background-color: rgb(28, 28, 28);
+    color: white;
     border-radius: 7px;
     height: 80vh;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
@@ -29,8 +30,10 @@
       height: 5vh;
       align-items: center;
       margin-top: -100px;
-      border-top: solid 1px black;
+      border-top: solid 1px white;
+
       h5 {
+        border-top: solid 1px white;
         font-weight: light;
         padding-right: 10px;
         padding-left: 10px;
@@ -38,7 +41,6 @@
         border-radius: 7px;
         margin-left: 1vw;
         margin-right: 1vw;
-        color: white;
       }
       h5:hover {
         background-color: rgb(180, 217, 247);
@@ -56,11 +58,12 @@
       box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
       margin: 5px;
+      border: solid 1px white;
       h4 {
         border-radius: 7px;
         width: 10vw;
         height: 2.5vh;
-        background-color: white;
+        background-color: black;
         margin-left: 2.5px;
         display: flex;
         align-items: center;
@@ -102,10 +105,11 @@
         margin: 0;
       }
       input {
-        border: solid 1px black;
+        border: solid 1px white;
         width: 40vw;
         border-radius: 7px;
         margin: 0;
+        color: black;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
           rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
       }
@@ -125,10 +129,12 @@
       button {
         margin-top: 3vh;
         margin-left: 10vw;
-        background-color: white;
+        background-color: gray;
+        color: white;
         border-color: white;
         width: 70px;
         height: 20px;
+        padding-bottom: 2px;
         align-self: flex-start;
         border-radius: 7px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
@@ -150,120 +156,120 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .PostModal {
-    .form {
-      background-color: rgb(28, 28, 28);
-      form {
-        button {
-          border: none;
-          border-radius: 7px;
-          color: black;
-        }
-        button:hover {
-          color: white;
-          background-color: #ff6410;
-        }
-        .forumList {
-          border: solid 1px white;
+// @media (prefers-color-scheme: dark) {
+//   .PostModal {
+//     .form {
+//       background-color: rgb(28, 28, 28);
+//       form {
+//         button {
+//           border: none;
+//           border-radius: 7px;
+//           color: black;
+//         }
+//         button:hover {
+//           color: white;
+//           background-color: #ff6410;
+//         }
+//         .forumList {
+//           border: solid 1px white;
 
-          h4 {
-            background-color: rgb(28, 28, 28);
-            overflow-x: hidden;
-            color: white;
-            border: solid 1px white;
-          }
-          h4:hover {
-            background-color: #ff6410;
-          }
-        }
-      }
-      .section {
-        .heading {
-          p {
-            color: #ff6410;
-          }
-          h1 {
-          }
-        }
-        aside {
-          button {
-          }
-          button:hover {
-          }
+//           h4 {
+//             background-color: rgb(28, 28, 28);
+//             overflow-x: hidden;
+//             color: white;
+//             border: solid 1px white;
+//           }
+//           h4:hover {
+//             background-color: #ff6410;
+//           }
+//         }
+//       }
+//       .section {
+//         .heading {
+//           p {
+//             color: #ff6410;
+//           }
+//           h1 {
+//           }
+//         }
+//         aside {
+//           button {
+//           }
+//           button:hover {
+//           }
 
-          h3 {
-          }
-          input {
-          }
-        }
-      }
-    }
-  }
-}
+//           h3 {
+//           }
+//           input {
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
-@media (max-width: 900px) {
-  .PostModal {
-    .form {
-      width: 90vw;
-      justify-content: center;
-      h1 {
-        width: 90vw;
-      }
-      header {
-        width: 90vw;
-        h5 {
-        }
-        h5:hover {
-        }
-      }
-      .forumList {
-        width: 85vw;
-        h4 {
-        }
-        h4:hover {
-        }
-      }
-      form {
-        width: 90vw;
-        p {
-          width: 90vw;
-        }
-        p:hover {
-        }
-        h1 {
-        }
-        h2 {
-          align-self: flex-start;
-          padding-left: 20px;
-        }
-        input {
-          width: 80vw;
-        }
-        #text {
-        }
-        .fileInput {
-        }
-        .line {
-        }
-        button {
-        }
-        button:hover {
-        }
-        .or {
-        }
-        .upload {
-        }
-      }
-    }
-  }
-}
+// @media (max-width: 900px) {
+//   .PostModal {
+//     .form {
+//       width: 90vw;
+//       justify-content: center;
+//       h1 {
+//         width: 90vw;
+//       }
+//       header {
+//         width: 90vw;
+//         h5 {
+//         }
+//         h5:hover {
+//         }
+//       }
+//       .forumList {
+//         width: 85vw;
+//         h4 {
+//         }
+//         h4:hover {
+//         }
+//       }
+//       form {
+//         width: 90vw;
+//         p {
+//           width: 90vw;
+//         }
+//         p:hover {
+//         }
+//         h1 {
+//         }
+//         h2 {
+//           align-self: flex-start;
+//           padding-left: 20px;
+//         }
+//         input {
+//           width: 80vw;
+//         }
+//         #text {
+//         }
+//         .fileInput {
+//         }
+//         .line {
+//         }
+//         button {
+//         }
+//         button:hover {
+//         }
+//         .or {
+//         }
+//         .upload {
+//         }
+//       }
+//     }
+//   }
+// }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }

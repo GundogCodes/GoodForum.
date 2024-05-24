@@ -178,7 +178,7 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleDislike}
                     >
-                      Dislike {post.dislikes}
+                      <ArrowDownIcon /> {post.dislikes}
                     </h4>
                   ) : (
                     <h4
