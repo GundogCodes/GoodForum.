@@ -2,7 +2,7 @@ import styles from "./OtherUserPage.module.scss";
 import * as userAPIs from "../../../utilities/users-api.cjs";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import Post from "../../components/Post/Post";
 export default function OtherUserPage({ user, setUser }) {
   /********************************************** VARIABLES **********************************************/
   const { id } = useParams();
@@ -123,45 +123,56 @@ export default function OtherUserPage({ user, setUser }) {
           <div>
             {userPage.posts.map((post) => {
               return (
-                <div
-                  className={styles.post}
-                  onClick={handlePostClick}
-                  id={`${post._id}`}
-                >
-                  <header onClick={handlePostClick} id={`${post._id}`}>
-                    {post.forum.title}
-                    {post.title}
-                  </header>
-                  {post.image ? (
-                    <img
-                      className={styles.postImage}
-                      src={`/profilePics/${post.image}`}
-                      onClick={handlePostClick}
-                      id={`${post._id}`}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                  {post.text ? (
-                    <h5 onClick={handlePostClick} id={`${post._id}`}>
-                      {post.text}
-                    </h5>
-                  ) : (
-                    <></>
-                  )}
-                  <section onClick={handlePostClick} id={`${post._id}`}>
-                    <p onClick={handlePostClick} id={`${post._id}`}>
-                      Likes {post.likes}
-                    </p>
-                    <p onClick={handlePostClick} id={`${post._id}`}>
-                      Dislikes {post.dislikes}
-                    </p>
-                    <p onClick={handlePostClick} id={`${post._id}`}>
-                      Comments {post.comments.length}
-                    </p>
-                    <p className={styles.date}>{post.createdAt.slice(0, 10)}</p>
-                  </section>
-                </div>
+                // <div
+                //   className={styles.post}
+                //   onClick={handlePostClick}
+                //   id={`${post._id}`}
+                // >
+                //   <header onClick={handlePostClick} id={`${post._id}`}>
+                //     {post.forum.title}
+                //     {post.title}
+                //   </header>
+                //   {post.image ? (
+                //     <img
+                //       className={styles.postImage}
+                //       src={`/profilePics/${post.image}`}
+                //       onClick={handlePostClick}
+                //       id={`${post._id}`}
+                //     />
+                //   ) : (
+                //     <></>
+                //   )}
+                //   {post.text ? (
+                //     <h5 onClick={handlePostClick} id={`${post._id}`}>
+                //       {post.text}
+                //     </h5>
+                //   ) : (
+                //     <></>
+                //   )}
+                //   <section onClick={handlePostClick} id={`${post._id}`}>
+                //     <p onClick={handlePostClick} id={`${post._id}`}>
+                //       Likes {post.likes}
+                //     </p>
+                //     <p onClick={handlePostClick} id={`${post._id}`}>
+                //       Dislikes {post.dislikes}
+                //     </p>
+                //     <p onClick={handlePostClick} id={`${post._id}`}>
+                //       Comments {post.comments.length}
+                //     </p>
+                //     <p className={styles.date}>{post.createdAt.slice(0, 10)}</p>
+                //   </section>
+                // </div>
+                <Post
+                  id={post._id}
+                  title={post.title}
+                  forum={post.forum.title}
+                  sender={post.sender.username}
+                  text={post.text}
+                  image={post.image}
+                  comments={post.comments}
+                  likes={post.likes}
+                  dislikes={post.dislikes}
+                ></Post>
               );
             })}
           </div>

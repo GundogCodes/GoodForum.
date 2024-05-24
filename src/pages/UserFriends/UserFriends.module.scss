@@ -1,9 +1,53 @@
 .UserFriends {
+  background-color: rgb(28, 28, 28);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  flex-direction: column;
+  color: white;
+  .title {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    padding-left: 10vw;
+  }
   h1 {
   }
   .friendsList {
+    border-radius: 5px;
+    border: solid 1px white;
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    background-color: black;
+    min-height: 70vh;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .friendCard {
+      background-color: rgb(28, 28, 28);
+      margin: 5px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 50vw;
+      padding: 10px;
       img {
+        border-radius: 100%;
+        width: 120px;
+        height: 120px;
+        border: solid white 1px;
       }
       img:hover {
         cursor: pointer;
@@ -11,6 +55,9 @@
       .friendName {
       }
       button {
+        border: solid white 1px;
+        padding: 7px;
+        border-radius: 5px;
       }
       button:hover {
       }

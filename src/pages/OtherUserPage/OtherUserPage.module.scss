@@ -1,50 +1,203 @@
 .OtherUserPage {
+  position: absolute;
+  width: 100vw;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgb(28, 28, 28);
+  color: white;
   .wrong {
+    height: 100vh;
+    width: 100vw;
   }
   section {
+    width: 80vw;
+    height: 90vh;
+    border-radius: 7px;
     header {
+      border-radius: 7px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 80vw;
+      height: 25vh;
       h1 {
       }
       .profilePic {
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        width: 10vw;
+        height: 10vw;
+        border-radius: 50%;
       }
 
       h6 {
+        width: 25vw;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
 
       aside {
+        width: 10vw;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 7px;
+
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
 
       .interactions {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        height: 20vh;
+        width: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 7px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+          rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
         p {
+          width: 5vw;
+          border-radius: 10px;
+          background-color: black;
+          margin: 3px;
+          padding: 5px;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+            rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+            rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         p:hover {
+          background-color: rgb(180, 217, 247);
+          padding: 5px;
+          color: white;
           cursor: pointer;
         }
       }
     }
 
     div {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      top: 30vh;
+      left: auto;
+      width: 80vw;
+      padding: 0;
+      height: 65vh;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+      overflow-y: scroll;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 7px;
+
       .post {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+          rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
+        margin-left: 2.5vw;
+        margin-top: 20px;
+        width: 75vw;
+        height: 80vh;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
         header {
+          height: 20vh;
+          font-size: 5vmin;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 75vw;
+          font-weight: bolder;
+          border-bottom: solid 1px black;
         }
 
         .postImage {
+          width: 75vw;
+          height: 60vh;
         }
 
         h5 {
+          width: 74vw;
+          padding: 5px;
+          height: 80vh;
+          background-color: gray;
+          color: white;
+          font-size: 5vmin;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
 
         section {
+          display: flex;
+          height: 10vh;
+          margin-top: 0;
+          width: 75vw;
+          display: flex;
+          align-items: center;
+          border-top: solid 1px black;
           p {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin-left: 10px;
+            width: 25%;
           }
 
           p:hover {
+            background-color: rgb(180, 217, 247);
+            color: white;
+            border-radius: 7px;
             cursor: pointer;
           }
           .date {
+            width: 20%;
+            display: flex;
+            justify-content: flex-end;
+            font-weight: bolder;
+            margin-right: 10px;
           }
           .date:hover {
+            background-color: white;
+            color: black;
           }
         }
       }
@@ -127,18 +280,31 @@
 @media (max-width: 900px) {
   .OtherUserPage {
     section {
+      width: 100vw;
       header {
+        width: 98vw;
         .profilePic {
         }
 
         h6 {
+          height: 10vh;
+          width: 10vh;
         }
 
         aside {
+          height: 10vh;
+          width: 10vh;
         }
 
         .interactions {
+          height: 10vh;
+          width: 10vh;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
           p {
+            width: 90%;
+            font-size: 10px;
           }
 
           p:hover {
@@ -147,18 +313,27 @@
       }
 
       div {
+        width: 100vw;
         .post {
+          width: 95vw;
           header {
+            width: 95vw;
+            border-bottom: none;
           }
 
           .postImage {
+            width: 95vw;
           }
 
           h5 {
+            width: 95vw;
           }
 
           section {
+            width: 95vw;
             p {
+              font-size: 11px;
+              width: 25%;
             }
 
             p:hover {

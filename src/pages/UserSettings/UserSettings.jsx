@@ -128,102 +128,104 @@ export default function UserSettings({ user, setUser }) {
   }
   return (
     <div className={styles.UserSettings}>
-      <section>
-        <h1>Edit Profile</h1>
-        <label onClick={handleLabelClick} id="Username">
-          Username
-        </label>
-        <label onClick={handleLabelClick} id="Email">
-          Email
-        </label>
-        {/* <label onClick={handleLabelClick} id="Password">
+      <div className={styles.box}>
+        <section>
+          {/* <h1>Edit Profile</h1> */}
+          <label onClick={handleLabelClick} id="Username">
+            Username
+          </label>
+          <label onClick={handleLabelClick} id="Email">
+            Email
+          </label>
+          {/* <label onClick={handleLabelClick} id="Password">
           Password
         </label> */}
-        <label onClick={handleLabelClick} id="Bio">
-          Bio
-        </label>
-      </section>
-      <form>
-        {/********************************** USERNAME **********************************/}
-        {showUsername ? (
-          <aside>
-            <form>
-              <label>New Username</label>
-              <input
-                id="usernameInput"
-                placeholder={`${user.username}`}
-                ref={usernameField}
-              ></input>
-              <button onClick={updateUsername} type="submit">
-                Submit
-              </button>
-            </form>
-          </aside>
-        ) : (
-          <></>
-        )}
-        {/********************************** EMAIL **********************************/}
-        {showEmail ? (
-          <aside>
-            <form>
-              <label>Email</label>
-              <input id="emailInput1" placeholder={`${user.email}`}></input>
-              <label>Confirm Email</label>
-              <input
-                id="emailInput2"
-                onChange={handleEmailChange}
-                name="email"
-              ></input>
-              <button onClick={updateEmail} type="submit">
-                Submit
-              </button>
-            </form>
-          </aside>
-        ) : (
-          <></>
-        )}
-        {/********************************** PASS **********************************/}
-        {showPass ? (
-          <aside>
-            <form>
-              <label>Password</label>
-              <input id="passwordInput1"></input>
-              <label>Confirm Password</label>
-              <input
-                id="passwordInput2"
-                onChange={handlePassChange}
-                name="password"
-              ></input>
-              <button onClick={updatePass} type="submit">
-                Submit
-              </button>
-            </form>
-          </aside>
-        ) : (
-          <></>
-        )}
-        {/********************************** BIO **********************************/}
-        {showBio ? (
-          <aside>
-            <form>
-              <label>Bio</label>
-              <input
-                id={styles.bio}
-                name="bio"
-                className={styles.bioInput}
-                placeholder={`${user.bio}`}
-                onChange={handleBioChange}
-                ref={bioField}
-              />
-              <button onClick={updateBio} type="submit">
-                Submit
-              </button>
-            </form>
-          </aside>
-        ) : (
-          <></>
-        )}
-      </form>
+          <label onClick={handleLabelClick} id="Bio">
+            Bio
+          </label>
+        </section>
+        <form>
+          {/********************************** USERNAME **********************************/}
+          {showUsername ? (
+            <aside>
+              <form>
+                <label>New Username</label>
+                <input
+                  id="usernameInput"
+                  placeholder={`${user.username}`}
+                  ref={usernameField}
+                ></input>
+                <button onClick={updateUsername} type="submit">
+                  Submit
+                </button>
+              </form>
+            </aside>
+          ) : (
+            <></>
+          )}
+          {/********************************** EMAIL **********************************/}
+          {showEmail ? (
+            <aside>
+              <form>
+                <label>Email</label>
+                <input id="emailInput1" placeholder={`${user.email}`}></input>
+                <label>Confirm Email</label>
+                <input
+                  id="emailInput2"
+                  onChange={handleEmailChange}
+                  name="email"
+                ></input>
+                <button onClick={updateEmail} type="submit">
+                  Submit
+                </button>
+              </form>
+            </aside>
+          ) : (
+            <></>
+          )}
+          {/********************************** PASS **********************************/}
+          {showPass ? (
+            <aside>
+              <form>
+                <label>Password</label>
+                <input id="passwordInput1"></input>
+                <label>Confirm Password</label>
+                <input
+                  id="passwordInput2"
+                  onChange={handlePassChange}
+                  name="password"
+                ></input>
+                <button onClick={updatePass} type="submit">
+                  Submit
+                </button>
+              </form>
+            </aside>
+          ) : (
+            <></>
+          )}
+          {/********************************** BIO **********************************/}
+          {showBio ? (
+            <aside>
+              <form>
+                <label>Bio</label>
+                <input
+                  id={styles.bio}
+                  name="bio"
+                  className={styles.bioInput}
+                  placeholder={`${user.bio}`}
+                  onChange={handleBioChange}
+                  ref={bioField}
+                />
+                <button onClick={updateBio} type="submit">
+                  Submit
+                </button>
+              </form>
+            </aside>
+          ) : (
+            <></>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

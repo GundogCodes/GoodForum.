@@ -26,7 +26,7 @@ export default function UserFriends({ user, setUser }) {
   }
   return (
     <div className={styles.UserFriends}>
-      <h1>Your Friends</h1>
+      <h1 className={styles.title}>Your Friends</h1>
       <div className={styles.friendsList}>
         {user.friends.map((friend) => {
           return (
