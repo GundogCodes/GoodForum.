@@ -1,45 +1,127 @@
 .PostPage {
+  background-color: rgb(28, 28, 28);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   section {
+    border-radius: 5px;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    border-left: solid 1px white;
+    background-color: black;
+    border-right: solid 1px white;
     header {
+      border-radius: 5px;
+      height: 10vh;
+      color: white;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      border-top: solid 1px white;
+
+      font-size: 25px;
+      background-color: black;
       .headerClickables {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
       }
       .headerClickables:hover {
         cursor: pointer;
       }
     }
     aside {
+      border-top: solid 1px white;
+      display: flex;
+      justify-content: center;
+      height: 50vh;
     }
-    h4 {
+    .interactions {
+      display: flex;
+      height: 5vh;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      background-color: rgb(28, 28, 28);
+      color: white;
+      h4 {
+        width: 100px;
+        font-size: 15px;
+      }
     }
     h4:hover {
       cursor: pointer;
     }
     p {
+      background-color: aquamarine;
     }
     img {
+      width: 50vw;
+      height: 50vh;
     }
     img:hover {
       cursor: pointer;
     }
-    .interactions {
-      h4 {
-      }
-      .date {
-      }
-      .date:hover {
-      }
-    }
+
     .commentSection {
-      li {
+      width: 70vw;
+      height: 10vh;
+      top: 80vh;
+      left: 15vw;
+      overflow-y: scroll;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .comment {
+        margin-top: 5px;
+        display: flex;
+        align-items: flex-start;
+        padding: 5px;
+        justify-content: flex-start;
+        color: white;
+        height: 10vh;
+        width: 60vw;
+        border: solid 1px white;
       }
     }
     .inputDiv {
-      input {
+      height: 20vh;
+      display: flex;
+      align-items: flex-end;
+
+      justify-content: center;
+      form {
+        display: flex;
+        input {
+          width: 40vw;
+          max-width: 600px;
+          margin-bottom: 5px;
+          border-radius: 5px;
+        }
       }
       button {
+        margin-bottom: 5px;
+        border: solid 1px white;
+        border-radius: 5px;
+        color: white;
+        width: 10vw;
+        max-width: 200px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       button:hover {
         cursor: pointer;
+        color: aquamarine;
       }
     }
   }
@@ -88,78 +170,78 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .PostPage {
-    background-color: black;
-    section {
-      background-color: rgb(28, 28, 28);
-      header {
-        color: white;
-        .headerClickables {
-          text-shadow: none;
-          color: white;
-        }
-        .headerClickables:hover {
-          color: #ff6410;
-        }
-      }
-      aside {
-        background-color: gray;
+// @media (prefers-color-scheme: dark) {
+//   .PostPage {
+//     background-color: black;
+//     section {
+//       background-color: rgb(28, 28, 28);
+//       header {
+//         color: white;
+//         .headerClickables {
+//           text-shadow: none;
+//           color: white;
+//         }
+//         .headerClickables:hover {
+//           color: #ff6410;
+//         }
+//       }
+//       aside {
+//         background-color: gray;
 
-        color: white;
-      }
-      h4 {
-        color: white;
-      }
-      h4:hover {
-        background-color: #ff6410;
-        color: white;
-      }
-      p {
-      }
-      img {
-      }
-      img:hover {
-      }
-      .interactions {
-        height: 10vh;
-        background-color: rgb(28, 28, 28);
-        h4 {
-        }
-        .date {
-          font-weight: bolder;
-        }
-        .date:hover {
-          background-color: rgb(28, 28, 28);
-          color: white;
-        }
-      }
-      .commentSection {
-        margin-top: 5vh;
-        background-color: black;
-        li {
-          color: white;
-        }
-      }
-      .inputDiv {
-        input {
-        }
-        button {
-        }
-        button:hover {
-        }
-      }
-    }
-    .loading {
-    }
-  }
-}
+//         color: white;
+//       }
+//       h4 {
+//         color: white;
+//       }
+//       h4:hover {
+//         background-color: #ff6410;
+//         color: white;
+//       }
+//       p {
+//       }
+//       img {
+//       }
+//       img:hover {
+//       }
+//       .interactions {
+//         height: 10vh;
+//         background-color: rgb(28, 28, 28);
+//         h4 {
+//         }
+//         .date {
+//           font-weight: bolder;
+//         }
+//         .date:hover {
+//           background-color: rgb(28, 28, 28);
+//           color: white;
+//         }
+//       }
+//       .commentSection {
+//         margin-top: 5vh;
+//         background-color: black;
+//         li {
+//           color: white;
+//         }
+//       }
+//       .inputDiv {
+//         input {
+//         }
+//         button {
+//         }
+//         button:hover {
+//         }
+//       }
+//     }
+//     .loading {
+//     }
+//   }
+// }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }

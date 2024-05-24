@@ -154,7 +154,7 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleLike}
                     >
-                      Like {post.likes}
+                      <ArrowUpIcon /> {post.likes}
                     </h4>
                   ) : (
                     <h4
@@ -196,10 +196,11 @@ export default function PostPage() {
                 )}
                 <h4 className={styles.date}>{post.createdAt.slice(0, 10)}</h4>
               </div>
+
               <ul className={styles.commentSection}>
                 {post.comments ? (
                   post.comments.map((comment) => {
-                    return <li> {comment.text}</li>;
+                    return <li className={styles.comment}> {comment.text}</li>;
                   })
                 ) : (
                   <h4>Add Comment</h4>
