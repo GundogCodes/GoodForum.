@@ -13,6 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+    background-color: rgb(16, 18, 19);
 }
 
 a{
@@ -29,6 +30,7 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+    background-color: rgb(16, 18, 19);
 }
 
 
@@ -36,7 +38,7 @@ body {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+      background-color: rgb(16, 18, 19);
   }
 
 

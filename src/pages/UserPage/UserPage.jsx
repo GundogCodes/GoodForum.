@@ -44,6 +44,8 @@ export default function UserPage({ user, setUser }) {
       }
     })();
   }, []);
+  /********************************************** USE EFFECTS **********************************************/
+
   /******************************************** States ********************************************/
   const [file, setFile] = useState();
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -113,7 +115,9 @@ export default function UserPage({ user, setUser }) {
           user.followedForums.map((forum) => {
             return (
               <p>
-                <ChevronRightIcon /> {forum.title}
+                <Link to={`/forum/${forum._id}`}>
+                  <ChevronRightIcon /> {forum.title}
+                </Link>
               </p>
             );
           })
@@ -121,11 +125,13 @@ export default function UserPage({ user, setUser }) {
           <></>
         )}
         <h2> Founded Forums</h2>
-        {user ? (
+        {user && user.foundedForums ? (
           user.foundedForums.map((forum) => {
             return (
               <p>
-                <ChevronRightIcon /> {forum.title}
+                <Link to={`/forum/${forum._id}`}>
+                  <ChevronRightIcon /> {forum.title}
+                </Link>
               </p>
             );
           })

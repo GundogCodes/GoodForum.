@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   color: white;
-  background-color: black;
+  background-color: rgb(16, 18, 19);
 
   section {
     width: 90vw;
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: solid 1px white;
+    border-bottom: solid 1px rgb(100, 100, 100);
     label {
       font-size: 25px;
 
@@ -30,14 +30,14 @@
     }
     label:hover {
       cursor: pointer;
-      color: rgb(180, 217, 247);
+      color: rgb(191, 63, 27);
     }
     h1 {
       display: flex;
       justify-content: flex-start;
       width: 100%;
       margin-top: 10vh;
-      color: rgb(180, 217, 247);
+      color: rgb(191, 63, 27);
       font-size: 35px;
       padding-left: 40px;
     }
@@ -64,6 +64,7 @@
         padding: 5px;
         border-radius: 7px;
         border: none;
+        background-color: rgb(39, 44, 47);
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
           rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
       }
@@ -79,7 +80,7 @@
       }
       button:hover {
         color: white;
-        background-color: rgb(180, 217, 247);
+        background-color: rgb(191, 63, 27);
         cursor: pointer;
       }
       #bio {

@@ -50,6 +50,7 @@ const dataController = {
       const foundUser = await User.findOne({ _id: req.params.id })
         .populate("friends")
         .populate("followedForums")
+        .populate("foundedForums")
         .populate("posts")
         .populate("chats");
       if (foundUser) {

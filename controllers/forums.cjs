@@ -14,6 +14,15 @@ exports.showAllForums = async (req, res) => {
   }
 };
 
+exports.getForum = async (req, res) => {
+  try {
+    const foundForum = Forum.findOne({ _id: req.params.id });
+    res.json(foundForum);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 exports.createNewForum = async (req, res) => {
   try {
     //check if forum topic already exists: if it does no new forum else create forum
