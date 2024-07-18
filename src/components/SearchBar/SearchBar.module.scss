@@ -10,13 +10,13 @@
     display: flex;
     align-items: center;
     input {
-      background-color: black;
+      background-color: rgb(39, 44, 47);
       color: white;
       height: 40px;
       width: 60vw;
       margin-top: 10px;
       padding: 5px;
-      border-radius: 5px;
+      border-radius: 20px;
     }
     button {
       display: flex;
@@ -27,9 +27,11 @@
       height: 40px;
       width: 10vw;
       color: white;
+      font-weight: bold;
       padding: 5px;
-      border-radius: 5px;
+      border-radius: 20px;
       margin-top: 10px;
+      background-color: rgb(191, 63, 27);
     }
     button:hover {
       color: aquamarine;

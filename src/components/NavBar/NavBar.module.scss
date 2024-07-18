@@ -1,0 +1,39 @@
+.nav {
+  border-bottom: solid rgb(100, 100, 100) 1px;
+  .tabList {
+    color: rgb(200, 200, 200);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .tab {
+      height: 4vh;
+      max-height: 47px;
+
+      width: 5vw;
+    }
+    .options {
+      display: flex;
+      justify-content: space-evenly;
+      width: 29vw;
+      max-height: 47px;
+    }
+    .fractalus {
+      height: 4vh;
+      width: 70vw;
+      border-radius: 0px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      max-height: 47px;
+    }
+    .tabLogout {
+      width: 15vw;
+    }
+  }
+  p {
+    font-size: 14px;
+  }
+}

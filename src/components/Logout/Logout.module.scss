@@ -1,25 +1,21 @@
 .LogOut {
   //background-color: rgb(52,120,246);
   //border:  solid white 1px;
-  position: absolute;
-  width: 10vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 0px;
-  top: 2px;
-  height: 100%;
+  height: 4vh;
+  max-height: 47px;
+  width: 100%;
   //box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .LogOut:hover {
   cursor: pointer;
-  color: aquamarine;
+  color: #ff6410;
 }
 @media (max-width: 900px) {
   .LogOut {
-    right: 20px;
-    top: 7px;
   }
 }
 @media (prefers-color-scheme: dark) {

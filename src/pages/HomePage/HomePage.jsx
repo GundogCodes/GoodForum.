@@ -10,6 +10,7 @@ import * as postAPI from "../../../utilities/post-api.cjs";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Post from "../../components/Post/Post";
+import { ChevronRightIcon, SunIcon } from "@chakra-ui/icons";
 export default function HomePage({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ export default function HomePage({ user, setUser }) {
             {user.followedForums.map((forum) => {
               return (
                 <Link className={styles.userForum} to={`/forum/${forum._id}`}>
-                  {forum.title}
+                  <ChevronRightIcon /> {forum.title}
                 </Link>
               );
             })}
@@ -82,7 +83,6 @@ export default function HomePage({ user, setUser }) {
         </div>
       )}
       <div className={styles.homePosts}>
-        <img id={styles.logo} src="/public/images/logo.png" />
         {allPosts ? (
           <div className={styles.postList}>
             {allPosts.map((post) => {
@@ -106,7 +106,11 @@ export default function HomePage({ user, setUser }) {
         )}
       </div>
       <div className={styles.explore}>
-        <h1>Explore</h1>
+        <div className={styles.exploreHeading}>
+          <h1>
+            Explore <SunIcon boxSize={4} color={"white"} height={"15px"} />
+          </h1>
+        </div>
         <div>
           {forums ? (
             <div className={styles.forumList}>
