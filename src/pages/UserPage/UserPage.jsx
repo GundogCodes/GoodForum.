@@ -8,6 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import * as usersAPIs from "../../../utilities/users-api.cjs";
 import Post from "../../components/Post/Post";
 import { useNavigate } from "react-router-dom";
+import { ChevronRightIcon, PlusSquareIcon, SunIcon } from "@chakra-ui/icons";
 //import * as userService from "../../../utilities/users-api.cjs";
 import axios from "axios";
 export default function UserPage({ user, setUser }) {
@@ -93,7 +94,7 @@ export default function UserPage({ user, setUser }) {
       console.log({ error: error });
     }
   }
-  console.log(allUserPost);
+  console.log(user);
   return (
     <div className={styles.UserPage}>
       {showModal ? (
@@ -106,110 +107,153 @@ export default function UserPage({ user, setUser }) {
       ) : (
         <></>
       )}
-      <div className={styles.userAside}>
+      <div className={styles.userForums}>
+        <h2> Followed Forums</h2>
         {user ? (
-          <h1>{user.username}</h1>
-        ) : (
-          <h1
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login
-          </h1>
-        )}
-        {user ? (
-          <img
-            id={styles.profilePic}
-            src={`/profilePics/${user.profileImage}`}
-          />
-        ) : (
-          <img
-            id={styles.profilePic}
-            src={`/src/assets/userFunc/profileImage.png`}
-          />
-        )}
-        {user && user.profileImage ? (
-          <p onClick={showForm} className={styles.uploadPic}>
-            Update Profile Pic
-          </p>
-        ) : (
-          <p onClick={showForm} className={styles.uploadPic}>
-            Upload Profile Pic
-          </p>
-        )}
-        {showUploadForm ? (
-          <form onSubmit={submit}>
-            <input
-              onChange={(e) => setFile(e.target.files[0])}
-              type="file"
-              accept="image/*"
-            />
-            <button type="submit">Upload!</button>
-          </form>
-        ) : (
-          <></>
-        )}
-        {/* <h2
-          onClick={() => {
-            setShowUploadForm(true);
-          }}
-        >
-          Edit
-        </h2> */}
-        {user ? (
-          <div className={styles.bio}>
-            <h2>{user.bio}</h2>
-          </div>
-        ) : (
-          <div className={styles.bio}>
-            <h2>About</h2>
-          </div>
-        )}
-        <div className={styles.functions}>
-          <Link to="/friends">
-            <img
-              className={styles.userFuncs}
-              src="/src/assets/userFunc/friends.png"
-            />
-          </Link>
-          <Link to="/settings">
-            <img
-              className={styles.userFuncs}
-              src="/src/assets/userFunc/settings.png"
-            />
-          </Link>
-          <h4
-            className={styles.userFuncs}
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            +
-          </h4>
-        </div>
-      </div>
-      <div className={styles.userPosts}>
-        <h1 id={styles.posts}>Your Posts</h1>
-        {allUserPost ? (
-          allUserPost.map((post) => {
+          user.followedForums.map((forum) => {
             return (
-              <Post
-                id={post._id}
-                title={post.title}
-                forum={post.forum.title}
-                sender={post.sender.username}
-                text={post.text}
-                image={post.image}
-                comments={post.comments}
-                likes={post.likes}
-                dislikes={post.dislikes}
-              ></Post>
+              <p>
+                <ChevronRightIcon /> {forum.title}
+              </p>
             );
           })
         ) : (
           <></>
         )}
+        <h2> Founded Forums</h2>
+        {user ? (
+          user.foundedForums.map((forum) => {
+            return (
+              <p>
+                <ChevronRightIcon /> {forum.title}
+              </p>
+            );
+          })
+        ) : (
+          <></>
+        )}
+      </div>
+      <div className={styles.userPageBody}>
+        <div className={styles.userAside}>
+          <div className={styles.userAsideTop}>
+            <div className={styles.userAsideTopLeft}>
+              <div className={styles.userPic}>
+                {user ? (
+                  <img
+                    id={styles.profilePic}
+                    src={`/profilePics/${user.profileImage}`}
+                  />
+                ) : (
+                  <img
+                    id={styles.profilePic}
+                    src={`/src/assets/userFunc/profileImage.png`}
+                  />
+                )}
+                {user && user.profileImage ? (
+                  <p onClick={showForm} className={styles.uploadPic}>
+                    <PlusSquareIcon className={styles.addPic} color={"white"} />
+                  </p>
+                ) : (
+                  <p onClick={showForm} className={styles.uploadPic}>
+                    <PlusSquareIcon className={styles.addPic} color={"white"} />
+                  </p>
+                )}
+                {showUploadForm ? (
+                  <form onSubmit={submit}>
+                    <input
+                      onChange={(e) => setFile(e.target.files[0])}
+                      type="file"
+                      accept="image/*"
+                    />
+                    <button type="submit">Upload!</button>
+                  </form>
+                ) : (
+                  <></>
+                )}
+              </div>
+              {/* <h2
+          onClick={() => {
+            setShowUploadForm(true);
+            }}
+            >
+            Edit
+            </h2> */}
+              {user ? (
+                <h1 className={styles.username}>{user.username}</h1>
+              ) : (
+                <h1
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  Login
+                </h1>
+              )}
+            </div>
+            <div className={styles.userAsideTopRight}>
+              {user ? (
+                <div className={styles.bio}>
+                  <h2>{user.bio}</h2>
+                </div>
+              ) : (
+                <div className={styles.bio}>
+                  <h2>Add Your Bio ...</h2>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className={styles.functions}>
+            <h4
+              className={styles.createPost}
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              Create Post
+            </h4>
+            <Link to="/friends" className={styles.createPost}>
+              Friends
+              {/* <img
+                src="/src/assets/userFunc/friends.png"
+              /> */}
+            </Link>
+            <Link to="/settings" className={styles.createPost}>
+              {/* <img
+                src="/src/assets/userFunc/settings.png"
+              /> */}
+              Settings
+            </Link>
+          </div>
+        </div>
+        <div className={styles.userPosts}>
+          {/* <h1 id={styles.posts}>Your Posts</h1> */}
+          {allUserPost ? (
+            allUserPost.map((post) => {
+              return (
+                <Post
+                  id={post._id}
+                  title={post.title}
+                  forum={post.forum.title}
+                  sender={post.sender.username}
+                  text={post.text}
+                  image={post.image}
+                  comments={post.comments}
+                  likes={post.likes}
+                  dislikes={post.dislikes}
+                ></Post>
+              );
+            })
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+      <div className={styles.stats}>
+        <h1>Stats</h1>
+        <h3>Friends: {user.friends.length}</h3>
+        <h3>Posts: {user.posts.length}</h3>
+        <h3>Liked Posts: {user.likedPosts.length}</h3>
+        <h3>Disliked Posts: {user.dislikedPosts.length}</h3>
       </div>
     </div>
   );
