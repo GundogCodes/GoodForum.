@@ -1,14 +1,13 @@
 .ChatsPage {
-  background-color: black;
+  background-color: rgb(16, 18, 19);
   position: absolute;
-  top: 33px;
+  top: 31.5px;
   width: 100vw;
   height: 95vh;
   display: flex;
   justify-content: space-evenly;
   z-index: 0;
   align-items: center;
-
   .ChatsFlow {
     width: 70vw;
     height: 85vh;
@@ -18,6 +17,7 @@
     overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    border: solid 1px rgb(100, 100, 100);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -97,6 +97,7 @@
         border: solid 1px black;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
           rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+        margin-bottom: 10px;
         color: black;
       }
 
@@ -106,7 +107,9 @@
         width: 5vw;
         padding: 5px;
         margin-left: 10px;
+        margin-bottom: 10px;
         border: none;
+        height: 30px;
         border-radius: 7px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px,
           rgba(0, 0, 0, 0.3) 0px 3px 7px -1px,
@@ -151,6 +154,7 @@
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    border: solid 1px rgb(100, 100, 100);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -236,8 +240,11 @@
 //   }
 // }
 
-// @media (max-width: 900px) {
-//   .ChatsPage {
+@media screen and (min-width: 1500px) {
+  .ChatsPage {
+    top: 50px;
+  }
+}
 //     flex-direction: column;
 //     align-items: center;
 //     height: 80vh;
