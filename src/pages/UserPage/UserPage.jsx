@@ -165,7 +165,7 @@ export default function UserPage({ user, setUser }) {
                   </p>
                 )}
                 {showUploadForm ? (
-                  <form onSubmit={submit}>
+                  <form className={styles.submitForm} onSubmit={submit}>
                     <input
                       onChange={(e) => setFile(e.target.files[0])}
                       type="file"
@@ -177,22 +177,16 @@ export default function UserPage({ user, setUser }) {
                   <></>
                 )}
               </div>
-              {/* <h2
-          onClick={() => {
-            setShowUploadForm(true);
-            }}
-            >
-            Edit
-            </h2> */}
               {user ? (
                 <h1 className={styles.username}>{user.username}</h1>
               ) : (
                 <h1
+                  className={styles.username}
                   onClick={() => {
                     navigate("/login");
                   }}
                 >
-                  Login
+                  <Link to={"/login"}> Login/Sign up</Link>
                 </h1>
               )}
             </div>
@@ -256,10 +250,16 @@ export default function UserPage({ user, setUser }) {
       </div>
       <div className={styles.stats}>
         <h1>Stats</h1>
-        <h3>Friends: {user.friends.length}</h3>
-        <h3>Posts: {user.posts.length}</h3>
-        <h3>Liked Posts: {user.likedPosts.length}</h3>
-        <h3>Disliked Posts: {user.dislikedPosts.length}</h3>
+        {user ? (
+          <>
+            <h3>Friends: {user.friends.length}</h3>
+            <h3>Posts: {user.posts.length}</h3>
+            <h3>Liked Posts: {user.likedPosts.length}</h3>
+            <h3>Disliked Posts: {user.dislikedPosts.length}</h3>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

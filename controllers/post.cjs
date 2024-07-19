@@ -54,6 +54,22 @@ exports.getPost = async function (req, res) {
     res.status(400).json({ error: error.message });
   }
 };
+//get all of a user's posts
+exports.getAllUserPosts = async function (req, res) {
+  try {
+    const returnedPosts = await Post.find({
+      sender: req.params.userId,
+    }).populate("forum");
+
+    if (!returnedPosts || returnedPosts.length === 0) {
+      res.status(404).json({ message: "Posts not found" });
+    } else {
+      res.json(returnedPosts);
+    }
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 //Update a post
 exports.updatePost = async function (req, res) {

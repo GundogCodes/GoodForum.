@@ -179,7 +179,7 @@ export default function ForumPage({ user, setUser }) {
                     //   {post.image ? (
                     //     <h3>
                     //       <img
-                    //         className={styles.postImage}
+                    //         className={styles---.postImage}
                     //         src={`/profilePics/${post.image}`}
                     //       />
                     //     </h3>

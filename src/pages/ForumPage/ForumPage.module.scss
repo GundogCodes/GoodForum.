@@ -14,14 +14,13 @@
   width: 100vw;
   max-width: 2500px;
   margin: 0 auto;
+  h1 {
+  }
   .forumStatAside {
     width: 15vw;
-    height: 50vh;
+    height: 40vh;
     max-width: 500px;
-    border-left: solid 1px rgb(100, 100, 100);
-    border-right: solid 0.3px rgb(100, 100, 100);
-    border-bottom: solid 1px rgb(100, 100, 100);
-    border-top: solid 1px rgb(100, 100, 100);
+    background-color: black;
     border-radius: 5px;
     color: white;
     display: flex;
@@ -124,6 +123,7 @@
       border: solid 1px;
       left: 15vw;
       border: none;
+      background-color: rgb(16, 18, 19);
       .post {
         background-color: white;
         padding-right: 40px;
@@ -142,7 +142,6 @@
         section {
           display: flex;
           justify-content: space-between;
-
           height: 10vh;
           width: 70vw;
           align-items: center;
@@ -156,6 +155,7 @@
           }
         }
         .postImage {
+          background-color: red;
           width: 70vw;
           height: 60vh;
           display: flex;

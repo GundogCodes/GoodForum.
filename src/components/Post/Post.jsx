@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./Post.module.scss";
 import { Link } from "react-router-dom";
 import { ChatIcon, ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import * as postAPIs from "../../../utilities/post-api.cjs";
 export default function Post({
   id,
   title,
@@ -18,11 +19,23 @@ export default function Post({
   /********************************************** VARIABLES **********************************************/
   //const navigate = useNavigate();
   /********************************************** STATE VARIABLES **********************************************/
-
+  const [postForumTitle, setForumTitle] = useState();
+  const [postForumId, setForumId] = useState();
   /********************************************** HANDLE STATES  **********************************************/
 
   /**********************************************  USEEFFCTS  **********************************************/
-
+  useEffect(() => {
+    (async () => {
+      try {
+        const post = await postAPIs.getPost(id);
+        console.log(post);
+        setForumTitle(post.forum.title);
+        setForumId(post.forum._id);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
   /********************************************** FUNCTIONS  **********************************************/
   function handlePostClick(e) {
     const id = e.target.id;
@@ -31,7 +44,10 @@ export default function Post({
   return (
     <div className={styles.Post}>
       <div className={styles.upper}>
-        <h4>{forum ? <h2>{forum}</h2> : <></>}</h4>
+        <Link to={`/forum/${postForumId}`}>
+          {" "}
+          <h4>{postForumTitle ? <h2>{postForumTitle}</h2> : <></>}</h4>
+        </Link>
         <h3>{sender ? <h2>{sender}</h2> : <></>}</h3>
         <h2>{title}</h2>
       </div>

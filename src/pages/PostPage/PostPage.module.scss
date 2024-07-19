@@ -48,18 +48,24 @@
     header {
       border-radius: 5px;
       height: 10vh;
+      max-width: 150px;
       color: white;
-      width: 70vw;
+      width: 60vw;
       max-width: 1300px;
+      border-bottom: solid 1px rgb(100, 100, 100);
       .headerClickables {
       }
       #sender {
         padding-left: 20px;
+        max-width: 150px;
       }
       #postTitle {
+        max-width: 500px;
         padding-left: 20px;
+        font-size: 20px;
       }
       #postForum {
+        max-width: 150px;
         margin-left: 20px;
         background-color: rgb(35, 73, 175);
         border-radius: 10px;
@@ -90,6 +96,8 @@
       width: 100%;
       width: 90%;
       color: white;
+      .disklikes:hover {
+      }
       h4 {
         padding-left: 10px;
         width: 100px;
@@ -100,8 +108,8 @@
       cursor: pointer;
     }
     p {
-      background-color: rgb(190, 190, 190);
-      width: 70vw;
+      background-color: rgb(100, 100, 100);
+      width: 60vw;
       max-width: 1000px;
       display: flex;
       align-items: center;
@@ -144,7 +152,7 @@
           max-height: 120px;
           width: 55vw;
           max-width: 1000px;
-          border-top: solid 1px rgb(100, 100, 100);
+          border-bottom: solid 1px rgb(100, 100, 100);
         }
       }
       .inputDiv {
@@ -161,6 +169,15 @@
             margin-bottom: 5px;
             border-radius: 5px;
           }
+        }
+        h2 {
+          width: 40vw;
+          max-width: 600px;
+          color: white;
+          padding: 5px;
+          border-radius: 5px;
+          border: solid 1px rgb(50, 50, 50);
+          margin-top: 20px;
         }
         button {
           margin-bottom: 5px;
@@ -186,13 +203,17 @@
   .posterInfo {
     border-left: solid 1px rgb(100, 100, 100);
     border-right: solid 0.3px rgb(100, 100, 100);
+    border-bottom: solid 1px rgb(100, 100, 100);
+    border-top: solid 1px rgb(100, 100, 100);
     width: 15vw;
-    height: 100vh;
+    height: 50vh;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
     justify-content: flex-start;
+    background-color: black;
     h1 {
       width: 90%;
       border-bottom: solid 1px rgb(100, 100, 100);
@@ -202,6 +223,12 @@
     }
     h2 {
       margin-top: 10px;
+    }
+    #profilePic {
+      margin-top: 10px;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
     }
   }
 }

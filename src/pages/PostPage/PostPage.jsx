@@ -14,9 +14,10 @@ import {
   ChevronUpIcon,
   ChevronRightIcon,
   ChevronDownIcon,
+  ChatIcon,
 } from "@chakra-ui/icons";
 
-export default function PostPage() {
+export default function PostPage({ user }) {
   /********************************************** VARIABLES **********************************************/
   const { id } = useParams();
   const inputRef = useRef(null);
@@ -116,6 +117,7 @@ export default function PostPage() {
     }
     inputRef.current.value = "";
   }
+  console.log("POST:::", post);
   return (
     <div className={styles.PostPage}>
       {post ? (
@@ -233,6 +235,9 @@ export default function PostPage() {
                     <ChevronDownIcon /> {post.dislikes}
                   </h4>
                 )}
+                <h4>
+                  <ChatIcon /> {post.comments.length}
+                </h4>
                 <h4 className={styles.date}>{post.createdAt.slice(0, 10)}</h4>
               </div>
               <div className={styles.commentDiv}>
@@ -247,11 +252,22 @@ export default function PostPage() {
                     <h4>Add Comment</h4>
                   )}
                 </div>
+
                 <div className={styles.inputDiv}>
-                  <form onSubmit={addComment}>
-                    <input ref={inputRef} onChange={handleChange} type="text" />
-                    <button type="submit">Comment</button>
-                  </form>
+                  {user ? (
+                    <form onSubmit={addComment}>
+                      <input
+                        ref={inputRef}
+                        onChange={handleChange}
+                        type="text"
+                      />
+                    </form>
+                  ) : (
+                    <>
+                      <h2>Login or sign up to comment</h2>
+                      <button type="submit">Comment</button>
+                    </>
+                  )}
                 </div>
               </div>
             </section>
@@ -266,11 +282,31 @@ export default function PostPage() {
         <div>Post Deleted</div>
       )}
       <div className={styles.posterInfo}>
-        <h1>Poster</h1>
-        <h2>Stats</h2>
-        <h2>Stats</h2>
-        <h2>Stats</h2>
-        <h2>Stats</h2>
+        {post ? (
+          <>
+            <h1>OP</h1>
+            {post.sender.profileImage && post ? (
+              <Link to={`/user/${post.sender._id}`}>
+                <img
+                  id={styles.profilePic}
+                  src={`/profilePics/${post.sender.profileImage}`}
+                />
+              </Link>
+            ) : (
+              <Link>
+                <img
+                  id={styles.profilePic}
+                  src={`/src/assets/userFunc/profileImage.png`}
+                />
+              </Link>
+            )}
+            <h2>{post.sender.username}</h2>
+            <h2>Posts: {post.sender.posts.length}</h2>
+            <h2>Founded Forums: {post.sender.foundedForums.length}</h2>
+          </>
+        ) : (
+          <>Post Not Found</>
+        )}
       </div>
     </div>
   );
