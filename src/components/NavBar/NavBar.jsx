@@ -140,7 +140,7 @@ export default function NavBar({ user, setUser }) {
         <Tab _selected={{}}>
           <h1 className={styles.fractalus}>Fractalus</h1>
         </Tab>
-        <Tab className={styles.tabLogout}>
+        <Tab className={styles.tabLogout} _selected={{}}>
           <LogOut user={user} setUser={setUser} />
         </Tab>
       </TabList>

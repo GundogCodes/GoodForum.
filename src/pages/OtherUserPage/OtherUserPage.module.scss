@@ -52,7 +52,6 @@
     align-items: center;
     justify-content: flex-start;
     header {
-      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -181,6 +180,10 @@
         padding: 5px;
         border-radius: 10px;
         background-color: rgb(100, 100, 100);
+      }
+      p:hover {
+        background-color: rgb(191, 63, 27);
+        cursor: pointer;
       }
     }
     h1 {

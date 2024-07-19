@@ -131,6 +131,7 @@ export default function PostPage({ user }) {
             <></>
           )}
           <div className={styles.allForumsAside}>
+            <h1 className={styles.pageTitle}>Post</h1>
             <h1>Forums</h1>
             {allForums ? (
               allForums.map((forum) => {
@@ -261,11 +262,13 @@ export default function PostPage({ user }) {
                         onChange={handleChange}
                         type="text"
                       />
+                      <button className={styles.commentButton} type="submit">
+                        Comment
+                      </button>
                     </form>
                   ) : (
                     <>
                       <h2>Login or sign up to comment</h2>
-                      <button type="submit">Comment</button>
                     </>
                   )}
                 </div>

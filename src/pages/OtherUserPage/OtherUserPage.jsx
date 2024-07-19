@@ -56,7 +56,7 @@ export default function OtherUserPage({ user, setUser }) {
   /********************************************** API CALLS **********************************************/
 
   async function handleMessageClicked() {
-    if (isFriend !== true) {
+    if (isFriend !== true && user) {
       try {
         setIsFriend(true);
         const updatedUser = await userAPIs.addFriend(id);
@@ -73,7 +73,7 @@ export default function OtherUserPage({ user, setUser }) {
   }
   async function handleFriend() {
     console.log("USER", user);
-    if (isFriend === true) {
+    if (isFriend === true && user) {
       try {
         const updatedUser = await userAPIs.removeFriend(id);
         console.log("API RETURN", updatedUser);

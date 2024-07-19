@@ -44,7 +44,6 @@ export default function HomePage({ user, setUser }) {
   }
   return (
     <div className={styles.HomePage}>
-      {forums ? <SearchBar forums={forums} allPosts={allPosts} /> : <></>}
       {showModal ? (
         <FormModal
           title={"Create a New Quarry"}
@@ -55,6 +54,7 @@ export default function HomePage({ user, setUser }) {
       ) : (
         <></>
       )}
+      {forums ? <SearchBar forums={forums} allPosts={allPosts} /> : <></>}
       {user ? (
         <div className={styles.userInfo}>
           <h1> Hey, {user.username}</h1>
@@ -75,6 +75,7 @@ export default function HomePage({ user, setUser }) {
         </div>
       ) : (
         <div className={styles.userInfo}>
+          <h1 className={styles.pageTitle}>Home</h1>
           <h1>Login</h1>
           <img
             className={styles.profilePic}

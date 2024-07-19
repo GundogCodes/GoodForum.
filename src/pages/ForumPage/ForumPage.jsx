@@ -131,7 +131,8 @@ export default function ForumPage({ user, setUser }) {
             <></>
           )}
           <div className={styles.allForumsAside}>
-            <h1>Forums</h1>
+            <h1 className={styles.pageTitle}>Forum</h1>
+            <h1>Explore</h1>
             {allForums ? (
               allForums.map((forum) => {
                 return (

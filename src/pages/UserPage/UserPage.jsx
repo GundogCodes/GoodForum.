@@ -110,6 +110,11 @@ export default function UserPage({ user, setUser }) {
         <></>
       )}
       <div className={styles.userForums}>
+        {user ? (
+          <h1 className={styles.pageTitle}>{user.username}</h1>
+        ) : (
+          <h1 className={styles.pageTitle}>User</h1>
+        )}
         <h2> Followed Forums</h2>
         {user ? (
           user.followedForums.map((forum) => {
