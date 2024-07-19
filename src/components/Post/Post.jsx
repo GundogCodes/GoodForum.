@@ -22,6 +22,7 @@ export default function Post({
   const [postForumTitle, setForumTitle] = useState();
   const [postForumId, setForumId] = useState();
   const [postSender, setPostSender] = useState();
+  const [createdAt, setPostCreatedAt] = useState();
   /********************************************** HANDLE STATES  **********************************************/
 
   /**********************************************  USEEFFCTS  **********************************************/
@@ -29,11 +30,11 @@ export default function Post({
     (async () => {
       try {
         const post = await postAPIs.getPost(id);
-        console.log(post);
+        console.log("POST: ", post);
         setForumTitle(post.forum.title);
         setForumId(post.forum._id);
-        console.log(post.sender.username);
         setPostSender(post.sender.username);
+        setPostCreatedAt(post.createdAt);
       } catch (error) {
         console.log(error);
       }
@@ -47,12 +48,22 @@ export default function Post({
   return (
     <div className={styles.Post}>
       <div className={styles.upper}>
-        <Link to={`/forum/${postForumId}`}>
+        <div className={styles.upperLeft}>
+          <Link to={`/forum/${postForumId}`}>
+            {" "}
+            <h4>{postForumTitle ? <h2>{postForumTitle}</h2> : <></>}</h4>
+          </Link>
+          <h3>{postSender ? <h2>{postSender}</h2> : <></>}</h3>
+          <h2 className={styles.postTitle}>{title}</h2>
+        </div>
+        <div className={styles.upperRight}>
           {" "}
-          <h4>{postForumTitle ? <h2>{postForumTitle}</h2> : <></>}</h4>
-        </Link>
-        <h3>{postSender ? <h2>{postSender}</h2> : <></>}</h3>
-        <h2>{title}</h2>
+          {createdAt ? (
+            <h4 className={styles.date}>{createdAt.slice(0, 10)}</h4>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
       <div className={styles.body}>
         <Link to={`/post/${id}`}>

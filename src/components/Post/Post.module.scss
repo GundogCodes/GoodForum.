@@ -12,48 +12,79 @@
   background-color: rgb(36, 38, 39);
   .upper {
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
     width: 100%;
     height: 10vh;
-
-    h4 {
-      font-size: 10px;
-      background-color: rgb(35, 73, 175);
-      border-radius: 10px;
-      padding-left: 5px;
-      padding-right: 5px;
+    .upperLeft {
+      width: 50%;
+      height: 100%;
+      h4 {
+        font-size: 10px;
+        background-color: rgb(35, 73, 175);
+        border-radius: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
+        color: white;
+        max-width: 100px;
+      }
+      h3 {
+        color: rgb(150, 150, 150);
+        padding-left: 2px;
+        font-size: 12px;
+      }
+      h2 {
+        color: rgb(220, 220, 220);
+      }
+      .postTitle {
+        color: white;
+        font-weight: bolder;
+      }
+      h2:hover,
+      h3:hover,
+      h4:hover {
+        cursor: pointer;
+      }
     }
-    h3 {
-      color: rgb(150, 150, 150);
-      padding-left: 2px;
-      font-size: 12px;
-    }
-    h2 {
-      color: white;
-    }
-    h2:hover,
-    h3:hover,
-    h4:hover {
-      cursor: pointer;
+    .upperRight {
+      width: 50%;
+      height: 90%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 5px;
+      .date {
+        font-size: 10px;
+        color: white;
+        color: rgb(220, 220, 220);
+      }
     }
   }
   .body {
-    width: 100%;
+    width: 55vw;
+    max-width: 1000px;
+    min-height: 10vh;
     border-radius: 10px;
     overflow-y: hidden;
-    background-color: rgb(100, 100, 100);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box; /* Include padding and border in total width */
-  }
+    font-size: min(130px, 10px);
+    background-color: rgb(220, 220, 220);
+    .postText {
+      background-color: rgb(220, 220, 220);
+      min-width: 50vw;
+      min-height: 10vh;
 
-  .postText {
-    width: 100%;
-    padding: 10px; /* Example padding for content spacing */
-    box-sizing: border-box; /* Ensure padding does not affect width */
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      color: black;
+      font-size: min(60vw, 20px);
+      padding: 10px;
+      height: 40%;
+      border-radius: 5px;
+    }
   }
   .bottom {
     height: 5vh;
