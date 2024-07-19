@@ -5,7 +5,16 @@ import * as postAPIs from "../../../utilities/post-api.cjs";
 import React from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import ImageModal from "../../components/ImageModal/ImageModal";
-import { PhoneIcon, ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
+import * as forumService from "../../../utilities/forum-api.cjs";
+import { Link } from "react-router-dom";
+import {
+  PhoneIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
+  ChevronUpIcon,
+  ChevronRightIcon,
+  ChevronDownIcon,
+} from "@chakra-ui/icons";
 
 export default function PostPage() {
   /********************************************** VARIABLES **********************************************/
@@ -20,6 +29,7 @@ export default function PostPage() {
   const [likedClicked, setLikedClicked] = useState(false);
   const [dislikedClicked, setDislikedClicked] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
+  const [allForums, setAllForums] = useState([]);
   /********************************************** USEEFFECT **********************************************/
   useEffect(() => {
     (async () => {
@@ -32,6 +42,16 @@ export default function PostPage() {
       }
     })();
   }, [id]);
+  useEffect(() => {
+    (async () => {
+      try {
+        const forums = await forumService.getAll();
+        setAllForums(forums);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
   /********************************************** FUNCTIONS **********************************************/
   function handleChange(e) {
     setNewComment({ text: e.target.value });
@@ -108,11 +128,38 @@ export default function PostPage() {
           ) : (
             <></>
           )}
+          <div className={styles.allForumsAside}>
+            <h1>Forums</h1>
+            {allForums ? (
+              allForums.map((forum) => {
+                return (
+                  <Link
+                    className={styles.allTheForums}
+                    to={`/forum/${forum._id}`}
+                  >
+                    <ChevronRightIcon /> {forum.title}
+                  </Link>
+                );
+              })
+            ) : (
+              <></>
+            )}
+          </div>
           {post ? (
             <section>
               <header>
+                <h3
+                  id={styles.postForum}
+                  onClick={() => {
+                    navigate(`/forum/${post.forum._id}`);
+                  }}
+                  className={styles.headerClickables}
+                >
+                  {post.forum.title}
+                </h3>
                 {post.sender ? (
                   <h3
+                    id={styles.sender}
                     onClick={() => {
                       navigate(`/user/${post.sender._id}`);
                     }}
@@ -123,15 +170,7 @@ export default function PostPage() {
                 ) : (
                   <h3>Deleted User</h3>
                 )}
-                <h1>{post.title}</h1>
-                <h3
-                  onClick={() => {
-                    navigate(`/forum/${post.forum._id}`);
-                  }}
-                  className={styles.headerClickables}
-                >
-                  {post.forum.title}
-                </h3>
+                <h3 id={styles.postTitle}>{post.title}</h3>
               </header>
               <aside>
                 {post.image ? (
@@ -154,7 +193,7 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleLike}
                     >
-                      <ArrowUpIcon /> {post.likes}
+                      <ChevronUpIcon /> {post.likes}
                     </h4>
                   ) : (
                     <h4
@@ -162,12 +201,12 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleLike}
                     >
-                      <ArrowUpIcon /> {post.likes}
+                      <ChevronDownIcon /> {post.likes}
                     </h4>
                   )
                 ) : (
                   <h4 className={styles.dislike} onClick={handleLike}>
-                    <ArrowUpIcon /> {post.likes}
+                    <ChevronUpIcon /> {post.likes}
                   </h4>
                 )}
 
@@ -178,7 +217,7 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleDislike}
                     >
-                      <ArrowDownIcon /> {post.dislikes}
+                      <ChevronDownIcon /> {post.dislikes}
                     </h4>
                   ) : (
                     <h4
@@ -186,31 +225,34 @@ export default function PostPage() {
                       className={styles.dislike}
                       onClick={handleDislike}
                     >
-                      <ArrowDownIcon /> {post.dislikes}
+                      <ChevronDownIcon /> {post.dislikes}
                     </h4>
                   )
                 ) : (
                   <h4 className={styles.dislike} onClick={handleDislike}>
-                    <ArrowDownIcon /> {post.dislikes}
+                    <ChevronDownIcon /> {post.dislikes}
                   </h4>
                 )}
                 <h4 className={styles.date}>{post.createdAt.slice(0, 10)}</h4>
               </div>
-
-              <ul className={styles.commentSection}>
-                {post.comments ? (
-                  post.comments.map((comment) => {
-                    return <li className={styles.comment}> {comment.text}</li>;
-                  })
-                ) : (
-                  <h4>Add Comment</h4>
-                )}
-              </ul>
-              <div className={styles.inputDiv}>
-                <form onSubmit={addComment}>
-                  <input ref={inputRef} onChange={handleChange} type="text" />
-                  <button type="submit">Comment</button>
-                </form>
+              <div className={styles.commentDiv}>
+                <div className={styles.commentSection}>
+                  {post.comments ? (
+                    post.comments.map((comment) => {
+                      return (
+                        <li className={styles.comment}> {comment.text}</li>
+                      );
+                    })
+                  ) : (
+                    <h4>Add Comment</h4>
+                  )}
+                </div>
+                <div className={styles.inputDiv}>
+                  <form onSubmit={addComment}>
+                    <input ref={inputRef} onChange={handleChange} type="text" />
+                    <button type="submit">Comment</button>
+                  </form>
+                </div>
               </div>
             </section>
           ) : (
@@ -223,6 +265,13 @@ export default function PostPage() {
       ) : (
         <div>Post Deleted</div>
       )}
+      <div className={styles.posterInfo}>
+        <h1>Poster</h1>
+        <h2>Stats</h2>
+        <h2>Stats</h2>
+        <h2>Stats</h2>
+        <h2>Stats</h2>
+      </div>
     </div>
   );
 }
