@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import * as usersService from "../../../utilities/users-service.cjs";
+import { CloseIcon, QuestionIcon } from "@chakra-ui/icons";
 export default function LoginPage({ user, setUser }) {
   const [clicked, setClicked] = useState(null);
 
@@ -18,7 +19,7 @@ export default function LoginPage({ user, setUser }) {
     password: "",
   });
   const [error, setError] = useState("");
-
+  const [showDetails, setDetails] = useState(false);
   const [signupClicked, setSignupClicked] = useState(false);
   // const [credentials, setCredentials] = useState({
   //   email: "",
@@ -75,15 +76,83 @@ export default function LoginPage({ user, setUser }) {
 
     navigate("/");
   }
+  console.log(showDetails);
   return (
     <div className={styles.LoginPage}>
+      {showDetails ? (
+        <div className={styles.showDetails}>
+          <div className={styles.desModal}>
+            <h1>Fractalus</h1>
+            <div className={styles.desText}>
+              <h2>
+                is a dynamic web application designed to provide a comprehensive
+                platform for interactive discussions and community engagement.
+                Built with modern web technologies.
+                <br />
+                Fractalus offers users a seamless experience to connect, share
+                insights, and explore diverse topics.
+                <br />
+                <span>Key Features:</span>
+                <br />• Real-time Discussions: Engage in real-time discussions
+                on various topics of interest. • User Profiles: Customize your
+                profile and connect with like-minded individuals. • Rich Media
+                Support: Share images and videos to enrich discussions. •
+                Responsive Design: Access Fractalus from any device, ensuring a
+                consistent experience.
+                <br />
+                <span>Technologies Used:</span>
+                <br />
+                <span>•Frontend:</span> React.js, TypeScript, Material-UI, Axios
+                <br />
+                <span>•Backend:</span> Node.js, Express.js, MongoDB •
+                Deployment: AWS (Amazon Web Services), PM2
+                <br />
+                Explore Fractalus today and join a vibrant community of thinkers
+                and doers!
+              </h2>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      {showDetails ? (
+        <CloseIcon
+          color={"white"}
+          width={"20px"}
+          height={"20px"}
+          zIndex={"10"}
+          position={"absolute"}
+          right={"1vw"}
+          top={"5vh"}
+          onClick={() => {
+            setDetails(!showDetails);
+          }}
+        />
+      ) : (
+        <QuestionIcon
+          color={"white"}
+          width={"20px"}
+          height={"20px"}
+          zIndex={"10"}
+          position={"absolute"}
+          right={"1vw"}
+          top={"5vh"}
+          onClick={() => {
+            setDetails(!showDetails);
+          }}
+        />
+      )}
       <div className={styles.leftSide}>
         <div className={styles.logoDiv}>
-          <img
+          {/* <img
             className={styles.logo}
             src="../../../public/images/logo.png"
-          ></img>
-          <h1>Fractalus</h1>
+          ></img> */}
+          <div className={styles.hDiv}>
+            <h1> Welcome to Fractalus</h1>
+            <h2>Unveiling Infinite Possibilities</h2>
+          </div>
         </div>
         <div className={styles.loginDiv}>
           {signupClicked ? (

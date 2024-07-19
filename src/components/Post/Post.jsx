@@ -21,6 +21,7 @@ export default function Post({
   /********************************************** STATE VARIABLES **********************************************/
   const [postForumTitle, setForumTitle] = useState();
   const [postForumId, setForumId] = useState();
+  const [postSender, setPostSender] = useState();
   /********************************************** HANDLE STATES  **********************************************/
 
   /**********************************************  USEEFFCTS  **********************************************/
@@ -31,6 +32,8 @@ export default function Post({
         console.log(post);
         setForumTitle(post.forum.title);
         setForumId(post.forum._id);
+        console.log(post.sender.username);
+        setPostSender(post.sender.username);
       } catch (error) {
         console.log(error);
       }
@@ -48,7 +51,7 @@ export default function Post({
           {" "}
           <h4>{postForumTitle ? <h2>{postForumTitle}</h2> : <></>}</h4>
         </Link>
-        <h3>{sender ? <h2>{sender}</h2> : <></>}</h3>
+        <h3>{postSender ? <h2>{postSender}</h2> : <></>}</h3>
         <h2>{title}</h2>
       </div>
       <div className={styles.body}>
