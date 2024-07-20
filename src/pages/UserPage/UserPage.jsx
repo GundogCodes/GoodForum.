@@ -36,20 +36,6 @@ export default function UserPage({ user, setUser }) {
     })();
   }, []);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const foundedForums = [];
-        for (let forum of user.foundedForums) {
-          console.log(typeof forum);
-          const foundForum = await forumService.getForum(forum);
-          console.log("forum", foundForum);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
   /********************************************** USE EFFECTS **********************************************/
 
   /******************************************** States ********************************************/

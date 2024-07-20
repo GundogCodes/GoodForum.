@@ -7,35 +7,10 @@ import styles from "./NavBar.module.scss";
 
 export default function NavBar({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
-  const navigate = useNavigate();
-  const params = useParams();
   /******************************************** STATES ********************************************/
   const [youClicked, setYouClicked] = useState(false);
-  const [homeClicked, setHomeClicked] = useState(false);
-  const [messagesClicked, setMessagesClicked] = useState(false);
   /******************************************** USE EFFECTS ********************************************/
   /******************************************** FUNCTIONS ********************************************/
-  function handleClick(e) {
-    const butt = e.target.innerText;
-    console.log(e.target.innerText);
-    if (butt === "") {
-      setYouClicked(true);
-      setHomeClicked(false);
-      setMessagesClicked(false);
-    } else if (butt === "Home") {
-      setYouClicked(false);
-      setHomeClicked(true);
-      setMessagesClicked(false);
-    } else if (butt === "Messages") {
-      setYouClicked(false);
-      setHomeClicked(false);
-      setMessagesClicked(true);
-    }
-  }
-
-  function handleEtchClick() {
-    navigate("/");
-  }
 
   return (
     <Tabs
@@ -57,7 +32,7 @@ export default function NavBar({ user, setUser }) {
               }}
             >
               {youClicked ? (
-                <p onClick={handleClick}>
+                <p>
                   {user && user.profileImage ? (
                     <img
                       style={{
@@ -79,7 +54,7 @@ export default function NavBar({ user, setUser }) {
                   )}
                 </p>
               ) : (
-                <p onClick={handleClick}>
+                <p>
                   {user && user.profileImage ? (
                     <img
                       style={{
@@ -112,11 +87,7 @@ export default function NavBar({ user, setUser }) {
                 color: "white",
               }}
             >
-              {homeClicked ? (
-                <p onClick={handleClick}>Home</p>
-              ) : (
-                <p onClick={handleClick}>Home</p>
-              )}
+              <p>Home</p>
             </Tab>
           </Link>
           <Link to={"/chats"}>
@@ -128,13 +99,7 @@ export default function NavBar({ user, setUser }) {
                 color: "white",
               }}
             >
-              {messagesClicked ? (
-                <p onClick={handleClick}>Messages</p>
-              ) : (
-                <Link to={"/chats"}>
-                  <p onClick={handleClick}>Messages</p>
-                </Link>
-              )}
+              <p>Messages</p>
             </Tab>
           </Link>
         </div>

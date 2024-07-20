@@ -66,7 +66,11 @@ export default function HomePage({ user, setUser }) {
               <h2>Your Forums</h2>
               {user.followedForums.map((forum) => {
                 return (
-                  <Link className={styles.userForum} to={`/forum/${forum._id}`}>
+                  <Link
+                    key={`${forum._id}`}
+                    className={styles.userForum}
+                    to={`/forum/${forum._id}`}
+                  >
                     <ChevronRightIcon /> {forum.title}
                   </Link>
                 );
@@ -89,6 +93,7 @@ export default function HomePage({ user, setUser }) {
               {allPosts.map((post) => {
                 return (
                   <Post
+                    key={`${post._id}`}
                     id={post._id}
                     title={post.title}
                     forum={post.forum.title}
@@ -117,7 +122,7 @@ export default function HomePage({ user, setUser }) {
               <div className={styles.forumList}>
                 {forums.map((forum) => {
                   return (
-                    <Link to={`forum/${forum._id}`}>
+                    <Link key={`${forum._id}`} to={`forum/${forum._id}`}>
                       <p>{forum.title}</p>
                     </Link>
                   );
@@ -146,7 +151,6 @@ export default function HomePage({ user, setUser }) {
               <h3 id={styles.headings}>Contact Us</h3>
               <div className={styles.contactSection}>
                 <div className={styles.contactSection1}>
-                  <h3>Edmonton</h3>
                   <div className={styles.infoSection}>
                     <a
                       className={styles.email}
@@ -161,10 +165,12 @@ export default function HomePage({ user, setUser }) {
             <div className={styles.footerSection2}>
               <h3 id={styles.headings}>Industries</h3>
               <div className={styles.industriesDiv}>
-                <h5>Delivery & Logistics</h5>
-                <h5>E-Commerce/Medicine </h5>
-                <h5>Child Care & Daycare </h5>
-                <h5>General Software Development</h5>
+                <h4>Delivery & Logistics</h4>{" "}
+                {/* Changed from h5 to h4 for better hierarchy */}
+                <h4>E-Commerce/Medicine</h4> {/* Changed from h5 to h4 */}
+                <h4>Child Care & Daycare</h4> {/* Changed from h5 to h4 */}
+                <h4>General Software Development</h4>{" "}
+                {/* Changed from h5 to h4 */}
               </div>
             </div>
             <div className={styles.footerSection3}>

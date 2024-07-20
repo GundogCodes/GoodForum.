@@ -129,7 +129,6 @@ export default function PostPage({ user }) {
   }
 
   const zippedComments = zip(post?.comments || [], commentUsernames);
-  console.log("ZIPPED COMMENTS: ", zippedComments);
   return (
     <div className={styles.PostPage}>
       {post ? (

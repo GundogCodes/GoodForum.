@@ -19,26 +19,35 @@
     .upperLeft {
       width: 50%;
       height: 100%;
-      h4 {
+      .postTitle {
+        color: rgb(150, 150, 150);
+        padding-left: 2px;
+        font-size: 15px;
+        color: rgb(220, 220, 220);
+        padding-left: 5px;
+        font-weight: 900;
+      }
+
+      .postSenderName {
         font-size: 10px;
-        background-color: rgb(35, 73, 175);
         border-radius: 10px;
         padding-left: 5px;
         padding-right: 5px;
-        color: white;
         max-width: 100px;
+        font-size: 10px;
+        font-weight: bold;
+        color: rgb(170, 170, 170);
       }
-      h3 {
-        color: rgb(150, 150, 150);
-        padding-left: 2px;
-        font-size: 12px;
-      }
-      h2 {
-        color: rgb(220, 220, 220);
-      }
-      .postTitle {
+      .postForumTitle {
+        background-color: rgb(35, 73, 175);
         color: white;
+        width: 100px;
+        border-radius: 5px;
+        min-width: 120px;
+        max-width: 50%;
         font-weight: bolder;
+        font-size: 12px;
+        padding-left: 5px;
       }
       h2:hover,
       h3:hover,
@@ -61,6 +70,7 @@
     }
   }
   .body {
+    margin-top: 5px;
     width: 55vw;
     max-width: 1000px;
     min-height: 10vh;
