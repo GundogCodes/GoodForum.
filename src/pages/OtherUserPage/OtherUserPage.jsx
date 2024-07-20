@@ -143,6 +143,8 @@ export default function OtherUserPage({ user, setUser }) {
                   comments={post.comments}
                   likes={post.likes}
                   dislikes={post.dislikes}
+                  user={user}
+                  setUser={setUser}
                 ></Post>
               );
             })}

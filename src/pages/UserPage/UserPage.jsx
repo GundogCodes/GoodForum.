@@ -37,20 +37,7 @@ export default function UserPage({ user, setUser }) {
     })();
   }, []);
   console.log("USER: ", user);
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const usersFoundedForums = [];
-  //       for (let forum of user.foundedForums) {
-  //         const foundForum = await forumService.showAforum(forum);
-  //         console.log(foundForum);
-  //       }
-  //       setUserFoundedForums(usersFoundedForums);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, [id]);
+
   /******************************************** STATES ********************************************/
   const [file, setFile] = useState();
   const [showUploadForm, setShowUploadForm] = useState(false);
@@ -212,6 +199,8 @@ export default function UserPage({ user, setUser }) {
                 comments={post.comments}
                 likes={post.likes}
                 dislikes={post.dislikes}
+                user={user}
+                setUser={setUser}
               />
             ))
           ) : (

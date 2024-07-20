@@ -168,41 +168,6 @@ export default function ForumPage({ user, setUser }) {
               <div className={styles.postsList}>
                 {forumPage.posts.map((post) => {
                   return (
-                    // <div
-                    //   className={styles.post}
-                    //   onClick={handlePostClick}
-                    //   postId={post._id}
-                    // >
-                    //   <section>
-                    //     <h2>{post.title} </h2>
-                    //     <h1>{post.sender.username} </h1>
-                    //   </section>
-                    //   {post.image ? (
-                    //     <h3>
-                    //       <img
-                    //         className={styles---.postImage}
-                    //         src={`/profilePics/${post.image}`}
-                    //       />
-                    //     </h3>
-                    //   ) : (
-                    //     <h3 className={styles.postText}>{post.text}</h3>
-                    //   )}
-
-                    //   <aside>
-                    //     <div className={styles.pDiv}>
-                    //       <p className={styles.like}>{post.likes} &#8593; </p>
-                    //       <p className={styles.dislike}>
-                    //         {post.dislikes} &#8595;
-                    //       </p>
-                    //       <p className={styles.comment}>
-                    //         {post.comments.length} Comments
-                    //       </p>
-                    //       <p className={styles.date}>
-                    //         {post.createdAt.slice(0, 10)}
-                    //       </p>
-                    //     </div>
-                    //   </aside>
-                    // </div>
                     <Post
                       id={post._id}
                       title={post.title}
@@ -213,6 +178,8 @@ export default function ForumPage({ user, setUser }) {
                       comments={post.comments}
                       likes={post.likes}
                       dislikes={post.dislikes}
+                      user={user}
+                      setUser={setUser}
                     ></Post>
                   );
                 })}

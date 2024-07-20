@@ -26,7 +26,6 @@ export default function HomePage({ user, setUser }) {
         setForums(forums);
         // console.log("allforums", forums);
         setAllPosts(posts);
-        console.log("POSTS: ", posts);
       } catch (error) {
         console.log(error);
       }
@@ -35,11 +34,7 @@ export default function HomePage({ user, setUser }) {
   /******************************************** FUNCTIONS ********************************************/
 
   function handleCreateClick() {
-    console.log("showModal", showModal);
     setShowModal(!showModal);
-  }
-  if (user) {
-    console.log(user);
   }
   return (
     <div className={styles.HomePage}>
@@ -105,6 +100,8 @@ export default function HomePage({ user, setUser }) {
                     comments={post.comments}
                     likes={post.likes}
                     dislikes={post.dislikes}
+                    user={user}
+                    setUser={setUser}
                   ></Post>
                 );
               })}
@@ -144,7 +141,6 @@ export default function HomePage({ user, setUser }) {
               <></>
             )}
           </div>
-          {/* <div className={styles.createForumDiv}>yyyyy</div> */}
         </div>
       </div>
       <div className={styles.footer}>
@@ -168,9 +164,8 @@ export default function HomePage({ user, setUser }) {
             <div className={styles.footerSection2}>
               <h3 id={styles.headings}>Industries</h3>
               <div className={styles.industriesDiv}>
-                <h4>Delivery & Logistics</h4>{" "}
-                {/* Changed from h5 to h4 for better hierarchy */}
-                <h4>E-Commerce/Medicine</h4> {/* Changed from h5 to h4 */}
+                <h4>Delivery & Logistics</h4> <h4>E-Commerce/Medicine</h4>{" "}
+                {/* Changed from h5 to h4 */}
                 <h4>Child Care & Daycare</h4> {/* Changed from h5 to h4 */}
                 <h4>General Software Development</h4>{" "}
                 {/* Changed from h5 to h4 */}

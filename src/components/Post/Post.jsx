@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./Post.module.scss";
 import { Link } from "react-router-dom";
 import { ChatIcon, ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
@@ -16,16 +16,20 @@ export default function Post({
   text,
   link,
   video,
+  user,
+  setUser,
 }) {
   /********************************************** VARIABLES **********************************************/
   // const navigate = useNavigate();
-
+  const likeRef = useRef(null);
+  const dislikeRef = useRef(null);
   /********************************************** STATE VARIABLES **********************************************/
   const [postForumTitle, setForumTitle] = useState();
   const [postForumId, setForumId] = useState();
   const [postSender, setPostSender] = useState();
   const [createdAt, setPostCreatedAt] = useState();
-
+  const [likedClicked, setLikedClicked] = useState(false);
+  const [dislikeClicked, setDislikeClicked] = useState(false);
   /********************************************** HANDLE STATES  **********************************************/
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
@@ -41,13 +45,37 @@ export default function Post({
       }
     })();
   }, []);
-
   /********************************************** FUNCTIONS  **********************************************/
   function handlePostClick(e) {
-    const id = e.target.id;
+    const id = e.target.ref;
     // navigate(`/post/${id}`);
   }
-
+  function handleLikeClicked(e) {
+    console.log("liked");
+    console.log(likeRef.current.id);
+    const postId = likeRef.current.id;
+    // if disliked already clicked, decrement dislikes and increment liked
+    if (dislikeClicked) {
+      //---backend---//
+      //---frontend---//
+      //if already liked and clicked again decrement likes
+    } else if (likedClicked) {
+      //---backend---//
+      //---frontend---//
+      //also else if disliked and liked not clicked then increment likes
+    } else if (!dislikeClicked && !likedClicked) {
+      //---backend---//
+      //---frontend---//
+    }
+  }
+  function handleDislikeClicked(e) {
+    console.log("disliked");
+    console.log(dislikeRef.current.id);
+    const postId = dislikeRef.current.id;
+    //if liked already clicked, decrement likes, and increment dislikes
+    //if liked not clicked then increment dislikes
+    //if already disliked then decrement dislikes
+  }
   return (
     <div className={styles.Post}>
       <div className={styles.upper}>
@@ -81,11 +109,21 @@ export default function Post({
         </Link>
       </div>
       <div className={styles.bottom}>
-        <div className={styles.likes}>
-          <h4>
+        <div className={styles.interactions}>
+          <h4
+            onClick={handleLikeClicked}
+            ref={likeRef}
+            id={`${id}`}
+            className={styles.likes}
+          >
             <ChevronUpIcon /> {likes}
           </h4>
-          <h4>
+          <h4
+            onClick={handleDislikeClicked}
+            ref={dislikeRef}
+            id={`${id}`}
+            className={styles.dislikes}
+          >
             <ChevronDownIcon /> {dislikes}
           </h4>
           <h4>

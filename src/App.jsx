@@ -19,7 +19,7 @@ import LogOut from "./components/Logout/Logout";
 function App() {
   const [user, setUser] = useState(getUser());
 
-  console.log("user : ", user);
+  //console.log("user : ", user);
 
   return (
     <div className={styles.app}>
