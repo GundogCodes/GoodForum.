@@ -9,6 +9,7 @@ import * as usersAPIs from "../../../utilities/users-api.cjs";
 import Post from "../../components/Post/Post";
 import { useNavigate } from "react-router-dom";
 import { ChevronRightIcon, PlusSquareIcon, SunIcon } from "@chakra-ui/icons";
+import * as forumService from "../../../utilities/forum-api.cjs";
 //import * as userService from "../../../utilities/users-api.cjs";
 import axios from "axios";
 export default function UserPage({ user, setUser }) {
@@ -16,17 +17,8 @@ export default function UserPage({ user, setUser }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  //   useEffect(() => {
-  //     (async () => {
-  //       try {
-  //         const user = await usersAPIs.getUser(id);
-  //         setUser(user);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     })();
-  //   }, [id]);
   const [allUserPost, setAllUserPosts] = useState([]);
+  const [userFoundedForums, setUserFoundedForums] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -37,7 +29,21 @@ export default function UserPage({ user, setUser }) {
         } else {
           const reversedPosts = userPosts.reverse();
           setAllUserPosts(reversedPosts);
-          console.log(userPosts);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const foundedForums = [];
+        for (let forum of user.foundedForums) {
+          console.log(typeof forum);
+          const foundForum = await forumService.getForum(forum);
+          console.log("forum", foundForum);
         }
       } catch (error) {
         console.log(error);
@@ -96,7 +102,7 @@ export default function UserPage({ user, setUser }) {
       console.log({ error: error });
     }
   }
-  console.log(user);
+  console.log("USER: ", user);
   return (
     <div className={styles.UserPage}>
       {showModal ? (
@@ -135,7 +141,7 @@ export default function UserPage({ user, setUser }) {
             return (
               <p>
                 <Link to={`/forum/${forum._id}`}>
-                  <ChevronRightIcon /> {forum.title}
+                  <ChevronRightIcon /> {forum}
                 </Link>
               </p>
             );

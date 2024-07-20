@@ -68,6 +68,7 @@ const dataController = {
       const user = await User.findOne({ email: req.body.email })
         .populate("friends")
         .populate("followedForums")
+        .populate("foundedForums")
         .populate("posts")
         .populate("chats");
       if (!user) throw Error();

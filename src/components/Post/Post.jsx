@@ -30,7 +30,6 @@ export default function Post({
     (async () => {
       try {
         const post = await postAPIs.getPost(id);
-        console.log("POST: ", post);
         setForumTitle(post.forum.title);
         setForumId(post.forum._id);
         setPostSender(post.sender.username);
