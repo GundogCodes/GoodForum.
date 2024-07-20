@@ -277,7 +277,7 @@ export default function PostPage({ user }) {
             )}
           </>
         ) : (
-          <>Post Not Found</>
+          <>Loading...</>
         )}
       </div>
     </div>
