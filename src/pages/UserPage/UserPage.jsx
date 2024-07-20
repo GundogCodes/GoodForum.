@@ -19,7 +19,7 @@ export default function UserPage({ user, setUser }) {
   const [showModal, setShowModal] = useState(false);
   const [allUserPost, setAllUserPosts] = useState([]);
   const [userFoundedForums, setUserFoundedForums] = useState([]);
-
+  /********************************************** USE EFFECTS **********************************************/
   useEffect(() => {
     (async () => {
       try {
@@ -35,8 +35,17 @@ export default function UserPage({ user, setUser }) {
       }
     })();
   }, []);
-
-  /********************************************** USE EFFECTS **********************************************/
+  useEffect(() => {
+    (async () => {
+      try {
+        for (let item of user.foundedForums) {
+          console.log(item);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   /******************************************** States ********************************************/
   const [file, setFile] = useState();
