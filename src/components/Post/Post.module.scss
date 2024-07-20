@@ -111,8 +111,16 @@
       justify-content: flex-start;
       padding-left: 3px;
       padding-right: 3px;
-
       h4 {
+        margin-left: 5px;
+      }
+      .userdisliked {
+        color: red;
+      }
+      .userliked {
+        color: #ff6410;
+      }
+      .likes {
         background-color: rgb(39, 44, 19);
         margin-left: 10px;
         font-size: 15px;
@@ -123,7 +131,7 @@
         justify-content: center;
         align-items: center;
       }
-      h4:hover {
+      .likes:hover {
         background-color: #ff6410;
         border-radius: 7px;
         cursor: pointer;

@@ -30,8 +30,25 @@ export default function Post({
   const [createdAt, setPostCreatedAt] = useState();
   const [likedClicked, setLikedClicked] = useState(false);
   const [dislikeClicked, setDislikeClicked] = useState(false);
+  const [userLiked, setUserLiked] = useState();
+  const [userDisliked, setUserDisliked] = useState();
   /********************************************** HANDLE STATES  **********************************************/
   /**********************************************  USEEFFCTS  **********************************************/
+  useEffect(() => {
+    (() => {
+      for (let likedPost of user.likedPosts) {
+        if (id === likedPost) {
+          console.log("user has liked this post");
+          setUserLiked(true);
+        }
+      }
+      for (let dislikedPost of user.dislikedPosts) {
+        if (id === dislikedPost) {
+          setUserDisliked(true);
+        }
+      }
+    })();
+  }, []);
   useEffect(() => {
     (async () => {
       try {
@@ -116,22 +133,44 @@ export default function Post({
       </div>
       <div className={styles.bottom}>
         <div className={styles.interactions}>
-          <h4
-            onClick={handleLikeClicked}
-            ref={likeRef}
-            id={`${id}`}
-            className={styles.likes}
-          >
-            <ChevronUpIcon /> {likes}
-          </h4>
-          <h4
-            onClick={handleDislikeClicked}
-            ref={dislikeRef}
-            id={`${id}`}
-            className={styles.dislikes}
-          >
-            <ChevronDownIcon /> {dislikes}
-          </h4>
+          {user && userLiked ? (
+            <h4
+              onClick={handleLikeClicked}
+              ref={likeRef}
+              id={`${id}`}
+              className={styles.userliked}
+            >
+              <ChevronUpIcon /> {likes}
+            </h4>
+          ) : (
+            <h4
+              onClick={handleLikeClicked}
+              ref={likeRef}
+              id={`${id}`}
+              className={styles.likes}
+            >
+              <ChevronUpIcon /> {likes}
+            </h4>
+          )}
+          {user && userDisliked ? (
+            <h4
+              onClick={handleDislikeClicked}
+              ref={dislikeRef}
+              id={`${id}`}
+              className={styles.userdisliked}
+            >
+              <ChevronDownIcon /> {dislikes}
+            </h4>
+          ) : (
+            <h4
+              onClick={handleDislikeClicked}
+              ref={dislikeRef}
+              id={`${id}`}
+              className={styles.dislikes}
+            >
+              <ChevronDownIcon /> {dislikes}
+            </h4>
+          )}
           <h4>
             <ChatIcon /> {` ${comments.length}`}
           </h4>
