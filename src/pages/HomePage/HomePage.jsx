@@ -148,15 +148,12 @@ export default function HomePage({ user, setUser }) {
                 <div className={styles.contactSection1}>
                   <h3>Edmonton</h3>
                   <div className={styles.infoSection}>
-                    <h5>10303 65 Ave NW T6H 1V1</h5>
-                    <h5>780-245-1258</h5>
-                  </div>
-                </div>
-                <div className={styles.contactSection2}>
-                  <h3>Grand Prairie</h3>
-                  <div className={styles.infoSection}>
-                    <h5>Unit 206, 9804 100 Ave T8V 0T8</h5>
-                    <h5>780-965-6258</h5>
+                    <a
+                      className={styles.email}
+                      href="mailto:innovationsoftwareservices@gmail.com"
+                    >
+                      innovationsoftwareservices@gmail.com
+                    </a>
                   </div>
                 </div>
               </div>
@@ -165,9 +162,9 @@ export default function HomePage({ user, setUser }) {
               <h3 id={styles.headings}>Industries</h3>
               <div className={styles.industriesDiv}>
                 <h5>Delivery & Logistics</h5>
-                <h5>E-Commerce/Medicine Deliveries</h5>
-                <h5>FedEx Ground Deliveries</h5>
-                <h5>Auto Parts Deliveries</h5>
+                <h5>E-Commerce/Medicine </h5>
+                <h5>Child Care & Daycare </h5>
+                <h5>General Software Development</h5>
               </div>
             </div>
             <div className={styles.footerSection3}>
@@ -186,13 +183,7 @@ export default function HomePage({ user, setUser }) {
             </div>
           </div>
           <div className={styles.lowerSection}>
-            <h4> &#169; 2024 1652357 Alberta LTD. All Rights Reserved.</h4>
-            <h4>
-              <Link href="/">Home</Link>
-            </h4>
-            <h4>
-              <Link href="/contact"> Contact Us</Link>
-            </h4>
+            <h4> &#169; 2024 Innovation Software. All Rights Reserved.</h4>
           </div>
         </div>
       </div>

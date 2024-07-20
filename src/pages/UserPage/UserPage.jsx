@@ -254,7 +254,7 @@ export default function UserPage({ user, setUser }) {
         </div>
       </div>
       <div className={styles.stats}>
-        <h1>Stats</h1>
+        <h1>User Stats</h1>
         {user ? (
           <>
             <h3>Friends: {user.friends.length}</h3>

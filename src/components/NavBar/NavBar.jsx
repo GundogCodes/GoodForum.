@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Tabs, TabList, TabPanels, Tab, TabIndicator } from "@chakra-ui/react";
 import styles from "./NavBar.module.scss";
+
 export default function NavBar({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
   const navigate = useNavigate();
@@ -45,16 +46,16 @@ export default function NavBar({ user, setUser }) {
     >
       <TabList height="4vh" maxHeight="50px" className={styles.tabList}>
         <div className={styles.options}>
-          <Tab
-            width={"5vw"}
-            className={styles.tab}
-            _selected={{
-              backgroundColor: "rgb(191, 63, 27)",
-              border: "solid 0.3px white",
-              color: "white",
-            }}
-          >
-            <Link to={"/user"}>
+          <Link to={"/user"}>
+            <Tab
+              width={"5vw"}
+              className={styles.tab}
+              _selected={{
+                backgroundColor: "rgb(191, 63, 27)",
+                border: "solid 0.3px white",
+                color: "white",
+              }}
+            >
               {youClicked ? (
                 <p onClick={handleClick}>
                   {user && user.profileImage ? (
@@ -100,42 +101,42 @@ export default function NavBar({ user, setUser }) {
                   )}
                 </p>
               )}
-            </Link>
-          </Tab>
-          <Tab
-            className={styles.tab}
-            _selected={{
-              backgroundColor: "rgb(191, 63, 27)",
-              border: "solid 0.3px white",
-              color: "white",
-            }}
-          >
-            <Link to={"/"}>
+            </Tab>
+          </Link>
+          <Link to={"/"}>
+            <Tab
+              className={styles.tab}
+              _selected={{
+                backgroundColor: "rgb(191, 63, 27)",
+                border: "solid 0.3px white",
+                color: "white",
+              }}
+            >
               {homeClicked ? (
                 <p onClick={handleClick}>Home</p>
               ) : (
                 <p onClick={handleClick}>Home</p>
               )}
-            </Link>
-          </Tab>
-          <Tab
-            className={styles.tab}
-            _selected={{
-              backgroundColor: "rgb(191, 63, 27)",
-              border: "solid 0.3px white",
-              color: "white",
-            }}
-          >
-            {messagesClicked ? (
-              <Link to={"/chats"}>
+            </Tab>
+          </Link>
+          <Link to={"/chats"}>
+            <Tab
+              className={styles.tab}
+              _selected={{
+                backgroundColor: "rgb(191, 63, 27)",
+                border: "solid 0.3px white",
+                color: "white",
+              }}
+            >
+              {messagesClicked ? (
                 <p onClick={handleClick}>Messages</p>
-              </Link>
-            ) : (
-              <Link to={"/chats"}>
-                <p onClick={handleClick}>Messages</p>
-              </Link>
-            )}
-          </Tab>
+              ) : (
+                <Link to={"/chats"}>
+                  <p onClick={handleClick}>Messages</p>
+                </Link>
+              )}
+            </Tab>
+          </Link>
         </div>
         <Tab _selected={{}}>
           <h1 className={styles.fractalus}>Fractalus</h1>
