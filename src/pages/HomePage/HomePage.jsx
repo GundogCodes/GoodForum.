@@ -45,6 +45,8 @@ export default function HomePage({ user, setUser }) {
     <div className={styles.HomePage}>
       {showModal ? (
         <FormModal
+          user={user}
+          setUser={setUser}
           title={"Create a New Forum"}
           showModal={showModal}
           setShowModal={setShowModal}
@@ -117,7 +119,7 @@ export default function HomePage({ user, setUser }) {
               Explore <SunIcon boxSize={4} color={"white"} height={"15px"} />
             </h1>
           </div>
-          <div>
+          <div className={styles.forumListDiv}>
             {forums ? (
               <div className={styles.forumList}>
                 {forums.map((forum) => {
@@ -142,6 +144,7 @@ export default function HomePage({ user, setUser }) {
               <></>
             )}
           </div>
+          {/* <div className={styles.createForumDiv}>yyyyy</div> */}
         </div>
       </div>
       <div className={styles.footer}>

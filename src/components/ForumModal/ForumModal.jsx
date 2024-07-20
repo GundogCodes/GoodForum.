@@ -3,6 +3,8 @@ import * as forumService from "../../../utilities/forum-api.cjs";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 export default function FormModal({
+  user,
+  setUser,
   title,
   showModal,
   setShowModal,
@@ -13,7 +15,8 @@ export default function FormModal({
     console.log("newForum is ", newForum);
     navigate(`forum/${newForum.title}`);
   }
-  const [newForum, setNewForum] = useState(null);
+  const [newForum, setNewForum] = useState();
+  const [existingForum, setExistingForum] = useState();
   const [isForum, setIsForum] = useState(false);
   const [newForumInfo, setNewForumInfo] = useState({
     title: "",
@@ -32,13 +35,22 @@ export default function FormModal({
   async function handleCreateForum(e) {
     e.preventDefault();
     try {
-      const newForum = await forumService.createForum(newForumInfo);
-      setNewForum(newForum);
-      if (newForum) {
+      const newForumI = await forumService.createForum(newForumInfo);
+      console.log("API RETURNS: ", newForumI);
+      if (newForumI.message) {
+        console.log(newForumI.message);
         setIsForum(true);
+        console.log("FORUMCHECK", newForumI.Forum);
+        setExistingForum(newForumI.Forum);
+      } else if (newForumI.newForum) {
         console.log(isForum);
+        setNewForum(newForumI.newForum);
+        setUser(newForumI.updatedUser);
+        setIsForum(false);
         setShowModal(false);
+        navigate(`/forum/${newForumI.newForum._id}`);
       }
+      //window.location.reload();
     } catch (error) {
       console.log("error: ", error);
     }
@@ -54,11 +66,21 @@ export default function FormModal({
         <h1>{title}</h1>
         <div className={styles.inputField}>
           <h3>{headings[0]}</h3>
-          <input name="title" type="text" onChange={handleChange} />
+          <input
+            maxLength={15}
+            name="title"
+            type="text"
+            onChange={handleChange}
+          />
           {headings[2] ? (
             <>
               <h3>{headings[1]}</h3>
-              <input name="topic" type="text" onChange={handleChange} />
+              <input
+                maxLength={15}
+                name="topic"
+                type="text"
+                onChange={handleChange}
+              />
             </>
           ) : (
             <></>
@@ -70,6 +92,7 @@ export default function FormModal({
             id={styles.description}
             type="text"
             onChange={handleChange}
+            maxLength={50}
           />
 
           <button
@@ -81,9 +104,13 @@ export default function FormModal({
           </button>
         </div>
         {isForum ? (
-          <h2 id={styles.gotToQuarry}>
-            <Link to={`forum/${newForum._id}`}>
-              Forum Created! Go to {newForum.title} Forum
+          <h2>
+            <Link
+              className={styles.gotToForum}
+              to={`forum/${existingForum._id}`}
+            >
+              Forum Already Exists! Go to Forum:{" "}
+              <span>{existingForum.title}</span>
             </Link>
           </h2>
         ) : (

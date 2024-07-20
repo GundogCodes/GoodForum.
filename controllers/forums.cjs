@@ -6,7 +6,9 @@ const Chat = require("../models/chat.cjs");
 
 exports.showAllForums = async (req, res) => {
   try {
-    const forumList = await Forum.find({});
+    const forumList = await Forum.find({})
+      .populate("posts")
+      .populate("founder");
 
     res.json(forumList);
   } catch (error) {
@@ -16,7 +18,9 @@ exports.showAllForums = async (req, res) => {
 
 exports.getForum = async (req, res) => {
   try {
-    const foundForum = Forum.findOne({ _id: req.params.id });
+    const foundForum = Forum.findOne({ _id: req.params.id })
+      .populate("posts")
+      .populate("founder");
     res.json(foundForum);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -29,17 +33,20 @@ exports.createNewForum = async (req, res) => {
     // console.log('*****************REQUEST*****************', req.user._id)
 
     const foundingUser = await User.findOne({ _id: req.user._id });
-    const forumCheck = await Forum.findOne({ topic: req.body.topic });
+    const forumCheck = await Forum.findOne({ topic: req.body.topic })
+      .populate("posts")
+      .populate("founder");
     // console.log('forum check: ', forumCheck)
     if (!foundingUser) {
-      res.json("please login or create an account to create a Quarry");
+      res.json("please login or create an account to create a Forum");
     } else if (forumCheck) {
       res.json({
-        message: "Quarry already exists!",
-        Quarry: forumCheck,
+        message: "Forum already exists!",
+        Forum: forumCheck,
       });
     } else {
       //console.log(req.user)
+      console.log("REQ.BODY", req.body);
       const newForum = await Forum.create(req.body);
       newForum.founder = foundingUser;
       newForum.members.addToSet(foundingUser);
@@ -56,7 +63,17 @@ exports.createNewForum = async (req, res) => {
         { $addToSet: { followedForums: newForum } },
         { new: true }
       );
-      res.json({ newForum });
+      const updatedUser = await User.findOne({ _id: req.user._id })
+        .populate("friends")
+        .populate("followedForums")
+        .populate("foundedForums")
+        .populate("posts")
+        .populate("chats");
+      console.log("RES.jSON:!!", {
+        updatedUser: updatedUser,
+        newForum: newForum,
+      });
+      res.status(200).json({ newForum: newForum, updatedUser: updatedUser });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

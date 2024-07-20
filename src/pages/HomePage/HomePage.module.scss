@@ -105,16 +105,12 @@
     }
     .explore {
       width: 15vw;
-      height: 60vh;
       margin-top: 1vh;
+      background-color: red;
       background-color: black;
-      max-width: 500px;
-      max-height: 600px;
-      overflow-y: scroll;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
+      .createForumDiv {
+        width: 15vw;
+        max-width: 500px;
       }
       .createPost {
         color: #ff6410;
@@ -131,36 +127,32 @@
         h1 {
           color: white;
           display: flex;
-          justify-content: flex-end;
-          width: 40%;
-          margin: 4px;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
         }
       }
-      .forumList {
-        color: rgb(200, 200, 200);
-        height: 60vh;
-        width: 100%;
-        overflow-y: scroll;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        &::-webkit-scrollbar {
-          display: none;
-        }
+      .forumListDiv {
+        .forumList {
+          color: rgb(200, 200, 200);
+          height: 60vh;
+          width: 100%;
 
-        p {
-          margin-top: 2px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          max-height: 50px;
-          margin-top: 2px;
-          height: 5vh;
-          width: 13vw;
-          border-bottom: solid 1px rgb(100, 100, 100);
-        }
-        p:hover {
-          height: 5.5vh;
-          width: 13.5vw;
+          p {
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 50px;
+            margin-top: 2px;
+            height: 5vh;
+            width: 13vw;
+            border-bottom: solid 1px rgb(100, 100, 100);
+          }
+          p:hover {
+            height: 5.5vh;
+            width: 13.5vw;
+          }
         }
       }
     }

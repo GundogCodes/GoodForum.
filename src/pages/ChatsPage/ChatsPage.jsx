@@ -1,5 +1,5 @@
 import styles from "./ChatsPage.module.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 
 import io from "socket.io-client";
@@ -206,7 +206,11 @@ export default function ChatsPage({ user, setUser }) {
           </div>
         </>
       ) : (
-        <h1>Not LoggedIn </h1>
+        <Link to={"/login"}>
+          <h1 className={styles.signUpPrompt}>
+            Sign Up or Login to Chat with Users!{" "}
+          </h1>
+        </Link>
       )}
     </div>
   );
