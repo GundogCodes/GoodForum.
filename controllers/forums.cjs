@@ -213,12 +213,12 @@ exports.postToForum = async (req, res) => {
         { $addToSet: { posts: createdPost } },
         { new: true }
       ).populate("posts");
-      await User.findOneAndUpdate(
+      const updatedUser = await User.findOneAndUpdate(
         { _id: req.user._id },
         { $inc: { numOfPosts: 1 }, $addToSet: { posts: createdPost } },
         { new: true }
       );
-      res.json(updatedForum);
+      res.json({ updatedForum: updatedForum, updatedUser: updatedUser });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

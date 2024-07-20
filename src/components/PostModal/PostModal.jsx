@@ -75,7 +75,7 @@ export default function PostModal({
       if (isDarkMode) {
         current.style.backgroundColor = "#ff6410";
       } else {
-        current.style.backgroundColor = "rgb(180,217,247)";
+        current.style.backgroundColor = "rgb(191, 63, 27)";
         current.style.color = "white";
       }
     }
@@ -98,13 +98,15 @@ export default function PostModal({
     if (postData.text !== null) {
       try {
         const newForum = await forumService.postToForum(id, postData);
-        console.log("updated Forum: ", newForum);
-        const flippedPosts = newForum.posts.reverse();
-        newForum.posts = flippedPosts;
+        console.log("updated Forum: ", newForum.updatedForum);
+        const flippedPosts = newForum.updatedForum.posts.reverse();
+        newForum.updatedForum.posts = flippedPosts;
         console.log("FLIPPED POSTS", flippedPosts);
-        console.log("UPDATED FLIPPED FORUM", newForum);
-        setForumPage(newForum);
+        console.log("UPDATED FLIPPED FORUM", newForum.updatedForum);
+        setForumPage(newForum.updatedForum);
+        setUser(newForum.updatedUser);
         setShowModal(false);
+        window.location.reload();
       } catch (error) {
         console.log({ error: error });
       }
@@ -160,92 +162,96 @@ export default function PostModal({
 
   return (
     <div className={styles.PostModal}>
-      <div className={styles.form}>
-        {/* If User is on the Forum Page show this PostModal otherwise */}
-        <form onChange={handleChange}>
-          <p onClick={handleXClick}>x</p>
-          {page ? (
-            <h1>Post to {page.title}</h1>
-          ) : (
-            <>
-              <h3>Your Quarries </h3>
-              <div className={styles.forumList}>
-                {user.followedForums.map((forum) => {
-                  return (
-                    <h4
-                      onClick={handleForumSelection}
-                      id={`${forum._id}`}
-                      name={forum.title}
-                    >
-                      {forum.title}
-                    </h4>
-                  );
-                })}
+      {user ? (
+        <div className={styles.form}>
+          {/* If User is on the Forum Page show this PostModal otherwise */}
+          <form onChange={handleChange}>
+            <p onClick={handleXClick}>x</p>
+            {page ? (
+              <h1>Post to {page.title}</h1>
+            ) : (
+              <>
+                <h3>Your Forums </h3>
+                <div className={styles.forumList}>
+                  {user.followedForums.map((forum) => {
+                    return (
+                      <h4
+                        onClick={handleForumSelection}
+                        id={`${forum._id}`}
+                        name={forum.title}
+                      >
+                        {forum.title}
+                      </h4>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+            <h2>Title</h2>
+            <input maxLength={15} name="title" type="text" required />
+            <h6 className={styles.line}> </h6>
+            <header>
+              <h5 id="Text" onClick={handlePostOptions}>
+                Text
+              </h5>
+              <h5 id="Image" onClick={handlePostOptions}>
+                Image
+              </h5>
+              <h5 id="Link" onClick={handlePostOptions}>
+                Link
+              </h5>
+            </header>
+            {showText ? (
+              <>
+                <h2>Text</h2>
+                <input id={styles.text} name="text" type="text" />
+              </>
+            ) : (
+              <></>
+            )}
+            {showImage ? (
+              <>
+                <h2>Image</h2>
+                {showImage ? <img src="" /> : <img src="" />}
+                <section>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      setFile(e.target.files[0]);
+                    }}
+                    className={styles.fileInput}
+                  />
+                  <button className={styles.upload} onClick={uploadPic}>
+                    {isFile ? "uploaded!" : "upload?"}
+                  </button>
+                </section>
+              </>
+            ) : (
+              <></>
+            )}
+            {showLink ? (
+              <div className={styles.linkDiv}>
+                <h2>Link</h2>
+                <input></input>
               </div>
-            </>
-          )}
-          <h2>Title</h2>
-          <input name="title" type="text" required />
-          <h6 className={styles.line}> </h6>
-          <header>
-            <h5 id="Text" onClick={handlePostOptions}>
-              Text
-            </h5>
-            <h5 id="Image" onClick={handlePostOptions}>
-              Image
-            </h5>
-            <h5 id="Link" onClick={handlePostOptions}>
-              Link
-            </h5>
-          </header>
-          {showText ? (
-            <>
-              <h2>Text</h2>
-              <input id={styles.text} name="text" type="text" />
-            </>
-          ) : (
-            <></>
-          )}
-          {showImage ? (
-            <>
-              <h2>Image</h2>
-              {showImage ? <img src="" /> : <img src="" />}
-              <section>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => {
-                    setFile(e.target.files[0]);
-                  }}
-                  className={styles.fileInput}
-                />
-                <button className={styles.upload} onClick={uploadPic}>
-                  {isFile ? "uploaded!" : "upload?"}
-                </button>
-              </section>
-            </>
-          ) : (
-            <></>
-          )}
-          {showLink ? (
-            <div className={styles.linkDiv}>
-              <h2>Link</h2>
-              <input></input>
-            </div>
-          ) : (
-            <></>
-          )}
-          {page ? (
-            <button onClick={handlePostToForum} type="submit">
-              Post
-            </button>
-          ) : (
-            <button onClick={handleMakeAPost} type="submit">
-              Post
-            </button>
-          )}
-        </form>
-      </div>
+            ) : (
+              <></>
+            )}
+            {page ? (
+              <button onClick={handlePostToForum} type="submit">
+                Post
+              </button>
+            ) : (
+              <button onClick={handleMakeAPost} type="submit">
+                Post
+              </button>
+            )}
+          </form>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

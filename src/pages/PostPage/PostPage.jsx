@@ -196,7 +196,7 @@ export default function PostPage({ user }) {
                   color: likedClicked
                     ? darkMode
                       ? "#FF6410"
-                      : "rgb(180,217,247)"
+                      : "rgb(191, 63, 27)"
                     : "inherit",
                 }}
               >
@@ -209,7 +209,7 @@ export default function PostPage({ user }) {
                   color: dislikedClicked
                     ? darkMode
                       ? "#FF6410"
-                      : "rgb(180,217,247)"
+                      : "rgb(191, 63, 27)"
                     : "inherit",
                 }}
               >
