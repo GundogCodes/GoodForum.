@@ -91,7 +91,6 @@ exports.showAforum = async (req, res) => {
     const forum = await Forum.findOne({ _id: req.params.id })
       .populate("posts")
       .populate("founder");
-    const forumPosts = await Post.find({ forum: forum._id }).populate("sender");
     res.json(forum);
   } catch (error) {
     res.status(400).json({ message: error.message });

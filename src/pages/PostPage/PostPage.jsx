@@ -55,7 +55,7 @@ export default function PostPage({ user }) {
       }
     })();
   }, [id]);
-
+  console.log("POST: ", post);
   useEffect(() => {
     const fetchUsernames = async () => {
       try {
@@ -121,7 +121,9 @@ export default function PostPage({ user }) {
         newComment,
         id
       );
+      console.log("RETURN FROM ADDING COMMENT", updatedCommentWithPost);
       setPost(updatedCommentWithPost.updatedPost);
+      window.location.reload();
     } catch (error) {
       console.log({ error: error });
     }
@@ -129,6 +131,7 @@ export default function PostPage({ user }) {
   }
 
   const zippedComments = zip(post?.comments || [], commentUsernames);
+
   return (
     <div className={styles.PostPage}>
       {post ? (
@@ -263,11 +266,15 @@ export default function PostPage({ user }) {
                 }`}
               />
             </Link>
-            <h2>{post.sender.username}</h2>
-            {post.sender.posts.length > 0 && (
-              <h2>Posts: {post.sender.posts.length}</h2>
+            {post.sender ? (
+              <>
+                <h2>{post.sender.username}</h2>
+                <h2>Posts: {post.sender.posts.length}</h2>
+                <h2>Founded Forums: {post.sender.foundedForums.length}</h2>
+              </>
+            ) : (
+              <></>
             )}
-            <h2>Founded Forums: {post.sender.foundedForums.length}</h2>
           </>
         ) : (
           <>Post Not Found</>

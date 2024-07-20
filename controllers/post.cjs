@@ -232,7 +232,10 @@ exports.commentToPost = async (req, res) => {
         { _id: req.params.id },
         { $push: { comments: createComment } },
         { new: true }
-      ).populate("comments");
+      )
+        .populate("comments")
+        .populate("sender")
+        .populate("forum");
       const senders = updatedPost.comments.map((comment) => ({
         sender: comment.sender,
         text: comment.text,
