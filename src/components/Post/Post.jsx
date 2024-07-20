@@ -45,15 +45,17 @@ export default function Post({
       }
     })();
   }, []);
+  console.log("USER: ", user);
   /********************************************** FUNCTIONS  **********************************************/
   function handlePostClick(e) {
     const id = e.target.ref;
     // navigate(`/post/${id}`);
   }
-  function handleLikeClicked(e) {
+  async function handleLikeClicked(e) {
     console.log("liked");
     console.log(likeRef.current.id);
     const postId = likeRef.current.id;
+    setLikedClicked(true);
     // if disliked already clicked, decrement dislikes and increment liked
     if (dislikeClicked) {
       //---backend---//
@@ -61,14 +63,18 @@ export default function Post({
       //if already liked and clicked again decrement likes
     } else if (likedClicked) {
       //---backend---//
+      const unlikePost = await postAPIs.unlikePost(postId);
+      setLikedClicked(false);
       //---frontend---//
       //also else if disliked and liked not clicked then increment likes
     } else if (!dislikeClicked && !likedClicked) {
       //---backend---//
+      const likePost = await postAPIs.likePost(postId);
+      setLikedClicked(true);
       //---frontend---//
     }
   }
-  function handleDislikeClicked(e) {
+  async function handleDislikeClicked(e) {
     console.log("disliked");
     console.log(dislikeRef.current.id);
     const postId = dislikeRef.current.id;
