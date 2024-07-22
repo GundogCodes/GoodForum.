@@ -30,6 +30,7 @@
       width: 90%;
       display: flex;
       align-items: center;
+      font-weight: bold;
       justify-content: center;
       border-bottom: solid 1px rgb(100, 100, 100);
     }
@@ -112,7 +113,7 @@
       animation: fadeIn 2s;
       list-style-type: none;
       position: absolute;
-      height: 60vh;
+
       flex-direction: column;
       width: 70vw;
       max-width: 1400px;
@@ -254,7 +255,8 @@
       color: rgb(191, 63, 27);
     }
     h1 {
-      color: white;
+      color: black;
+      font-weight: bold;
       width: 90%;
       display: flex;
       justify-content: center;

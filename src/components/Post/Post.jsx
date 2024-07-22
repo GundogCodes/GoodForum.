@@ -36,15 +36,17 @@ export default function Post({
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
     (() => {
-      for (let likedPost of user.likedPosts) {
-        if (id === likedPost) {
-          console.log("user has liked this post");
-          setUserLiked(true);
+      if (user) {
+        for (let likedPost of user.likedPosts) {
+          if (id === likedPost) {
+            console.log("user has liked this post");
+            setUserLiked(true);
+          }
         }
-      }
-      for (let dislikedPost of user.dislikedPosts) {
-        if (id === dislikedPost) {
-          setUserDisliked(true);
+        for (let dislikedPost of user.dislikedPosts) {
+          if (id === dislikedPost) {
+            setUserDisliked(true);
+          }
         }
       }
     })();

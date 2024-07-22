@@ -23,7 +23,7 @@
     align-items: center;
     font-family: sans-serif;
     font-weight: bold;
-    color: white;
+    color: black;
     &::before {
       content: "";
       position: absolute;
@@ -50,12 +50,12 @@
       top: 6px;
       width: calc(100% - 12px);
       height: calc(100% - 10px);
-      background: rgb(16, 18, 19);
+      background: whitesmoke;
       border-radius: 5px;
     }
   }
   .signUpPrompt:hover {
-    color: rgb(191, 63, 27);
+    color: rgb(180, 217, 247);
   }
   .ChatsFlow {
     width: 70vw;

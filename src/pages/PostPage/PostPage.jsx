@@ -251,7 +251,7 @@ export default function PostPage({ user }) {
           </section>
         </>
       ) : (
-        <div>Post Deleted</div>
+        <div></div>
       )}
       <div className={styles.posterInfo}>
         {post ? (
@@ -277,7 +277,7 @@ export default function PostPage({ user }) {
             )}
           </>
         ) : (
-          <>Loading...</>
+          <p className={styles.loading}>Loading...</p>
         )}
       </div>
     </div>

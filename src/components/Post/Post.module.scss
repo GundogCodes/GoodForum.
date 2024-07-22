@@ -114,26 +114,38 @@
         margin-left: 5px;
       }
       .userdisliked {
-        color: red;
+        color: rgb(191, 63, 27);
+        border-radius: 5px;
+      }
+      .userdisliked:hover {
+        color: white;
+        background-color: rgb(191, 63, 27);
       }
       .userliked {
-        color: #ff6410;
+        color: royalblue;
+        border-radius: 5px;
+      }
+      .userliked:hover {
+        color: white;
+        background-color: royalblue;
       }
       .likes {
-        background-color: rgb(39, 44, 19);
+        background-color: white;
         margin-left: 10px;
         font-size: 15px;
         width: 40px;
-        color: white;
+        color: black;
         border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
       }
+      .dislikes:hover,
       .likes:hover {
-        background-color: #ff6410;
         border-radius: 7px;
         cursor: pointer;
+        background-color: cadetblue;
+        color: white;
       }
     }
     .postComments {

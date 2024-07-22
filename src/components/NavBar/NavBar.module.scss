@@ -27,6 +27,9 @@
         font-size: min(30px, 20px);
         font-weight: bold;
       }
+      .date:hover {
+        cursor: default;
+      }
     }
     .forumDes {
       max-width: 450px;
