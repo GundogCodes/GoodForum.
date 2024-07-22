@@ -1,13 +1,12 @@
 .PostPage {
-  background-color: rgb(16, 18, 19);
+  background-color: whitesmoke;
   display: flex;
   justify-content: flex-start;
   max-height: 3000px;
   width: 100vw;
-  max-width: 2500px;
+  max-width: 2650px;
   margin: 0 auto;
   .allForumsAside {
-    margin-top: 10px;
     border-top: solid 1px rgb(100, 100, 100);
     .pageTitle {
       font-size: 50px;
@@ -43,10 +42,8 @@
     }
   }
   section {
-    margin-top: 2vh;
-    //border: solid 1px rgb(100, 100, 100);
     border-radius: 5px;
-    background-color: rgb(16, 18, 19);
+    background-color: whitesmoke;
     width: 70vw;
     max-width: 1500px;
     display: flex;
@@ -112,7 +109,7 @@
       max-width: 1400px;
       border-left: solid 0.3px rgb(100, 100, 100);
       border-right: solid 0.3px rgb(100, 100, 100);
-      background-color: rgb(36, 38, 39);
+      background-color: white;
     }
     .interactions {
       display: flex;
