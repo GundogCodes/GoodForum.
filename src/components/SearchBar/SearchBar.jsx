@@ -1,3 +1,4 @@
+import { ChevronRightIcon } from "@chakra-ui/icons";
 import styles from "./SearchBar.module.scss";
 import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -70,7 +71,7 @@ export default function SearchBar({ forums }) {
                 onClick={handleLiClick}
                 className={styles.searchResult}
               >
-                {result.title}
+                <ChevronRightIcon /> {result.title}
               </aside>
             ) : (
               <></>

@@ -82,7 +82,7 @@ export default function LoginPage({ user, setUser }) {
       {showDetails ? (
         <div className={styles.showDetails}>
           <div className={styles.desModal}>
-            <h1>Fractalus</h1>
+            <h1>GoodForum.</h1>
             <div className={styles.desText}>
               <h2>
                 is a dynamic web application designed to provide a comprehensive
@@ -118,7 +118,7 @@ export default function LoginPage({ user, setUser }) {
       )}
       {showDetails ? (
         <CloseIcon
-          color={"white"}
+          color={"rgb(191, 63, 27)"}
           width={"20px"}
           height={"20px"}
           zIndex={"10"}
@@ -131,13 +131,13 @@ export default function LoginPage({ user, setUser }) {
         />
       ) : (
         <QuestionIcon
-          color={"white"}
+          color={"black"}
           width={"20px"}
           height={"20px"}
           zIndex={"10"}
           position={"absolute"}
-          right={"1vw"}
-          top={"5vh"}
+          right={"15.6vw"}
+          top={"16vh"}
           onClick={() => {
             setDetails(!showDetails);
           }}
@@ -150,7 +150,7 @@ export default function LoginPage({ user, setUser }) {
             src="../../../public/images/logo.png"
           ></img> */}
           <div className={styles.hDiv}>
-            <h1> Welcome to Fractalus</h1>
+            <h1> Welcome to GoodForum.</h1>
             <h2>Unveiling Infinite Possibilities</h2>
           </div>
         </div>
@@ -219,24 +219,63 @@ export default function LoginPage({ user, setUser }) {
           )}
           <p className={styles.errorMessage}>&nbsp;{error}</p>
           <h3 className={styles.signupButton} onClick={handleSignupClick}>
-            {signupClicked ? "Login" : "Sign Up Here"}
+            {signupClicked ? "Login" : "Don't Have An Account? Sign Up Here"}
           </h3>
         </div>
       </div>
       <div className={styles.rightSide}>
         {randomNumber === 0 ? (
-          <img src="https://i.pinimg.com/originals/dd/cb/1f/ddcb1fa912f785e19329d4dde984d8ec.gif" />
+          <h2 className={styles.greeting}>
+            Today is another step forward on your journey towards achieving your
+            dreams. You have the power within you to turn aspirations into
+            reality through determination and perseverance.
+          </h2>
         ) : (
           <></>
         )}
 
         {randomNumber === 1 ? (
-          <img src="https://i.pinimg.com/originals/da/5f/6c/da5f6cd0bc4a500bfc73dab6f7a5f8ac.gif" />
+          <h2 className={styles.greeting}>
+            Your potential is boundless, waiting to be unleashed. Embrace your
+            unique talents and abilities, knowing that you have the capability
+            to make a profound impact in your community and beyond.
+          </h2>
         ) : (
           <></>
         )}
         {randomNumber === 2 ? (
-          <img src="https://i.pinimg.com/originals/27/92/44/2792441dd9436b6d5fc0028ffcaf733e.gif" />
+          <h2 className={styles.greeting}>
+            Believe wholeheartedly in yourself and your capabilities. You are
+            worthy of success, and each day presents new opportunities for you
+            to showcase your skills and talents to the world.
+          </h2>
+        ) : (
+          <></>
+        )}
+        {randomNumber === 3 ? (
+          <h2 className={styles.greeting}>
+            You deserve to experience joy, fulfillment, and happiness in
+            abundance. Recognize the beauty in your journey and celebrate the
+            milestones, big and small, that contribute to your personal growth.
+          </h2>
+        ) : (
+          <></>
+        )}
+        {randomNumber === 4 ? (
+          <h2 className={styles.greeting}>
+            You are valued and cherished for who you are. Embrace your
+            authenticity and celebrate the qualities that make you unique. Your
+            presence enriches the communities you belong to.
+          </h2>
+        ) : (
+          <></>
+        )}
+        {randomNumber === 5 ? (
+          <h2 className={styles.greeting}>
+            Trust in the path you are on, knowing that every decision and action
+            you take is leading you towards greater fulfillment and purpose.
+            Your journey is unique and worthy of embracing with optimism.
+          </h2>
         ) : (
           <></>
         )}

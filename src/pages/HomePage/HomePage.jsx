@@ -175,13 +175,22 @@ export default function HomePage({ user, setUser }) {
               <h3 id={styles.headings}>Follow Us</h3>
               <div className={styles.linksDiv}>
                 <a href="https://linkedin.com">
-                  <img src="https://www.tforcelogistics.com/wp-content/uploads/2020/06/linkedin-1.png" />
+                  <img
+                    id={styles.links}
+                    src="https://www.tforcelogistics.com/wp-content/uploads/2020/06/linkedin-1.png"
+                  />
                 </a>
                 <a href="https://facebook.com">
-                  <img src="https://www.tforcelogistics.com/wp-content/uploads/2020/06/facebook.png" />
+                  <img
+                    id={styles.links}
+                    src="https://www.tforcelogistics.com/wp-content/uploads/2020/06/facebook.png"
+                  />
                 </a>
                 <a href="https://x.com">
-                  <img src="https://www.tforcelogistics.com/wp-content/uploads/2023/10/icons8-twitterx-24.png" />
+                  <img
+                    id={styles.links}
+                    src="https://www.tforcelogistics.com/wp-content/uploads/2023/10/icons8-twitterx-24.png"
+                  />
                 </a>
               </div>
             </div>

@@ -121,30 +121,33 @@ export default function ChatsPage({ user, setUser }) {
               <>
                 {user.friends.map((friend) => {
                   return (
-                    <h1>
-                      {friend.profileImage ? (
-                        <img
-                          ref={selectedUser}
-                          onClick={getUserChats}
+                    <>
+                      <h2>Your Chats</h2>
+                      <h1>
+                        {friend.profileImage ? (
+                          <img
+                            ref={selectedUser}
+                            onClick={getUserChats}
+                            id={`${friend._id}`}
+                            src={`/profilePics/${friend.profileImage}`}
+                          />
+                        ) : (
+                          <img
+                            ref={selectedUser}
+                            onClick={getUserChats}
+                            id={`${friend._id}`}
+                            src={`/src/assets/userFunc/profileImage.png`}
+                          />
+                        )}
+                        <p
+                          onClick={goToUserPage}
+                          className={styles.friendName}
                           id={`${friend._id}`}
-                          src={`/profilePics/${friend.profileImage}`}
-                        />
-                      ) : (
-                        <img
-                          ref={selectedUser}
-                          onClick={getUserChats}
-                          id={`${friend._id}`}
-                          src={`/src/assets/userFunc/profileImage.png`}
-                        />
-                      )}
-                      <p
-                        onClick={goToUserPage}
-                        className={styles.friendName}
-                        id={`${friend._id}`}
-                      >
-                        {friend.username}
-                      </p>
-                    </h1>
+                        >
+                          {friend.username}
+                        </p>
+                      </h1>
+                    </>
                   );
                 })}
               </>

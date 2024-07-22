@@ -1,7 +1,7 @@
 .ChatsPage {
-  background-color: rgb(16, 18, 19);
+  background-color: whitesmoke;
   position: absolute;
-  top: 31.5px;
+  top: 15vh;
   width: 100vw;
   height: 95vh;
   display: flex;
@@ -61,7 +61,6 @@
     width: 70vw;
     height: 85vh;
     border-radius: 7px;
-    background-color: rgb(28, 28, 28);
     overflow-y: scroll;
     overflow-x: hidden;
     -ms-overflow-style: none;
@@ -190,9 +189,6 @@
   }
 
   .ChatsAside {
-    background-color: rgb(28, 28, 28);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
     border-radius: 7px;
     height: 85vh;
     width: 15vw;
@@ -206,6 +202,11 @@
     border: solid 1px rgb(100, 100, 100);
     &::-webkit-scrollbar {
       display: none;
+    }
+    h2 {
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
     }
     h1 {
       width: 10vw;

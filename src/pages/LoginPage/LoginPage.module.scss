@@ -6,19 +6,25 @@
   height: 100vh;
   max-height: 3000px;
   width: 100vw;
-  //max-width: 1940px;
   margin: 0 auto;
   color: white;
-  background-color: black;
+
+  background: rgb(240, 240, 240);
+  background: linear-gradient(
+    180deg,
+    rgba(240, 240, 240, 1) 44%,
+    rgba(177, 176, 176, 1) 100%
+  );
   max-height: 3000px;
   width: 100vw;
-  max-width: 2500px;
+  max-width: 2650px;
   margin: 0 auto;
   .showDetails {
     z-index: 5;
     position: absolute;
     width: 100vw;
     height: 100vh;
+    top: 0px;
     background-color: rgba(
       255,
       255,
@@ -36,13 +42,16 @@
       flex-direction: column;
       margin-top: 20vh;
       width: 50%;
-      background-color: rgb(16, 18, 19);
+      background-color: whitesmoke;
+      color: black;
       border-radius: 7px;
       padding: 20px;
       height: 66%;
+
       h1 {
         font-size: 40px;
-        color: rgb(191, 63, 27);
+        font-weight: bolder;
+        color: black;
       }
       .desText {
         font-size: 15px;
@@ -53,9 +62,10 @@
     }
   }
   .leftSide {
-    border-radius: 7px;
-    background-color: rgb(16, 18, 19);
-    border: solid 1px rgb(100, 100, 100);
+    border-radius: 4px;
+    background-color: whitesmoke;
+    color: black;
+    border: solid 1px black;
     width: 30%;
     height: 80%;
     animation: myAni 0.34s;
@@ -63,7 +73,7 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     .hDiv {
       display: flex;
       align-items: center;
@@ -91,7 +101,7 @@
     }
     .loginForm,
     .signUpForm {
-      height: 50vh;
+      height: 30vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -99,12 +109,12 @@
       p,
       .inputText,
       .submit {
-        width: 40%;
+        width: 65%;
         margin-top: 10px;
         border-radius: 5px;
         max-width: 500px;
-        background-color: rgb(16, 18, 19);
-        color: white;
+        color: black;
+        font-weight: bold;
       }
       .submit:hover {
         color: rgb(191, 63, 27);
@@ -114,13 +124,15 @@
         color: rgb(191, 63, 27);
       }
       .inputText {
+        background-color: rgb(192, 192, 192);
         color: white;
-        border: solid 1px white;
+        border: solid 1px black;
         font-size: 15px;
         padding: 3px;
         padding-right: 3px;
         padding-left: 3px;
-        border-radius: 0px;
+        border-radius: 5px;
+        width: 65%;
       }
     }
     .signupButton {
@@ -135,11 +147,16 @@
     }
   }
   .rightSide {
-    width: 150px;
     height: 150px;
+    width: 25vw;
+    padding: 5px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    .greeting {
+      color: black;
+      font-weight: 300;
+    }
   }
 }
 

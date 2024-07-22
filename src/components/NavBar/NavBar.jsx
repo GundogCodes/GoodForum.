@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogOut from "../Logout/Logout";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +7,27 @@ import styles from "./NavBar.module.scss";
 
 export default function NavBar({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
+  /******************************************** FUNCTIONS ********************************************/
+  function formatDate(date) {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return date.toLocaleDateString(undefined, options);
+  }
   /******************************************** STATES ********************************************/
   const [youClicked, setYouClicked] = useState(false);
+  const [date, setDate] = useState();
   /******************************************** USE EFFECTS ********************************************/
-  /******************************************** FUNCTIONS ********************************************/
+  useEffect(() => {
+    (async () => {
+      const today = new Date();
+      const formattedDate = formatDate(today);
+      setDate(formattedDate);
+    })();
+  }, []);
 
   return (
     <Tabs
@@ -19,7 +36,21 @@ export default function NavBar({ user, setUser }) {
       color="white"
       className={styles.nav}
     >
-      <TabList height="4vh" maxHeight="50px" className={styles.tabList}>
+      <TabList height="15vh" maxHeight="600px" className={styles.tabList}>
+        <div className={styles.emptyArea}>
+          {date ? <h2 className={styles.date}>{date}</h2> : <></>}
+        </div>
+        <Tab _selected={{}}>
+          <Link to={"/"}>
+            <h1 className={styles.fractalus}>GoodForum.</h1>
+          </Link>
+        </Tab>
+        <Tab _selected={{}}>
+          <p className={styles.forumDes}>
+            <h2>Where the conversations are</h2>
+            <h2>Good for you</h2>
+          </p>
+        </Tab>
         <div className={styles.options}>
           <Link to={"/user"}>
             <Tab
@@ -35,6 +66,7 @@ export default function NavBar({ user, setUser }) {
                 <p>
                   {user && user.profileImage ? (
                     <img
+                      id={styles.userImage}
                       style={{
                         width: "20px",
                         height: "20px",
@@ -44,6 +76,7 @@ export default function NavBar({ user, setUser }) {
                     />
                   ) : (
                     <img
+                      id={styles.userImage}
                       style={{
                         width: "20px",
                         height: "20px",
@@ -102,13 +135,10 @@ export default function NavBar({ user, setUser }) {
               <p>Messages</p>
             </Tab>
           </Link>
+          <Tab className={styles.tab} _selected={{}}>
+            <LogOut user={user} setUser={setUser} />
+          </Tab>
         </div>
-        <Tab _selected={{}}>
-          <h1 className={styles.fractalus}>Fractalus</h1>
-        </Tab>
-        <Tab className={styles.tabLogout} _selected={{}}>
-          <LogOut user={user} setUser={setUser} />
-        </Tab>
       </TabList>
     </Tabs>
   );

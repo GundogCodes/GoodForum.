@@ -27,9 +27,8 @@
     max-height: 900px;
     position: absolute;
     top: 20vh;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    color: black;
     border-radius: 7px;
     width: 60vw;
     height: 70vh;
@@ -37,7 +36,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(16, 18, 19);
+    background-color: whitesmoke;
     border: solid 1px rgb(100, 100, 100);
   }
   p {
@@ -76,7 +75,7 @@
       border-color: white;
       font-weight: bold;
       margin-top: 10px;
-      color: white;
+      color: black;
     }
 
     input {
