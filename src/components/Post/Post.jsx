@@ -32,6 +32,18 @@ export default function Post({
   const [userDisliked, setUserDisliked] = useState();
   const [postNumOfLikes, setPostNumOfLikes] = useState(likes);
   const [postNumOfDislikes, setPostNumOfDislikes] = useState(dislikes);
+  const [post, setPost] = useState({
+    postId: id,
+    postTitle: title,
+    postForum: forum,
+    postSender: sender,
+    postComments: comments,
+    postLikes: likes,
+    postDislikes: dislikes,
+    postImage: image,
+    postText: text,
+    postLink: link,
+  });
   /********************************************** HANDLE STATES  **********************************************/
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
@@ -44,19 +56,20 @@ export default function Post({
       }
     })();
   }, []);
-  useEffect(() => {
-    (async () => {
-      try {
-        const post = await postAPIs.getPost(id);
-        setForumTitle(post.forum.title);
-        setForumId(post.forum._id);
-        setPostSender(post.sender.username);
-        setPostCreatedAt(post.createdAt);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const post = await postAPIs.getPost(id);
+  //       setForumTitle(post.forum.title);
+  //       setForumId(post.forum._id);
+  //       // setPostSender(post.sender.username);
+  //       // setPostCreatedAt(post.createdAt);
+  //       setPost(post);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, []);
   //console.log("USER: ", user);
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
@@ -64,14 +77,31 @@ export default function Post({
     console.log(likeRef.current.id);
     const postId = likeRef.current.id;
     // if disliked already clicked, decrement dislikes and increment liked
-    //---backend---//
-    //---frontend---//
+    if (userDisliked && !userLiked) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postLikes: prevPost.postLikes + 1,
+        postDislikes: prevPost.postDislikes - 1,
+      }));
+      setUserLiked(true);
+      setUserDisliked(false);
+    } else if (userLiked && !userDisliked) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postLikes: prevPost.postLikes - 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(false);
+    } else if (!userLiked && !userDisliked) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postLikes: prevPost.postLikes + 1,
+      }));
+      setUserLiked(true);
+      setUserDisliked(false);
+    }
     //if already liked and clicked again decrement likes
-    //---backend---//
-    //---frontend---//
     //also else if disliked and liked not clicked then increment likes
-    //---backend---//
-    //---frontend---//
   }
   async function handleDislikeClicked(e) {
     // console.log("disliked");
@@ -86,14 +116,14 @@ export default function Post({
       <div className={styles.upper}>
         <div className={styles.upperLeft}>
           <Link to={`/forum/${postForumId}`}>
-            {postForumTitle && (
-              <h3 className={styles.postForumTitle}>{postForumTitle}</h3>
+            {post && post.postForum && (
+              <h3 className={styles.postForumTitle}>{post.postForum}</h3>
             )}
           </Link>
-          {postSender && (
-            <h4 className={styles.postSenderName}>{postSender}</h4>
+          {post && post.postSender && (
+            <h3 className={styles.postSenderName}>{post.postSender}</h3>
           )}
-          <h2 className={styles.postTitle}>{title}</h2>
+          <h2 className={styles.postTitle}>{post.postTitle}</h2>
         </div>
         <div className={styles.upperRight}>
           {createdAt && (
@@ -103,7 +133,11 @@ export default function Post({
       </div>
       <div className={styles.body}>
         <Link to={`/post/${id}`}>
-          {text && <p className={styles.postText}>{text}</p>}
+          {post && post.postText ? (
+            <p className={styles.postText}>{post.postText}</p>
+          ) : (
+            <></>
+          )}
           {image && (
             <img
               className={styles.postImage}
@@ -122,7 +156,7 @@ export default function Post({
               id={`${id}`}
               className={styles.userliked}
             >
-              <ChevronUpIcon /> {postNumOfLikes}
+              <ChevronUpIcon /> {post.postLikes}
             </h4>
           ) : (
             <h4
@@ -131,7 +165,7 @@ export default function Post({
               id={`${id}`}
               className={styles.likes}
             >
-              <ChevronUpIcon /> {postNumOfLikes}
+              <ChevronUpIcon /> {post.postLikes}
             </h4>
           )}
           {user && userDisliked ? (
@@ -141,7 +175,7 @@ export default function Post({
               id={`${id}`}
               className={styles.userdisliked}
             >
-              <ChevronDownIcon /> {postNumOfDislikes}
+              <ChevronDownIcon /> {post.postDislikes}
             </h4>
           ) : (
             <h4
@@ -150,11 +184,19 @@ export default function Post({
               id={`${id}`}
               className={styles.dislikes}
             >
-              <ChevronDownIcon /> {postNumOfDislikes}
+              <ChevronDownIcon /> {post.postDislikes}
             </h4>
           )}
           <h4>
-            <ChatIcon /> {` ${comments.length}`}
+            {post && post.postComments ? (
+              <>
+                <ChatIcon /> {` ${post.postComments.length}`}
+              </>
+            ) : (
+              <>
+                <ChatIcon /> {` ${post.postComments.length}`}
+              </>
+            )}
           </h4>
         </div>
         {/* {comments[0] ? (

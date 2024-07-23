@@ -85,13 +85,13 @@
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      color: black;
       font-size: min(60vw, 20px);
       padding: 10px;
       height: 40%;
       border-radius: 5px;
-      min-width: 790px;
-      width: 25vw;
+      min-width: 50vw;
+      color: black;
+      max-width: 1200px;
     }
   }
   .bottom {
