@@ -90,7 +90,9 @@ export default function PostPage({ user }) {
     setNewComment({ text: e.target.value });
   }
 
-  async function handleLike() {}
+  async function handleLike() {
+    console.log("git change test");
+  }
 
   async function handleDislike() {}
 
