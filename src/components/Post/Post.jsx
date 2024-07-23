@@ -28,26 +28,19 @@ export default function Post({
   const [postForumId, setForumId] = useState();
   const [postSender, setPostSender] = useState();
   const [createdAt, setPostCreatedAt] = useState();
-  const [likedClicked, setLikedClicked] = useState(false);
-  const [dislikeClicked, setDislikeClicked] = useState(false);
   const [userLiked, setUserLiked] = useState();
   const [userDisliked, setUserDisliked] = useState();
+  const [postNumOfLikes, setPostNumOfLikes] = useState(likes);
+  const [postNumOfDislikes, setPostNumOfDislikes] = useState(dislikes);
   /********************************************** HANDLE STATES  **********************************************/
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
     (() => {
-      if (user) {
-        for (let likedPost of user.likedPosts) {
-          if (id === likedPost) {
-            console.log("user has liked this post");
-            setUserLiked(true);
-          }
-        }
-        for (let dislikedPost of user.dislikedPosts) {
-          if (id === dislikedPost) {
-            setUserDisliked(true);
-          }
-        }
+      if (user && user.likedPosts.includes(id)) {
+        setUserLiked(true);
+      }
+      if (user && user.dislikedPosts.includes(id)) {
+        setUserDisliked(true);
       }
     })();
   }, []);
@@ -64,12 +57,8 @@ export default function Post({
       }
     })();
   }, []);
-  console.log("USER: ", user);
+  //console.log("USER: ", user);
   /********************************************** FUNCTIONS  **********************************************/
-  function handlePostClick(e) {
-    const id = e.target.ref;
-    // navigate(`/post/${id}`);
-  }
   async function handleLikeClicked(e) {
     console.log("liked");
     console.log(likeRef.current.id);
@@ -85,9 +74,9 @@ export default function Post({
     //---frontend---//
   }
   async function handleDislikeClicked(e) {
-    console.log("disliked");
-    console.log(dislikeRef.current.id);
-    const postId = dislikeRef.current.id;
+    // console.log("disliked");
+    // console.log(dislikeRef.current.id);
+    // const postId = dislikeRef.current.id;
     //if liked already clicked, decrement likes, and increment dislikes
     //if liked not clicked then increment dislikes
     //if already disliked then decrement dislikes
@@ -133,7 +122,7 @@ export default function Post({
               id={`${id}`}
               className={styles.userliked}
             >
-              <ChevronUpIcon /> {likes}
+              <ChevronUpIcon /> {postNumOfLikes}
             </h4>
           ) : (
             <h4
@@ -142,7 +131,7 @@ export default function Post({
               id={`${id}`}
               className={styles.likes}
             >
-              <ChevronUpIcon /> {likes}
+              <ChevronUpIcon /> {postNumOfLikes}
             </h4>
           )}
           {user && userDisliked ? (
@@ -152,7 +141,7 @@ export default function Post({
               id={`${id}`}
               className={styles.userdisliked}
             >
-              <ChevronDownIcon /> {dislikes}
+              <ChevronDownIcon /> {postNumOfDislikes}
             </h4>
           ) : (
             <h4
@@ -161,7 +150,7 @@ export default function Post({
               id={`${id}`}
               className={styles.dislikes}
             >
-              <ChevronDownIcon /> {dislikes}
+              <ChevronDownIcon /> {postNumOfDislikes}
             </h4>
           )}
           <h4>

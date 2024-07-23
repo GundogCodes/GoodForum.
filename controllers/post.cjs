@@ -114,12 +114,17 @@ exports.incrementLikes = async function (req, res) {
       .populate("comments")
       .populate("sender")
       .populate("forum");
-    await User.findOneAndUpdate(
+    const updatedUser = await User.findOneAndUpdate(
       { _id: req.user._id },
       { $addToSet: { likedPosts: updatedPost } },
       { new: true }
-    );
-    res.json(updatedPost);
+    )
+      .populate("friends")
+      .populate("followedForums")
+      .populate("foundedForums")
+      .populate("posts")
+      .populate("chats");
+    res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -134,12 +139,17 @@ exports.decrementLikes = async function (req, res) {
       .populate("comments")
       .populate("sender")
       .populate("forum");
-    await User.findOneAndUpdate(
+    const updatedUser = await User.findOneAndUpdate(
       { _id: req.user._id },
-      { $addToSet: { likedPosts: updatedPost } },
+      { $pull: { likedPosts: updatedPost } },
       { new: true }
-    );
-    res.json(updatedPost);
+    )
+      .populate("friends")
+      .populate("followedForums")
+      .populate("foundedForums")
+      .populate("posts")
+      .populate("chats");
+    res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -155,12 +165,17 @@ exports.incrementDislikes = async function (req, res) {
       .populate("comments")
       .populate("sender")
       .populate("forum");
-    await User.findOneAndUpdate(
+    const updatedUser = await User.findOneAndUpdate(
       { _id: req.user._id },
       { $push: { dislikedPosts: updatedPost } },
       { new: true }
-    );
-    res.json(updatedPost);
+    )
+      .populate("friends")
+      .populate("followedForums")
+      .populate("foundedForums")
+      .populate("posts")
+      .populate("chats");
+    res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -175,12 +190,17 @@ exports.decrementDislikes = async function (req, res) {
       .populate("comments")
       .populate("sender")
       .populate("forum");
-    await User.findOneAndUpdate(
+    const updatedUser = await User.findOneAndUpdate(
       { _id: req.user._id },
-      { $push: { dislikedPosts: updatedPost } },
+      { $pull: { dislikedPosts: updatedPost } },
       { new: true }
-    );
-    res.json(updatedPost);
+    )
+      .populate("friends")
+      .populate("followedForums")
+      .populate("foundedForums")
+      .populate("posts")
+      .populate("chats");
+    res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

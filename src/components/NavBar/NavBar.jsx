@@ -46,10 +46,10 @@ export default function NavBar({ user, setUser }) {
           </Link>
         </Tab>
         <Tab _selected={{}}>
-          <p className={styles.forumDes}>
+          <div className={styles.forumDes}>
             <h2>Where the conversations are</h2>
             <h2>Good for you</h2>
-          </p>
+          </div>
         </Tab>
         <div className={styles.options}>
           <Link to={"/user"}>

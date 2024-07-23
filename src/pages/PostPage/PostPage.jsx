@@ -90,29 +90,9 @@ export default function PostPage({ user }) {
     setNewComment({ text: e.target.value });
   }
 
-  async function handleLike() {
-    setLikedClicked(!likedClicked);
-    try {
-      const updatedPost = likedClicked
-        ? await postAPIs.unlikePost(id)
-        : await postAPIs.likePost(id);
-      setPost(updatedPost);
-    } catch (error) {
-      console.log({ error: error });
-    }
-  }
+  async function handleLike() {}
 
-  async function handleDislike() {
-    setDislikedClicked(!dislikedClicked);
-    try {
-      const updatedPost = dislikedClicked
-        ? await postAPIs.undislikePost(id)
-        : await postAPIs.dislikePost(id);
-      setPost(updatedPost);
-    } catch (error) {
-      console.log({ error: error });
-    }
-  }
+  async function handleDislike() {}
 
   async function addComment(e) {
     e.preventDefault();
