@@ -73,8 +73,6 @@ export default function Post({
   //console.log("USER: ", user);
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
-    console.log("liked");
-    console.log(likeRef.current.id);
     const postId = likeRef.current.id;
     if (userDisliked && !userLiked) {
       setPost((prevPost) => ({
@@ -101,8 +99,6 @@ export default function Post({
     }
   }
   async function handleDislikeClicked(e) {
-    console.log("disliked");
-    console.log(dislikeRef.current.id);
     const postId = dislikeRef.current.id;
     if (userLiked && !userDisliked) {
       setPost((prevPost) => ({

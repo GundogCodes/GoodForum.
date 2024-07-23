@@ -198,7 +198,7 @@ export default function ForumPage({ user, setUser }) {
       <div className={styles.forumStatAside}>
         <h1>STATS</h1>
         {forumPage && forumPage.founder ? (
-          <d>
+          <div>
             <h3 className={styles.stat} id={styles.des}>
               {forumPage.description}
             </h3>
@@ -207,7 +207,7 @@ export default function ForumPage({ user, setUser }) {
             </h3>
             <h3 className={styles.stat}>Members: {forumPage.numOfMembers}</h3>
             <h3 className={styles.stat}>Posts: {forumPage.posts.length}</h3>
-          </d>
+          </div>
         ) : (
           <h3>Created By: User Deleted</h3>
         )}
