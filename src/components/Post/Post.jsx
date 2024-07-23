@@ -74,24 +74,15 @@ export default function Post({
     console.log("liked");
     console.log(likeRef.current.id);
     const postId = likeRef.current.id;
-    setLikedClicked(true);
     // if disliked already clicked, decrement dislikes and increment liked
-    if (dislikeClicked) {
-      //---backend---//
-      //---frontend---//
-      //if already liked and clicked again decrement likes
-    } else if (likedClicked) {
-      //---backend---//
-      const unlikePost = await postAPIs.unlikePost(postId);
-      setLikedClicked(false);
-      //---frontend---//
-      //also else if disliked and liked not clicked then increment likes
-    } else if (!dislikeClicked && !likedClicked) {
-      //---backend---//
-      const likePost = await postAPIs.likePost(postId);
-      setLikedClicked(true);
-      //---frontend---//
-    }
+    //---backend---//
+    //---frontend---//
+    //if already liked and clicked again decrement likes
+    //---backend---//
+    //---frontend---//
+    //also else if disliked and liked not clicked then increment likes
+    //---backend---//
+    //---frontend---//
   }
   async function handleDislikeClicked(e) {
     console.log("disliked");
