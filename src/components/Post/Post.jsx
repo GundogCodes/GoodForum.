@@ -76,7 +76,6 @@ export default function Post({
     console.log("liked");
     console.log(likeRef.current.id);
     const postId = likeRef.current.id;
-    // if disliked already clicked, decrement dislikes and increment liked
     if (userDisliked && !userLiked) {
       setPost((prevPost) => ({
         ...prevPost,
@@ -100,16 +99,34 @@ export default function Post({
       setUserLiked(true);
       setUserDisliked(false);
     }
-    //if already liked and clicked again decrement likes
-    //also else if disliked and liked not clicked then increment likes
   }
   async function handleDislikeClicked(e) {
-    // console.log("disliked");
-    // console.log(dislikeRef.current.id);
-    // const postId = dislikeRef.current.id;
-    //if liked already clicked, decrement likes, and increment dislikes
-    //if liked not clicked then increment dislikes
-    //if already disliked then decrement dislikes
+    console.log("disliked");
+    console.log(dislikeRef.current.id);
+    const postId = dislikeRef.current.id;
+    if (userLiked && !userDisliked) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postLikes: prevPost.postLikes - 1,
+        postDislikes: prevPost.postDislikes + 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(true);
+    } else if (!userLiked && userDisliked) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postDislikes: prevPost.postDislikes - 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(false);
+    } else if (!userLiked && !userDisliked) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postDislikes: prevPost.postDislikes + 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(true);
+    }
   }
   return (
     <div className={styles.Post}>
