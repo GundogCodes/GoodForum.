@@ -74,28 +74,32 @@ export default function Post({
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
     const postId = likeRef.current.id;
-    if (userDisliked && !userLiked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        postLikes: prevPost.postLikes + 1,
-        postDislikes: prevPost.postDislikes - 1,
-      }));
-      setUserLiked(true);
-      setUserDisliked(false);
-    } else if (userLiked && !userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        postLikes: prevPost.postLikes - 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(false);
-    } else if (!userLiked && !userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        postLikes: prevPost.postLikes + 1,
-      }));
-      setUserLiked(true);
-      setUserDisliked(false);
+    if (user) {
+      if (userDisliked && !userLiked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes + 1,
+          postDislikes: prevPost.postDislikes - 1,
+        }));
+        setUserLiked(true);
+        setUserDisliked(false);
+      } else if (userLiked && !userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes - 1,
+        }));
+        setUserLiked(false);
+        setUserDisliked(false);
+      } else if (!userLiked && !userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes + 1,
+        }));
+        setUserLiked(true);
+        setUserDisliked(false);
+      }
+    } else {
+      alert("sign up or login");
     }
   }
   async function handleDislikeClicked(e) {
