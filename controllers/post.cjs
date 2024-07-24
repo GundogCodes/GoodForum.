@@ -115,7 +115,7 @@ exports.incrementLikes = async function (req, res) {
       .populate("sender")
       .populate("forum");
     const updatedUser = await User.findOneAndUpdate(
-      { _id: req.user._id },
+      { _id: req.user.id },
       { $addToSet: { likedPosts: updatedPost } },
       { new: true }
     )

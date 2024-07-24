@@ -74,7 +74,7 @@ export default function Post({
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
     const postId = likeRef.current.id;
-    if (userDisliked && !userLiked) {
+    if (userDisliked && !userLiked && user) {
       setPost((prevPost) => ({
         ...prevPost,
         postLikes: prevPost.postLikes + 1,
@@ -82,14 +82,14 @@ export default function Post({
       }));
       setUserLiked(true);
       setUserDisliked(false);
-    } else if (userLiked && !userDisliked) {
+    } else if (userLiked && !userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
         postLikes: prevPost.postLikes - 1,
       }));
       setUserLiked(false);
       setUserDisliked(false);
-    } else if (!userLiked && !userDisliked) {
+    } else if (!userLiked && !userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
         postLikes: prevPost.postLikes + 1,
@@ -100,7 +100,7 @@ export default function Post({
   }
   async function handleDislikeClicked(e) {
     const postId = dislikeRef.current.id;
-    if (userLiked && !userDisliked) {
+    if (userLiked && !userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
         postLikes: prevPost.postLikes - 1,
@@ -108,14 +108,14 @@ export default function Post({
       }));
       setUserLiked(false);
       setUserDisliked(true);
-    } else if (!userLiked && userDisliked) {
+    } else if (!userLiked && userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
         postDislikes: prevPost.postDislikes - 1,
       }));
       setUserLiked(false);
       setUserDisliked(false);
-    } else if (!userLiked && !userDisliked) {
+    } else if (!userLiked && !userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
         postDislikes: prevPost.postDislikes + 1,
