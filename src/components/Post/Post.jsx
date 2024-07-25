@@ -56,21 +56,7 @@ export default function Post({
       }
     })();
   }, []);
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const post = await postAPIs.getPost(id);
-  //       setForumTitle(post.forum.title);
-  //       setForumId(post.forum._id);
-  //       // setPostSender(post.sender.username);
-  //       // setPostCreatedAt(post.createdAt);
-  //       setPost(post);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, []);
-  //console.log("USER: ", user);
+
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
     const postId = likeRef.current.id;

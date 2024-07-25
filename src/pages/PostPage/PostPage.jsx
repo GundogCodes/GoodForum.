@@ -17,7 +17,9 @@ import {
   ChatIcon,
 } from "@chakra-ui/icons";
 import ImageModal from "../../components/ImageModal/ImageModal";
-export default function PostPage({ user }) {
+export default function PostPage({ user, setUser }) {
+  /********************************************** FUNCTIONS **********************************************/
+
   function zip(arr1, arr2) {
     const minLength = Math.min(arr1.length, arr2.length);
     const result = [];
@@ -26,20 +28,37 @@ export default function PostPage({ user }) {
     }
     return result;
   }
-  const { id } = useParams();
-  const inputRef = useRef(null);
-  const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const navigate = useNavigate();
+  function handleChange(e) {
+    setNewComment({ text: e.target.value });
+  }
+  /********************************************** STATE VARIABLES **********************************************/
 
   const [newComment, setNewComment] = useState();
   const [post, setPost] = useState();
-  const [likedClicked, setLikedClicked] = useState(false);
-  const [dislikedClicked, setDislikedClicked] = useState(false);
+  const [userLiked, setUserLiked] = useState();
+  const [userDisliked, setUserDisliked] = useState();
   const [showImageModal, setShowImageModal] = useState(false);
   const [allForums, setAllForums] = useState([]);
   const [commentUsernames, setCommentUsernames] = useState([]);
   const [commentUserIds, setCommentUserIds] = useState([]);
+  /********************************************** VARIABLES **********************************************/
 
+  const { id } = useParams();
+  const inputRef = useRef(null);
+  const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const navigate = useNavigate();
+  const zippedComments = zip(post?.comments || [], commentUsernames);
+  /**********************************************  USEEFFCTS  **********************************************/
+  useEffect(() => {
+    (() => {
+      if (user && user.likedPosts.includes(id)) {
+        setUserLiked(true);
+      }
+      if (user && user.dislikedPosts.includes(id)) {
+        setUserDisliked(true);
+      }
+    })();
+  }, []);
   useEffect(() => {
     (async () => {
       try {
@@ -86,16 +105,65 @@ export default function PostPage({ user }) {
     })();
   }, []);
 
-  function handleChange(e) {
-    setNewComment({ text: e.target.value });
+  /********************************************** ASYNC FUNCTIONS  **********************************************/
+  //LIKE
+  async function handleLikeClicked(e) {
+    const postId = likeRef.current.id;
+    if (user) {
+      if (userDisliked && !userLiked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes + 1,
+          postDislikes: prevPost.postDislikes - 1,
+        }));
+        setUserLiked(true);
+        setUserDisliked(false);
+      } else if (userLiked && !userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes - 1,
+        }));
+        setUserLiked(false);
+        setUserDisliked(false);
+      } else if (!userLiked && !userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes + 1,
+        }));
+        setUserLiked(true);
+        setUserDisliked(false);
+      }
+    } else {
+      alert("sign up or login");
+    }
   }
-
-  async function handleLike() {
-    console.log("git change test");
+  //DISLIKE
+  async function handleDislikeClicked(e) {
+    const postId = dislikeRef.current.id;
+    if (userLiked && !userDisliked && user) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postLikes: prevPost.postLikes - 1,
+        postDislikes: prevPost.postDislikes + 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(true);
+    } else if (!userLiked && userDisliked && user) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postDislikes: prevPost.postDislikes - 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(false);
+    } else if (!userLiked && !userDisliked && user) {
+      setPost((prevPost) => ({
+        ...prevPost,
+        postDislikes: prevPost.postDislikes + 1,
+      }));
+      setUserLiked(false);
+      setUserDisliked(true);
+    }
   }
-
-  async function handleDislike() {}
-
   async function addComment(e) {
     e.preventDefault();
     try {
@@ -111,8 +179,6 @@ export default function PostPage({ user }) {
     }
     inputRef.current.value = "";
   }
-
-  const zippedComments = zip(post?.comments || [], commentUsernames);
 
   return (
     <div className={styles.PostPage}>
@@ -173,9 +239,9 @@ export default function PostPage({ user }) {
             <div className={styles.interactions}>
               <h4
                 className={styles.dislike}
-                onClick={handleLike}
+                onClick={handleLikeClicked}
                 style={{
-                  color: likedClicked
+                  color: handleLikeClicked
                     ? darkMode
                       ? "#FF6410"
                       : "rgb(191, 63, 27)"
@@ -186,9 +252,9 @@ export default function PostPage({ user }) {
               </h4>
               <h4
                 className={styles.dislike}
-                onClick={handleDislike}
+                onClick={handleDislikeClicked}
                 style={{
-                  color: dislikedClicked
+                  color: handleDislikeClicked
                     ? darkMode
                       ? "#FF6410"
                       : "rgb(191, 63, 27)"
