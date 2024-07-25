@@ -48,22 +48,25 @@ export default function Post({
   /********************************************** HANDLE STATES  **********************************************/
   console.log("USER IN POST", user);
   /**********************************************  USEEFFCTS  **********************************************/
-  // useEffect(() => {
-  //   (async () => {
-  //     if (user.likedPosts.length > 0 && user.dislikedPosts.length > 0) {
-  //       if (user.likedPosts.includes(id)) {
-  //         setUserLiked(true);
-  //       }
-  //       if (user.dislikedPosts.includes(id)) {
-  //         setUserDisliked(true);
-  //       }
-  //     }
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      if (user) {
+        if (user.likedPosts.length > 0 && user.dislikedPosts.length > 0) {
+          if (user.likedPosts.includes(id)) {
+            setUserLiked(true);
+          }
+          if (user.dislikedPosts.includes(id)) {
+            setUserDisliked(true);
+          }
+        }
+      }
+    })();
+  }, []);
 
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
     const postId = likeRef.current.id;
+    console.log("POST ID", postId);
     if (user) {
       if (userDisliked && !userLiked) {
         setPost((prevPost) => ({
@@ -73,6 +76,11 @@ export default function Post({
         }));
         setUserLiked(true);
         setUserDisliked(false);
+        const undislikeResponse = await postAPIs.undislikePost(postId);
+        const likeResponse = await postAPIs.likePost(postId);
+        console.log("UNDISLIKE RES ", undislikeResponse);
+        console.log("LIKE RES", likeResponse);
+        setUser(likeResponse.updatedUser);
       } else if (userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
@@ -80,6 +88,9 @@ export default function Post({
         }));
         setUserLiked(false);
         setUserDisliked(false);
+        const unlikeResponse = await postAPIs.unlikePost(postId);
+        console.log("UNLIKE RES ", unlikeResponse);
+        setUser(unlikeResponse.updatedUser);
       } else if (!userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
@@ -87,6 +98,9 @@ export default function Post({
         }));
         setUserLiked(true);
         setUserDisliked(false);
+        const likeResponse = await postAPIs.likePost(postId);
+        console.log(likeResponse);
+        setUser(likeResponse.updatedUser);
       }
     } else {
       alert("sign up or login");
@@ -94,28 +108,44 @@ export default function Post({
   }
   async function handleDislikeClicked(e) {
     const postId = dislikeRef.current.id;
-    if (userLiked && !userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        postLikes: prevPost.postLikes - 1,
-        postDislikes: prevPost.postDislikes + 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(true);
-    } else if (!userLiked && userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        postDislikes: prevPost.postDislikes - 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(false);
-    } else if (!userLiked && !userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        postDislikes: prevPost.postDislikes + 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(true);
+    console.log("POST ID", postId);
+    if (user) {
+      if (userLiked && !userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postLikes: prevPost.postLikes - 1,
+          postDislikes: prevPost.postDislikes + 1,
+        }));
+        setUserLiked(false);
+        setUserDisliked(true);
+        const unlikeResponse = await postAPIs.unlikePost(postId);
+        const dislikeResponse = await postAPIs.dislikePost(postId);
+        console.log("UNLIKE RES ", unlikeResponse);
+        console.log("DISLIKE RES", dislikeResponse);
+        setUser(dislikeResponse.updatedUser);
+      } else if (!userLiked && userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postDislikes: prevPost.postDislikes - 1,
+        }));
+        setUserLiked(false);
+        setUserDisliked(false);
+        const undislikeResponse = await postAPIs.undislikePost(postId);
+        console.log("UNDISLIKE RES ", undislikeResponse);
+        setUser(undislikeResponse.updatedUser);
+      } else if (!userLiked && !userDisliked) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          postDislikes: prevPost.postDislikes + 1,
+        }));
+        setUserLiked(false);
+        setUserDisliked(true);
+        const dislikeResponse = await postAPIs.dislikePost(postId);
+        console.log("DISLIKE RES ", dislikeResponse);
+        setUser(dislikeResponse.updatedUser);
+      }
+    } else {
+      alert("sign up or login");
     }
   }
   return (

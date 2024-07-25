@@ -11,8 +11,28 @@ const postSchema = new mongoose.Schema(
       require: true,
     },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
-    likes: { type: Number, default: 0 },
-    dislikes: { type: Number, default: 0 },
+    likes: {
+      type: Number,
+      default: 0,
+      validate: {
+        validator: function (v) {
+          return v >= 0;
+        },
+        message: (props) =>
+          `${props.value} is not a valid number of likes! Likes cannot be negative.`,
+      },
+    },
+    dislikes: {
+      type: Number,
+      default: 0,
+      validate: {
+        validator: function (v) {
+          return v >= 0;
+        },
+        message: (props) =>
+          `${props.value} is not a valid number of dislikes! Dislikes cannot be negative.`,
+      },
+    },
     edited: { type: Boolean, default: false },
     image: { type: String, default: "" },
     text: { type: String, default: "" },

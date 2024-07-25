@@ -308,13 +308,17 @@ export default function PostPage({ user, setUser }) {
           <>
             <h1>OP</h1>
             <Link to={`/user/${post.sender._id}`}>
-              <img
-                id={styles.profilePic}
-                src={`/profilePics/${
-                  post.sender.profileImage ||
-                  "/src/assets/userFunc/profileImage.png"
-                }`}
-              />
+              {post.sender.profileImage ? (
+                <img
+                  id={styles.profilePic}
+                  src={`/profilePics/${post.sender.profileImage}`}
+                />
+              ) : (
+                <img
+                  id={styles.profilePic}
+                  src={"/src/assets/userFunc/profileImage.png"}
+                />
+              )}
             </Link>
             {post.sender ? (
               <>
