@@ -26,7 +26,7 @@ export default function ForumPage({ user, setUser }) {
   const [forumPage, setForumPage] = useState();
   const [showPostModal, setShowPostModal] = useState(false);
   const [sortedForumPosts, setSortedForumPosts] = useState([]);
-  const [allForums, setAllForums] = useState([]);
+  const [allForums, setAllForums] = useState();
   /******************************************** Handling States ********************************************/
 
   function handleMakePostButton() {
@@ -57,8 +57,8 @@ export default function ForumPage({ user, setUser }) {
         const posts = await postAPI.allPosts();
         setAllForums(forums);
         console.log("allforums", forums);
-        setAllPosts(posts);
-        console.log("POSTS: ", posts);
+        // setAllPosts(posts);
+        // console.log("POSTS: ", posts);
       } catch (error) {
         console.log(error);
       }
@@ -69,9 +69,11 @@ export default function ForumPage({ user, setUser }) {
       return;
     } else {
       setIsMember(false);
-      for (let followedForum of user.followedForums) {
-        if (followedForum._id === id) {
-          setIsMember(true);
+      if (user.followedForums) {
+        for (let followedForum of user.followedForums) {
+          if (followedForum._id === id) {
+            setIsMember(true);
+          }
         }
       }
     }

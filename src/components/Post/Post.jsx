@@ -44,6 +44,7 @@ export default function Post({
     postText: text,
     postLink: link,
   });
+  console.log("USER in posts", user);
   /********************************************** HANDLE STATES  **********************************************/
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {

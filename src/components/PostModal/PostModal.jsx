@@ -106,7 +106,6 @@ export default function PostModal({
         setForumPage(newForum.updatedForum);
         setUser(newForum.updatedUser);
         setShowModal(false);
-        window.location.reload();
       } catch (error) {
         console.log({ error: error });
       }
@@ -122,6 +121,7 @@ export default function PostModal({
         console.log("updated Forum: ", newForum);
         setForumPage(newForum);
         setShowModal(false);
+        setUser(newForum.updatedUser);
       } catch (error) {
         console.log({ error: error });
       }

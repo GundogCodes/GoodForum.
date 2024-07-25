@@ -120,7 +120,7 @@ exports.deleteAForum = async (req, res) => {
       "founder"
     );
     if (!foundForum) {
-      res.json("Quarry doesnt exist");
+      res.json("Forum doesnt exist");
     }
     const checkUser = await User.findOne({ _id: req.user._id });
     if (checkUser.email === foundForum.founder.email) {
@@ -131,9 +131,9 @@ exports.deleteAForum = async (req, res) => {
       );
       await User.updateMany({ $pull: { followedForums: foundForum._id } });
       await Forum.findOneAndDelete({ _id: foundForum._id });
-      res.json("Quarry Destoryed");
+      res.json("Forum Destoryed");
     } else {
-      res.json("You Are Not Authorized to Destory this Quarry");
+      res.json("You Are Not Authorized to Destory this Forum");
     }
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -217,8 +217,16 @@ exports.postToForum = async (req, res) => {
         { _id: req.user._id },
         { $inc: { numOfPosts: 1 }, $addToSet: { posts: createdPost } },
         { new: true }
-      );
-      const updatedUser = await User.findOne({ _id: req.user._id });
+      )
+        .populate("friends")
+        .populate("followedForums")
+        .populate("posts")
+        .populate("chats");
+      const updatedUser = await User.findOne({ _id: req.user._id })
+        .populate("friends")
+        .populate("followedForums")
+        .populate("posts")
+        .populate("chats");
       res.json({ updatedForum: updatedForum, updatedUser: updatedUser });
     }
   } catch (error) {

@@ -16,11 +16,11 @@ exports.createPost = async (req, res) => {
       newPost.forum = postingForum;
       newPost.content = req.body.content;
       const createdPost = await Post.create(newPost);
-      await Forum.findOneAndUpdate(
+      const updatedForum = await Forum.findOneAndUpdate(
         { _id: req.body.id },
-        { $push: { posts: createdPost } },
+        { $addToSet: { posts: createdPost } },
         { new: true }
-      );
+      ).populate("posts");
 
       const updatedUser = await User.findOneAndUpdate(
         { _id: req.user._id },
@@ -31,7 +31,7 @@ exports.createPost = async (req, res) => {
         .populate("followedForums")
         .populate("posts")
         .populate("chats");
-      res.json(updatedUser);
+      res.json({ updatedForum: updatedForum, updatedUser: updatedUser });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
