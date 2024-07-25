@@ -50,9 +50,8 @@
         color: rgb(191, 63, 27);
       }
       .profilePic {
-        margin-top: 10px;
-        width: 8vw;
-        height: 8vw;
+        width: 75px;
+        height: 75px;
         border-radius: 100%;
         border: solid 1px black;
       }
@@ -65,20 +64,15 @@
         flex-direction: column;
         align-items: center;
         h2 {
+          margin-top: 10px;
           color: black;
           width: 90%;
           display: flex;
           justify-content: center;
           align-items: center;
           font-weight: bold;
-          height: 5vh;
-          overflow-x: scroll;
+          height: 20px;
           border-bottom: solid rgb(100, 100, 100) 1px;
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-          &::-webkit-scrollbar {
-            display: none;
-          }
         }
         .userForum {
           display: flex;
@@ -284,10 +278,12 @@
         }
       }
       .lowerSection {
-        height: 10%;
+        height: 50px;
+        max-height: 20px;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        font-size: 10px;
         border-top: solid 1px rgb(100, 100, 100);
         h4:hover {
           cursor: pointer;

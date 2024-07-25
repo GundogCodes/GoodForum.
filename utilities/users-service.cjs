@@ -43,7 +43,7 @@ export function getToken() {
 //   return token;
 // }
 
-export function getUser() {
+export async function getUser() {
   const token = getToken();
   return token ? JSON.parse(atob(token.split(".")[1])).user : null;
 }

@@ -35,8 +35,8 @@ export default function PostPage({ user, setUser }) {
 
   const [newComment, setNewComment] = useState();
   const [post, setPost] = useState();
-  const [userLiked, setUserLiked] = useState();
-  const [userDisliked, setUserDisliked] = useState();
+  const [userLiked, setUserLiked] = useState(false);
+  const [userDisliked, setUserDisliked] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
   const [allForums, setAllForums] = useState([]);
   const [commentUsernames, setCommentUsernames] = useState([]);
@@ -47,6 +47,8 @@ export default function PostPage({ user, setUser }) {
   const inputRef = useRef(null);
   const darkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const navigate = useNavigate();
+  const likeRef = useRef(null);
+  const dislikeRef = useRef(null);
   const zippedComments = zip(post?.comments || [], commentUsernames);
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
@@ -113,22 +115,22 @@ export default function PostPage({ user, setUser }) {
       if (userDisliked && !userLiked) {
         setPost((prevPost) => ({
           ...prevPost,
-          postLikes: prevPost.postLikes + 1,
-          postDislikes: prevPost.postDislikes - 1,
+          likes: prevPost.likes + 1,
+          dislikes: prevPost.dislikes - 1,
         }));
         setUserLiked(true);
         setUserDisliked(false);
       } else if (userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
-          postLikes: prevPost.postLikes - 1,
+          likes: prevPost.likes - 1,
         }));
         setUserLiked(false);
         setUserDisliked(false);
       } else if (!userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
-          postLikes: prevPost.postLikes + 1,
+          likes: prevPost.likes + 1,
         }));
         setUserLiked(true);
         setUserDisliked(false);
@@ -137,28 +139,27 @@ export default function PostPage({ user, setUser }) {
       alert("sign up or login");
     }
   }
-  //DISLIKE
   async function handleDislikeClicked(e) {
     const postId = dislikeRef.current.id;
     if (userLiked && !userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
-        postLikes: prevPost.postLikes - 1,
-        postDislikes: prevPost.postDislikes + 1,
+        likes: prevPost.likes - 1,
+        dislikes: prevPost.dislikes + 1,
       }));
       setUserLiked(false);
       setUserDisliked(true);
     } else if (!userLiked && userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
-        postDislikes: prevPost.postDislikes - 1,
+        dislikes: prevPost.dislikes - 1,
       }));
       setUserLiked(false);
       setUserDisliked(false);
     } else if (!userLiked && !userDisliked && user) {
       setPost((prevPost) => ({
         ...prevPost,
-        postDislikes: prevPost.postDislikes + 1,
+        dislikes: prevPost.dislikes + 1,
       }));
       setUserLiked(false);
       setUserDisliked(true);
@@ -179,7 +180,6 @@ export default function PostPage({ user, setUser }) {
     }
     inputRef.current.value = "";
   }
-
   return (
     <div className={styles.PostPage}>
       {post ? (
@@ -238,6 +238,7 @@ export default function PostPage({ user, setUser }) {
             </aside>
             <div className={styles.interactions}>
               <h4
+                ref={likeRef}
                 className={styles.dislike}
                 onClick={handleLikeClicked}
                 style={{
@@ -251,6 +252,7 @@ export default function PostPage({ user, setUser }) {
                 <ChevronUpIcon /> {post.likes}
               </h4>
               <h4
+                ref={dislikeRef}
                 className={styles.dislike}
                 onClick={handleDislikeClicked}
                 style={{
@@ -299,7 +301,7 @@ export default function PostPage({ user, setUser }) {
           </section>
         </>
       ) : (
-        <div></div>
+        <div>Post Not Found</div>
       )}
       <div className={styles.posterInfo}>
         {post ? (

@@ -58,7 +58,9 @@ export default function LoginPage({ user, setUser }) {
       const user = await usersService.login(credentials);
       console.log("USER", user);
       setUser(user);
-      handleClick();
+      if (user) {
+        handleClick();
+      }
     } catch (error) {
       setError("Login Failed");
     }

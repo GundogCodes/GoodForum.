@@ -75,11 +75,17 @@
           align-items: center;
           height: 100%;
           .userPic {
-            width: 35%;
+            width: 40%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            .addPic {
+              color: black;
+            }
+            .addPic:hover {
+              cursor: pointer;
+            }
           }
           .username {
             width: 200px;
@@ -88,18 +94,39 @@
             justify-content: center;
             height: 100%;
           }
-          .addPic {
-            margin-left: 0px;
-          }
+
           .submitForm {
             z-index: 2;
-            max-width: 30vw;
-            height: 40vh;
+            width: 300px;
+            height: 200px;
             display: flex;
+            background-color: whitesmoke;
+            border-radius: 5px;
+            border: solid 1px black;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
             flex-direction: column;
+            padding-left: 10px;
+            .cf {
+              color: black;
+              width: 200px;
+            }
+            .closeIcon {
+              width: 100%;
+              color: black;
+              font-size: 10px;
+              height: 20%;
+
+              display: flex;
+            }
             button {
+              margin-right: 10px;
+              padding: 6px;
+              height: 40px;
+              font-size: 12px;
+              border: solid 2px white;
+              border-radius: 20px;
+              background-color: rgb(191, 63, 27);
             }
           }
           h1 {
@@ -132,7 +159,7 @@
         width: 95px;
         height: 95px;
         border-radius: 100%;
-        border: solid 1px white;
+        border: solid 1px black;
         margin-top: 20px;
       }
 

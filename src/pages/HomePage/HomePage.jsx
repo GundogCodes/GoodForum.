@@ -55,23 +55,56 @@ export default function HomePage({ user, setUser }) {
         {user ? (
           <div className={styles.userInfo}>
             <h1> Hey, {user.username}</h1>
-            <img
-              className={styles.profilePic}
-              src={`/profilePics/${user.profileImage}`}
-            />
+            <Link to={`/user`}>
+              {user.profileImage ? (
+                <img
+                  className={styles.profilePic}
+                  src={`/profilePics/${user.profileImage}`}
+                />
+              ) : (
+                <img
+                  className={styles.profilePic}
+                  src={`/src/assets/userFunc/profileImage.png`}
+                />
+              )}
+            </Link>
             <div className={styles.userForums}>
               <h2>Your Forums</h2>
-              {user.followedForums.map((forum) => {
-                return (
-                  <Link
-                    key={`${forum._id}`}
-                    className={styles.userForum}
-                    to={`/forum/${forum._id}`}
-                  >
-                    <ChevronRightIcon /> {forum.title}
-                  </Link>
-                );
-              })}
+              {user.followedForums ? (
+                <>
+                  {user.followedForums.map((forum) => {
+                    return (
+                      <Link
+                        key={`${forum._id}`}
+                        className={styles.userForum}
+                        to={`/forum/${forum._id}`}
+                      >
+                        <ChevronRightIcon /> {forum.title}
+                      </Link>
+                    );
+                  })}
+                </>
+              ) : (
+                <></>
+              )}
+              <h2>Friends</h2>
+              {user.friends ? (
+                <>
+                  {user.friends.map((friend) => {
+                    return (
+                      <Link
+                        className={styles.userForum}
+                        key={`${friend._id}`}
+                        to={`/user/${user._id}`}
+                      >
+                        <ChevronRightIcon /> {friend.username}
+                      </Link>
+                    );
+                  })}
+                </>
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         ) : (

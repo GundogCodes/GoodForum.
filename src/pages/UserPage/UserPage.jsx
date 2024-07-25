@@ -8,7 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import * as usersAPIs from "../../../utilities/users-api.cjs";
 import Post from "../../components/Post/Post";
 import { useNavigate } from "react-router-dom";
-import { ChevronRightIcon, PlusSquareIcon } from "@chakra-ui/icons";
+import { ChevronRightIcon, CloseIcon, PlusSquareIcon } from "@chakra-ui/icons";
 import * as forumService from "../../../utilities/forum-api.cjs";
 import axios from "axios";
 
@@ -127,27 +127,59 @@ export default function UserPage({ user, setUser }) {
         ) : (
           <></>
         )}
+        <h2>Friends</h2>
+        {user && user.friends ? (
+          user.friends.map((friend) => {
+            return (
+              <p className={styles.userFriend} key={friend._id}>
+                <Link to={`/user/${friend._id}`}>
+                  <ChevronRightIcon /> {friend.username}
+                </Link>
+              </p>
+            );
+          })
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles.userPageBody}>
         <div className={styles.userAside}>
           <div className={styles.userAsideTop}>
             <div className={styles.userAsideTopLeft}>
               <div className={styles.userPic}>
-                <img
-                  id={styles.profilePic}
-                  src={
-                    user
-                      ? `/profilePics/${user.profileImage}`
-                      : `/src/assets/userFunc/profileImage.png`
-                  }
-                  alt="Profile"
-                />
-                <p onClick={showForm} className={styles.uploadPic}>
+                {user && user.profileImage ? (
+                  <img
+                    id={styles.profilePic}
+                    src={`/profilePics/${user.profileImage}`}
+                    alt="Profile"
+                  />
+                ) : (
+                  <img
+                    id={styles.profilePic}
+                    src={`/src/assets/userFunc/profileImage.png`}
+                    alt="Profile"
+                  />
+                )}
+                <p
+                  onClick={() => {
+                    setShowUploadForm(true);
+                  }}
+                  className={styles.uploadPic}
+                >
                   <PlusSquareIcon className={styles.addPic} color={"white"} />
                 </p>
                 {showUploadForm && (
                   <form className={styles.submitForm} onSubmit={submit}>
+                    <div
+                      className={styles.closeIcon}
+                      onClick={() => {
+                        setShowUploadForm(false);
+                      }}
+                    >
+                      <CloseIcon />
+                    </div>
                     <input
+                      className={styles.cf}
                       onChange={(e) => setFile(e.target.files[0])}
                       type="file"
                       accept="image/*"
@@ -170,6 +202,7 @@ export default function UserPage({ user, setUser }) {
               </div>
             </div>
           </div>
+
           <div className={styles.functions}>
             <h4
               className={styles.createPost}

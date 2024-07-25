@@ -27,34 +27,38 @@ export default function UserFriends({ user, setUser }) {
   return (
     <div className={styles.UserFriends}>
       <h1 className={styles.title}>Your Friends</h1>
-      <div className={styles.friendsList}>
-        {user.friends.map((friend) => {
-          return (
-            <div className={styles.friendCard}>
-              {friend.profileImage ? (
-                <img
-                  id={`${friend._id}`}
-                  src={`/profilePics/${friend.profileImage}`}
-                  onClick={goToUserPage}
-                />
-              ) : (
-                <img
-                  id={`${friend._id}`}
-                  src={`/src/assets/userFunc/profileImage.png`}
-                  onClick={goToUserPage}
-                />
-              )}
-              <h1 className={styles.friendName}>{friend.username}</h1>
-              <button id={`${friend._id}`} onClick={goToMessages}>
-                Message
-              </button>
-              <button id={`${friend._id}`} onClick={handleFriend}>
-                Remove Friend
-              </button>
-            </div>
-          );
-        })}
-      </div>
+      {user.friends.length > 0 ? (
+        <div className={styles.friendsList}>
+          {user.friends.map((friend) => {
+            return (
+              <div className={styles.friendCard}>
+                {friend.profileImage ? (
+                  <img
+                    id={`${friend._id}`}
+                    src={`/profilePics/${friend.profileImage}`}
+                    onClick={goToUserPage}
+                  />
+                ) : (
+                  <img
+                    id={`${friend._id}`}
+                    src={`/src/assets/userFunc/profileImage.png`}
+                    onClick={goToUserPage}
+                  />
+                )}
+                <h1 className={styles.friendName}>{friend.username}</h1>
+                <button id={`${friend._id}`} onClick={goToMessages}>
+                  Message
+                </button>
+                <button id={`${friend._id}`} onClick={handleFriend}>
+                  Remove Friend
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className={styles.noFriends}>No Friends (so sad) </div>
+      )}
     </div>
   );
 }
