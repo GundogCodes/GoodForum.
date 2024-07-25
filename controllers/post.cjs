@@ -307,7 +307,7 @@ exports.commentToPost = async (req, res) => {
         sender: comment.sender,
         text: comment.text,
       }));
-      res.json({ updatedPost, senders });
+      res.json({ updatedPost: updatedPost, senders: senders });
     }
   } catch (error) {
     res.status(400).json({ error: error.message });

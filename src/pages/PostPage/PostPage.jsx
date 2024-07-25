@@ -8,9 +8,6 @@ import * as forumService from "../../../utilities/forum-api.cjs";
 import * as userService from "../../../utilities/users-api.cjs";
 import { Link } from "react-router-dom";
 import {
-  PhoneIcon,
-  ArrowDownIcon,
-  ArrowUpIcon,
   ChevronUpIcon,
   ChevronRightIcon,
   ChevronDownIcon,
@@ -52,16 +49,6 @@ export default function PostPage({ user, setUser }) {
   const zippedComments = zip(post?.comments || [], commentUsernames);
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
-    (() => {
-      if (user && user.likedPosts.includes(id)) {
-        setUserLiked(true);
-      }
-      if (user && user.dislikedPosts.includes(id)) {
-        setUserDisliked(true);
-      }
-    })();
-  }, []);
-  useEffect(() => {
     (async () => {
       try {
         const commentorIds = [];
@@ -76,6 +63,16 @@ export default function PostPage({ user, setUser }) {
       }
     })();
   }, [id]);
+  useEffect(() => {
+    (() => {
+      if (user && user.likedPosts.includes(id)) {
+        setUserLiked(true);
+      }
+      if (user && user.dislikedPosts.includes(id)) {
+        setUserDisliked(true);
+      }
+    })();
+  }, []);
   console.log("POST: ", post);
   useEffect(() => {
     const fetchUsernames = async () => {
@@ -111,60 +108,101 @@ export default function PostPage({ user, setUser }) {
   //LIKE
   async function handleLikeClicked(e) {
     const postId = likeRef.current.id;
+    console.log("POST ID", postId);
     if (user) {
       if (userDisliked && !userLiked) {
-        setPost((prevPost) => ({
-          ...prevPost,
-          likes: prevPost.likes + 1,
-          dislikes: prevPost.dislikes - 1,
-        }));
+        // setPost((prevPost) => ({
+        //   ...prevPost,
+        //   postLikes: prevPost.postLikes + 1,
+        //   postDislikes: Math.max(prevPost.postDislikes - 1, 0),
+        // }));
         setUserLiked(true);
         setUserDisliked(false);
+        const undislikeResponse = await postAPIs.undislikePost(postId);
+        const likeResponse = await postAPIs.likePost(postId);
+        console.log("UNDISLIKE RES ", undislikeResponse);
+        console.log("LIKE RES", likeResponse);
+        setUser(likeResponse.updatedUser);
+        setPost(likeResponse.updatedPost);
+        //****************************************** SECTION 1 ******************************************/
       } else if (userLiked && !userDisliked) {
-        setPost((prevPost) => ({
-          ...prevPost,
-          likes: prevPost.likes - 1,
-        }));
+        // setPost((prevPost) => ({
+        //   ...prevPost,
+        //   postLikes: Math.max(prevPost.postLikes - 1, 0),
+        // }));
         setUserLiked(false);
         setUserDisliked(false);
+        const unlikeResponse = await postAPIs.unlikePost(postId);
+        console.log("UNLIKE RES ", unlikeResponse);
+        setUser(unlikeResponse.updatedUser);
+        setPost(unlikeResponse.updatedPost);
+        //****************************************** SECTION 2 ******************************************/
       } else if (!userLiked && !userDisliked) {
-        setPost((prevPost) => ({
-          ...prevPost,
-          likes: prevPost.likes + 1,
-        }));
+        // setPost((prevPost) => ({
+        //   ...prevPost,
+        //   postLikes: prevPost.postLikes + 1,
+        // }));
         setUserLiked(true);
         setUserDisliked(false);
+        const likeResponse = await postAPIs.likePost(postId);
+        console.log(likeResponse);
+        setUser(likeResponse.updatedUser);
+        setPost(likeResponse.updatedPost);
       }
+      //****************************************** SECTION 3 ******************************************/
     } else {
       alert("sign up or login");
     }
   }
   async function handleDislikeClicked(e) {
     const postId = dislikeRef.current.id;
-    if (userLiked && !userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        likes: prevPost.likes - 1,
-        dislikes: prevPost.dislikes + 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(true);
-    } else if (!userLiked && userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        dislikes: prevPost.dislikes - 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(false);
-    } else if (!userLiked && !userDisliked && user) {
-      setPost((prevPost) => ({
-        ...prevPost,
-        dislikes: prevPost.dislikes + 1,
-      }));
-      setUserLiked(false);
-      setUserDisliked(true);
+    console.log("POST ID", postId);
+    if (user) {
+      if (userLiked && !userDisliked) {
+        // setPost((prevPost) => ({
+        //   ...prevPost,
+        //   postLikes: Math.max(prevPost.postLikes - 1, 0),
+        //   postDislikes: prevPost.postDislikes + 1,
+        // }));
+        setUserLiked(false);
+        setUserDisliked(true);
+        const unlikeResponse = await postAPIs.unlikePost(postId);
+        const dislikeResponse = await postAPIs.dislikePost(postId);
+        console.log("UNLIKE RES ", unlikeResponse);
+        console.log("DISLIKE RES", dislikeResponse);
+        setUser(dislikeResponse.updatedUser);
+        setPost(dislikeResponse.updatedPost);
+        //****************************************** SECTION 1 ******************************************/
+      } else if (!userLiked && userDisliked) {
+        // setPost((prevPost) => ({
+        //   ...prevPost,
+        //   postDislikes: Math.max(prevPost.postDislikes - 1, 0),
+        // }));
+        setUserLiked(false);
+        setUserDisliked(false);
+        const undislikeResponse = await postAPIs.undislikePost(postId);
+        console.log("UNDISLIKE RES ", undislikeResponse);
+        setUser(undislikeResponse.updatedUser);
+        setPost(undislikeResponse.updatedPost);
+        //****************************************** SECTION 2 ******************************************/
+      } else if (!userLiked && !userDisliked) {
+        // setPost((prevPost) => ({
+        //   ...prevPost,
+        //   postDislikes: prevPost.postDislikes + 1,
+        // }));
+        setUserLiked(false);
+        setUserDisliked(true);
+        const dislikeResponse = await postAPIs.dislikePost(postId);
+        console.log("DISLIKE RES ", dislikeResponse);
+        setUser(dislikeResponse.updatedUser);
+        setPost(dislikeResponse.updatedPost);
+      }
+      //****************************************** SECTION 3 ******************************************/
+    } else {
+      alert("sign up or login");
     }
   }
+  //******************************************  ADDING COMMENT SECTION ******************************************/
   async function addComment(e) {
     e.preventDefault();
     try {
@@ -180,6 +218,8 @@ export default function PostPage({ user, setUser }) {
     }
     inputRef.current.value = "";
   }
+  console.log("ZIPPED COMMENTS", zippedComments);
+  //******************************************  ADDING COMMENT SECTION ******************************************/
   return (
     <div className={styles.PostPage}>
       {post ? (
@@ -239,6 +279,7 @@ export default function PostPage({ user, setUser }) {
             <div className={styles.interactions}>
               <h4
                 ref={likeRef}
+                id={`${id}`}
                 className={styles.dislike}
                 onClick={handleLikeClicked}
                 style={{
@@ -253,6 +294,7 @@ export default function PostPage({ user, setUser }) {
               </h4>
               <h4
                 ref={dislikeRef}
+                id={`${id}`}
                 className={styles.dislike}
                 onClick={handleDislikeClicked}
                 style={{
