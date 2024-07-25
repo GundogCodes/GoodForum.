@@ -73,7 +73,7 @@ export default function PostPage({ user, setUser }) {
       }
     })();
   }, []);
-  console.log("POST: ", post);
+
   useEffect(() => {
     const fetchUsernames = async () => {
       try {
@@ -120,8 +120,8 @@ export default function PostPage({ user, setUser }) {
         setUserDisliked(false);
         const undislikeResponse = await postAPIs.undislikePost(postId);
         const likeResponse = await postAPIs.likePost(postId);
-        console.log("UNDISLIKE RES ", undislikeResponse);
-        console.log("LIKE RES", likeResponse);
+        // console.log("UNDISLIKE RES ", undislikeResponse);
+        // console.log("LIKE RES", likeResponse);
         setUser(likeResponse.updatedUser);
         setPost(likeResponse.updatedPost);
         //****************************************** SECTION 1 ******************************************/
@@ -133,7 +133,7 @@ export default function PostPage({ user, setUser }) {
         setUserLiked(false);
         setUserDisliked(false);
         const unlikeResponse = await postAPIs.unlikePost(postId);
-        console.log("UNLIKE RES ", unlikeResponse);
+        // console.log("UNLIKE RES ", unlikeResponse);
         setUser(unlikeResponse.updatedUser);
         setPost(unlikeResponse.updatedPost);
         //****************************************** SECTION 2 ******************************************/
@@ -145,7 +145,7 @@ export default function PostPage({ user, setUser }) {
         setUserLiked(true);
         setUserDisliked(false);
         const likeResponse = await postAPIs.likePost(postId);
-        console.log(likeResponse);
+        // console.log(likeResponse);
         setUser(likeResponse.updatedUser);
         setPost(likeResponse.updatedPost);
       }
@@ -168,8 +168,8 @@ export default function PostPage({ user, setUser }) {
         setUserDisliked(true);
         const unlikeResponse = await postAPIs.unlikePost(postId);
         const dislikeResponse = await postAPIs.dislikePost(postId);
-        console.log("UNLIKE RES ", unlikeResponse);
-        console.log("DISLIKE RES", dislikeResponse);
+        // console.log("UNLIKE RES ", unlikeResponse);
+        // console.log("DISLIKE RES", dislikeResponse);
         setUser(dislikeResponse.updatedUser);
         setPost(dislikeResponse.updatedPost);
         //****************************************** SECTION 1 ******************************************/
@@ -181,7 +181,7 @@ export default function PostPage({ user, setUser }) {
         setUserLiked(false);
         setUserDisliked(false);
         const undislikeResponse = await postAPIs.undislikePost(postId);
-        console.log("UNDISLIKE RES ", undislikeResponse);
+        // console.log("UNDISLIKE RES ", undislikeResponse);
         setUser(undislikeResponse.updatedUser);
         setPost(undislikeResponse.updatedPost);
         //****************************************** SECTION 2 ******************************************/
@@ -193,7 +193,7 @@ export default function PostPage({ user, setUser }) {
         setUserLiked(false);
         setUserDisliked(true);
         const dislikeResponse = await postAPIs.dislikePost(postId);
-        console.log("DISLIKE RES ", dislikeResponse);
+        // console.log("DISLIKE RES ", dislikeResponse);
         setUser(dislikeResponse.updatedUser);
         setPost(dislikeResponse.updatedPost);
       }
@@ -218,7 +218,6 @@ export default function PostPage({ user, setUser }) {
     }
     inputRef.current.value = "";
   }
-  console.log("ZIPPED COMMENTS", zippedComments);
   //******************************************  ADDING COMMENT SECTION ******************************************/
   return (
     <div className={styles.PostPage}>

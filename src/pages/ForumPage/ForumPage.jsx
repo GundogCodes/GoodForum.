@@ -43,7 +43,7 @@ export default function ForumPage({ user, setUser }) {
       try {
         const forum = await forumService.getForum(id);
         setForumPage(forum);
-        console.log("FORUM POSTS ARE ", forum.posts);
+        //console.log("FORUM POSTS ARE ", forum.posts);
         setSortedForumPosts(forum.posts.reverse());
       } catch (error) {
         console.log(error);
@@ -56,7 +56,7 @@ export default function ForumPage({ user, setUser }) {
         const forums = await forumService.getAll();
         const posts = await postAPI.allPosts();
         setAllForums(forums);
-        console.log("allforums", forums);
+        //console.log("allforums", forums);
         // setAllPosts(posts);
         // console.log("POSTS: ", posts);
       } catch (error) {
@@ -139,6 +139,7 @@ export default function ForumPage({ user, setUser }) {
               allForums.map((forum) => {
                 return (
                   <Link
+                    key={`${forum._id}`}
                     className={styles.allTheForums}
                     to={`/forum/${forum._id}`}
                   >
@@ -171,6 +172,7 @@ export default function ForumPage({ user, setUser }) {
                 {forumPage.posts.map((post) => {
                   return (
                     <Post
+                      key={post._id}
                       id={post._id}
                       title={post.title}
                       forum={post.forum.title}

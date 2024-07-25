@@ -14,7 +14,6 @@ import axios from "axios";
 
 export default function UserPage({ user, setUser }) {
   /********************************************** VARIABLES **********************************************/
-  const { id } = useParams();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [allUserPost, setAllUserPosts] = useState([]);
@@ -24,20 +23,21 @@ export default function UserPage({ user, setUser }) {
 
   useEffect(() => {
     (async () => {
-      try {
-        const userPosts = await usersAPIs.getUsersPosts();
-        if (userPosts === "no posts") {
-          setAllUserPosts([]);
-        } else {
-          const reversedPosts = userPosts.reverse();
-          setAllUserPosts(reversedPosts);
+      if (user && user !== null) {
+        try {
+          const userPosts = await usersAPIs.getUsersPosts();
+          if (userPosts === "no posts") {
+            setAllUserPosts([]);
+          } else {
+            const reversedPosts = userPosts.reverse();
+            setAllUserPosts(reversedPosts);
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
       }
     })();
   }, []);
-  console.log("USER: ", user);
 
   /******************************************** STATES ********************************************/
   const [file, setFile] = useState();
@@ -96,6 +96,7 @@ export default function UserPage({ user, setUser }) {
     <div className={styles.UserPage}>
       {showModal && (
         <PostModal
+          key={user._id}
           user={user}
           setUser={setUser}
           showModal={showModal}
@@ -108,7 +109,7 @@ export default function UserPage({ user, setUser }) {
         {user ? (
           user.followedForums.map((forum) => (
             <p key={forum._id}>
-              <Link to={`/forum/${forum._id}`}>
+              <Link key={forum._id} to={`/forum/${forum._id}`}>
                 <ChevronRightIcon /> {forum.title}
               </Link>
             </p>

@@ -34,10 +34,10 @@ export default function OtherUserPage({ user, setUser }) {
   useEffect(() => {
     if (user) {
       for (let friend of user.friends) {
-        console.log("FRIEND ID", friend._id);
+        // console.log("FRIEND ID", friend._id);
         if (friend._id === id) {
           setIsFriend(true);
-          console.log(`USER IS FRIEND: ${isFriend}`);
+          // console.log(`USER IS FRIEND: ${isFriend}`);
         }
       }
     } else {
@@ -46,7 +46,7 @@ export default function OtherUserPage({ user, setUser }) {
     (async () => {
       try {
         const viewingUser = await userAPIs.getUser(id);
-        console.log("user is ", viewingUser);
+        // console.log("user is ", viewingUser);
         setUserPage(viewingUser);
       } catch (error) {
         console.log(error);
@@ -60,9 +60,9 @@ export default function OtherUserPage({ user, setUser }) {
       try {
         setIsFriend(true);
         const updatedUser = await userAPIs.addFriend(id);
-        console.log("UPDATED USER", updatedUser);
+        // console.log("UPDATED USER", updatedUser);
         setUser(updatedUser);
-        console.log(updatedUser);
+        // console.log(updatedUser);
         navigate("/chats");
       } catch (error) {
         console.log(error);
@@ -72,15 +72,15 @@ export default function OtherUserPage({ user, setUser }) {
     }
   }
   async function handleFriend() {
-    console.log("USER", user);
+    // console.log("USER", user);
     if (isFriend === true && user) {
       try {
         const updatedUser = await userAPIs.removeFriend(id);
-        console.log("API RETURN", updatedUser);
+        // console.log("API RETURN", updatedUser);
         setIsFriend(false);
         setUser(updatedUser.user);
         setUserPage(updatedUser.friend);
-        console.log("API RETURN", updatedUser);
+        // console.log("API RETURN", updatedUser);
       } catch (error) {
         console.log(error);
       }
@@ -90,7 +90,7 @@ export default function OtherUserPage({ user, setUser }) {
         setIsFriend(true);
         setUser(updatedUser.user);
         setUserPage(updatedUser.friend);
-        console.log("API RETURN", updatedUser);
+        // console.log("API RETURN", updatedUser);
         //navigate('/chats')
       } catch (error) {
         console.log(error);

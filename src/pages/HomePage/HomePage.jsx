@@ -32,7 +32,6 @@ export default function HomePage({ user, setUser }) {
     })();
   }, []);
   /******************************************** FUNCTIONS ********************************************/
-  console.log("USER IN HOMEPAGE", user);
   function handleCreateClick() {
     setShowModal(!showModal);
   }
@@ -122,7 +121,7 @@ export default function HomePage({ user, setUser }) {
             <div className={styles.postList}>
               {allPosts.map((post) => {
                 return (
-                  <>
+                  <div key={post._id}>
                     {user ? (
                       <Post
                         user={user}
@@ -140,7 +139,7 @@ export default function HomePage({ user, setUser }) {
                       />
                     ) : (
                       <Post
-                        key={`${post._id}`}
+                        key={`${post.title}`}
                         id={post._id}
                         title={post.title}
                         forum={post.forum.title}
@@ -152,7 +151,7 @@ export default function HomePage({ user, setUser }) {
                         dislikes={post.dislikes}
                       />
                     )}
-                  </>
+                  </div>
                 );
               })}
             </div>

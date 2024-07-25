@@ -16,22 +16,25 @@ export default function UserFriends({ user, setUser }) {
   }
   /********************************* API CALLS *********************************/
   async function handleFriend(e) {
-    const removingFriend = e.target.id;
-    try {
-      const updatedUser = await userService.removeFriend(removingFriend);
-      setUser(updatedUser);
-    } catch (error) {
-      console.log(error);
+    if (user && user !== null) {
+      const removingFriend = e.target.id;
+      try {
+        const updatedUser = await userService.removeFriend(removingFriend);
+        setUser(updatedUser);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
   return (
     <div className={styles.UserFriends}>
       <h1 className={styles.title}>Your Friends</h1>
-      {user.friends.length > 0 ? (
+
+      {!user == null && user.friends.length > 0 ? (
         <div className={styles.friendsList}>
           {user.friends.map((friend) => {
             return (
-              <div className={styles.friendCard}>
+              <div className={styles.friendCard} key={`${friend._id}`}>
                 {friend.profileImage ? (
                   <img
                     id={`${friend._id}`}

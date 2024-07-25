@@ -46,7 +46,6 @@ export default function Post({
   });
 
   /********************************************** HANDLE STATES  **********************************************/
-  console.log("USER IN POST", user);
   /**********************************************  USEEFFCTS  **********************************************/
   useEffect(() => {
     (async () => {
@@ -66,7 +65,7 @@ export default function Post({
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {
     const postId = likeRef.current.id;
-    console.log("POST ID", postId);
+    // console.log("POST ID", postId);
     if (user) {
       if (userDisliked && !userLiked) {
         setPost((prevPost) => ({
@@ -78,8 +77,8 @@ export default function Post({
         setUserDisliked(false);
         const undislikeResponse = await postAPIs.undislikePost(postId);
         const likeResponse = await postAPIs.likePost(postId);
-        console.log("UNDISLIKE RES ", undislikeResponse);
-        console.log("LIKE RES", likeResponse);
+        // console.log("UNDISLIKE RES ", undislikeResponse);
+        // console.log("LIKE RES", likeResponse);
         setUser(likeResponse.updatedUser);
         //****************************************** SECTION 1 ******************************************/
       } else if (userLiked && !userDisliked) {
@@ -90,7 +89,7 @@ export default function Post({
         setUserLiked(false);
         setUserDisliked(false);
         const unlikeResponse = await postAPIs.unlikePost(postId);
-        console.log("UNLIKE RES ", unlikeResponse);
+        // console.log("UNLIKE RES ", unlikeResponse);
         setUser(unlikeResponse.updatedUser);
         //****************************************** SECTION 2 ******************************************/
       } else if (!userLiked && !userDisliked) {
@@ -101,7 +100,7 @@ export default function Post({
         setUserLiked(true);
         setUserDisliked(false);
         const likeResponse = await postAPIs.likePost(postId);
-        console.log(likeResponse);
+        // console.log(likeResponse);
         setUser(likeResponse.updatedUser);
       }
       //****************************************** SECTION 3 ******************************************/
@@ -111,7 +110,7 @@ export default function Post({
   }
   async function handleDislikeClicked(e) {
     const postId = dislikeRef.current.id;
-    console.log("POST ID", postId);
+    // console.log("POST ID", postId);
     if (user) {
       if (userLiked && !userDisliked) {
         setPost((prevPost) => ({
@@ -123,8 +122,8 @@ export default function Post({
         setUserDisliked(true);
         const unlikeResponse = await postAPIs.unlikePost(postId);
         const dislikeResponse = await postAPIs.dislikePost(postId);
-        console.log("UNLIKE RES ", unlikeResponse);
-        console.log("DISLIKE RES", dislikeResponse);
+        // console.log("UNLIKE RES ", unlikeResponse);
+        // console.log("DISLIKE RES", dislikeResponse);
         setUser(dislikeResponse.updatedUser);
         //****************************************** SECTION 1 ******************************************/
       } else if (!userLiked && userDisliked) {
@@ -135,7 +134,7 @@ export default function Post({
         setUserLiked(false);
         setUserDisliked(false);
         const undislikeResponse = await postAPIs.undislikePost(postId);
-        console.log("UNDISLIKE RES ", undislikeResponse);
+        // console.log("UNDISLIKE RES ", undislikeResponse);
         setUser(undislikeResponse.updatedUser);
         //****************************************** SECTION 2 ******************************************/
       } else if (!userLiked && !userDisliked) {
@@ -146,7 +145,7 @@ export default function Post({
         setUserLiked(false);
         setUserDisliked(true);
         const dislikeResponse = await postAPIs.dislikePost(postId);
-        console.log("DISLIKE RES ", dislikeResponse);
+        // console.log("DISLIKE RES ", dislikeResponse);
         setUser(dislikeResponse.updatedUser);
       }
       //****************************************** SECTION 3 ******************************************/

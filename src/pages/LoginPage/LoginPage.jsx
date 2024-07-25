@@ -44,7 +44,6 @@ export default function LoginPage({ user, setUser }) {
   function handleChange(e) {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
     setError("");
-    console.log("CHANGING LOGGIN IN CREDENTIALS");
   }
 
   function handleSignupClick() {
@@ -54,9 +53,8 @@ export default function LoginPage({ user, setUser }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      console.log(credentials);
+      // console.log(credentials);
       const user = await usersService.login(credentials);
-      console.log("USER", user);
       setUser(user);
       if (user) {
         handleClick();
@@ -68,7 +66,7 @@ export default function LoginPage({ user, setUser }) {
   async function handleSignUpSubmit(e) {
     e.preventDefault();
     try {
-      console.log("credentials: ", credentials);
+      //console.log("credentials: ", credentials);
       const createdUser = await usersService.signUp(credentials);
       setUser(createdUser);
       setNewUser(createdUser);
@@ -78,7 +76,7 @@ export default function LoginPage({ user, setUser }) {
 
     navigate("/");
   }
-  console.log(showDetails);
+
   return (
     <div className={styles.LoginPage}>
       {showDetails ? (

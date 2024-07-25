@@ -121,7 +121,7 @@ export default function ChatsPage({ user, setUser }) {
               <>
                 {user.friends.map((friend) => {
                   return (
-                    <>
+                    <div key={friend._id}>
                       <h2>Your Chats</h2>
                       <h1>
                         {friend.profileImage ? (
@@ -147,7 +147,7 @@ export default function ChatsPage({ user, setUser }) {
                           {friend.username}
                         </p>
                       </h1>
-                    </>
+                    </div>
                   );
                 })}
               </>

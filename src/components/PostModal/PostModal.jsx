@@ -179,6 +179,7 @@ export default function PostModal({
                         onClick={handleForumSelection}
                         id={`${forum._id}`}
                         name={forum.title}
+                        key={`${forum._id}`}
                       >
                         {forum.title}
                       </h4>
