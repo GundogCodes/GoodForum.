@@ -174,7 +174,7 @@ export default function PostPage({ user, setUser }) {
       );
       console.log("RETURN FROM ADDING COMMENT", updatedCommentWithPost);
       setPost(updatedCommentWithPost.updatedPost);
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.log({ error: error });
     }

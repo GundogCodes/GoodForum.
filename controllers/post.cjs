@@ -132,25 +132,48 @@ exports.incrementLikes = async function (req, res) {
 };
 exports.decrementLikes = async function (req, res) {
   try {
-    const updatedPost = await Post.findOneAndUpdate(
-      { _id: req.params.id },
-      { $inc: { likes: -1 } },
-      { new: true }
-    )
-      .populate("comments")
-      .populate("sender")
-      .populate("forum");
-    const updatedUser = await User.findOneAndUpdate(
-      { _id: req.user._id },
-      { $pull: { likedPosts: updatedPost } },
-      { new: true }
-    )
-      .populate("friends")
-      .populate("followedForums")
-      .populate("foundedForums")
-      .populate("posts")
-      .populate("chats");
-    res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
+    // Find the post by ID first
+    const post = await Post.findById(req.params.id);
+
+    // If the post has likes greater than 0, decrement it
+    if (post.likes > 0) {
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { likes: -1 } },
+        { new: true }
+      )
+        .populate("comments")
+        .populate("sender")
+        .populate("forum");
+
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $pull: { likedPosts: updatedPost._id } },
+        { new: true }
+      )
+        .populate("friends")
+        .populate("followedForums")
+        .populate("foundedForums")
+        .populate("posts")
+        .populate("chats");
+
+      res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
+    } else {
+      // If likes are already 0, just return the current state of the post and user
+      const updatedPost = await Post.findById(req.params.id)
+        .populate("comments")
+        .populate("sender")
+        .populate("forum");
+
+      const updatedUser = await User.findById(req.user._id)
+        .populate("friends")
+        .populate("followedForums")
+        .populate("foundedForums")
+        .populate("posts")
+        .populate("chats");
+
+      res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -183,25 +206,48 @@ exports.incrementDislikes = async function (req, res) {
 };
 exports.decrementDislikes = async function (req, res) {
   try {
-    const updatedPost = await Post.findOneAndUpdate(
-      { _id: req.params.id },
-      { $inc: { dislikes: -1 } },
-      { new: true }
-    )
-      .populate("comments")
-      .populate("sender")
-      .populate("forum");
-    const updatedUser = await User.findOneAndUpdate(
-      { _id: req.user._id },
-      { $pull: { dislikedPosts: updatedPost } },
-      { new: true }
-    )
-      .populate("friends")
-      .populate("followedForums")
-      .populate("foundedForums")
-      .populate("posts")
-      .populate("chats");
-    res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
+    // Find the post by ID first
+    const post = await Post.findById(req.params.id);
+
+    // If the post has dislikes greater than 0, decrement it
+    if (post.dislikes > 0) {
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { dislikes: -1 } },
+        { new: true }
+      )
+        .populate("comments")
+        .populate("sender")
+        .populate("forum");
+
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $pull: { dislikedPosts: updatedPost._id } },
+        { new: true }
+      )
+        .populate("friends")
+        .populate("followedForums")
+        .populate("foundedForums")
+        .populate("posts")
+        .populate("chats");
+
+      res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
+    } else {
+      // If dislikes are already 0, just return the current state of the post and user
+      const updatedPost = await Post.findById(req.params.id)
+        .populate("comments")
+        .populate("sender")
+        .populate("forum");
+
+      const updatedUser = await User.findById(req.user._id)
+        .populate("friends")
+        .populate("followedForums")
+        .populate("foundedForums")
+        .populate("posts")
+        .populate("chats");
+
+      res.json({ updatedPost: updatedPost, updatedUser: updatedUser });
+    }
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

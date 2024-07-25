@@ -72,7 +72,7 @@ export default function Post({
         setPost((prevPost) => ({
           ...prevPost,
           postLikes: prevPost.postLikes + 1,
-          postDislikes: prevPost.postDislikes - 1,
+          postDislikes: Math.max(prevPost.postDislikes - 1, 0),
         }));
         setUserLiked(true);
         setUserDisliked(false);
@@ -81,16 +81,18 @@ export default function Post({
         console.log("UNDISLIKE RES ", undislikeResponse);
         console.log("LIKE RES", likeResponse);
         setUser(likeResponse.updatedUser);
+        //****************************************** SECTION 1 ******************************************/
       } else if (userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
-          postLikes: prevPost.postLikes - 1,
+          postLikes: Math.max(prevPost.postLikes - 1, 0),
         }));
         setUserLiked(false);
         setUserDisliked(false);
         const unlikeResponse = await postAPIs.unlikePost(postId);
         console.log("UNLIKE RES ", unlikeResponse);
         setUser(unlikeResponse.updatedUser);
+        //****************************************** SECTION 2 ******************************************/
       } else if (!userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
@@ -102,6 +104,7 @@ export default function Post({
         console.log(likeResponse);
         setUser(likeResponse.updatedUser);
       }
+      //****************************************** SECTION 3 ******************************************/
     } else {
       alert("sign up or login");
     }
@@ -113,7 +116,7 @@ export default function Post({
       if (userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
-          postLikes: prevPost.postLikes - 1,
+          postLikes: Math.max(prevPost.postLikes - 1, 0),
           postDislikes: prevPost.postDislikes + 1,
         }));
         setUserLiked(false);
@@ -123,16 +126,18 @@ export default function Post({
         console.log("UNLIKE RES ", unlikeResponse);
         console.log("DISLIKE RES", dislikeResponse);
         setUser(dislikeResponse.updatedUser);
+        //****************************************** SECTION 1 ******************************************/
       } else if (!userLiked && userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
-          postDislikes: prevPost.postDislikes - 1,
+          postDislikes: Math.max(prevPost.postDislikes - 1, 0),
         }));
         setUserLiked(false);
         setUserDisliked(false);
         const undislikeResponse = await postAPIs.undislikePost(postId);
         console.log("UNDISLIKE RES ", undislikeResponse);
         setUser(undislikeResponse.updatedUser);
+        //****************************************** SECTION 2 ******************************************/
       } else if (!userLiked && !userDisliked) {
         setPost((prevPost) => ({
           ...prevPost,
@@ -144,6 +149,7 @@ export default function Post({
         console.log("DISLIKE RES ", dislikeResponse);
         setUser(dislikeResponse.updatedUser);
       }
+      //****************************************** SECTION 3 ******************************************/
     } else {
       alert("sign up or login");
     }

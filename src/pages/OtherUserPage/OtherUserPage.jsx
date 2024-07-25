@@ -104,7 +104,11 @@ export default function OtherUserPage({ user, setUser }) {
         {allForums ? (
           allForums.map((forum) => {
             return (
-              <Link className={styles.allTheForums} to={`/forum/${forum._id}`}>
+              <Link
+                key={`${forum._id}`}
+                className={styles.allTheForums}
+                to={`/forum/${forum._id}`}
+              >
                 <ChevronRightIcon /> {forum.title}
               </Link>
             );
@@ -134,6 +138,7 @@ export default function OtherUserPage({ user, setUser }) {
             {userPage.posts.map((post) => {
               return (
                 <Post
+                  key={post._id}
                   id={post._id}
                   title={post.title}
                   forum={post.forum}
