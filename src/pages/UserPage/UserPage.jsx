@@ -21,6 +21,7 @@ export default function UserPage({ user, setUser }) {
   const [userFoundedForums, setUserFoundedForums] = useState([]);
 
   /********************************************** USE EFFECTS **********************************************/
+
   useEffect(() => {
     (async () => {
       try {

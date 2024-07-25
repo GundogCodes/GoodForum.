@@ -3,8 +3,10 @@ import styles from "./Post.module.scss";
 import { Link } from "react-router-dom";
 import { ChatIcon, ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import * as postAPIs from "../../../utilities/post-api.cjs";
-
+import * as usersAPIs from "../../../utilities/users-api.cjs";
 export default function Post({
+  user,
+  setUser,
   id,
   title,
   forum,
@@ -16,8 +18,6 @@ export default function Post({
   text,
   link,
   video,
-  user,
-  setUser,
 }) {
   /********************************************** VARIABLES **********************************************/
   // const navigate = useNavigate();
@@ -44,19 +44,22 @@ export default function Post({
     postText: text,
     postLink: link,
   });
-  console.log("USER in posts", user);
+
   /********************************************** HANDLE STATES  **********************************************/
+  console.log("USER IN POST", user);
   /**********************************************  USEEFFCTS  **********************************************/
-  useEffect(() => {
-    (() => {
-      if (user && user.likedPosts.includes(id)) {
-        setUserLiked(true);
-      }
-      if (user && user.dislikedPosts.includes(id)) {
-        setUserDisliked(true);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     if (user.likedPosts.length > 0 && user.dislikedPosts.length > 0) {
+  //       if (user.likedPosts.includes(id)) {
+  //         setUserLiked(true);
+  //       }
+  //       if (user.dislikedPosts.includes(id)) {
+  //         setUserDisliked(true);
+  //       }
+  //     }
+  //   })();
+  // }, []);
 
   /********************************************** FUNCTIONS  **********************************************/
   async function handleLikeClicked(e) {

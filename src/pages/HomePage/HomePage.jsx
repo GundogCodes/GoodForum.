@@ -32,7 +32,7 @@ export default function HomePage({ user, setUser }) {
     })();
   }, []);
   /******************************************** FUNCTIONS ********************************************/
-
+  console.log("USER IN HOMEPAGE", user);
   function handleCreateClick() {
     setShowModal(!showModal);
   }
@@ -122,20 +122,37 @@ export default function HomePage({ user, setUser }) {
             <div className={styles.postList}>
               {allPosts.map((post) => {
                 return (
-                  <Post
-                    key={`${post._id}`}
-                    id={post._id}
-                    title={post.title}
-                    forum={post.forum.title}
-                    sender={post.sender.username}
-                    text={post.text}
-                    image={post.image}
-                    comments={post.comments}
-                    likes={post.likes}
-                    dislikes={post.dislikes}
-                    user={user}
-                    setUser={setUser}
-                  ></Post>
+                  <>
+                    {user ? (
+                      <Post
+                        user={user}
+                        setUser={setUser}
+                        key={`${post._id}`}
+                        id={post._id}
+                        title={post.title}
+                        forum={post.forum.title}
+                        sender={post.sender.username}
+                        text={post.text}
+                        image={post.image}
+                        comments={post.comments}
+                        likes={post.likes}
+                        dislikes={post.dislikes}
+                      />
+                    ) : (
+                      <Post
+                        key={`${post._id}`}
+                        id={post._id}
+                        title={post.title}
+                        forum={post.forum.title}
+                        sender={post.sender.username}
+                        text={post.text}
+                        image={post.image}
+                        comments={post.comments}
+                        likes={post.likes}
+                        dislikes={post.dislikes}
+                      />
+                    )}
+                  </>
                 );
               })}
             </div>

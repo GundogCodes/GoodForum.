@@ -42,7 +42,7 @@ export default function NavBar({ user, setUser }) {
         </div>
         <Tab _selected={{}}>
           <Link to={"/"}>
-            <h1 className={styles.fractalus}>GoodForum.</h1>
+            <h1 className={styles.goodForum}>GoodForum.</h1>
           </Link>
         </Tab>
         <Tab _selected={{}}>

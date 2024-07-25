@@ -70,13 +70,13 @@
         color: rgb(180, 217, 247);
       }
     }
-    .fractalus {
+    .goodForum {
       height: 100%;
       width: 40vw;
       border-radius: 0px;
       display: flex;
       align-items: center;
-      font-size: 10vh;
+      font-size: min(5vh, 10vh);
       max-width: 1200px;
       justify-content: center;
       font-weight: bolder;
