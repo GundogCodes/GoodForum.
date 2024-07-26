@@ -29,7 +29,6 @@ export default function PostPage({ user, setUser }) {
     setNewComment({ text: e.target.value });
   }
   /********************************************** STATE VARIABLES **********************************************/
-  console.log("USER IN POSTPAGE : ", user);
   const [newComment, setNewComment] = useState();
   const [post, setPost] = useState();
   const [userLiked, setUserLiked] = useState(false);

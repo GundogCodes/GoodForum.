@@ -23,7 +23,6 @@ export default function Post({
   // const navigate = useNavigate();
   const likeRef = useRef(null);
   const dislikeRef = useRef(null);
-  console.log("USER IN POST COMP : ", user);
   /********************************************** STATE VARIABLES **********************************************/
   const [postForumTitle, setForumTitle] = useState();
   const [postForumId, setForumId] = useState();

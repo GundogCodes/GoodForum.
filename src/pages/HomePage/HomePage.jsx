@@ -31,7 +31,6 @@ export default function HomePage({ user, setUser }) {
       }
     })();
   }, []);
-  console.log("USER IN HOME : ", user);
   /******************************************** FUNCTIONS ********************************************/
   function handleCreateClick() {
     setShowModal(!showModal);

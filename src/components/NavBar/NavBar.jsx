@@ -28,7 +28,6 @@ export default function NavBar({ user, setUser }) {
       setDate(formattedDate);
     })();
   }, []);
-  console.log("USER IN NAV : ", user);
   return (
     <Tabs
       variant="enclosed"

@@ -24,7 +24,6 @@ function App() {
       try {
         const userData = await getUser();
         setUser(userData);
-        console.log("USER IN APPJSX : ", userData);
       } catch (error) {
         console.error("Error fetching user data:", error);
       }

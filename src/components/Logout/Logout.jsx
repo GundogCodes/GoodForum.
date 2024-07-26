@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function LogOut({ user, setUser }) {
-  console.log("USER IN LOGOUT : ", user);
   const navigate = useNavigate();
 
   function handleLogin() {
