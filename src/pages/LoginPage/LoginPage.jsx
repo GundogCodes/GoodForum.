@@ -33,7 +33,7 @@ export default function LoginPage({ user, setUser }) {
 
     generateRandomNumber();
   }, []);
-
+  console.log("USER IN LOGIN : ", user);
   /************************************ FUNCTIONS  ************************************/
   function handleLoginClick() {
     setClicked(!clicked);

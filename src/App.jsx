@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import styles from "./App.module.scss";
@@ -17,8 +17,21 @@ import OtherUserPage from "./pages/OtherUserPage/OtherUserPage";
 import { getUser } from "../utilities/users-service.cjs";
 import LogOut from "./components/Logout/Logout";
 function App() {
-  const [user, setUser] = useState(getUser());
-  console.log("user : ", user);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const userData = await getUser();
+        setUser(userData);
+        console.log("USER IN APPJSX : ", userData);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
 
   return (
     <div className={styles.app}>

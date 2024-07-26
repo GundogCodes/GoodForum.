@@ -29,6 +29,7 @@ export default function ChatsPage({ user, setUser }) {
     e.preventDefault();
     setNewMessage({ content: e.target.value });
   }
+  console.log("USER IN CHATS : ", user);
   /*********************************************** USE EFFECTS ***********************************************/
 
   if (user) {
