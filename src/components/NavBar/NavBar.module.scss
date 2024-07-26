@@ -84,6 +84,10 @@
       white-space: nowrap; /* Prevents text from wrapping */
       overflow: hidden;
       animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      .logoImage {
+        height: 80px;
+        width: 80px;
+      }
     }
     .tabLogout {
     }

@@ -41,7 +41,13 @@ export default function NavBar({ user, setUser }) {
         </div>
         <Tab _selected={{}}>
           <Link to={"/"}>
-            <h1 className={styles.goodForum}>GoodForum.</h1>
+            <div className={styles.goodForum}>
+              <img
+                className={styles.logoImage}
+                src="src/assets/AppFunctions/cookieLogo.png"
+              />
+              GoodForum.
+            </div>
           </Link>
         </Tab>
         <Tab _selected={{}}>

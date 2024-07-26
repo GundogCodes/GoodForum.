@@ -81,33 +81,73 @@ export default function LoginPage({ user, setUser }) {
       {showDetails ? (
         <div className={styles.showDetails}>
           <div className={styles.desModal}>
-            <h1>GoodForum.</h1>
+            <h1>
+              <img
+                className={styles.logoImage}
+                src="/src/assets/AppFunctions/cookieLogo.png"
+              />{" "}
+              GoodForum.
+            </h1>
             <div className={styles.desText}>
               <h2>
-                is a dynamic web application designed to provide a comprehensive
-                platform for interactive discussions and community engagement.
-                Built with modern web technologies.
+                GoodForum is a dynamic web application designed to provide a
+                comprehensive platform for interactive discussions and community
+                engagement. Built with modern web technologies, it offers users
+                a seamless experience to connect, share insights, and explore
+                diverse, positive topics that bring value to the community.
                 <br />
-                Fractalus offers users a seamless experience to connect, share
-                insights, and explore diverse topics.
+                <span>Community Rules:</span>
+                <br />
+                1. Don't post discriminatory material or hate speech here.
+                <br />
+                2. Don't post porn or sexual media.
+                <br />
+                3. Don't advertise, self-promote, or otherwise market anything.
+                <br />
+                4. Avoid religious or religious debate content.
+                <br />
+                5. Stay on-topic. Posts must be Forum Topic & Description.
+                <br />
+                6. Don't collect personal information from the community.
+                <br />
+                7. Don't disrupt other places.
+                <br />
+                8. Don't stir up drama.
+                <br />
+                9. Avoid politics.
+                <br />
+                10. Avoid spreading misinformation.
+                <br />
+                11. Don't engage in piracy/copyright/trademark infringement.
+                <br />
+                12. Stay positive and encourage others. Don't discourage or
+                disparage people.
                 <br />
                 <span>Key Features:</span>
                 <br />• Real-time Discussions: Engage in real-time discussions
-                on various topics of interest. • User Profiles: Customize your
-                profile and connect with like-minded individuals. • Rich Media
-                Support: Share images and videos to enrich discussions. •
-                Responsive Design: Access Fractalus from any device, ensuring a
-                consistent experience.
+                on various topics of interest.
+                <br />• Positive Community: A space for users to converse about
+                positive topics and bring value to users. Hate and bullying will
+                not be tolerated. Hateful or offensive Forums will be deleted.
+                <br />• User Profiles: Customize your profile and connect with
+                like-minded individuals.
+                <br />• Rich Media Support: Share images and videos to enrich
+                discussions.
+                <br />• Responsive Design: Access GoodForum from any device,
+                ensuring a consistent experience.
                 <br />
                 <span>Technologies Used:</span>
                 <br />
-                <span>•Frontend:</span> React.js, TypeScript, Material-UI, Axios
+                <span>• Frontend:</span> React.js, Javascript, Material-UI,
+                Axios
                 <br />
-                <span>•Backend:</span> Node.js, Express.js, MongoDB •
-                Deployment: AWS (Amazon Web Services), PM2
+                <span>• Backend:</span> Node.js, Express.js, MongoDB
                 <br />
-                Explore Fractalus today and join a vibrant community of thinkers
+                <span>• Deployment:</span> Vercel
+                <br />
+                Explore GoodForum today and join a vibrant community of thinkers
                 and doers!
+                <br />
               </h2>
             </div>
           </div>
@@ -150,7 +190,7 @@ export default function LoginPage({ user, setUser }) {
           ></img> */}
           <div className={styles.hDiv}>
             <h1> Welcome to GoodForum.</h1>
-            <h2>Unveiling Infinite Possibilities</h2>
+            <h2>Uncrumbling Infinite Possibilities</h2>
           </div>
         </div>
         <div className={styles.loginDiv}>
