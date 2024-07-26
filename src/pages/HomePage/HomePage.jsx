@@ -206,18 +206,20 @@ export default function HomePage({ user, setUser }) {
                     >
                       innovationsoftwareservices@gmail.com
                     </a>
+                    <a>Donate</a>
+                    <a>Help</a>
                   </div>
                 </div>
               </div>
             </div>
             <div className={styles.footerSection2}>
-              <h3 id={styles.headings}>Industries</h3>
+              <h3 id={styles.headings}>View Our Products</h3>
               <div className={styles.industriesDiv}>
-                <h4>Delivery & Logistics</h4> <h4>E-Commerce/Medicine</h4>{" "}
-                {/* Changed from h5 to h4 */}
-                <h4>Child Care & Daycare</h4> {/* Changed from h5 to h4 */}
-                <h4>General Software Development</h4>{" "}
-                {/* Changed from h5 to h4 */}
+                <a href="https://www.1652357alberta.ca/">Alberta LTD</a>
+                <a href="https://www.focus-logistics.ca/">Focus Logistics</a>
+                <a href="https://www.jmdcanada.ca/">JMD Transport</a>
+                <a href="https://worldofjoy.ca/">World of Joy (Child Care)</a>
+                <a href="https://gunisharma.com/">Creator Portfolio</a>
               </div>
             </div>
             <div className={styles.footerSection3}>
