@@ -59,7 +59,6 @@ export default function NavBar({ user, setUser }) {
               _selected={{
                 backgroundColor: "rgb(191, 63, 27)",
                 border: "solid 0.3px white",
-                color: "white",
               }}
             >
               {youClicked ? (

@@ -365,7 +365,7 @@ export default function PostPage({ user, setUser }) {
               <>
                 <h2>{post.sender.username}</h2>
                 <h2>Posts: {post.sender.posts.length}</h2>
-                <h2>Founded Forums: {post.sender.foundedForums.length}</h2>
+                <h2>Forums: {post.sender.foundedForums.length}</h2>
               </>
             ) : (
               <></>
