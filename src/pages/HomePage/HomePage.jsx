@@ -9,7 +9,7 @@ import * as postAPI from "../../../utilities/post-api.cjs";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Post from "../../components/Post/Post";
-import { ChevronRightIcon, SunIcon } from "@chakra-ui/icons";
+import { ChevronRightIcon, CloseIcon, SunIcon } from "@chakra-ui/icons";
 export default function HomePage({ user, setUser }) {
   /******************************************** VARIABLES ********************************************/
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ export default function HomePage({ user, setUser }) {
   const [showModal, setShowModal] = useState(false);
   const [forums, setForums] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
+  const [showDetails, setDetails] = useState(false);
   /******************************************** USE EFFECTS ********************************************/
   useEffect(() => {
     (async () => {
@@ -46,6 +47,89 @@ export default function HomePage({ user, setUser }) {
           setShowModal={setShowModal}
           headings={["Title", "Topic", "Brief Description"]}
         />
+      ) : (
+        <></>
+      )}
+      {showDetails ? (
+        <div className={styles.showDetails}>
+          <div className={styles.desModal}>
+            <h1>
+              <img
+                className={styles.logoImage}
+                src="/src/assets/AppFunctions/cookieLogo.png"
+              />{" "}
+              GoodForum.
+              <CloseIcon
+                onClick={() => {
+                  setDetails(false);
+                }}
+                className={styles.x}
+              />
+            </h1>
+            <div className={styles.desText}>
+              <h2>
+                GoodForum is a dynamic web application designed to provide a
+                comprehensive platform for interactive discussions and community
+                engagement. Built with modern web technologies, it offers users
+                a seamless experience to connect, share insights, and explore
+                diverse, positive topics that bring value to the community.
+                <br />
+                <span>Community Rules:</span>
+                <br />
+                1. Don't post discriminatory material or hate speech here.
+                <br />
+                2. Don't post porn or sexual media.
+                <br />
+                3. Don't advertise, self-promote, or otherwise market anything.
+                <br />
+                4. Avoid religious or religious debate content.
+                <br />
+                5. Stay on-topic. Posts must be Forum Topic & Description.
+                <br />
+                6. Don't collect personal information from the community.
+                <br />
+                7. Don't disrupt other places.
+                <br />
+                8. Don't stir up drama.
+                <br />
+                9. Avoid politics.
+                <br />
+                10. Avoid spreading misinformation.
+                <br />
+                11. Don't engage in piracy/copyright/trademark infringement.
+                <br />
+                12. Stay positive and encourage others. Don't discourage or
+                disparage people.
+                <br />
+                <span>Key Features:</span>
+                <br />• Real-time Discussions: Engage in real-time discussions
+                on various topics of interest.
+                <br />• Positive Community: A space for users to converse about
+                positive topics and bring value to users. Hate and bullying will
+                not be tolerated. Hateful or offensive Forums will be deleted.
+                <br />• User Profiles: Customize your profile and connect with
+                like-minded individuals.
+                <br />• Rich Media Support: Share images and videos to enrich
+                discussions.
+                <br />• Responsive Design: Access GoodForum from any device,
+                ensuring a consistent experience.
+                <br />
+                <span>Technologies Used:</span>
+                <br />
+                <span>• Frontend:</span> React.js, Javascript, Material-UI,
+                Axios
+                <br />
+                <span>• Backend:</span> Node.js, Express.js, MongoDB
+                <br />
+                <span>• Deployment:</span> Vercel
+                <br />
+                Explore GoodForum today and join a vibrant community of thinkers
+                and doers!
+                <br />
+              </h2>
+            </div>
+          </div>
+        </div>
       ) : (
         <></>
       )}
@@ -207,7 +291,13 @@ export default function HomePage({ user, setUser }) {
                       innovationsoftwareservices@gmail.com
                     </a>
                     <a>Donate</a>
-                    <a>Help</a>
+                    <a
+                      onClick={() => {
+                        setDetails(true);
+                      }}
+                    >
+                      Help
+                    </a>
                   </div>
                 </div>
               </div>

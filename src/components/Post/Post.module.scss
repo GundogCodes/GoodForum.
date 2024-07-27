@@ -73,7 +73,7 @@
     border-radius: 10px;
     overflow-y: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: min(130px, 10px);
     background-color: white;
@@ -89,9 +89,7 @@
       padding: 10px;
       height: 40%;
       border-radius: 5px;
-      min-width: 50vw;
       color: black;
-      max-width: 1200px;
     }
   }
   .bottom {

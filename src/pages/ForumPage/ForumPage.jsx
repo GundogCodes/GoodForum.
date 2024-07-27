@@ -43,8 +43,6 @@ export default function ForumPage({ user, setUser }) {
       try {
         const forum = await forumService.getForum(id);
         setForumPage(forum);
-        //console.log("FORUM POSTS ARE ", forum.posts);
-        setSortedForumPosts(forum.posts.reverse());
       } catch (error) {
         console.log(error);
       }
@@ -52,13 +50,17 @@ export default function ForumPage({ user, setUser }) {
   }, [id]);
   useEffect(() => {
     (async () => {
+      const forumPosts = [];
       try {
         const forums = await forumService.getAll();
         const posts = await postAPI.allPosts();
         setAllForums(forums);
-        //console.log("allforums", forums);
-        // setAllPosts(posts);
-        // console.log("POSTS: ", posts);
+        for (let post of posts) {
+          if (post.forum._id === id) {
+            forumPosts.push(post);
+          }
+        }
+        setSortedForumPosts(forumPosts);
       } catch (error) {
         console.log(error);
       }
@@ -80,19 +82,6 @@ export default function ForumPage({ user, setUser }) {
   }, [user]);
   /******************************************** API Calls ********************************************/
 
-  async function handleLikeClick(poster) {
-    try {
-      const updatedPost = await postService.likePost();
-    } catch (error) {
-      console.log({ error: error });
-    }
-  }
-  async function handleDislikeClick() {}
-  function handlePostClick(e) {
-    //console.log('postId in handlePostClick',e.currentTarget.getAttribute('postId'))
-    const id = e.currentTarget.getAttribute("postId");
-    navigate(`/post/${id}`);
-  }
   async function handleMemberClick(e) {
     if (isMember) {
       const newInfo = await forumService.removeMember(id);
@@ -169,7 +158,7 @@ export default function ForumPage({ user, setUser }) {
             </header>
             {forumPage.posts.length > 0 ? (
               <div className={styles.postsList}>
-                {forumPage.posts.map((post) => {
+                {sortedForumPosts.map((post) => {
                   return (
                     <Post
                       key={post._id}
@@ -184,7 +173,7 @@ export default function ForumPage({ user, setUser }) {
                       dislikes={post.dislikes}
                       user={user}
                       setUser={setUser}
-                    ></Post>
+                    />
                   );
                 })}
               </div>
