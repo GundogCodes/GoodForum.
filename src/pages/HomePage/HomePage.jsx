@@ -290,7 +290,7 @@ export default function HomePage({ user, setUser }) {
                     >
                       innovationsoftwareservices@gmail.com
                     </a>
-                    <a>Donate</a>
+                    <a>Support (Help a Brother Out)</a>
                     <a
                       onClick={() => {
                         setDetails(true);
