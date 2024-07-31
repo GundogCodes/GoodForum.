@@ -159,3 +159,62 @@
     }
   }
 }
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+@media (max-width: 900px) {
+  .Post {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95vw;
+    border: solid 1px black;
+    .upper {
+      .upperLeft {
+        width: 100%;
+        .postTitle {
+        }
+
+        .postSenderName {
+        }
+        .postForumTitle {
+        }
+      }
+      .upperRight {
+        background-color: red;
+        display: none;
+        .date {
+        }
+      }
+    }
+    .body {
+      .postText {
+      }
+    }
+    .bottom {
+      border-top: solid 1px rgb(150, 150, 150);
+      .interactions {
+        h4 {
+        }
+        .userdisliked {
+        }
+        .userdisliked:hover {
+        }
+        .userliked {
+        }
+        .userliked:hover {
+        }
+        .likes {
+        }
+        .dislikes:hover,
+        .likes:hover {
+        }
+      }
+      .postComments {
+      }
+      .postComments:hover {
+      }
+    }
+  }
+}

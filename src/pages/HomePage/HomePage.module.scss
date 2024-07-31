@@ -391,7 +391,6 @@
     }
     .mainBody {
       margin-top: 10vh;
-      background-color: red;
       flex-direction: column;
       width: 100vw;
       align-items: center;
@@ -405,6 +404,7 @@
         width: 100vw;
         height: 200px;
         display: flex;
+        border-right: none;
         h1 {
           width: 100%;
           font-size: 15px;
@@ -432,6 +432,7 @@
         }
       }
       .homePosts {
+        width: 100%;
         .postList {
         }
       }
@@ -444,7 +445,6 @@
           max-width: 500px;
         }
         .createPost {
-          color: royalblue;
           font-size: 25px;
           width: 100%;
           font-weight: bold;
