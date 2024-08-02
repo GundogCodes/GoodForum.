@@ -17,7 +17,7 @@ app.use(cors());
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://goodforum.ca",
+    origin: "https://goodforum.ca",
   },
 });
 
