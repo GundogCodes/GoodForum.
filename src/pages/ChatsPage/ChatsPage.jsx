@@ -7,7 +7,9 @@ import * as chatAPI from "../../../utilities/chat-api.cjs";
 import * as messageAPI from "../../../utilities/messages-api.cjs";
 const ENDPOINT = "https://goodforum.ca";
 
-const socket = io.connect(ENDPOINT);
+const socket = io(ENDPOINT, {
+  transports: ["websocket"], // Ensure the use of WebSocket transport
+});
 export default function ChatsPage({ user, setUser }) {
   /*********************************************** VARIABLES***********************************************/
   const navigate = useNavigate();
@@ -31,17 +33,26 @@ export default function ChatsPage({ user, setUser }) {
   }
   /*********************************************** USE EFFECTS ***********************************************/
 
-  if (user) {
+  useEffect(() => {
+    const socket = io(ENDPOINT, {
+      transports: ["websocket"],
+    });
+
+    socket.emit("setup", user);
+
     socket.on("message received", async (newMessageReceived) => {
       console.log("MESSAGE RECEIVED IS::: ", newMessageReceived);
-      //alert(newMessageReceived);
       if (newMessageReceived.chat._id !== selectedChatId) {
         return;
       } else {
         setSelectedChats([newMessageReceived, ...selectedChats]);
       }
     });
-  }
+
+    return () => {
+      socket.disconnect();
+    };
+  }, [user, selectedChatId]);
   /*********************************************** API CALLS ***********************************************/
   async function getUserChats(e) {
     e.preventDefault();
