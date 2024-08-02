@@ -17,7 +17,11 @@ app.use(cors());
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
+<<<<<<< HEAD
 	  origin: "http://localhost:8004",
+=======
+    origin: "http://goodforum.ca",
+>>>>>>> c1fdb1a42348f44005f8db4d4237a69b06b2b409
   },
 });
 

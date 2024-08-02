@@ -160,38 +160,40 @@ export default function ChatsPage({ user, setUser }) {
               {selectedChats && selectedChats.length > 0 ? (
                 selectedChats.map((chat) => {
                   return (
-                    <>
+                    <div key={chat._id}>
                       {chat.sender._id === user._id ? (
                         <div id={styles.userMessage} className={styles.message}>
-                          <p>
+                          <div>
                             {chat.sender ? (
                               <div className={styles.messageBubble}>
-                                {chat.sender.username}: {chat.content}
+                                <span>{chat.sender.username}:</span>{" "}
+                                {chat.content}
                                 {/* <span>{chat.createdAt.slice(0, 10)}</span> */}
                               </div>
                             ) : (
                               <>{chat.content}</>
                             )}
-                          </p>
+                          </div>
                         </div>
                       ) : (
                         <div
                           id={styles.friendMessage}
                           className={styles.message}
                         >
-                          <p>
+                          <div>
                             {chat.sender ? (
-                              <div className={styles.messageBubble}>
-                                {chat.sender.username}: {chat.content}
+                              <p className={styles.messageBubble}>
+                                <span>{chat.sender.username}:</span>{" "}
+                                {chat.content}
                                 {/* <span>{chat.createdAt.slice(0, 10)}</span> */}
-                              </div>
+                              </p>
                             ) : (
                               <>{chat.content}</>
                             )}
-                          </p>
+                          </div>
                         </div>
                       )}
-                    </>
+                    </div>
                   );
                 })
               ) : (

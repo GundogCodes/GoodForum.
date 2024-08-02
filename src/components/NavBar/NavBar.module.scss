@@ -113,3 +113,65 @@
     border-color: orange;
   }
 }
+
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+@media (max-width: 900px) {
+  .nav {
+    .tabList {
+      width: 100vw;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: flex-start;
+      .emptyArea {
+        width: 0px;
+        height: 0px;
+        display: none;
+        .date {
+          width: 100%;
+          font-size: 5px;
+        }
+        .date:hover {
+        }
+      }
+      .forumDes {
+        width: 100px;
+        font-size: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0px;
+      }
+      .options {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        p {
+          font-size: 10px;
+          #userImage {
+          }
+        }
+
+        .tab {
+        }
+        .tab:hover {
+        }
+      }
+      .goodForum {
+        width: 130px;
+        font-size: 12px;
+        .logoImage {
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .tabLogout {
+      }
+    }
+    p {
+    }
+  }
+}

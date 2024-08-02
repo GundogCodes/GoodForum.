@@ -28,7 +28,6 @@ export default function PostModal({
   const [showText, setShowText] = useState(true);
   const [showImage, setShowImage] = useState(false);
   const [showLink, setShowLink] = useState(false);
-  const [showPic, setShowPic] = useState(false);
   /******************************************** Handling States ********************************************/
   function handlePostOptions(e) {
     const option = e.target.id;
@@ -126,6 +125,7 @@ export default function PostModal({
         console.log({ error: error });
       }
     }
+    window.location.reload();
   }
 
   async function handleMakeAPost(e) {
@@ -136,7 +136,7 @@ export default function PostModal({
           selectedForum,
           postData
         );
-        console.log("updated Forum: ", newForum);
+        setUser(newForum.updatedUser);
         setShowModal(false);
       } catch (error) {
         console.log({ error: error });
@@ -147,17 +147,20 @@ export default function PostModal({
       const result = await axios.post("/api/profilePic", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log("updated Forum: ", result);
       console.log(result.data);
       try {
         const newForum = await forumService.postToForum(
           selectedForum,
           postData
         );
+        console.log("POST RESPONSE", newForum);
         setShowModal(false);
       } catch (error) {
         console.log({ error: error });
       }
     }
+    console.log("MAKE A POST FUNCTION IS USED");
   }
 
   return (
