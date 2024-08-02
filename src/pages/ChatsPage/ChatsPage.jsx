@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import * as chatAPI from "../../../utilities/chat-api.cjs";
 import * as messageAPI from "../../../utilities/messages-api.cjs";
-const ENDPOINT = "http://localhost:8004";
+const ENDPOINT = "https://goodforum.ca";
 
 const socket = io.connect(ENDPOINT);
 export default function ChatsPage({ user, setUser }) {
