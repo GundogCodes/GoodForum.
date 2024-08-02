@@ -44,7 +44,7 @@ export default function NavBar({ user, setUser }) {
             <div className={styles.goodForum}>
               <img
                 className={styles.logoImage}
-                src="src/assets/AppFunctions/cookieLogo.png"
+                src="/src/assets/AppFunctions/cookieLogo.png"
               />
               GoodForum.
             </div>
