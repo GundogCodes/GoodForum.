@@ -68,7 +68,7 @@
     overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    border: solid 1px rgb(100, 100, 100);
+    border: solid 1px rgb(200, 200, 200);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -149,7 +149,7 @@
         width: 60vw;
         border-radius: 7px;
         background-color: white;
-        border: solid 1px black;
+        border: solid 1px rgb(100, 100, 100);
         box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
           rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
         margin-bottom: 10px;
@@ -206,7 +206,7 @@
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    border: solid 1px rgb(100, 100, 100);
+    border: solid 1px rgb(200, 200, 200);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -253,5 +253,86 @@
 @keyframes rotate {
   100% {
     transform: rotate(1turn);
+  }
+}
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+@media (max-width: 900px) {
+  .ChatsPage {
+    background-color: whitesmoke;
+    top: 15vh;
+
+    max-height: 3000px;
+    width: 100vw;
+    max-width: 2650px;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .signUpPrompt {
+    }
+
+    .ChatsFlow {
+      margin-top: 5px;
+      width: 100vw;
+      .messages {
+        .message {
+          span {
+          }
+        }
+        #userMessage {
+          max-width: 300px;
+          width: 250px;
+          font-size: 12px;
+        }
+        #friendMessage {
+          max-width: 300px;
+          width: 250px;
+          font-size: 12px;
+        }
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+        input {
+        }
+
+        button {
+          width: 50px;
+        }
+      }
+      aside {
+      }
+    }
+
+    .ChatsAside {
+      margin-top: 10px;
+      border: none;
+      width: 100vw;
+      height: 100px;
+      flex-direction: row;
+      justify-content: center;
+      overflow-x: scroll;
+      h2 {
+        display: none;
+      }
+      h1 {
+        margin-left: 10px;
+        width: 75px;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+        }
+      }
+
+      img {
+        height: 60px;
+        width: 60px;
+      }
+    }
   }
 }

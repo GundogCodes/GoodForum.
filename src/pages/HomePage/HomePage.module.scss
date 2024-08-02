@@ -434,11 +434,13 @@
       .homePosts {
         width: 100%;
         .postList {
+          max-height: 500px;
+          overflow-y: scroll;
         }
       }
       .explore {
         width: 100vw;
-        max-height: 250px;
+        justify-content: flex-end;
         overflow-y: scroll;
         .createForumDiv {
           width: 15vw;

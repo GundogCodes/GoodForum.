@@ -119,10 +119,10 @@ export default function ChatsPage({ user, setUser }) {
           <div className={styles.ChatsAside}>
             {user.friends && user.friends.length > 0 ? (
               <>
+                <h2>Your Chats</h2>
                 {user.friends.map((friend) => {
                   return (
                     <div key={friend._id}>
-                      <h2>Your Chats</h2>
                       <h1>
                         {friend.profileImage ? (
                           <img

@@ -167,3 +167,63 @@
     }
   }
 }
+//------------------------------- MOBILE VIEW -------------------------------//
+//------------------------------- MOBILE VIEW -------------------------------//
+//------------------------------- MOBILE VIEW -------------------------------//
+@media (max-width: 900px) {
+  .PostModal {
+    .form {
+      width: 90vw;
+      h3 {
+      }
+      h2 {
+      }
+      header {
+        width: 90%;
+        h5 {
+        }
+        h5:hover {
+        }
+      }
+      .forumList {
+        width: 90%;
+        h4 {
+        }
+        h4:hover {
+        }
+      }
+      form {
+        width: 100%;
+        height: 100%;
+        p {
+          width: 100%;
+        }
+        p:hover {
+        }
+        h1 {
+        }
+        h2 {
+          width: 90%;
+        }
+        input {
+          width: 90%;
+        }
+        #text {
+          height: 30%;
+        }
+        .fileInput {
+        }
+        .line {
+        }
+        button {
+        }
+        button:hover {
+        }
+        .or {
+        }
+        .upload {
+        }
+      }
+    }
+  }
+}

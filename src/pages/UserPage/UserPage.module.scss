@@ -67,7 +67,6 @@
         justify-content: space-evenly;
         width: 100%;
         height: 15vh;
-        color: white;
         .userAsideTopLeft {
           width: 30%;
           display: flex;
@@ -253,16 +252,105 @@
 ::-webkit-scrollbar {
   display: none;
 }
-
+//------------------------------- MOBILE VIEW -------------------------------//
+//------------------------------- MOBILE VIEW -------------------------------//
+//------------------------------- MOBILE VIEW -------------------------------//
 @media (max-width: 900px) {
   .UserPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100vw;
+    max-width: 899px;
+    margin: 0 auto;
+    height: auto;
+    .userForums {
+      width: 100vw;
+      .pageTitle {
+        font-size: 15px;
+      }
+      h2 {
+        font-size: 12px;
+      }
+      p {
+        font-size: 10px;
+      }
+    }
+    .userPageBody {
+      width: 100vw;
+      .userAside {
+        width: 100vw;
+        .userAsideTop {
+          height: 80px;
+          .userAsideTopLeft {
+            width: 60%;
+
+            .userPic {
+              height: 100%;
+              #profilePic {
+                width: 70px;
+                height: 70px;
+              }
+              .addPic {
+              }
+              .addPic:hover {
+              }
+            }
+            .username {
+              width: 50%;
+            }
+
+            .submitForm {
+              .cf {
+              }
+              .closeIcon {
+              }
+              button {
+              }
+            }
+            h1 {
+            }
+          }
+          .userAsideTopRight {
+            width: 40%;
+            .bio {
+            }
+          }
+        }
+        #profilePic {
+        }
+
+        .functions {
+          width: 100vw;
+          border-bottom: solid 1px black;
+
+          .createPost {
+          }
+          .userFuncs {
+          }
+          .createPost:hover {
+          }
+        }
+      }
+      #posts {
+      }
+      .userPosts {
+        width: 100vw;
+        height: 500px;
+      }
+    }
+
+    .stats {
+      width: 100vw;
+      font-size: 12px;
+      height: 150px;
+
+      h1 {
+        font-weight: bold;
+      }
+      h3 {
+      }
+    }
   }
 }
-
-// @media (prefers-color-scheme: dark) {
-//   .UserPage {
-//     .heading {
-//       color: #ff6410;
-//     }
-//   }
-// }
