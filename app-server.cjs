@@ -24,7 +24,7 @@ app.post("/api/profilePic", upload.single("profilePic"), (req, res) => {
   console.log(imageName);
   res.send(imageName);
 });
-
+app.use("/profilePics", express.static("profilePics"));
 /****************************************************************** APP SETUP ******************************************************************/
 //import path to use and manipulate the file paths on our system
 const path = require("path");
