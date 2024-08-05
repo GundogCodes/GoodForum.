@@ -52,8 +52,9 @@ export default function NavBar({ user, setUser }) {
         </Tab>
         <Tab _selected={{}}>
           <div className={styles.forumDes}>
-            <h2>Where the conversations are</h2>
-            <h2>Good for you</h2>
+            {/* <h2>Where the conversations are</h2>
+            <h2>Good for you</h2> */}
+            <img src="/testImage.JPG" />
           </div>
         </Tab>
         <div className={styles.options}>

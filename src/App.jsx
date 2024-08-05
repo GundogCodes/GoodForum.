@@ -31,7 +31,7 @@ function App() {
 
     fetchUserData();
   }, []);
-  console.log("HEY THIS IS THE UPDATED VERSION AUg.1.24 11:22PM");
+  console.log("THE UPDATED VERSION AUG.5.24 5:03PM!!!");
   return (
     <div className={styles.app}>
       <NavBar user={user} setUser={setUser} />
