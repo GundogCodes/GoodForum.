@@ -136,7 +136,7 @@ export default function ChatsPage({ user, setUser }) {
                             ref={selectedUser}
                             onClick={getUserChats}
                             id={`${friend._id}`}
-                            src={`/src/assets/userFunc/profileImage.png`}
+                            src={`/profileImage.png`}
                           />
                         )}
                         <p

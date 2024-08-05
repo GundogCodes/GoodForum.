@@ -145,10 +145,7 @@ export default function HomePage({ user, setUser }) {
                   src={`/profilePics/${user.profileImage}`}
                 />
               ) : (
-                <img
-                  className={styles.profilePic}
-                  src={`/src/assets/userFunc/profileImage.png`}
-                />
+                <img className={styles.profilePic} src={`/profileImage.png`} />
               )}
             </Link>
             <div className={styles.userForums}>

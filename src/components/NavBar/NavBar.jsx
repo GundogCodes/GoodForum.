@@ -42,19 +42,15 @@ export default function NavBar({ user, setUser }) {
         <Tab _selected={{}}>
           <Link to={"/"}>
             <div className={styles.goodForum}>
-              <img
-                className={styles.logoImage}
-                src="/src/assets/AppFunctions/cookieLogo.png"
-              />
+              <img className={styles.logoImage} src="/cookieLogo.png" />
               GoodForum.
             </div>
           </Link>
         </Tab>
         <Tab _selected={{}}>
           <div className={styles.forumDes}>
-            {/* <h2>Where the conversations are</h2>
-            <h2>Good for you</h2> */}
-            <img src="/testImage.JPG" />
+            <h2>Where the conversations are</h2>
+            <h2>Good for you</h2>
           </div>
         </Tab>
         <div className={styles.options}>
@@ -111,7 +107,7 @@ export default function NavBar({ user, setUser }) {
                         borderRadius: "50px",
                         height: "20px",
                       }}
-                      src={`/src/assets/userFunc/profileImage.png`}
+                      src={`/profileImage.png`}
                     />
                   )}
                 </p>

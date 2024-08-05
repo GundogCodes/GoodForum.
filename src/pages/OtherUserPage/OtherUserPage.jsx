@@ -126,10 +126,7 @@ export default function OtherUserPage({ user, setUser }) {
                 src={`/profilePics/${userPage.profileImage}`}
               />
             ) : (
-              <img
-                className={styles.profilePic}
-                src={`/src/assets/userFunc/profileImage.png`}
-              />
+              <img className={styles.profilePic} src={`/profileImage.png`} />
             )}
             <h1>{userPage.username}</h1>
             <h6>{userPage.bio}</h6>

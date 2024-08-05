@@ -158,7 +158,7 @@ export default function UserPage({ user, setUser }) {
                 ) : (
                   <img
                     id={styles.profilePic}
-                    src={`/src/assets/userFunc/profileImage.png`}
+                    src={`/profileImage.png`}
                     alt="Profile"
                   />
                 )}

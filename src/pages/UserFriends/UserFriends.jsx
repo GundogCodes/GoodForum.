@@ -44,7 +44,7 @@ export default function UserFriends({ user, setUser }) {
                 ) : (
                   <img
                     id={`${friend._id}`}
-                    src={`/src/assets/userFunc/profileImage.png`}
+                    src={`/profileImage.png`}
                     onClick={goToUserPage}
                   />
                 )}
