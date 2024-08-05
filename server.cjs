@@ -17,8 +17,9 @@ app.use(cors());
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://goodforum.ca/chats",
-    //origin: "http://localhost:5173", for local run
+    //origin: "https://goodforum.ca/chats ", // for deployed run
+    //origin: "http://localhost:5173", //for local run
+    origin: ["http://localhost:5173", "https://goodforum.ca"], // Multiple origins
   },
 });
 
