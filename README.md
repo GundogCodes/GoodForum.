@@ -15,18 +15,27 @@ Community Rules:
 10. Avoid spreading misinformation.
 11. Don't engage in piracy/copyright/trademark infringement.
 12. Stay positive and encourage others. Don't discourage or disparage people.
-    Key Features:
+
+# Key Features:
+
     • Real-time Discussions: Engage in real-time discussions on various topics of interest.
+
     • Positive Community: A space for users to converse about positive topics and bring value to users. Hate and bullying will not be tolerated. Hateful or offensive Forums will be deleted.
+
     • User Profiles: Customize your profile and connect with like-minded individuals.
+
     • Rich Media Support: Share images and videos to enrich discussions.
+
     • Responsive Design: Access GoodForum from any device, ensuring a consistent experience.
-    Technologies Used:
+
+# Technologies Used:
+
     • Frontend: React.js, Javascript, Material-UI, Axios
     • Backend: Node.js, Express.js, MongoDB
     • Deployment: DigitalOcean
-    Explore GoodForum today and join a vibrant community of thinkers and doers!
-    TRELLO For User Stories, Wireframes, and ERD
+
+Explore GoodForum today and join a vibrant community of thinkers and doers!
+TRELLO For User Stories, Wireframes, and ERD
 
 https://trello.com/b/aDPYrUfn/api
 
