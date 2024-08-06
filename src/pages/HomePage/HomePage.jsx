@@ -123,7 +123,7 @@ export default function HomePage({ user, setUser }) {
                 <br />
                 <span>• Backend:</span> Node.js, Express.js, MongoDB
                 <br />
-                <span>• Deployment:</span> Vercel
+                <span>• Deployment:</span> Digital Ocean
                 <br />
                 Explore GoodForum today and join a vibrant community of thinkers
                 and doers!
