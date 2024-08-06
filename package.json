@@ -33,7 +33,7 @@
     "react-router-dom": "^6.15.0",
     "socket.io": "^4.7.2",
     "socket.io-client": "^4.7.2",
-    "cross-env": "node --max_http_header_size=128000 node_modules/vite/bin/vite.js"
+    "cross-env": "node --max_http_header_size=512000 node_modules/vite/bin/vite.js"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
