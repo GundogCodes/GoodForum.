@@ -191,10 +191,7 @@ export default function HomePage({ user, setUser }) {
           <div className={styles.userInfo}>
             <h1 className={styles.pageTitle}>Home</h1>
             <h1>Login</h1>
-            <img
-              className={styles.profilePic}
-              src={`/src/assets/userFunc/profileImage.png`}
-            />
+            <img className={styles.profilePic} src={`/profileImage.png`} />
           </div>
         )}
         <div className={styles.homePosts}>
