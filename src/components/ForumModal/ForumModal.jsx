@@ -67,7 +67,7 @@ export default function FormModal({
         <div className={styles.inputField}>
           <h3>{headings[0]}</h3>
           <input
-            maxLength={15}
+            maxLength={50}
             name="title"
             type="text"
             onChange={handleChange}
@@ -76,7 +76,7 @@ export default function FormModal({
             <>
               <h3>{headings[1]}</h3>
               <input
-                maxLength={15}
+                maxLength={50}
                 name="topic"
                 type="text"
                 onChange={handleChange}
@@ -92,7 +92,7 @@ export default function FormModal({
             id={styles.description}
             type="text"
             onChange={handleChange}
-            maxLength={50}
+            maxLength={100}
           />
 
           <button

@@ -193,7 +193,7 @@ export default function ForumPage({ user, setUser }) {
         {forumPage && forumPage.founder ? (
           <div>
             <h3 className={styles.stat} id={styles.des}>
-              Description:{forumPage.description}
+              {forumPage.description}
             </h3>
             <h3 className={styles.stat}>
               Created By: {forumPage.founder.username}

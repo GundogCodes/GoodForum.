@@ -157,9 +157,11 @@ export default function Post({
     <div className={styles.Post}>
       <div className={styles.upper}>
         <div className={styles.upperLeft}>
-          {post && post.postForum && (
-            <h3 className={styles.postForumTitle}>{post.postForum}</h3>
-          )}
+          <Link to={`/forum/${postForumId}`}>
+            {post && post.postForum && (
+              <h3 className={styles.postForumTitle}>{post.postForum}</h3>
+            )}
+          </Link>
           {post && post.postSender && (
             <h3 className={styles.postSenderName}>{post.postSender}</h3>
           )}

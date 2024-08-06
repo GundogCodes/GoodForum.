@@ -197,7 +197,7 @@ export default function HomePage({ user, setUser }) {
           </div>
         )}
         <div className={styles.homePosts}>
-          {allPosts ? (
+          {allPosts && allPosts.length > 0 ? (
             <div className={styles.postList}>
               {allPosts.map((post) => {
                 return (

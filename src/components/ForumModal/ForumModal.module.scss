@@ -88,6 +88,9 @@
         rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
       max-width: 900px;
+      overflow-wrap: break-word; /* Ensures long words break */
+      word-wrap: break-word; /* Legacy support for older browsers */
+      word-break: break-word; /* Ensures any word breaks */
     }
 
     .button {
