@@ -1,7 +1,28 @@
-## GoodForum
+# GoodForum
 
 is a dynamic web application designed to provide a comprehensive platform for interactive discussions and community engagement. Built with modern web technologies, it offers users a seamless experience to connect, share insights, and explore diverse, positive topics that bring value to the community.
-Community Rules:
+
+## Key Features:
+
+    • Real-time Discussions: Engage in real-time discussions on various topics of interest.
+
+    • Positive Community: A space for users to converse about positive topics and bring value to users. Hate and bullying will not be tolerated. Hateful or offensive Forums will be deleted.
+
+    • User Profiles: Customize your profile and connect with like-minded individuals.
+
+    • Rich Media Support: Share images and videos to enrich discussions.
+
+    • Responsive Design: Access GoodForum from any device, ensuring a consistent experience.
+
+## Technologies Used:
+
+    • Frontend: React.js, Javascript, Material-UI, Axios
+    • Backend: Node.js, Express.js, MongoDB
+    • Deployment: DigitalOcean
+
+Explore GoodForum today and join a vibrant community of thinkers and doers!
+
+## Community Rules:
 
 1. Don't post discriminatory material or hate speech here.
 2. Don't post porn or sexual media.
@@ -16,38 +37,19 @@ Community Rules:
 11. Don't engage in piracy/copyright/trademark infringement.
 12. Stay positive and encourage others. Don't discourage or disparage people.
 
-# Key Features:
-
-    • Real-time Discussions: Engage in real-time discussions on various topics of interest.
-
-    • Positive Community: A space for users to converse about positive topics and bring value to users. Hate and bullying will not be tolerated. Hateful or offensive Forums will be deleted.
-
-    • User Profiles: Customize your profile and connect with like-minded individuals.
-
-    • Rich Media Support: Share images and videos to enrich discussions.
-
-    • Responsive Design: Access GoodForum from any device, ensuring a consistent experience.
-
-# Technologies Used:
-
-    • Frontend: React.js, Javascript, Material-UI, Axios
-    • Backend: Node.js, Express.js, MongoDB
-    • Deployment: DigitalOcean
-
-Explore GoodForum today and join a vibrant community of thinkers and doers!
 TRELLO For User Stories, Wireframes, and ERD
 
 https://trello.com/b/aDPYrUfn/api
 
-# Tentative Login Page
+### Tentative Login Page
 
 ![StartingPage](image.png)
 
-# Tentative Home Page
+### Tentative Home Page
 
 ![HomePage](image-1.png)
 
-# ERD
+### ERD
 
 ![ERD](image-2.png)
 
