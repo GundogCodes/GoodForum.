@@ -42,6 +42,7 @@
       padding: 20px;
       height: 66%;
       overflow-y: scroll;
+      animation: myAni 0.34s;
       .logoImage {
         width: 80px;
         height: 80px;
@@ -166,9 +167,61 @@
     }
   }
 }
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
+//-------------------------------------MOBILE VIEW-------------------------------------//
 
 @media (max-width: 900px) {
   .LoginPage {
+    .showDetails {
+      .desModal {
+        width: 100vw;
+        .logoImage {
+        }
+        h1 {
+        }
+        .desText {
+        }
+        span {
+        }
+      }
+    }
+    .leftSide {
+      width: 90vw;
+      .hDiv {
+        h1 {
+        }
+        h2 {
+        }
+      }
+      .logoDiv {
+        .logo {
+        }
+      }
+      .loginForm,
+      .signUpForm {
+        p,
+        .inputText,
+        .submit {
+        }
+        .submit:hover {
+        }
+        .text {
+        }
+        .inputText {
+        }
+      }
+      .signupButton {
+      }
+      .signupButton:hover {
+      }
+    }
+    .rightSide {
+      width: 90vw;
+      .greeting {
+        font-size: 12px;
+      }
+    }
   }
 }
 

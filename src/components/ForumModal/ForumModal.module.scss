@@ -37,7 +37,7 @@
     justify-content: center;
     align-items: center;
     background-color: whitesmoke;
-    border: solid 1px rgb(100, 100, 100);
+    animation: myAni 0.34s;
   }
   p {
     font-size: 25px;
@@ -156,63 +156,38 @@
     }
   }
 }
-
-// @media (prefers-color-scheme: dark) {
-//   .FormModal {
-//     h1 {
-//       color: white;
-//     }
-
-//     section {
-//       border-width: 1px;
-//       box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-//         rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-//       background-color: rgb(28, 28, 28);
-
-//       p {
-//         color: rgb(237, 119, 49);
-//       }
-
-//       .inputField {
-//         color: white;
-
-//         h3 {
-//         }
-
-//         input {
-//           background-color: rgb(28, 28, 28);
-//           color: white;
-//         }
-//       }
-
-//       button {
-//         border-color: black;
-//         color: white;
-//         background-color: rgb(28, 28, 28);
-//       }
-
-//       #description {
-//       }
-//     }
-//   }
-// }
-
-// @keyframes fadeIn {
-//   0% {
-//     opacity: 0;
-//   }
-
-//   100% {
-//     opacity: 1;
-//   }
-// }
-
-// @keyframes fadeInAndUp {
-//   0% {
-//     opacity: 0;
-//   }
-
-//   100% {
-//     opacity: 1;
-//   }
-// }
+@keyframes myAni {
+  0% {
+    transform: translateY(200px);
+  }
+  10% {
+    transform: translateY(180px);
+  }
+  20% {
+    transform: translateY(160px);
+  }
+  30% {
+    transform: translateY(140px);
+  }
+  40% {
+    transform: translateY(120px);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  60% {
+    transform: translateY(80px);
+  }
+  70% {
+    transform: translateY(60px);
+  }
+  80% {
+    transform: translateY(40px);
+  }
+  90% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

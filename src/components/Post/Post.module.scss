@@ -7,7 +7,7 @@
   margin-top: 15px;
   max-width: 1000px;
   max-height: 600px;
-  border: solid 1px black;
+  border: solid 1px rgb(200, 200, 200);
   border-radius: 5px;
   background-color: white;
   .upper {
@@ -16,6 +16,7 @@
     align-items: flex-start;
     width: 100%;
     height: 10vh;
+
     .upperLeft {
       width: 80%;
       height: 100%;
@@ -68,27 +69,34 @@
   }
   .body {
     margin-top: 5px;
-    width: 54vw;
-    min-height: 10vh;
+    width: 50vw;
+    min-height: 10vh; /* Minimum height ensures some space even with little content */
     border-radius: 10px;
-    overflow-y: hidden;
+    overflow: hidden; /* Ensure content doesn’t overflow */
     display: flex;
+    flex-direction: column; /* Allows for vertical stacking of content */
     justify-content: flex-start;
-    align-items: center;
-    font-size: min(130px, 10px);
+    align-items: flex-start; /* Align items to the start */
+    font-size: min(
+      130px,
+      10px
+    ); /* Consider adjusting this for better readability */
     background-color: white;
-    max-width: 990px;
+    max-width: 900px;
+    height: auto; /* Allows height to adjust based on content */
 
+    max-height: 40vh;
     .postText {
-      background-color: white;
-      min-height: 5vh;
       display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      font-size: min(60vw, 20px);
-      padding: 10px;
-      height: 40%;
+      flex-direction: column; /* Allows for vertical stacking of text */
+      align-items: flex-start; /* Align text to the start */
+      justify-content: flex-start; /* Align text to the start */
+      font-size: min(60vw, 20px); /* Adjust font size dynamically */
+      padding: 10px; /* Padding for spacing inside the element */
       border-radius: 5px;
+      overflow-wrap: break-word; /* Ensures long words break */
+      word-wrap: break-word; /* Legacy support for older browsers */
+      word-break: break-word; /* Ensures any word breaks */
       color: black;
     }
   }
@@ -151,7 +159,7 @@
       padding: 3px;
       border-radius: 20px;
       background-color: black;
-      background-color: green;
+
       border: 1px solid white;
     }
     .postComments:hover {

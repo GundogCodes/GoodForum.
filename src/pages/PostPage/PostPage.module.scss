@@ -49,10 +49,12 @@
     flex-direction: column;
     align-items: center;
     max-height: 1500px;
+    animation: myAni 0.34s;
     header {
-      border: solid 1px black;
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
       height: 15vh;
       display: flex;
       flex-direction: column;
@@ -104,9 +106,13 @@
       //background-color: rgb(190, 190, 190);
       width: 60vw;
       max-width: 1400px;
-      border-left: solid 1px black;
-      border-right: solid 1px black;
       background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      overflow-wrap: break-word; /* Ensures long words break */
+      word-wrap: break-word; /* Legacy support for older browsers */
+      word-break: break-word; /* Ensures any word breaks */
+      overflow-y: scroll;
     }
     .interactions {
       display: flex;
@@ -116,11 +122,10 @@
       align-items: center;
       width: 60vw;
       color: black;
-      border-left: solid 1px black;
-      border-right: solid 1px black;
       max-width: 1400px;
       background-color: white;
-
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
       .disklikes:hover {
       }
       h4 {
@@ -158,13 +163,13 @@
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
       padding: 5px;
-      border: solid 1px black;
+
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
       justify-content: flex-start;
       margin-top: 2px;
-      border-top: solid 1px black;
+
       .commentSection {
         display: flex;
         flex-direction: column;
@@ -303,5 +308,41 @@
         rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
         rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
+  }
+}
+
+@keyframes myAni {
+  0% {
+    transform: translateY(200px);
+  }
+  10% {
+    transform: translateY(180px);
+  }
+  20% {
+    transform: translateY(160px);
+  }
+  30% {
+    transform: translateY(140px);
+  }
+  40% {
+    transform: translateY(120px);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  60% {
+    transform: translateY(80px);
+  }
+  70% {
+    transform: translateY(60px);
+  }
+  80% {
+    transform: translateY(40px);
+  }
+  90% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }

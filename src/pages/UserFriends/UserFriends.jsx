@@ -26,6 +26,7 @@ export default function UserFriends({ user, setUser }) {
       }
     }
   }
+  console.log("USER: ", user);
   return (
     <div className={styles.UserFriends}>
       <h1 className={styles.title}>Your Friends</h1>

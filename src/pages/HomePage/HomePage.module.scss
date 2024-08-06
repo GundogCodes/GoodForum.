@@ -39,30 +39,35 @@
       padding: 20px;
       height: 66%;
       overflow-y: scroll;
-      .logoImage {
-        width: 80px;
-        height: 80px;
-      }
-      .x {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 20px;
-        color: rgb(191, 63, 27);
-      }
-      h1 {
-        font-size: 40px;
-        font-weight: bolder;
-        color: black;
+      animation: myAni 0.34s;
+      .desModalHead {
         display: flex;
         align-items: center;
-      }
-      .desText {
-        font-size: 15px;
-      }
-      span {
-        font-weight: bold;
+        .logoImage {
+          width: 80px;
+          height: 80px;
+        }
+        .x {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          font-size: 20px;
+          color: rgb(191, 63, 27);
+        }
+        h1 {
+          font-size: 40px;
+          font-weight: bolder;
+          color: black;
+          display: flex;
+          align-items: center;
+        }
+        .desText {
+          font-size: 15px;
+        }
+        span {
+          font-weight: bold;
+        }
       }
     }
   }
@@ -74,7 +79,6 @@
     display: flex;
     background-color: whitesmoke;
     max-width: 2650px;
-
     .userInfo,
     .homePosts,
     .explore {
@@ -96,6 +100,7 @@
     .userInfo {
       width: 20vw;
       height: 500px;
+      max-width: 500px;
       padding-right: 1px;
       display: flex;
       flex-direction: column;
@@ -161,6 +166,7 @@
       border-radius: 5px;
       max-height: 1600px;
       overflow-y: scroll;
+      animation: myAni 0.34s;
       .postList {
         margin-top: 7vh;
       }
@@ -171,7 +177,7 @@
       color: black;
       max-width: 500px;
       height: 500px;
-      border-left: 1px solid rgb(200, 200, 200);
+      border-left: 1px solid 200;
       .createForumDiv {
         width: 15vw;
         max-width: 500px;
@@ -381,9 +387,11 @@
     margin: 0 auto;
     .showDetails {
       .desModal {
+        width: 95vw;
         .logoImage {
         }
         .x {
+          color: red;
         }
         h1 {
         }
@@ -563,5 +571,41 @@
         }
       }
     }
+  }
+}
+
+@keyframes myAni {
+  0% {
+    transform: translateY(200px);
+  }
+  10% {
+    transform: translateY(180px);
+  }
+  20% {
+    transform: translateY(160px);
+  }
+  30% {
+    transform: translateY(140px);
+  }
+  40% {
+    transform: translateY(120px);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+  60% {
+    transform: translateY(80px);
+  }
+  70% {
+    transform: translateY(60px);
+  }
+  80% {
+    transform: translateY(40px);
+  }
+  90% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
   }
 }

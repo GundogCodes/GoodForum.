@@ -53,19 +53,21 @@ export default function HomePage({ user, setUser }) {
       {showDetails ? (
         <div className={styles.showDetails}>
           <div className={styles.desModal}>
-            <h1>
+            <div className={styles.desModalHead}>
               <img
                 className={styles.logoImage}
                 src="/src/assets/AppFunctions/cookieLogo.png"
               />{" "}
-              GoodForum.
-              <CloseIcon
+              <h1>GoodForum.</h1>
+              <p
                 onClick={() => {
                   setDetails(false);
                 }}
                 className={styles.x}
-              />
-            </h1>
+              >
+                X
+              </p>
+            </div>
             <div className={styles.desText}>
               <h2>
                 GoodForum is a dynamic web application designed to provide a

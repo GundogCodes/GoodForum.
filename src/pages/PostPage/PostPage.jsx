@@ -341,7 +341,7 @@ export default function PostPage({ user, setUser }) {
           </section>
         </>
       ) : (
-        <div>Post Not Found</div>
+        <div></div>
       )}
       <div className={styles.posterInfo}>
         {post ? (
@@ -354,10 +354,7 @@ export default function PostPage({ user, setUser }) {
                   src={`/profilePics/${post.sender.profileImage}`}
                 />
               ) : (
-                <img
-                  id={styles.profilePic}
-                  src={"/src/assets/userFunc/profileImage.png"}
-                />
+                <img id={styles.profilePic} src={"/profileImage.png"} />
               )}
             </Link>
             {post.sender ? (

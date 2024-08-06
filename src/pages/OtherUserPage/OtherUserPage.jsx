@@ -14,11 +14,6 @@ export default function OtherUserPage({ user, setUser }) {
   const [isFriend, setIsFriend] = useState(false);
   const [userPage, setUserPage] = useState(null);
   const [allForums, setAllForums] = useState([]);
-  /********************************************** FUNCTIONS **********************************************/
-  function handlePostClick(e) {
-    console.log(e.target.id);
-    navigate(`/post/${e.target.id}`);
-  }
   /********************************************** USE EFFECTS **********************************************/
 
   useEffect(() => {
@@ -138,7 +133,6 @@ export default function OtherUserPage({ user, setUser }) {
                   key={post._id}
                   id={post._id}
                   title={post.title}
-                  forum={post.forum}
                   sender={post.sender.username}
                   text={post.text}
                   image={post.image}
@@ -147,7 +141,7 @@ export default function OtherUserPage({ user, setUser }) {
                   dislikes={post.dislikes}
                   user={user}
                   setUser={setUser}
-                ></Post>
+                />
               );
             })}
           </div>
