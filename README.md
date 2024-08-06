@@ -1,20 +1,32 @@
-Welcome to Fractalus, where the art of conversation meets the precision of marble sculpting. Unleash your creativity in our chisel-inspired messaging platform, where every word is a stroke, and every conversation is a masterpiece.
+## GoodForum
 
-Discover Quarries:
-Join our forums, known as Quarries, where ideas are mined and refined like precious stones. Engage in Artisan Assemblies and Stone Symposiums to sculpt discussions into brilliant works of collaborative art.
+is a dynamic web application designed to provide a comprehensive platform for interactive discussions and community engagement. Built with modern web technologies, it offers users a seamless experience to connect, share insights, and explore diverse, positive topics that bring value to the community.
+Community Rules:
 
-Craft Marble Slabs:
-Create your own space within Fractalus with Marble Slabs. These are your posts, waiting to be sculpted into narratives, anecdotes, or profound expressions. The canvas is yours— chisel away!
-
-Chisel Chronicles:
-Messages take the form of Chisels, allowing you to delicately carve out your thoughts. Share your Mallet Messages with fellow sculptors and witness the evolution of conversations as if they were sculpted in real-time.
-
-Carve-ins and Gritty Glimmers:
-Engage in Carve-ins, our unique comment section, where each comment is a chip adding intricate details to the conversation. These Gritty Glimmers enrich the discussion, creating a mosaic of perspectives.
-
-Fractalus is more than a platform; it's a virtual sculpture studio where ideas are carved, refined, and celebrated. Join us and be part of a community that understands the artistry in every word.
-
-TRELLO For User Stories, Wireframes, and ERD
+1. Don't post discriminatory material or hate speech here.
+2. Don't post porn or sexual media.
+3. Don't advertise, self-promote, or otherwise market anything.
+4. Avoid religious or religious debate content.
+5. Stay on-topic. Posts must be Forum Topic & Description.
+6. Don't collect personal information from the community.
+7. Don't disrupt other places.
+8. Don't stir up drama.
+9. Avoid politics.
+10. Avoid spreading misinformation.
+11. Don't engage in piracy/copyright/trademark infringement.
+12. Stay positive and encourage others. Don't discourage or disparage people.
+    Key Features:
+    • Real-time Discussions: Engage in real-time discussions on various topics of interest.
+    • Positive Community: A space for users to converse about positive topics and bring value to users. Hate and bullying will not be tolerated. Hateful or offensive Forums will be deleted.
+    • User Profiles: Customize your profile and connect with like-minded individuals.
+    • Rich Media Support: Share images and videos to enrich discussions.
+    • Responsive Design: Access GoodForum from any device, ensuring a consistent experience.
+    Technologies Used:
+    • Frontend: React.js, Javascript, Material-UI, Axios
+    • Backend: Node.js, Express.js, MongoDB
+    • Deployment: DigitalOcean
+    Explore GoodForum today and join a vibrant community of thinkers and doers!
+    TRELLO For User Stories, Wireframes, and ERD
 
 https://trello.com/b/aDPYrUfn/api
 
