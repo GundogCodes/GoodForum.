@@ -82,10 +82,7 @@ export default function LoginPage({ user, setUser }) {
         <div className={styles.showDetails}>
           <div className={styles.desModal}>
             <h1>
-              <img
-                className={styles.logoImage}
-                src="/src/assets/AppFunctions/cookieLogo.png"
-              />{" "}
+              <img className={styles.logoImage} src="/cookieLogo.png" />{" "}
               GoodForum.
             </h1>
             <div className={styles.desText}>
