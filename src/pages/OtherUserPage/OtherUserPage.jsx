@@ -147,7 +147,7 @@ export default function OtherUserPage({ user, setUser }) {
           </div>
         </section>
       ) : (
-        <div className={styles.wrong}>wrong</div>
+        <div className={styles.wrong}>Loading...</div>
       )}
       <div className={styles.otherUserStats}>
         <h1>Stats</h1>

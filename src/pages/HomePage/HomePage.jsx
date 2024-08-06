@@ -139,7 +139,7 @@ export default function HomePage({ user, setUser }) {
         {forums ? <SearchBar forums={forums} allPosts={allPosts} /> : <></>}
         {user ? (
           <div className={styles.userInfo}>
-            <h1> Hey, {user.username}</h1>
+            <h1 className={styles.pageTitle}> Hey, {user.username}</h1>
             <Link to={`/user`}>
               {user.profileImage ? (
                 <img
