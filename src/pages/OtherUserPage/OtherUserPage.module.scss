@@ -207,142 +207,65 @@
     }
   }
 }
+//------------------------------- MOBILE VIEW -------------------------------//
+//------------------------------- MOBILE VIEW -------------------------------//
+//------------------------------- MOBILE VIEW -------------------------------//
+@media (max-width: 900px) {
+  .OtherUserPage {
+    flex-direction: column;
+    .allForumsAside {
+      display: none;
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+      }
+      .allTheForums {
+      }
+      .allTheForums:hover {
+      }
+    }
+    .wrong {
+    }
+    section {
+      background-color: whitesmoke;
+      width: 100vw;
+      header {
+        width: 90vw;
+        h1 {
+        }
+        .profilePic {
+        }
 
-// @media (prefers-color-scheme: dark) {
-//   .OtherUserPage {
-//     section {
-//       background-color: rgb(16, 18, 19);
-//       header {
-//         h1 {
-//           text-shadow: none;
-//         }
-//         .profilePic {
-//         }
+        h6 {
+        }
 
-//         h6 {
-//         }
+        aside {
+        }
 
-//         aside {
-//         }
+        .interactions {
+          p {
+          }
+        }
+      }
 
-//         .interactions {
-//           p {
-//             background-color: rgb(28, 28, 28);
-//             color: white;
-//             border: solid 1px white;
-//           }
-
-//           p:hover {
-//             background-color: #ff6410;
-//             color: white;
-//             cursor: pointer;
-//           }
-//         }
-//       }
-
-//       div {
-//         .post {
-//           background-color: rgb(28, 28, 28);
-//           border: solid 1px;
-//           header {
-//             border-bottom: solid 1px white;
-//           }
-
-//           .postImage {
-//             border: solid 1px;
-//           }
-
-//           h5 {
-//             background-color: gray;
-//           }
-
-//           section {
-//             border-top: solid 1px white;
-//             p {
-//             }
-
-//             p:hover {
-//               background-color: #ff6410;
-//               color: white;
-//             }
-//             .date:hover {
-//               background-color: rgb(28, 28, 28);
-//               color: white;
-//             }
-//           }
-//         }
-//         .post:hover {
-//           cursor: pointer;
-//         }
-//       }
-//     }
-//   }
-// }
-
-// @media (max-width: 900px) {
-//   .OtherUserPage {
-//     section {
-//       width: 100vw;
-//       header {
-//         width: 98vw;
-//         .profilePic {
-//         }
-
-//         h6 {
-//           height: 10vh;
-//           width: 10vh;
-//         }
-
-//         aside {
-//           height: 10vh;
-//           width: 10vh;
-//         }
-
-//         .interactions {
-//           height: 10vh;
-//           width: 10vh;
-//           display: flex;
-//           flex-direction: column;
-//           justify-content: space-around;
-//           p {
-//             width: 90%;
-//             font-size: 10px;
-//           }
-
-//           p:hover {
-//           }
-//         }
-//       }
-
-//       div {
-//         width: 100vw;
-//         .post {
-//           width: 95vw;
-//           header {
-//             width: 95vw;
-//             border-bottom: none;
-//           }
-
-//           .postImage {
-//             width: 95vw;
-//           }
-
-//           h5 {
-//             width: 95vw;
-//           }
-
-//           section {
-//             width: 95vw;
-//             p {
-//               font-size: 11px;
-//               width: 25%;
-//             }
-
-//             p:hover {
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+      .otherUserPostList {
+        width: 100vw;
+        overflow-y: scroll;
+      }
+    }
+    .otherUserStats {
+      width: 100vw;
+      aside {
+        p {
+        }
+      }
+      .interactions {
+        p {
+        }
+      }
+      h1 {
+      }
+    }
+  }
+}

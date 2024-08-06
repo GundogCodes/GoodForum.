@@ -418,25 +418,25 @@
       }
       .userInfo {
         width: 100vw;
-        height: 200px;
+        height: 100px;
         display: flex;
         border-right: none;
         h1 {
           width: 100%;
-          font-size: 15px;
         }
         .pageTitle {
+          font-size: 12px;
         }
         .profilePic {
+          margin-top: 10px;
           height: 40px;
           width: 40px;
         }
         .userForums {
-          height: 100%;
-          height: 100px;
+          display: none;
           h2 {
             margin-top: 0px;
-            font-size: 12px;
+            font-size: 15px;
             justify-content: flex-start;
           }
           .userForum {
@@ -456,8 +456,9 @@
       }
       .explore {
         width: 100vw;
-        justify-content: flex-end;
+        justify-content: flex-start;
         overflow-y: scroll;
+        height: 200px;
         .createForumDiv {
           width: 15vw;
           max-width: 500px;
@@ -483,24 +484,31 @@
           }
         }
         .forumListDiv {
+          width: 90vw;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           .forumList {
             color: rgb(80, 80, 80);
             height: 60vh;
-            width: 100%;
+            justify-content: flex-start;
             p {
               margin-top: 2px;
               display: flex;
+              margin-top: 5px;
               align-items: center;
               justify-content: center;
               max-height: 50px;
               margin-top: 2px;
               height: 5vh;
-              width: 13vw;
+              width: 90vw;
               position: relative;
               color: #000;
               text-decoration: none;
             }
-
+            .createPost {
+              font-size: 40px;
+            }
             p:hover {
             }
 
