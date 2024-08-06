@@ -1,4 +1,8 @@
 import * as usersAPI from "./users-api.cjs";
+function base64urlDecode(str) {
+  str = str.replace(/-/g, "+").replace(/_/g, "/");
+  return atob(str);
+}
 
 export async function signUp(userData) {
   const token = await usersAPI.signUp(userData);
@@ -18,7 +22,7 @@ export function getToken() {
   if (!token) return null;
 
   try {
-    const payload = JSON.parse(atob(token.split(".")[1]));
+    const payload = JSON.parse(base64urlDecode(token.split(".")[1]));
 
     if (payload.exp < Date.now() / 1000) {
       localStorage.removeItem("token");
@@ -45,7 +49,7 @@ export function getToken() {
 
 export async function getUser() {
   const token = getToken();
-  return token ? JSON.parse(atob(token.split(".")[1])).user : null;
+  return token ? JSON.parse(base64urlDecode(token.split(".")[1])).user : null;
 }
 
 export function logOut() {
